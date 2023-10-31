@@ -1,0 +1,96 @@
+html .bottom, html .completed-challenge-icon, html .dna-input-group-prefix {
+    display: none;
+}
+
+html .bg1_webp,html .bg2_webp,html .bg3_webp,html .bg4_webp,html .bg5_webp,html .bg6_webp,html .bg7_webp {
+    background-image: none;
+}
+
+html .splash_container {
+    text-align: right;
+    float: right;
+}
+
+html .dna-form h1, html .dna-form h2 {
+    display: none;
+}
+
+html .completed-challenge {
+    background: #171A1E;  /* dis --mooie-bg-color-hover*/
+    border-radius: 15px;
+    text-align: center;
+}
+
+html .completed-challenge-label, html .input-drop-down-no-results, html .completed-challenge a {
+    color: #fff;
+}
+
+html .dna-input-group {
+    background: #171A1E;  /* dis --mooie-bg-color-hover*/
+    border-radius: 15px;
+    text-align: center;
+    border: none;
+    color: #fff;
+}
+
+html ::placeholder {
+    text-align: center;
+}
+
+html .dna-input {
+    text-align: center;
+}
+
+
+html .input-drop-down-list {
+    background: #171A1E;  /* dis --mooie-bg-color-hover*/
+    border: none; 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    box-shadow: none;
+}
+
+html .input-drop-down-list-item {
+    color: #fff;
+}
+
+html .input-drop-down-list-item.selected {
+    background-color: #0B0D0F;  /* dis --mooie-bg-color-hover alleen dan wat donkerder*/
+}
+
+html .input-drop-down-list-item:hover {
+    background-color: #101316;
+}
+
+html .dna-btn-primary {
+    border-radius: 15px;
+    background-color: #0E4772;
+}
+
+html .dna-btn-primary:hover {
+    background: #0065A0;
+}
+
+html .dna-btn-primary:active {
+    background: #0065A0;
+}
+
+::selection {
+    background: #0003;
+}
+
+html .dna-form-error {
+    color: #d83a3f;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #0003;
+}

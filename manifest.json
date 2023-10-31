@@ -1,0 +1,38 @@
+{
+    "manifest_version": 2,
+    "name" : "Better Magister",
+    "description": "Magister but just better. By Tekar Inc. bitch",
+    "version": "0.4.1",
+    "icons": {
+        "16": "/icons/16.png",
+        "48": "/icons/48.png",
+        "128": "/icons/128.png"
+    },
+    "page_action": {
+        "default_icon": {
+            "16": "/icons/16.png",
+            "48": "/icons/48.png",
+            "128": "/icons/128.png"
+        }
+    },
+    "content_scripts": [{
+        "matches": ["https://*.magister.net/*"],
+        "css": ["main.css"],
+        "js": ["main.js"]
+    },{
+        "matches": ["https://*.magister.net/error.html?*"],
+        "css": ["error.css"],
+        "js": ["error.js"]
+    }, {
+        "matches": ["https://accounts.magister.net/account/login?*"],
+        "css": ["account.css"],
+        "js": ["account.js"]
+    }, {
+        "matches": ["https://*.magister.net/magister/#/agenda*"],
+        "js": ["agenda.js"]
+    }, {
+        "matches": ["https://www.jordanmlu.nl/agenda/*"],
+        "css": ["jordanAgenda.css"],
+        "all_frames": true
+    }]
+}
