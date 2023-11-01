@@ -708,3 +708,99 @@ html .examen-card.ng-isolate-scope .child-widget {
     background-color: transparent !important;
     color: var(--mooie-text-color) !important;
 }
+
+html #studiewijzer-container div.studiewijzer-list div.head span {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html #studiewijzer-container div.studiewijzer-list>ul>li>a>span {
+    border-right: 1px solid var(--mooie-bg-color-hover);
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html #studiewijzer-container div.studiewijzer-list div.head {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: var(--mooie-bg-color);
+}
+
+html .main .content-container.ng-isolate-scope .studiewijzer-list {
+    border: 2px solid var(--mooie-bg-color-hover);
+}
+
+html #studiewijzer-container div.studiewijzer-list div.head span:first-child {
+    border-right: 1px solid var(--mooie-bg-color-hover);
+}
+
+html #studiewijzer-container div.studiewijzer-list>ul>li {
+    border-top: none;
+    background: var(--mooie-bg-color);
+}
+
+html #studiewijzer-container div.studiewijzer-list>ul>li>a:hover {
+    background: var(--mooie-bg-color);
+}
+
+html #studiewijzer-container div.studiewijzer-list>ul>li:last-child {
+    border-bottom: none;
+}
+
+html .toasts {
+    background-color: var(--mooie-bg-color) !important;
+    color: var(--mooie-text-color) !important;
+}
+
+html .projects li.selected, .projects li:hover {
+    position: relative;
+    background-color: var(--mooie-bg-color-hover);
+    outline: none;
+    cursor: pointer;
+}
+
+html b, html strong {
+    color: var(--mooie-text-color) !important;
+}
+
+html .background-blauw .color-label {
+    background-color: var(--primary-background);
+}
+
+html .studiewijzer-onderdeel>div.block h3>.color-label, html .block h3 .color-label {
+    border: none;
+}
+
+.studiewijzer-onderdeel>div.block h3>.color-label:after, .block h3 .color-label:after {
+    margin-top: 2.4px;
+    margin-right: -6.1px;
+    width: 11px;
+    height: 11px;
+    border: none !important;
+}
+
+html #studiewijzer-detail-container .coloring-blauw>div,html #studiewijzer-detail-container .coloring-blauw>ul {
+    background-color: var(--mooie-bg-color);
+    border-left: 4px solid var(--primary-background);
+}
+
+html a {
+    color: var(--mooie-text-color);
+}
+
+html .studiewijzer-onderdeel div.content ul>li .icon-presentation {
+    color: var(--mooie-text-color);
+}
+
+html .sources li:hover {
+    border-bottom: none;
+    border-top: 1px solid var(--mooie-bg-color-hover);
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html .mg-icon {
+    color: var(--mooie-text-color) !important;
+}
+
+html .studiewijzer-onderdeel div.content ul>li .icon-document {
+    color: var(--mooie-text-color);
+}
