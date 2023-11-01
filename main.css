@@ -767,15 +767,16 @@ html .background-blauw .color-label {
 }
 
 html .studiewijzer-onderdeel>div.block h3>.color-label, html .block h3 .color-label {
-    border: none;
+    border: 1px solid var(--mooie-text-color);
 }
 
 .studiewijzer-onderdeel>div.block h3>.color-label:after, .block h3 .color-label:after {
     margin-top: 2.4px;
     margin-right: -6.1px;
-    width: 11px;
-    height: 11px;
-    border: none !important;
+    width: 13px;
+    height: 13px;
+    border-top: 1px solid var(--mooie-text-color) !important;
+    border-right: 1px solid var(--mooie-text-color) !important;
 }
 
 html #studiewijzer-detail-container .coloring-blauw>div,html #studiewijzer-detail-container .coloring-blauw>ul {
@@ -803,4 +804,26 @@ html .mg-icon {
 
 html .studiewijzer-onderdeel div.content ul>li .icon-document {
     color: var(--mooie-text-color);
+}
+
+html .sources li li {
+    background: var(--mooie-bg-color);
+}
+
+html .studiewijzer-onderdeel div.content ul.sources ul>li>a {
+    color: var(--mooie-text-color);
+}
+
+
+html .studiewijzer-onderdeel>div.block>div.content {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html #studiewijzer-detail-container div,html #studiewijzer-detail-container >ul {
+    background-color: var(--mooie-bg-color) !important;
+    color: var(--mooie-text-color) !important;
+}
+
+html #studiewijzer-detail-container div, #studiewijzer-detail-container ul {
+    background-color: var(--mooie-bg-color) !important;
 }
