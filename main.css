@@ -3,6 +3,8 @@ html body {
     --mooie-bg-color-hover: #171A1E;
     --mooie-text-color: #fff;
 
+    --blue-text-color-light: #a2c5e5;
+
     background-color: var(--mooie-bg-color);
     --dna-primary: var(--mooie-text-color);
     --dna-secondary: transparent;
@@ -418,7 +420,7 @@ html .profile-welcome h1, html .profile-welcome p {
 }
 
 html :host {
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color) !important;
 }
 
 html .afsprakenlijst-container .main>.content-container {
@@ -826,4 +828,73 @@ html #studiewijzer-detail-container div,html #studiewijzer-detail-container >ul 
 
 html #studiewijzer-detail-container div, #studiewijzer-detail-container ul {
     background-color: var(--mooie-bg-color) !important;
+}
+
+html .side-widget {
+    background-color: transparent;
+    color: var(--mooie-text-color) !important;
+    border-color: var(--mooie-bg-color-hover) !important;
+}
+
+html #opdracht-detail dna-card {
+    background-color: transparent !important;
+    color: var(--mooie-text-color) !important;
+    border-color: var(--mooie-bg-color-hover) !important;
+}
+
+
+html #opdracht-detail dna-card .disabled {
+    color: var(--mooie-text-color) !important;
+}
+
+html .versions li.selected,html .versions li:hover {
+    background-color: transparent;
+    border-top-color: transparent;
+    color: var(--mooie-text-color) !important;
+}
+
+html .opdracht-edit-opmerking {
+    border: 1px solid var(--mooie-bg-color-hover);
+    border-radius: 15px;
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html .opdrachten-upload-text {
+    color: var(--mooie-text-color) !important;
+}
+
+html .attachments a {
+    color: var(--blue-text-color-light) !important;
+}
+
+html .versions li:first-child i {
+    color: var(--mooie-text-color) !important;
+}
+
+html .rest-column {
+    background: var(--mooie-bg-color) !important;
+    border-left: 1px solid var(--mooie-bg-color-hover) !important;
+}
+
+html .first-column {
+    background: var(--mooie-bg-color) !important;
+    border-right: none !important;
+}
+
+html #bronnen-container .bronnen-quota-label {
+    color: var(--mooie-text-color) !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    background: transparent;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+html #bestanden-overzicht li:hover {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html .sources li.selected>a {
+    background-color: var(--mooie-bg-color);
 }
