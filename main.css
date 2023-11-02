@@ -769,16 +769,16 @@ html .background-blauw .color-label {
 }
 
 html .studiewijzer-onderdeel>div.block h3>.color-label, html .block h3 .color-label {
-    border: 1px solid var(--mooie-text-color);
+    border: none !important;
 }
 
 .studiewijzer-onderdeel>div.block h3>.color-label:after, .block h3 .color-label:after {
-    margin-top: 2.4px;
-    margin-right: -6.1px;
-    width: 13px;
-    height: 13px;
-    border-top: 1px solid var(--mooie-text-color) !important;
-    border-right: 1px solid var(--mooie-text-color) !important;
+    margin-top: 2.4px !important;
+    margin-right: -6.1px !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-top: none !important;
+    border-right: none !important;
 }
 
 html #studiewijzer-detail-container .coloring-blauw>div,html #studiewijzer-detail-container .coloring-blauw>ul {
@@ -897,4 +897,8 @@ html #bestanden-overzicht li:hover {
 
 html .sources li.selected>a {
     background-color: var(--mooie-bg-color);
+}
+
+html table.table-grid-layout td a:hover, html table.table-grid-layout td a {
+    color: var(--mooie-text-color);
 }
