@@ -557,6 +557,7 @@ html table.table-grid-layout>tbody>tr.selected td {
     background-color: var(--mooie-bg-color-hover);
 }
 
+
 html body .k-popup.k-list-container .k-item {
     color: var(--mooie-text-color) !important;
 }
@@ -901,4 +902,17 @@ html .sources li.selected>a {
 
 html table.table-grid-layout td a:hover, html table.table-grid-layout td a {
     color: var(--mooie-text-color);
+}
+
+html table.table-grid-layout td+td {
+    border-left: 1px solid var(--mooie-bg-color-hover);
+}
+
+html .table-block {
+    border-color: var(--mooie-bg-color-hover) !important;
+    background-color: var(--mooie-bg-color);
+}
+
+html table.table-grid-layout tr {
+    background-color: var(--mooie-bg-color) !important;
 }

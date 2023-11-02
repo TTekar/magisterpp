@@ -22,7 +22,6 @@ const init3 = function() {
     iframe.height = "100%";
     
     div1.appendChild(iframe);
-
     
 }
 
