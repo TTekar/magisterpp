@@ -916,3 +916,81 @@ html .table-block {
 html table.table-grid-layout tr {
     background-color: var(--mooie-bg-color) !important;
 }
+
+html div.profile-content {
+    background: var(--mooie-bg-color);
+}
+
+html span.datetime-label {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color);
+}
+
+html #profiel-container .profile-photo .drop-placeholder {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html .main div.multi-columns .col, html .main div.multi-columns .col-noprint {
+    background-color: var(--mooie-bg-color);
+    border-right: 1px solid var(--mooie-bg-color-hover);
+}
+
+html .main div.multi-columns .col:last-child, .main div.multi-columns .col-noprint:last-child {
+    background-color: var(--mooie-bg-color);
+}
+
+html .block h3+div h3{
+    background: var(--mooie-bg-color) !important;
+}
+
+html .disabled, .disabled:after {
+    color: rgba(255,255,255,.35) !important;
+}
+
+html .k-treeview .k-in.k-state-selected:hover>a {
+    background-color: var(--mooie-bg-color) !important;
+    color: var(--mooie-text-color) !important;
+}
+
+html .iconic:before {
+    color: var(--mooie-text-color);
+}
+
+html .k-treeview .k-in.k-state-selected>a .indicator:before,html .k-treeview .k-in.k-state-selected>a .indicator:before {
+    color: var(--mooie-text-color);
+}
+
+html .k-treeview .k-in.k-state-selected>a,html .k-treeview .k-in.k-state-selected.k-state-focused>a,html .k-treeview .k-in.k-state-selected .k-state-focused>a {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+}
+
+html .k-treeview-lines li ul {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html ul.k-listview li:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html .k-treeview .k-in.k-state-hover>a,html .k-treeview .k-in.k-state-focused>a,html .k-treeview .k-in.k-state-selected:hover>a {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+}
+
+html .k-treeview .k-in a {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+}
+
+html ul.k-listview li.k-state-focused {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html .sm-grid.k-grid .k-grid-header th.k-header {
+    background: var(--mooie-bg-color);
+}
+
+html .k-grid-header .k-link:link,html .k-grid-header .k-link:visited,html .k-grid-header .k-nav-current.k-state-hover .k-link,html .k-grouping-header .k-link {
+    color: var(--mooie-text-color);
+}
