@@ -998,3 +998,12 @@ html .k-grid-header .k-link:link,html .k-grid-header .k-link:visited,html .k-gri
 html #cijfers-leerling .no-data .last-grade {
     background-color: var(--mooie-bg-color-hover);
 }
+
+html .bestellen-container .bestellen-body .entrypoint-success .bestel-info-panel {
+    background: var(--mooie-bg-color);
+    color: var(--mooie-text-color) !important;
+}
+
+html .bestellen-container .bestellen-body .entrypoint-success .bestel-info-panel .warning-panel {
+   color: var(--mooie-bg-color-hover) !important;
+}
