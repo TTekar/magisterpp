@@ -29,10 +29,10 @@ const init3 = function() {
 
         if(pfp.getAttribute("alt") == "Aidan Schoester") {
             pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
-        }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
+        }else if(pfp.getAttribute("alt") == "Joppe Tummers" || pfp.getAttribute("alt") == "Senna Meijer") {
             pfp.setAttribute("src", "https://www.kerst-feestwinkel.nl/img/large/pluche-beer-met-piercings-22-cm/10039/802.gif")
         }
-    }, 1000);
+    }, 1500);
 }
 
 var intervalId = window.setInterval(function(){
