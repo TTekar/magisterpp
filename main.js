@@ -18,22 +18,22 @@ iframe.width = "100%";
 iframe.height = "100%";
 
 const init3 = function() {
-    if (window.location.href != "https://hermanjordan.magister.net/magister-berichten/#/overzicht"){
-        container1.prepend(div1);
-    
-        div1.appendChild(iframe);
 
-        setTimeout(() => {
-            const divUserMenu = document.querySelector("a#user-menu");
-            var pfp = divUserMenu.querySelector("figure img");
+    container1.prepend(div1);
+
+    div1.appendChild(iframe);
     
-            if(pfp.getAttribute("alt") == "Aidan Schoester") {
-                pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
-            }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
-                pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
-            }
-        }, 1000);
-    }
+    setTimeout(() => {
+        const divUserMenu = document.querySelector("a#user-menu");
+        var pfp = divUserMenu.querySelector("figure img");
+
+        if(pfp.getAttribute("alt") == "Aidan Schoester") {
+            pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
+        }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
+            pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
+        }
+    }, 1000);
+    
 }
 
 var intervalId = window.setInterval(function(){

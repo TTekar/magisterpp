@@ -31,9 +31,5 @@
         "matches": ["https://www.jordanmlu.nl/agenda/*"],
         "css": ["jordanAgenda.css"],
         "all_frames": true
-    }, {
-        "matches": ["https://*.magister.net/magister-berichten/#/overzicht*"],
-        "css": ["berichten.css"],
-        "all_frames": true
     }]
 }
