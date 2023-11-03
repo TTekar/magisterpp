@@ -36,7 +36,7 @@ const init3 = function() {
 }
 
 var intervalId = window.setInterval(function(){
-    if(window.location.href == "https://hermanjordan.magister.net/magister/#/agenda"){
+    if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/agenda"){
         div1.style.display = "block";
     }else {
         div1.style.display = "none";
