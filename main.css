@@ -994,3 +994,7 @@ html .sm-grid.k-grid .k-grid-header th.k-header {
 html .k-grid-header .k-link:link,html .k-grid-header .k-link:visited,html .k-grid-header .k-nav-current.k-state-hover .k-link,html .k-grouping-header .k-link {
     color: var(--mooie-text-color);
 }
+
+html #cijfers-leerling .no-data .last-grade {
+    background-color: var(--mooie-bg-color-hover);
+}
