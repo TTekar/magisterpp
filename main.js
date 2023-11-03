@@ -22,7 +22,15 @@ const init3 = function() {
     iframe.height = "100%";
     
     div1.appendChild(iframe);
-    
+
+    setTimeout(() => {
+        const divUserMenu = document.querySelector("a#user-menu");
+        var pfp = divUserMenu.querySelector("figure img");
+
+        if(pfp.getAttribute("alt") == "Aidan Schoester") {
+            pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
+        }
+    }, 900);
 }
 
 var intervalId = window.setInterval(function(){
