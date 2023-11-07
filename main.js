@@ -21,7 +21,7 @@ const init3 = function() {
 
     container1.prepend(div1);
 
-    div1.appendChild(iframe);
+    // div1.appendChild(iframe);
     
     setTimeout(() => {
         const divUserMenu = document.querySelector("a#user-menu");
@@ -36,12 +36,12 @@ const init3 = function() {
     
 }
 
-var intervalId = window.setInterval(function(){
-    if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/agenda"){
-        div1.style.display = "block";
-    }else {
-        div1.style.display = "none";
-    }
-  }, 200);
+// var intervalId = window.setInterval(function(){
+//     if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/agenda"){
+//         div1.style.display = "block";
+//     }else {
+//         div1.style.display = "none";
+//     }
+//   }, 200);
 
 init3();
