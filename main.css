@@ -1011,3 +1011,25 @@ html .bestellen-container .bestellen-body .entrypoint-success .bestel-info-panel
 html .block .content .title {
     color: var(--mooie-text-color);
 }
+
+html .ngGrid {
+    background-color: var(--mooie-bg-color);
+}
+
+html div.ngCell,html div.ngCellText,html div.ngVerticalBar,html div.ngHeaderCell,html div.ngHeaderContainer {
+    color: var(--mooie-text-color);
+}
+
+html .wizzard div.sheet div.grid-col div.ngHeaderContainer, html div.ngHeaderCell {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: var(--mooie-bg-color);
+}
+
+html div.ngRow:hover>:not(.unselectable), html div.ngRow:hover>:not(.unselectable)>div.ngCellText {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html div.ngRow.odd,html div.ngRow.even {
+    background-color: var(--mooie-bg-color);
+}
