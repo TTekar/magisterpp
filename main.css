@@ -1007,3 +1007,7 @@ html .bestellen-container .bestellen-body .entrypoint-success .bestel-info-panel
 html .bestellen-container .bestellen-body .entrypoint-success .bestel-info-panel .warning-panel {
    color: var(--mooie-bg-color-hover) !important;
 }
+
+html .block .content .title {
+    color: var(--mooie-text-color);
+}
