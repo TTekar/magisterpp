@@ -55,10 +55,10 @@ var checkYoBadCijfers = window.setInterval(function(){
             cijfer.innerHTML = "<5,5"
         }
         if (cijfer.innerHTML.toUpperCase().includes("Z") || cijfer.innerHTML.toUpperCase().includes("O")) {
-            cijfer.innerHTML = "<v"
+            cijfer.innerHTML = "< v"
         }
     }
-  }, 200);
+  }, 100);
 
 // var intervalId = window.setInterval(function(){
 //     if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/agenda"){
