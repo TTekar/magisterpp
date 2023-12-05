@@ -38,15 +38,24 @@ const init3 = function() {
         }
     }, 1000);
 
-    setTimeout(() => {
+    // setTimeout(() => {
+    //     var cijfer = document.querySelector("span.cijfer.ng-binding")
+    //     if (parseFloat(cijfer.innerHTML) < 8.5) {
+    //         cijfer.innerHTML = "<5,5"
+    //     }
+    // }, 2000);
+    
+    
+}
+
+var checkYoBadCijfers = window.setInterval(function(){
+    if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/vandaag"){
         var cijfer = document.querySelector("span.cijfer.ng-binding")
         if (parseFloat(cijfer.innerHTML) < 5.5) {
             cijfer.innerHTML = "<5,5"
         }
-    }, 2000);
-    
-    
-}
+    }
+  }, 200);
 
 // var intervalId = window.setInterval(function(){
 //     if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/agenda"){
