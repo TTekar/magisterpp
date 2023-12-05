@@ -41,7 +41,7 @@ const init3 = function() {
     setTimeout(() => {
         var cijfer = document.querySelector("span.cijfer.ng-binding")
         if (parseFloat(cijfer.innerHTML) < 5.5) {
-            cijfer.innerHTML = ":("
+            cijfer.innerHTML = "<5,5"
         }
     }, 2000);
     
