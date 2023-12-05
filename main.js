@@ -54,6 +54,9 @@ var checkYoBadCijfers = window.setInterval(function(){
         if (parseFloat(cijfer.innerHTML) < 5.5) {
             cijfer.innerHTML = "<5,5"
         }
+        if (cijfer.innerHTML.toUpperCase().includes("Z") || cijfer.innerHTML.toUpperCase().includes("O")) {
+            cijfer.innerHTML = "<v"
+        }
     }
   }, 200);
 
