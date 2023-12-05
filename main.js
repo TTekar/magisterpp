@@ -17,11 +17,15 @@ iframe.src = "https://www.jordanmlu.nl/agenda/";
 iframe.width = "100%";
 iframe.height = "100%";
 
+
+
 const init3 = function() {
 
     // container1.prepend(div1);
 
     // div1.appendChild(iframe);
+
+    
     
     setTimeout(() => {
         const divUserMenu = document.querySelector("a#user-menu");
@@ -33,6 +37,14 @@ const init3 = function() {
             pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
         }
     }, 1000);
+
+    setTimeout(() => {
+        var cijfer = document.querySelector("span.cijfer.ng-binding")
+        if (parseFloat(cijfer.innerHTML) < 5.5) {
+            cijfer.innerHTML = ":("
+        }
+    }, 2000);
+    
     
 }
 
