@@ -461,8 +461,16 @@ html table.table-grid-layout>tbody>tr.selected::after {
     display: none;
 }
 
-html .widget.wide.uitwerking {
+/* html .widget.wide.uitwerking {
     display: none;
+} */
+
+html .block .content.background-white {
+    background-color: var(--mooie-bg-color);
+}
+
+html .tri-columns div {
+    color: var(--mooie-text-color);
 }
 
 html .widget.small.ng-scope {
