@@ -51,6 +51,11 @@ const init3 = function() {
 var checkYoBadCijfers = window.setInterval(function(){
     if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/vandaag"){
         var cijfer = document.querySelector("span.cijfer.ng-binding")
+
+        if (cijfer.innerHTML.length > 4) {
+            return
+        }
+
         if (parseFloat(cijfer.innerHTML) < 5.5) {
             cijfer.innerHTML = "<5,5"
         }
