@@ -3,6 +3,7 @@
     "name" : "Better Magister",
     "description": "Magister but just better. By Tekar Inc.",
     "version": "0.6.6",
+    "options_page": "options.html",
     "icons": {
         "16": "/icons/16.png",
         "48": "/icons/48.png",
@@ -17,7 +18,6 @@
     },
     "content_scripts": [{
         "matches": ["https://*.magister.net/*"],
-        "css": ["main.css"],
         "js": ["main.js"]
     }, {
         "matches": ["https://*.magister.net/error.html?*"],
@@ -27,5 +27,15 @@
         "matches": ["https://accounts.magister.net/account/login?*"],
         "css": ["account.css"],
         "js": ["account.js"]
-    }]
+    }],
+    "permissions": [
+        "storage",
+        "tabs",
+        "https://*.magister.net/*"
+      ],
+    "background": {
+        "scripts": [
+            "bg.js"
+        ]
+    }
 }

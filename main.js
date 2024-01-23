@@ -24,8 +24,6 @@ const init3 = function() {
     // container1.prepend(div1);
 
     // div1.appendChild(iframe);
-
-    
     
     setTimeout(() => {
         const divUserMenu = document.querySelector("a#user-menu");
