@@ -4,11 +4,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     chrome.storage.sync.get(
         { darkMode: true },
         (items) => {
-          if (items.darkMode) {
+          if (!items.darkMode) {
             if (changeInfo.status == "loading") {
                 if (splitUrl[1] == "magister") {
                     chrome.tabs.insertCSS(tabId, {
-                        file: "main.css"
+                        file: "lightMode.css"
                     }, () => {
                         console.log("inserted")
                     })

@@ -1,7 +1,9 @@
 html body {
     --mooie-bg-color: #1F2228;
+    --mooie-bg-color-mid: #1D2026;
     --mooie-bg-color-hover: #171A1E;
     --mooie-text-color: #fff;
+    --mooie-text-color-white: #fff;
 
     --blue-text-color-light: #a2c5e5;
 
@@ -31,22 +33,24 @@ html .block {
 }
 
 html .block .content {
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color-mid) !important;
+    border-radius: 0px 0px 15px 15px;
 }
 
 html .block h3 {
     color: var(--mooie-text-color);
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color-mid);
     border: none;
     box-shadow: none;
+    border-radius: 15px 15px 0px 0px;
 }
 
 html .block h4 {
     color: var(--mooie-text-color);
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color-mid);
     border: none;
     box-shadow: none;
-    background: var(--mooie-bg-color);
+    background: var(--mooie-bg-color-mid);
 }
 
 html .endlink {
@@ -62,7 +66,7 @@ html .endlink a {
 }
 
 html .alert {
-    background-color: var(--mooie-bg-color) !important;
+    background-color: var(--mooie-bg-color-mid) !important;
     border-top: none;
     border-left: 3px solid var(--primary-background);
 }
@@ -76,13 +80,13 @@ html .alert a:hover {
 }
 
 html .alert span.nrblock {
-    color: #fff;
+    color: var(--mooie-text-color);
     background-color: #0002;
 }
 
 html span.nrblock {
     margin: 2px 4px 0 0;
-    color: #fff;
+    color: var(--mooie-text-color);
     background-color: #0002;
 }
 
@@ -99,7 +103,7 @@ html .widget .list li a:hover{
 }
 
 html .widget .list li {
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color-mid);
     border-top: none;
 }
 
@@ -138,7 +142,7 @@ html ::-webkit-scrollbar-thumb:hover {
 }
 
 html #vandaag-container .grade-widget ul {
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color-mid);
     border-bottom: none;
 }
 
@@ -187,6 +191,12 @@ html #menu-berichten-new {
 
 html span {
     color: var(--mooie-text-color);
+}
+
+html .main-menu span, 
+html .last-grade span,
+html .menu-footer span{
+    color: var(--mooie-text-color-white);
 }
 
 html .k-widget {
@@ -1081,4 +1091,8 @@ html div.ngRow:hover>:not(.unselectable), html div.ngRow:hover>:not(.unselectabl
 
 html div.ngRow.odd,html div.ngRow.even {
     background-color: var(--mooie-bg-color);
+}
+
+html .edit-toggle-btn:hover {
+    background-color: transparent !important;
 }

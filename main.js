@@ -24,6 +24,8 @@ const init3 = function() {
     // container1.prepend(div1);
 
     // div1.appendChild(iframe);
+
+    
     
     setTimeout(() => {
         const divUserMenu = document.querySelector("a#user-menu");
@@ -61,6 +63,9 @@ var checkYoBadCijfers = window.setInterval(function(){
             cijfer.innerHTML = "< v"
         }
     }
+
+    // edit layout button remove text
+    document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>';
   }, 100);
 
 // var intervalId = window.setInterval(function(){
