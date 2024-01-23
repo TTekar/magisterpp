@@ -15,7 +15,7 @@ html .godImg {
     height: 171px;
 }
 
-html .goaway, .ball, .logo img, .podium footer {
+html .goaway, html .ball, html .logo img, html .podium footer, html .podium img {
     display: none;
 }
 

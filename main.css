@@ -866,11 +866,52 @@ html .opdracht-edit-opmerking {
     border: 1px solid var(--mooie-bg-color-hover);
     border-radius: 15px;
     background-color: var(--mooie-bg-color) !important;
+    color: var(--mooie-text-color) !important;
 }
 
 html .opdrachten-upload-text {
     color: var(--mooie-text-color) !important;
 }
+
+html .dialog {
+    background-color: #0004 !important;
+    border: none !important;
+    border-radius: 15px;
+}
+
+html .dialog .title {
+    border-bottom: none !important;
+    display: none;
+}
+
+html .dialog .content-pane {
+    background-color: #0004 !important;
+}
+
+html .dialog .content-pane h3 {
+    background-color: #0004 !important;
+    color: var(--mooie-text-color);
+}
+
+html .dialog .content-pane div {
+    background-color: #0004 !important;
+}
+
+html .dialog .content-pane div p {
+    background-color: #0004 !important;
+    color: var(--mooie-text-color) !important;
+    font-size: .8rem;
+}
+
+html .dialog .content-pane footer {
+    border-top: none !important;
+}
+
+html .dialog .content-pane footer a {
+    color: var(--mooie-text-color) !important;
+    border-radius: 15px;
+}
+
 
 html .attachments a {
     color: var(--blue-text-color-light) !important;
