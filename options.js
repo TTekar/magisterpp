@@ -7,11 +7,11 @@ const saveOptions = () => {
       { darkMode: darkMode , cijfers: cijfers},
       () => {
         // Update status to let user know options were saved.
-        const status = document.getElementById('status');
-        status.textContent = 'Options saved.';
-        setTimeout(() => {
-          status.textContent = '';
-        }, 1000);
+        //const status = document.getElementById('status');
+        //status.textContent = 'Options saved.';
+        //setTimeout(() => {
+        //  status.textContent = '';
+        //}, 1000);
       }
     );
   };
@@ -29,5 +29,40 @@ const saveOptions = () => {
   };
   
   document.addEventListener('DOMContentLoaded', restoreOptions);
-  document.getElementById('save').addEventListener('click', saveOptions);
+  //document.getElementById('save').addEventListener('click', saveOptions);
+  document.getElementById('darkMode').addEventListener('change', saveOptions);
+  document.getElementById('cijfers').addEventListener('change', saveOptions);
 
+
+var darkOrLightMode = window.setInterval(function(){
+
+  const body = document.getElementById("optionsBody")
+  const darkLabel = document.getElementById("darkModeLabel")
+  const cijferLabel = document.getElementById("cijfersLabel")
+
+  chrome.storage.sync.get(
+    { darkMode: true },
+    (items) => {
+      if (items.darkMode) {
+        // dark mode ui
+        body.style.backgroundColor = "#1F2228"
+        
+        darkLabel.style.color = "#FFFFFF"
+        darkLabel.innerHTML.color = "#FFFFFF"
+        cijferLabel.style.color = "#FFFFFF"
+        cijferLabel.innerHTML.color = "#FFFFFF"
+        
+      }else {
+        
+        // light mode ui
+        body.style.backgroundColor = "#FFFFFF"
+        
+        darkLabel.style.color = "#000000"
+        darkLabel.innerHTML.color = "#000000"
+        cijferLabel.style.color = "#000000"
+        cijferLabel.innerHTML.color = "#000000"
+        
+      }
+    }
+  );
+  }, 100);

@@ -2,21 +2,23 @@
 <html>
   <head>
     <title>Options</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css" />
   </head>
-  <body class="optionsBody">
-    <label>
+  <body id="optionsBody">
+    <label id="darkModeLabel">
       <input type="checkbox" id="darkMode" />
-      Enable Dark Mode
+      Dark Mode
     </label>
-    <br>
-    <label>
+    <br />
+    <label id="cijfersLabel">
       <input type="checkbox" id="cijfers" />
-      Enable Cijfers &lt;v
+      Cijfers &lt;v
     </label>
+    <br />
 
+    <!-- <button id="save">Save</button> 
+    <br /> -->
     <div id="status"></div>
-    <button id="save">Save</button>
 
     <script src="options.js"></script>
   </body>

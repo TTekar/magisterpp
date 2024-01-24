@@ -3,7 +3,10 @@
     "name" : "Better Magister",
     "description": "Magister but just better. By Tekar Inc.",
     "version": "0.7.2",
-    "options_page": "options.html",
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true
+      },
     "icons": {
         "16": "/icons/16.png",
         "48": "/icons/48.png",

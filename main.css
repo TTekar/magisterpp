@@ -1064,7 +1064,8 @@ html .bestellen-container .bestellen-body .entrypoint-success .bestel-info-panel
 }
 
 html .bestellen-container .bestellen-body .entrypoint-success .bestel-info-panel .warning-panel {
-   color: var(--mooie-bg-color-hover) !important;
+   color: var(--mooie-text-color) !important;
+   background-color: #7F6F46;
 }
 
 html .block .content .title {
@@ -1097,7 +1098,9 @@ html .edit-toggle-btn:hover {
     background-color: transparent !important;
 }
 
-/* OPTIONS */
-html body.optionsBody {
-    background-color: var(--mooie-bg-color);
+#optionsBody {
+    text-align: center;
+    margin-top: 50vh;
+    transform: translate(0, -50%);
 }
+
