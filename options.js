@@ -30,3 +30,4 @@ const saveOptions = () => {
   
   document.addEventListener('DOMContentLoaded', restoreOptions);
   document.getElementById('save').addEventListener('click', saveOptions);
+

@@ -1096,3 +1096,8 @@ html div.ngRow.odd,html div.ngRow.even {
 html .edit-toggle-btn:hover {
     background-color: transparent !important;
 }
+
+/* OPTIONS */
+html body.optionsBody {
+    background-color: var(--mooie-bg-color);
+}
