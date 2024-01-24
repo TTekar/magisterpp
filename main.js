@@ -49,20 +49,28 @@ const init3 = function() {
 }
 
 var checkYoBadCijfers = window.setInterval(function(){
-    if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/vandaag"){
-        var cijfer = document.querySelector("span.cijfer.ng-binding")
+    chrome.storage.sync.get(
+        { cijfers: false },
+        (items) => {
+          if (items.cijfers) {
+            if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/vandaag"){
+                var cijfer = document.querySelector("span.cijfer.ng-binding")
 
-        if (cijfer.innerHTML.length > 4) {
-            return
-        }
+                if (cijfer.innerHTML.length > 4) {
+                    return
+                }
 
-        if (parseFloat(cijfer.innerHTML) < 5.5) {
-            cijfer.innerHTML = "<5,5"
+                if (parseFloat(cijfer.innerHTML) < 5.5) {
+                    cijfer.innerHTML = "<5,5"
+                }
+                if (cijfer.innerHTML.toUpperCase().includes("Z") || cijfer.innerHTML.toUpperCase().includes("O")) {
+                   cijfer.innerHTML = "< v"
+                }
+            }
+          }
         }
-        if (cijfer.innerHTML.toUpperCase().includes("Z") || cijfer.innerHTML.toUpperCase().includes("O")) {
-            cijfer.innerHTML = "< v"
-        }
-    }
+      );
+    
 
     // edit layout button remove text
     document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>';

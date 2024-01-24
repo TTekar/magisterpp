@@ -1,9 +1,10 @@
 // Saves options to chrome.storage
 const saveOptions = () => {
     const darkMode = document.getElementById('darkMode').checked;
+    const cijfers = document.getElementById('cijfers').checked;
   
     chrome.storage.sync.set(
-      { darkMode: darkMode },
+      { darkMode: darkMode , cijfers: cijfers},
       () => {
         // Update status to let user know options were saved.
         const status = document.getElementById('status');
@@ -19,9 +20,10 @@ const saveOptions = () => {
   // stored in chrome.storage.
   const restoreOptions = () => {
     chrome.storage.sync.get(
-      { darkMode: true },
+      { darkMode: true, cijfers: false },
       (items) => {
         document.getElementById('darkMode').checked = items.darkMode;
+        document.getElementById('cijfers').checked = items.cijfers;
       }
     );
   };
