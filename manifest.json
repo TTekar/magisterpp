@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name" : "Better Magister",
     "description": "Magister but just better. By Tekar Inc.",
-    "version": "0.7.2",
+    "version": "0.7.3",
     "options_ui": {
         "page": "options.html",
         "open_in_tab": true
@@ -31,6 +31,10 @@
         "matches": ["https://accounts.magister.net/account/login?*"],
         "css": ["account.css"],
         "js": ["account.js"]
+    }, {
+        "matches": ["https://*.magister.net/magister-berichten/*"],
+        "css": ["berichten.css"],
+        "all_frames": true
     }],
     "permissions": [
         "storage",

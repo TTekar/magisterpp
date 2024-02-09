@@ -1,0 +1,164 @@
+html body {
+    --mooie-bg-color: #1F2228;
+    --mooie-bg-color-mid: #191C21;
+    --mooie-bg-color-hover: #171A1E;
+    --mooie-text-color: #fff;
+    --mooie-text-color-white: #fff;
+
+    --blue-text-color-light: #a2c5e5;
+
+    background-color: var(--mooie-bg-color);
+    --dna-primary: var(--mooie-text-color);
+    --dna-secondary: transparent;
+    --dna-background: transparent;
+    
+    --primary-background: #0E4772; /*licht*/
+    --secondary-background: #023660; /*donker*/
+    
+    --background-1: #0065A0; /*iets lichter dan licht*/
+}
+
+html body {
+    background-color: var(--mooie-bg-mid) !important;
+}
+
+html div.folders-container {
+    border-right: none !important;
+}
+
+html app-bericht-list.ng-star-inserted {
+    padding: 0 !important;
+}
+
+html .header[_ngcontent-ng-c2242182318] {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html #berichtenlijst[_ngcontent-ng-c2242182318] {
+    border-top: none;
+}
+
+html app-berichten-overzicht div.container {
+    border-top: none !important;
+}
+
+html div.cdk-virtual-scroll-content-wrapper {
+    background-color: transparent;
+    border: none;
+}
+
+html div.cdk-virtual-scroll-content-wrapper div.bericht-item.ng-star-inserted {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+html div.cdk-virtual-scroll-content-wrapper div.bericht-item.ng-star-inserted:hover {
+    background-color: var(--mooie-bg-color-hover) !important;
+}
+
+html .cdk-drag.ng-star-inserted span.naam {
+    color: var(--mooie-text-color) !important;
+    font-size: 12px !important;
+    order: 2;
+    font-weight: normal;
+}
+
+html .cdk-drag.ng-star-inserted span.onderwerp {
+    color: var(--mooie-text-color) !important;
+    font-size: 14px !important;
+    order: 1;
+    font-weight: bold;
+}
+
+html .cdk-drag.ng-star-inserted span.datum {
+    color: var(--blue-text-color-light) !important;
+    font-size: 12px !important;
+    font-weight: lighter;
+}
+
+html dna-icon.paperclip.ng-star-inserted {
+    color: var(--mooie-text-color) !important;
+    right: 0;
+}
+
+html div.folders-container div.nieuw-bericht-container {
+    background-color: var(--mooie-bg-color);
+}
+
+html dna-tree#mappenlijst {
+    background-color: var(--mooie-bg-color);
+}
+
+html dna-tree#mappenlijst dna-tree-node.dna-tree-node {
+    background-color: var(--mooie-bg-color);
+}
+
+html dna-tree#mappenlijst .dna-tree-node-wrapper {
+    background-color: var(--mooie-bg-color);
+    border-radius: 5px;
+}
+
+html dna-tree#mappenlijst .dna-tree-node-wrapper:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html dna-tree#mappenlijst .dna-tree-node-wrapper a.folderName-container {
+    color: var(--mooie-text-color);
+}
+
+
+html dna-tree#mappenlijst .dna-tree-node-wrapper.dna-tree-node-selected {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html app-bericht-details.ng-star-inserted {
+    background-color: var(--mooie-bg-color);
+}
+
+html object[_ngcontent-ng-c2623919038] {
+    display: none;
+}
+
+html app-bericht-list[_ngcontent-ng-c787541647] {
+    border: none;
+}
+
+html div.no-selection-container.ng-star-inserted {
+    color: var(--mooie-text-color) !important;
+}
+
+html app-bericht-details.ng-star-inserted {
+    color: var(--mooie-text-color) !important;
+}
+
+html app-bericht-details.ng-star-inserted h2 {
+    color: var(--mooie-text-color) !important;
+}
+
+html app-bericht-details.ng-star-inserted a {
+    color: var(--background-1) !important;
+}
+
+html app-bericht-details.ng-star-inserted .value * {
+    color: var(--mooie-text-color) !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mooie-bg-color-mid);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-background);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-background);
+}

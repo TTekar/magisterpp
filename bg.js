@@ -19,8 +19,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
         }
       );
     
-
-    
     //if (darkMode) {
         // if (changeInfo.status == "loading") {
         //     if (splitUrl[1] == "magister") {

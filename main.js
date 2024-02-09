@@ -73,9 +73,16 @@ var checkYoBadCijfers = window.setInterval(function(){
     
 
     // edit layout button remove text
-    document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>';
+    try{
+      document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>';
+    }catch {
+      
+    }
+  
   }, 100);
 
+
+  
 // var intervalId = window.setInterval(function(){
 //     if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/agenda"){
 //         div1.style.display = "block";
