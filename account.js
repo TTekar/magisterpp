@@ -1,7 +1,7 @@
 const init2 = function() {
     const div = document.getElementsByClassName("app-container")[0].children[1].children[0];
     const img = document.createElement("img");
-    img.src = 'https://tekar.tk/img/hk.png';
+    img.src = 'https://tekar.netlify.app/img/hk.png';
     img.style.width = "auto";
     img.style.height = "100vh";
     img.style.textAlign = "right";
