@@ -1,5 +1,5 @@
 const init = function() {
-    window.location.replace(window.location.href.substring(0, window.location.href.lastIndexOf("/")));
+    //window.location.replace(window.location.href.substring(0, window.location.href.lastIndexOf("/")));
     //window.location.reload()
 
     const podium = document.getElementsByClassName("podium");
