@@ -15,22 +15,48 @@ html .dna-form h1, html .dna-form h2 {
     display: none;
 }
 
-html .completed-challenge {
-    background: #171A1E;  /* dis --mooie-bg-color-hover*/
+/* html .completed-challenge {
+    background: var(--mooie-bg-color-hover); 
     border-radius: 15px;
     text-align: center;
+} */
+/* V4 */
+html .completed-challenge {
+    background: #0001; 
+    border-radius: 15px;
+    text-align: center;
+    /*border-bottom: var(--mooie-bg-color-hover) 1px solid;*/
 }
 
 html .completed-challenge-label, html .input-drop-down-no-results, html .completed-challenge a {
-    color: #fff;
+    color: var(--mooie-text-color);
 }
 
-html .dna-input-group {
-    background: #171A1E;  /* dis --mooie-bg-color-hover*/
+/* html .dna-input-group {
+    background: var(--mooie-bg-color-hover); 
     border-radius: 15px;
     text-align: center;
     border: none;
-    color: #fff;
+    color: var(--mooie-text-color);
+} */
+/* V2 */
+html .dna-input-group {
+    background: #0001; 
+    border-radius: 15px;
+    text-align: center;
+    border: none;
+    /*border-bottom: var(--mooie-bg-color-hover) 1px solid;*/
+    color: var(--mooie-text-color);
+}
+
+html .dna-btn.dna-btn-primary {
+    background-color: #0001;
+    color: var(--mooie-text-color);
+    border: black 2px solid;
+}
+
+html .dna-btn.dna-btn-primary:hover {
+    background-color: #0003;
 }
 
 html ::placeholder {
@@ -43,7 +69,7 @@ html .dna-input {
 
 
 html .input-drop-down-list {
-    background: #171A1E;  /* dis --mooie-bg-color-hover*/
+    background: var(--mooie-bg-color-mid); 
     border: none; 
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -53,15 +79,15 @@ html .input-drop-down-list {
 }
 
 html .input-drop-down-list-item {
-    color: #fff;
+    color: var(--mooie-text-color);
 }
 
 html .input-drop-down-list-item.selected {
-    background-color: #0B0D0F;  /* dis --mooie-bg-color-hover alleen dan wat donkerder*/
+    background-color: var(--mooie-bg-color-hover);
 }
 
 html .input-drop-down-list-item:hover {
-    background-color: #101316;
+    background-color: var(--mooie-bg-color-hover);
 }
 
 html .dna-btn-primary {
@@ -93,4 +119,16 @@ input:-webkit-autofill:active{
     -webkit-text-fill-color: #ffffff;
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: inset 0 0 20px 20px #0003;
+}
+
+html div.podium_container {
+    width: 100% !important;
+}
+
+html .splash-container.bg_forgot_password_webp {
+    display: none !important;
+}
+
+html .podium>h1 {
+    text-align: center;
 }

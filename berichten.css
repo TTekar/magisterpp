@@ -1,4 +1,4 @@
-html body {
+/* html body {
     --mooie-bg-color: #1F2228;
     --mooie-bg-color-mid: #191C21;
     --mooie-bg-color-hover: #171A1E;
@@ -12,11 +12,11 @@ html body {
     --dna-secondary: transparent;
     --dna-background: transparent;
     
-    --primary-background: #0E4772; /*licht*/
-    --secondary-background: #023660; /*donker*/
+    --primary-background: #0E4772; 
+    --secondary-background: #023660;
     
-    --background-1: #0065A0; /*iets lichter dan licht*/
-}
+    --background-1: #0065A0; 
+} */
 
 html body {
     background-color: var(--mooie-bg-mid) !important;
