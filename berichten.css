@@ -1,4 +1,4 @@
-/* html body {
+html body {
     --mooie-bg-color: #1F2228;
     --mooie-bg-color-mid: #191C21;
     --mooie-bg-color-hover: #171A1E;
@@ -16,7 +16,7 @@
     --secondary-background: #023660;
     
     --background-1: #0065A0; 
-} */
+}
 
 html body {
     background-color: var(--mooie-bg-mid) !important;
