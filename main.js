@@ -46,10 +46,13 @@ const init3 = function() {
         const mainView = document.querySelector("div.view.ng-scope")
         const coverDiv = document.createElement("div")
 
-        coverDiv.width = "100vw"
-        coverDiv.height = "100vh"
         coverDiv.id = "coverDiv"
+        coverDiv.style.position = "relative"
+        coverDiv.style.width = "100%"
+        coverDiv.style.height = "100%"
         coverDiv.style.display = "none"
+        coverDiv.style.justifyContent = "center"
+        coverDiv.style.alignItems = "center"
         mainView.parentElement.appendChild(coverDiv)
 
         const iframeKeuze = document.createElement("iframe")
@@ -67,11 +70,10 @@ const init3 = function() {
         const newButton = document.createElement("a")
         newButton.innerHTML = `<i class="far ng-scope fa-question" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Keuze Plattegrond</span>`
         
-        //newButton.href = "https://jordanmlu.netlify.app/keuze"
         newButton.href = "#"
         newButton.classList.add("customButton")
         newButton.onclick = function(event) {
-          event.preventDefault(); // Prevent the default action (navigation)
+          event.preventDefault();
           hiddenUI = true;
       };
       
@@ -89,24 +91,7 @@ const init3 = function() {
         
       }
 
-      // buttonsInListA.forEach((link, index) => {
-      //   if (index < links.length - 1) { // Exclude the last <a> element
-      //       link.addEventListener("click", () => {
-      //         console.log("ahhh")
-      //       } );
-      //   }
-      // });
-
-    }, 1500);
-
-    // setTimeout(() => {
-    //     var cijfer = document.querySelector("span.cijfer.ng-binding")
-    //     if (parseFloat(cijfer.innerHTML) < 8.5) {
-    //         cijfer.innerHTML = "<5,5"
-    //     }
-    // }, 2000);
-    
-    
+    }, 1000);  
 }
 
 var checkYoBadCijfers = window.setInterval(function(){
@@ -146,7 +131,7 @@ var checkYoBadCijfers = window.setInterval(function(){
 
     if (hiddenUI) {
       divToHide.style.display = "none"
-      coverDiv.style.display = "block"
+      coverDiv.style.display = "flex"
     }else {
       divToHide.style.display = "block"
       coverDiv.style.display = "none"
