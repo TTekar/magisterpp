@@ -32,7 +32,8 @@ const init3 = function() {
         var pfp = divUserMenu.querySelector("figure img");
 
         if(pfp.getAttribute("alt") == "Aidan Schoester") {
-            pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
+            // pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
+            pfp.setAttribute("src", "https://thijmpie.netlify.app/img/igshtisj.png")
         }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
             pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
         }
