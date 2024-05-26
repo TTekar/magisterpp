@@ -97,7 +97,7 @@ const init3 = function() {
       //   }
       // });
 
-    }, 1000);
+    }, 1500);
 
     // setTimeout(() => {
     //     var cijfer = document.querySelector("span.cijfer.ng-binding")
