@@ -162,3 +162,13 @@ html app-bericht-details.ng-star-inserted .value * {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary-background);
 }
+
+html dna-search-input {
+    color: var(--mooie-text-color) !important;
+    
+}
+
+html dna-search-input #dna-control-0 {
+    color: var(--mooie-text-color) !important;
+    
+}
