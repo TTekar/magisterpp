@@ -19,6 +19,19 @@ iframe.height = "100%";
 
 var hiddenUI = false;
 
+function getWeekNumber(date = new Date()) {
+  const inputDate = new Date(date);
+  if (isNaN(inputDate)) {
+      return "Invalid date";
+  }
+
+  const startDate = new Date(inputDate.getFullYear(), 0, 1);
+  const dayOfYear = Math.ceil((inputDate - startDate + 1) / (24 * 60 * 60 * 1000));
+  const weekNumber = Math.ceil(dayOfYear / 7);
+  
+  return weekNumber;
+}
+
 const init3 = function() {
 
     // container1.prepend(div1);
@@ -34,11 +47,10 @@ const init3 = function() {
 
         if(pfp.getAttribute("alt") == "Aidan Schoester") {
             // pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
-            pfp.setAttribute("src", "https://thijmpie.netlify.app/img/igshtisj.png")
+            pfp.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
         }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
             pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
         }
-
 
         // Keuzemap button
 
