@@ -145,6 +145,54 @@ html app-bericht-details.ng-star-inserted .value * {
     color: var(--mooie-text-color) !important;
 }
 
+
+html .dna-input {
+    background: var(--mooie-bg-color) !important;
+    color: var(--mooie-text-color) !important;
+}
+
+html label {
+    color: var(--mooie-text-color) !important;
+}
+
+html #cdk-overlay-0 {
+    background: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+}
+
+html .dna-autocomplete-panel {
+    background: var(--mooie-bg-color-mid) !important;
+}
+
+html dna-avatar {
+    color: var(--mooie-text-color);
+}
+
+html app-people-select-option:hover {
+    background: var(--mooie-bg-color-hover) !important;
+}
+
+html .dna-option-group-label {
+    border-color: var(--mooie-bg-color-hover);
+}
+
+html dna-editor[_ngcontent-ng-c3506137590] {
+    background: var(--mooie-bg-color);
+    color: var(--mooie-text-color) !important;
+}
+
+html button.dna-btn.dna-btn-icon.dna-tool-bar-button.ng-star-inserted {
+    color: var(--mooie-text-color) !important;
+}
+
+html button.dna-btn.dna-btn-icon.dna-tool-bar-button.ng-star-inserted:hover {
+    background: var(--mooie-bg-color-hover) !important;
+}
+
+html dna-button[_ngcontent-ng-c3506137590]:hover {
+    background: var(--mooie-bg-color-hover);
+}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar {
   width: 5px;
