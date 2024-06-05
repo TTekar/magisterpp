@@ -1104,6 +1104,7 @@ html .edit-toggle-btn:hover {
     transform: translate(0, -50%);
 }
 
+/* Studiewijzer grid */
 
 html div.studiewijzer-list.normaal > .head {
     display: none !important;
@@ -1151,6 +1152,9 @@ html div.studiewijzer-list.normaal > ul > li > a > span {
     font-size: 1.2rem !important;
     font-weight: 600 !important;
 }
+
+
+/* Side panel style */
 
 html aside.ng-isolate-scope > div.content-container > div.sheets .block {
     border-radius: 10px !important;
