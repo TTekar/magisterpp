@@ -176,6 +176,18 @@ var checkYoBadCijfers = window.setInterval(function(){
         li.style.backgroundColor = rgbaColor;
     });
 
+    const asideHeadBar = document.querySelector('aside.ng-isolate-scope > div.head-bar');
+    const asideTabs = asideHeadBar.querySelector('ul.tabs');
+    const asideSheets = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets');
+    const asideSpan = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets .block h3 span');
+
+    if (asideTabs.childElementCount == 1) {
+      asideHeadBar.style.display = "none";
+      asideSheets.style.padding = "0px"
+    }
+
+    asideSpan.remove();
+
   }, 100);
 
 

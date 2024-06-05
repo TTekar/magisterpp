@@ -37,13 +37,13 @@ html .block .content {
     border-radius: 0px 0px 15px 15px;
 }
 
-html .block h3 {
+/* html .block h3 {
     color: var(--mooie-text-color);
     background-color: var(--mooie-bg-color-mid);
     border: none;
     box-shadow: none;
     border-radius: 15px 15px 0px 0px;
-}
+} */
 
 html .block h4 {
     color: var(--mooie-text-color);
@@ -1150,4 +1150,25 @@ html div.studiewijzer-list.normaal > ul > li > a > span {
     color: var(--mooie-text-color) !important;
     font-size: 1.2rem !important;
     font-weight: 600 !important;
+}
+
+html aside.ng-isolate-scope > div.content-container > div.sheets .block {
+    border-radius: 10px !important;
+    background-color: var(--mooie-bg-color);
+}
+
+html aside.ng-isolate-scope > div.content-container > div.sheets .block h3 {
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: center !important; 
+    background-color: transparent;
+    margin: 0px !important;
+    padding: 0px !important;
+    border-bottom: 1px solid var(--mooie-bg-color-hover);
+    box-shadow: none;
+}
+
+html aside.ng-isolate-scope > div.content-container > div.sheets .block h3 b {
+    display: flex !important; 
+    align-items: center !important; 
 }
