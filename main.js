@@ -149,6 +149,33 @@ var checkYoBadCijfers = window.setInterval(function(){
       coverDiv.style.display = "none"
     }
   
+
+    const studiewijzersListItems = document.querySelectorAll('div.studiewijzer-list.normaal > ul > li');
+    
+    //const colors = ['#FFA3A3', '#F2DC9B', '#D1FFA3', '#A3FFBA', '#A3FFFF', '#A3BAFF', '#CC9BF2'];
+    //const colors = ['#0e4772', '#023660'];
+    const colors = ['#131519'];
+    const opacity = 0.75;
+
+    function hexToRgba(hex, alpha) {
+      const bigint = parseInt(hex.slice(1), 16);
+      const r = (bigint >> 16) & 255;
+      const g = (bigint >> 8) & 255;
+      const b = bigint & 255;
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+    studiewijzersListItems.forEach((li, index) => {
+        const spans = li.querySelectorAll('a span');
+        if (spans.length > 1) {
+            spans[1].remove();
+        }
+
+        const colorIndex = index % colors.length;
+        const rgbaColor = hexToRgba(colors[colorIndex], opacity);
+        li.style.backgroundColor = rgbaColor;
+    });
+
   }, 100);
 
 

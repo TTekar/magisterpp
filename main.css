@@ -730,7 +730,7 @@ html .examen-card.ng-isolate-scope .child-widget {
     color: var(--mooie-text-color) !important;
 }
 
-html #studiewijzer-container div.studiewijzer-list div.head span {
+/* html #studiewijzer-container div.studiewijzer-list div.head span {
     background-color: var(--mooie-bg-color) !important;
 }
 
@@ -744,15 +744,15 @@ html #studiewijzer-container div.studiewijzer-list div.head {
     -webkit-box-shadow: none;
     box-shadow: none;
     background: var(--mooie-bg-color);
-}
+} */
 
-html .main .content-container.ng-isolate-scope .studiewijzer-list {
+/* html .main .content-container.ng-isolate-scope .studiewijzer-list {
     border: 2px solid var(--mooie-bg-color-hover);
-}
+} */
 
-html #studiewijzer-container div.studiewijzer-list div.head span:first-child {
+/* html #studiewijzer-container div.studiewijzer-list div.head span:first-child {
     border-right: 1px solid var(--mooie-bg-color-hover);
-}
+} */
 
 html #studiewijzer-container div.studiewijzer-list>ul>li {
     border-top: none;
@@ -1104,3 +1104,50 @@ html .edit-toggle-btn:hover {
     transform: translate(0, -50%);
 }
 
+
+html div.studiewijzer-list.normaal > .head {
+    display: none !important;
+}
+
+html div.studiewijzer-list.normaal > ul {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr)) !important;
+    gap: 10px !important;
+    list-style-type: none !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    border: none !important;
+}
+
+html div.studiewijzer-list.normaal > ul > li {
+    text-align: center !important;
+    height: 150px !important;
+    flex: 1 1 150px !important;
+    display: flex !important; 
+    justify-content: center !important; 
+    align-items: center !important;
+    border-radius: 15px;
+}
+
+html div.studiewijzer-list.normaal > ul > li > a {
+    display: flex !important; 
+    flex-direction: column !important; 
+    align-items: center !important; 
+    justify-content: center !important; 
+    text-decoration: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 5% !important;
+    background-color: transparent !important;
+}
+
+html div.studiewijzer-list.normaal > ul > li > a > span {
+    display: flex !important; 
+    flex-direction: column !important; 
+    align-items: center !important; 
+    width: 100% !important;
+    background-color: transparent !important;
+    color: var(--mooie-text-color) !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
