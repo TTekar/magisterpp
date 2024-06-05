@@ -471,9 +471,6 @@ html table.table-grid-layout>tbody>tr.selected::after {
     display: none;
 }
 
-/* html .widget.wide.uitwerking {
-    display: none;
-} */
 
 html .block .content.background-white {
     background-color: var(--mooie-bg-color);
@@ -729,30 +726,6 @@ html .examen-card.ng-isolate-scope .child-widget {
     background-color: transparent !important;
     color: var(--mooie-text-color) !important;
 }
-
-/* html #studiewijzer-container div.studiewijzer-list div.head span {
-    background-color: var(--mooie-bg-color) !important;
-}
-
-html #studiewijzer-container div.studiewijzer-list>ul>li>a>span {
-    border-right: 1px solid var(--mooie-bg-color-hover);
-    background-color: var(--mooie-bg-color) !important;
-}
-
-html #studiewijzer-container div.studiewijzer-list div.head {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    background: var(--mooie-bg-color);
-} */
-
-/* html .main .content-container.ng-isolate-scope .studiewijzer-list {
-    border: 2px solid var(--mooie-bg-color-hover);
-} */
-
-/* html #studiewijzer-container div.studiewijzer-list div.head span:first-child {
-    border-right: 1px solid var(--mooie-bg-color-hover);
-} */
 
 html #studiewijzer-container div.studiewijzer-list>ul>li {
     border-top: none;
@@ -1104,6 +1077,8 @@ html .edit-toggle-btn:hover {
     transform: translate(0, -50%);
 }
 
+
+
 /* Studiewijzer grid */
 
 html div.studiewijzer-list.normaal > .head {
@@ -1175,4 +1150,15 @@ html aside.ng-isolate-scope > div.content-container > div.sheets .block h3 {
 html aside.ng-isolate-scope > div.content-container > div.sheets .block h3 b {
     display: flex !important; 
     align-items: center !important; 
+}
+
+
+/* Vandaag fix */
+
+html .widget .block h3 {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px 15px 0px 0px;
 }
