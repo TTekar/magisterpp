@@ -186,7 +186,12 @@ var checkYoBadCijfers = window.setInterval(function(){
       asideSheets.style.padding = "0px"
     }
 
-    asideSpan.remove();
+    try {
+      asideSpan.remove();
+    }catch {
+      
+    }
+    
 
   }, 100);
 
