@@ -34,6 +34,7 @@
     }, {
         "matches": ["https://*.magister.net/magister-berichten/*"],
         "css": ["berichten.css"],
+        "js": ["berichten.js"],
         "all_frames": true
     }],
     "permissions": [
