@@ -78,11 +78,22 @@ const init3 = function() {
         const newButton = document.createElement("a")
         newButton.innerHTML = `<i class="far ng-scope fa-question" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Keuze Plattegrond</span>`
         
-        newButton.href = "#"
         newButton.classList.add("customButton")
+        newButton.style.borderRadius = "6px"
         newButton.onclick = function(event) {
           event.preventDefault();
           hiddenUI = true;
+
+          this.style.backgroundColor = "var(--secondary-background)"
+
+
+          const sideButtons = document.querySelectorAll(".main-menu>li>a")
+
+          sideButtons.forEach(button => {
+            if (!button.classList.contains("customButton")) {
+              // button.style.backgroundColor = 
+            }
+          })
 
           if (document.getElementById("iframeKeuze") != null) {
               
@@ -105,8 +116,7 @@ const init3 = function() {
           link.onclick = function(event) {
             event.preventDefault();
             hiddenUI = false;
-
-            
+            document.querySelector(".customButton").style.backgroundColor = "var(--primary-background)"
           }
         }
         
