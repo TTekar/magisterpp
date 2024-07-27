@@ -67,11 +67,7 @@ const init3 = function() {
         coverDiv.style.alignItems = "center"
         mainView.parentElement.appendChild(coverDiv)
 
-        const iframeKeuze = document.createElement("iframe")
-        iframeKeuze.src = "https://jordanmlu.netlify.app/keuze"
-        iframeKeuze.style.width = "75vw"
-        iframeKeuze.style.height = "75vh"
-        coverDiv.appendChild(iframeKeuze)
+        
 
         // Button
 
@@ -87,6 +83,17 @@ const init3 = function() {
         newButton.onclick = function(event) {
           event.preventDefault();
           hiddenUI = true;
+
+          if (document.getElementById("iframeKeuze") != null) {
+              
+          } else {
+            const iframeKeuze = document.createElement("iframe")
+            iframeKeuze.src = "https://jordanmlu.netlify.app/keuze"
+            iframeKeuze.id = "iframeKeuze"
+            iframeKeuze.style.width = "100%"
+            iframeKeuze.style.height = "100%"
+            coverDiv.appendChild(iframeKeuze)
+          }
       };
       
       newButtonList.appendChild(newButton);
@@ -98,6 +105,8 @@ const init3 = function() {
           link.onclick = function(event) {
             event.preventDefault();
             hiddenUI = false;
+
+            
           }
         }
         
