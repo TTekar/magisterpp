@@ -19,15 +19,15 @@ html body {
 }
 
 html ::selection {
-    background-color: #0003 !important;
+    background-color: #7f7f7f3f !important;
 }
 
-html .menu-footer {
-    background-color: var(--primary-background); /*licht*/
+html body > div.container > div.menu-host.loading > nav > div.menu-footer { /* Inklappen <a> background */
+    background-color: var(--primary-background);
     border-top: transparent;
 }
 
-html .block {
+html .block {  
     border: transparent;
     border: 2px solid var(--mooie-bg-color-hover);
 }
@@ -37,13 +37,13 @@ html .block .content {
     border-radius: 0px 0px 15px 15px;
 }
 
-/* html .block h3 {
+html .block h3 {
     color: var(--mooie-text-color);
     background-color: var(--mooie-bg-color-mid);
     border: none;
     box-shadow: none;
     border-radius: 15px 15px 0px 0px;
-} */
+}
 
 html .block h4 {
     color: var(--mooie-text-color);
@@ -51,6 +51,40 @@ html .block h4 {
     border: none;
     box-shadow: none;
     background: var(--mooie-bg-color-mid);
+}
+
+html .block .content p {
+    color: var(--mooie-text-color);
+}
+
+html .block .content form {
+    background-color: var(--mooie-bg-color);
+}
+
+html .block {
+    border: none;
+    background-color: var(--mooie-bg-color);
+}
+
+html .block h3 b {
+    font-size: 1rem;
+}
+
+html .block h3+div h3{
+    background: var(--mooie-bg-color) !important;
+}
+
+html .block .content .title {
+    color: var(--mooie-text-color);
+}
+
+ 
+html .widget .block h3 {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px 15px 0px 0px;
 }
 
 html .endlink {
@@ -155,9 +189,7 @@ html div.msg-widget .msg-detail dd {
     color: var(--mooie-text-color);
 }
 
-html .block .content p {
-    color: var(--mooie-text-color);
-}
+
 
 html div.msg-widget .msg-detail h5 {
     color: var(--mooie-text-color);
@@ -284,9 +316,7 @@ html .k-calendar thead th {
     color: var(--mooie-text-color);
 }
 
-html .block .content form {
-    background-color: var(--mooie-bg-color);
-}
+
 
 html form label {
     color: var(--mooie-text-color);
@@ -445,10 +475,7 @@ html .agenda-lesdashboard aside .agenda-list li a.current {
     background-color: var(--mooie-bg-color-hover);
 }
 
-html .block {
-    border: none;
-    background-color: var(--mooie-bg-color);
-}
+
 
 html table.table-grid-layout th {
     border: none;
@@ -560,9 +587,7 @@ html fieldset label {
     color: var(--mooie-text-color);
 }
 
-html .block h3 b {
-    font-size: 1rem;
-}
+
 
 html table.table-grid-layout>tbody>tr.selected td, html table.table-grid-layout>tbody>tr.selected+tr td {
     border-top: none;
@@ -971,9 +996,7 @@ html .main div.multi-columns .col:last-child, .main div.multi-columns .col-nopri
     background-color: var(--mooie-bg-color);
 }
 
-html .block h3+div h3{
-    background: var(--mooie-bg-color) !important;
-}
+
 
 html .disabled, .disabled:after {
     color: rgba(255,255,255,.35) !important;
@@ -1041,9 +1064,7 @@ html .bestellen-container .bestellen-body .entrypoint-success .bestel-info-panel
    background-color: #7F6F46;
 }
 
-html .block .content .title {
-    color: var(--mooie-text-color);
-}
+
 
 html .ngGrid {
     background-color: var(--mooie-bg-color);
@@ -1153,12 +1174,20 @@ html aside.ng-isolate-scope > div.content-container > div.sheets .block h3 b {
 }
 
 
-/* Vandaag fix */
 
-html .widget .block h3 {
-    color: var(--mooie-text-color);
+
+/* Mijn Gegevens */
+
+html #instellingen-container > section > div > form > div > div.card-box.ng-scope > div { /* Pers info card */
     background-color: var(--mooie-bg-color-mid);
     border: none;
-    box-shadow: none;
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 15px;
+}
+
+html #instellingen-container > section > div > form > div > div.card-box.ng-scope > div > div > div.photo.photo-high > img { /* Pfp in pers info card */
+    border-radius: 15px;
+}
+
+html #naw > div > div > ul > li:hover { /* NAW (naam, adres, woonplaats) hover */
+    background-color: var(--mooie-bg-color-hover);
 }
