@@ -27,7 +27,7 @@ html body > div.container > div.menu-host.loading > nav > div.menu-footer { /* I
     border-top: transparent;
 }
 
-html .block {  
+/* html .block {  
     border: transparent;
     border: 2px solid var(--mooie-bg-color-hover);
 }
@@ -85,7 +85,7 @@ html .widget .block h3 {
     border: none;
     box-shadow: none;
     border-radius: 15px 15px 0px 0px;
-}
+} */
 
 html .endlink {
     border-top: none;
