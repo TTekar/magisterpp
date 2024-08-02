@@ -52,6 +52,9 @@ const init3 = function() {
             pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
         }
 
+
+        
+
         // Keuzemap button
 
         // Keuze page
@@ -71,7 +74,7 @@ const init3 = function() {
 
         // Button
 
-        const buttonsSideList = document.querySelector("ul.main-menu");
+        const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
         const newButtonList = document.createElement("li");
         buttonsSideList.appendChild(newButtonList)
 
@@ -84,14 +87,13 @@ const init3 = function() {
           event.preventDefault();
           hiddenUI = true;
 
-          this.style.backgroundColor = "var(--secondary-background)"
-
+          this.classList.add("customButtonClicked")
 
           const sideButtons = document.querySelectorAll(".main-menu>li>a")
 
           sideButtons.forEach(button => {
             if (!button.classList.contains("customButton")) {
-              // button.style.backgroundColor = 
+              button.classList.add("nonCustomButtonNotClicked")
             }
           })
 
@@ -116,7 +118,8 @@ const init3 = function() {
           link.onclick = function(event) {
             event.preventDefault();
             hiddenUI = false;
-            document.querySelector(".customButton").style.backgroundColor = "var(--primary-background)"
+            link.classList.remove("nonCustomButtonNotClicked")
+            document.querySelector(".customButton").classList.remove("customButtonClicked")
           }
         }
         
@@ -146,15 +149,13 @@ var checkYoBadCijfers = window.setInterval(function(){
             }
           }
         }
-      );
+    );
     
 
-    // edit layout button remove text
-    try{
-      document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>';
-    }catch {
-      
+    if (document.getElementById("edit-toggle-btn").offsetWidth > 32 ) {
+      document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>'
     }
+    
 
     // Check for hidden ui shit
     const divToHide = document.querySelector("div.view.ng-scope")

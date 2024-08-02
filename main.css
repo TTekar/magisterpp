@@ -19,11 +19,394 @@ html body {
 }
 
 html ::selection {
-    background-color: #7f7f7f3f !important;
+    background-color: #7f7f7f3f;
 }
+
+/* Scroll bar */
+
+html ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+  
+html ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #0002;
+}
+   
+html ::-webkit-scrollbar-thumb {
+    background: var(--primary-background); 
+    border-radius: 5px;
+}
+  
+html ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-background); 
+}
+
+/* Nav bar */
 
 html body > div.container > div.menu-host.loading > nav > div.menu-footer { /* Inklappen <a> background */
     background-color: var(--primary-background);
     border-top: transparent;
 }
 
+html body > div.container > div.menu-host.loading > nav > div.menu-container > ul > li > a.customButton:hover {
+    background-color: var(--secondary-background);
+}
+
+html body > div.container > div.menu-host.loading > nav > div.menu-container > ul > li > .customButtonClicked {
+    background-color: var(--secondary-background);
+}
+
+html body > div.container > div.menu-host.loading > nav > div.menu-container > ul > li > .nonCustomButtonNotClicked {
+    background-color: var(--primary-background) !important;
+}
+
+html body > div.container > div.menu-host.loading > nav > div.menu-container > ul > li > .nonCustomButtonNotClicked:hover {
+    background-color: var(--secondary-background) !important;
+}
+
+
+/* Vandaag */
+
+/* html .vandaag-drag-hint {  HIDE DRAG
+    display: none !important;
+} */
+
+/* Agenda */
+
+html #agenda-widget > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #agenda-widget > div > img.loading-image {
+    display: none !important;
+}
+
+html #agenda-widget > div > h3 {
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #agenda-widget > div > div.content {
+    background-color: inherit;
+}
+
+html #agenda-widget > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #agenda-widget > div > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed #7f7f7f;
+    
+}
+
+html #agenda-widget .list {
+    border: none;
+}
+
+html #agenda-widget .list li a{
+    color: var(--mooie-text-color);
+}
+
+html #agenda-widget .list li a:hover{
+    background-color: var(--mooie-bg-color-hover) !important;
+}
+
+html #agenda-widget .list li {
+    background-color: var(--mooie-bg-color-mid);
+    border-top: none;
+}
+
+html #agenda-widget .agenda-list li.alert span.time:before {
+    color: #1680b0;
+    content: "";
+    margin: 0;
+}
+
+html #agendawidgetlistcontainer .les-bottom .icon-block>.text-icon.icon-only:first-of-type {
+    display: none;
+}
+
+html #agenda-widget .agenda-list li.alert span.time:after {
+    display: none;
+}
+
+
+/* Mededelingen */
+
+html #berichten-widget > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #berichten-widget > div > img.loading-image {
+    display: none !important;
+}
+
+html #berichten-widget > div > h3 {
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #berichten-widget > div > h3 > b {
+    color: var(--mooie-text-color);
+    font-weight: normal;
+    font-size: 1rem;
+    font-style: normal;
+}
+
+html #berichten-widget > div > div.content {
+    background-color: inherit;
+}
+
+html #berichten-widget > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #berichten-widget > div > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed #7f7f7f;
+    
+}
+
+html #berichten-widget .list {
+    border: none;
+}
+
+html #berichten-widget .list li a{
+    color: var(--mooie-text-color);
+}
+
+html #berichten-widget .list li a:hover{
+    background-color: var(--mooie-bg-color-hover) !important;
+}
+
+html #berichten-widget .list li {
+    background-color: var(--mooie-bg-color-mid);
+    border-top: none;
+}
+
+
+/* Cijfers */
+
+html #cijfers-leerling > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+
+html #cijfers-leerling > div > img.loading-image {
+    display: none !important;
+}
+
+html #cijfers-leerling > div > h3 {
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #cijfers-leerling > div > h3 > b {
+    color: var(--mooie-text-color);
+    font-weight: normal;
+    font-size: 1rem;
+    font-style: normal;
+}
+
+html #cijfers-leerling > div > div.content {
+    background-color: inherit;
+}
+
+html #cijfers-leerling > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #cijfers-leerling > div > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed #7f7f7f;
+    
+}
+
+html #cijfers-leerling .list {
+    border: none;
+}
+
+html #cijfers-leerling .list li a{
+    color: var(--mooie-text-color);
+}
+
+html #cijfers-leerling .list li a:hover{
+    background-color: var(--mooie-bg-color-hover) !important;
+}
+
+html #cijfers-leerling .list li {
+    background-color: var(--mooie-bg-color-mid);
+    border-top: none;
+}
+
+html #cijfers-leerling .last-grade {
+    color: #fff;
+    background-color: var(--primary-background);
+}
+
+html #cijfers-leerling .no-data .last-grade {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #cijfers-leerling > div > div > ul.list.arrow-list {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+/* Notificaties */
+
+html #notificatie-widget > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #notificatie-widget > div > img.loading-image {
+    display: none !important;
+}
+
+html #notificatie-widget > div > h3 {
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #notificatie-widget > div > div.content {
+    background-color: inherit;
+}
+
+html #notificatie-widget > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #notificatie-widget > div > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed #7f7f7f;
+    
+}
+
+html #notificatie-widget .list {
+    border: none;
+}
+
+html #notificatie-widget .list li a{
+    color: var(--mooie-text-color);
+}
+
+html #notificatie-widget .list li a:hover{
+    background-color: var(--mooie-bg-color-hover) !important;
+}
+
+html #notificatie-widget .list li {
+    background-color: var(--mooie-bg-color-mid);
+    border-top: none;
+}
+
+/* Edit toggle button */
+
+html #edit-toggle-btn:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+/* Edit vandaag */
+
+html #vandaag-container > aside > div.content-container {
+    border: none;
+}
+
+html #idWidgets > div > div > div > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #idWidgets > div > div > div > div > h3 > b {
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #idWidgets > div > div > div > div > h3 {
+    border: none;
+    box-shadow: none;
+}
+
+html #idWidgets > div > div > div > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #idWidgets > div > div > div > div > div > ul > li {
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #idWidgets > div > div > div > div > div > ul > li:hover {
+    border: none !important;
+    outline: none !important;
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #idWidgets > div > div > div > div > div > div > span::before {
+    color: var(--mooie-text-color);
+}
+
+html #idWidgets > div > div > div > div > div > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none !important;
+}
+
+html #idWidgets > div > div > div > div > div > div.drag-over {
+    background-color: var(--mooie-bg-color-mid) !important;
+}
+
+html body > li.widget-drag-hint {
+    color: var(--mooie-text-color);
+}
+
+/* Droppable */
+
+#vandaag-container .droppable {
+    background-color: var(--mooie-bg-color) !important;
+    border: 2px dotted #7f7f7f;
+}
+
+#vandaag-container .droppable.drag-over {
+    background-color: var(--mooie-bg-color) !important;
+    border: 2px solid #7f7f7f;
+}
