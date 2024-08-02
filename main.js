@@ -42,88 +42,95 @@ const init3 = function() {
     
     setTimeout(() => {
       // Set custom pfp
-        const divUserMenu = document.querySelector("a#user-menu");
-        var pfp = divUserMenu.querySelector("figure img");
+      const divUserMenu = document.querySelector("a#user-menu");
+      var pfp = divUserMenu.querySelector("figure img");
 
-        if(pfp.getAttribute("alt") == "Aidan Schoester") {
-            // pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
-            pfp.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
-        }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
-            pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
-        }
-
-
-        
-
-        // Keuzemap button
-
-        // Keuze page
-        const mainView = document.querySelector("div.view.ng-scope")
-        const coverDiv = document.createElement("div")
-
-        coverDiv.id = "coverDiv"
-        coverDiv.style.position = "relative"
-        coverDiv.style.width = "100%"
-        coverDiv.style.height = "100%"
-        coverDiv.style.display = "none"
-        coverDiv.style.justifyContent = "center"
-        coverDiv.style.alignItems = "center"
-        mainView.parentElement.appendChild(coverDiv)
-
-        
-
-        // Button
-
-        const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
-        const newButtonList = document.createElement("li");
-        buttonsSideList.appendChild(newButtonList)
-
-        const newButton = document.createElement("a")
-        newButton.innerHTML = `<i class="far ng-scope fa-question" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Keuze Plattegrond</span>`
-        
-        newButton.classList.add("customButton")
-        newButton.style.borderRadius = "6px"
-        newButton.onclick = function(event) {
-          event.preventDefault();
-          hiddenUI = true;
-
-          this.classList.add("customButtonClicked")
-
-          const sideButtons = document.querySelectorAll(".main-menu>li>a")
-
-          sideButtons.forEach(button => {
-            if (!button.classList.contains("customButton")) {
-              button.classList.add("nonCustomButtonNotClicked")
-            }
-          })
-
-          if (document.getElementById("iframeKeuze") != null) {
-              
-          } else {
-            const iframeKeuze = document.createElement("iframe")
-            iframeKeuze.src = "https://jordanmlu.netlify.app/keuze"
-            iframeKeuze.id = "iframeKeuze"
-            iframeKeuze.style.width = "100%"
-            iframeKeuze.style.height = "100%"
-            coverDiv.appendChild(iframeKeuze)
-          }
-      };
-      
-      newButtonList.appendChild(newButton);
-
-      const buttonsInListA = buttonsSideList.querySelectorAll("li a")
-
-      for (const link of buttonsInListA) {
-        if (!link.classList.contains("customButton")) {
-          link.onclick = function(event) {
-            event.preventDefault();
-            hiddenUI = false;
-            link.classList.remove("nonCustomButtonNotClicked")
-            document.querySelector(".customButton").classList.remove("customButtonClicked")
-          }
-        }
-        
+      if(pfp.getAttribute("alt") == "Aidan Schoester") {
+          // pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
+          pfp.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
+      }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
+          pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
       }
+
+
+      chrome.storage.sync.get(
+        { keuzeBtn: true },
+        (items) => {
+          if (items.keuzeBtn) {
+            // Keuzemap button
+
+            // Keuze page
+            const mainView = document.querySelector("div.view.ng-scope")
+            const coverDiv = document.createElement("div")
+
+            coverDiv.id = "coverDiv"
+            coverDiv.style.position = "relative"
+            coverDiv.style.width = "100%"
+            coverDiv.style.height = "100%"
+            coverDiv.style.display = "none"
+            coverDiv.style.justifyContent = "center"
+            coverDiv.style.alignItems = "center"
+            mainView.parentElement.appendChild(coverDiv)
+
+                
+
+            // Button
+
+            const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
+            const newButtonList = document.createElement("li");
+            buttonsSideList.appendChild(newButtonList)
+
+            const newButton = document.createElement("a")
+            newButton.innerHTML = `<i class="far ng-scope fa-question" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Keuze Plattegrond</span>`
+                
+            newButton.classList.add("customButton")
+            newButton.style.borderRadius = "6px"
+            newButton.onclick = function(event) {
+              event.preventDefault();
+              hiddenUI = true;
+
+              this.classList.add("customButtonClicked")
+
+              const sideButtons = document.querySelectorAll(".main-menu>li>a")
+
+              sideButtons.forEach(button => {
+                if (!button.classList.contains("customButton")) {
+                  button.classList.add("nonCustomButtonNotClicked")
+                }
+              })
+
+              if (document.getElementById("iframeKeuze") != null) {
+                  
+              } else {
+                const iframeKeuze = document.createElement("iframe")
+                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze"
+                iframeKeuze.id = "iframeKeuze"
+                iframeKeuze.style.width = "100%"
+                iframeKeuze.style.height = "100%"
+                coverDiv.appendChild(iframeKeuze)
+              }
+            };
+            
+            newButtonList.appendChild(newButton);
+
+            const buttonsInListA = buttonsSideList.querySelectorAll("li a")
+
+            for (const link of buttonsInListA) {
+              if (!link.classList.contains("customButton")) {
+                link.onclick = function(event) {
+                  event.preventDefault();
+                  hiddenUI = false;
+                  link.classList.remove("nonCustomButtonNotClicked")
+                  document.querySelector(".customButton").classList.remove("customButtonClicked")
+                }
+              }
+              
+            }
+          }
+        }
+      );
+        
+      
 
     }, 1000);  
 }
@@ -152,9 +159,12 @@ var checkYoBadCijfers = window.setInterval(function(){
     );
     
 
-    if (document.getElementById("edit-toggle-btn").offsetWidth > 32 ) {
-      document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>'
+    if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/vandaag"){
+      if (document.getElementById("edit-toggle-btn").offsetWidth > 32 ) {
+        document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>'
+      }
     }
+    
     
 
     // Check for hidden ui shit

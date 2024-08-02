@@ -22,7 +22,11 @@ html ::selection {
     background-color: #7f7f7f3f;
 }
 
-/* Scroll bar */
+html .content-container {
+    border: none;
+} 
+
+/*! Scroll bar */
 
 html ::-webkit-scrollbar {
     width: 5px;
@@ -43,7 +47,7 @@ html ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-background); 
 }
 
-/* Nav bar */
+/*! Nav bar */
 
 html body > div.container > div.menu-host.loading > nav > div.menu-footer { /* Inklappen <a> background */
     background-color: var(--primary-background);
@@ -67,7 +71,7 @@ html body > div.container > div.menu-host.loading > nav > div.menu-container > u
 }
 
 
-/* Vandaag */
+/*! Vandaag */
 
 /* html .vandaag-drag-hint {  HIDE DRAG
     display: none !important;
@@ -127,7 +131,7 @@ html #agenda-widget .list li {
     border-top: none;
 }
 
-html #agenda-widget .agenda-list li.alert span.time:before {
+/* html #agenda-widget .agenda-list li.alert span.time:before {
     color: #1680b0;
     content: "";
     margin: 0;
@@ -139,7 +143,19 @@ html #agendawidgetlistcontainer .les-bottom .icon-block>.text-icon.icon-only:fir
 
 html #agenda-widget .agenda-list li.alert span.time:after {
     display: none;
+} */
+
+html #agendawidgetlistcontainer li > a > div > div.les-info > span.alt-nrblock.ng-scope > i {
+    color: var(--mooie-text-color) !important;
 }
+
+html #agendawidgetlistcontainer li > a > div > div.icon-block span.agenda-text-icon {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mooie-text-color);
+}
+
+
 
 
 /* Mededelingen */
@@ -409,4 +425,386 @@ html body > li.widget-drag-hint {
 #vandaag-container .droppable.drag-over {
     background-color: var(--mooie-bg-color) !important;
     border: 2px solid #7f7f7f;
+}
+
+
+/*! Agenda */
+
+/*? Side panel */
+
+html #idDetails > div > div > div.block {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html #idDetails > div > div > div.block > h3 {
+    box-shadow: none;
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html #idDetails > div > div > div.block > div.content {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html #idDetails > div > div > div.block > div.content dl {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html #idDetails > div > div > div.block > div.content dl dd, html #idDetails > div > div > div.block > div.content dl dt {
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html #huiswerk-info span, html #huiswerk-info-text {
+    color: var(--mooie-text-color);
+}
+
+html #afsprakenlijst-container > aside > div.head-bar > ul.tabs {
+    border: none;
+}
+
+html #afsprakenlijst-container > aside > div.head-bar > ul.tabs > li > a {
+    color: var(--mooie-text-color);
+}
+
+html #agenda-container > aside > div.head-bar > ul.tabs > li > a {
+    color: var(--mooie-text-color);
+}
+
+
+/*? Kalender */
+html .k-calendar {
+    background-color: var(--mooie-bg-color-mid);
+    border: 2px solid var(--mooie-bg-color-mid);
+    border-radius: 5px;
+}
+
+html .k-calendar > .k-header {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html .k-calendar > .k-header > .k-nav-fast {
+    color: var(--mooie-text-color);
+}
+
+html .k-calendar > .k-content {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html .k-calendar thead th {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    font-weight: normal;
+}
+
+html .k-calendar tbody .k-other-month {
+    opacity: 0.3;
+    background: none;
+}
+
+html .k-calendar td.range-select {
+    background-color: var(--primary-background) !important;
+    border-top: none;
+    border-bottom: none;
+}
+
+html .k-calendar .k-header .k-state-hover {
+    background-image: none !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none;
+}
+
+html .k-calendar .k-content tbody td.k-state-hover{
+    background: var(--mooie-bg-color-hover) !important;
+    border-color: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+html .k-calendar .k-content tbody td.k-state-hover a {
+    color: var(--mooie-text-color) !important;
+    background-image: none;
+    background: var(--mooie-bg-color-hover) !important;
+}
+
+/*? fancy-select */
+
+html .fancy-select .k-dropdown-wrap.k-state-default {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mooie-bg-color-hover);
+}
+
+html .fancy-select .k-dropdown-wrap.k-state-active {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mooie-bg-color-hover);
+}
+
+html .fancy-select .k-dropdown-wrap.k-state-default.k-state-hover {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color) !important;
+}
+
+html .fancy-select .k-dropdown-wrap.k-state-default span.k-input {
+    color: var(--mooie-text-color);
+}
+
+html [id$="-list"].k-list-container.k-popup {
+    border: none !important;
+}
+
+html [id$="-list"].k-list-container.k-popup > div > ul[id$="_listbox"].k-list {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+html [id$="-list"].k-list-container.k-popup > div > ul[id$="_listbox"].k-list li.k-item {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    border: none !important;
+}
+
+
+
+
+
+
+/* Agenda- */
+
+html #afsprakenlijst-container > dna-page-header > span {
+    color: var(--mooie-text-color);
+}
+
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:not(:last-child):hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #afsprakenlijst-container > section > div {
+    background-color: var(--mooie-bg-color);
+}
+
+html #afsprakenlijst-container > section > div > div.loading-overlay.ng-isolate-scope {
+    background-color: var(--mooie-bg-color);
+}
+
+html #afsprakenlijst-container > section > div > div.loading-overlay {
+    background-color: var(--mooie-bg-color);
+}
+
+html #afsprakenlijst-container > section > div.content-container {
+    border: none;
+}
+
+html #agenda-container > dna-page-header > span {
+    color: var(--mooie-text-color);
+}
+
+html #agenda-container > dna-page-header > dna-button-bar > dna-button:not(:last-child):hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #agenda-container > section > div {
+    background-color: var(--mooie-bg-color);
+}
+
+html #agenda-container > section > div > div.loading-overlay.ng-isolate-scope {
+    background-color: var(--mooie-bg-color);
+}
+
+html #agenda-container > section > div > div.loading-overlay {
+    background-color: var(--mooie-bg-color);
+}
+
+html #agenda-container > section > div.content-container {
+    border: none;
+}
+
+html #afsprakenLijst {
+    background-color: var(--mooie-bg-color);
+    border: none;
+    outline: none;
+}
+
+
+/* Afspraak informatie */
+
+html #agenda-lesdashboard-container > section > div {
+    border: none;
+}
+
+html #agenda-lesdashboard-container > dna-page-header > dna-button-bar > dna-overlay-trigger > dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #huiswerkOmschrijving {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+    border-radius: 15px;
+}
+
+html #huiswerkOmschrijving h3 {
+    border: none;
+    box-shadow: none;
+}
+
+html #huiswerkOmschrijving h3 b {
+    color: var(--mooie-text-color);
+}
+
+html #huiswerkOmschrijving h3 .block-menu {
+    border: none;
+    display: none; /* hide huiswerk fullscreen */
+}
+
+html #huiswerkOmschrijving .attachment-bar {
+    border: none;
+    box-shadow: none;
+}
+
+html #huiswerkOmschrijving .content {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #huiswerkOmschrijving .content p {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #huiswerkOmschrijving footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #agenda-lesdashboard-container > aside > .content-container {
+    border: none;
+}
+
+html #agenda-lesdashboard-container > aside > .head-bar > ul.tabs {
+    border: none;
+}
+
+html #agenda-lesdashboard-container > aside > .head-bar > ul.tabs li a {
+    color: var(--mooie-text-color);
+}
+
+/* Agenda instellingen */
+
+#idWeergave > div > div[data-agenda-instellingen="agenda-instellingen"] > div.block {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 5px;
+}
+
+#idWeergave > div > div[data-agenda-instellingen="agenda-instellingen"] > div.block > h3 {
+    border: none;
+    color: var(--mooie-text-color);
+    text-align: center;
+    box-shadow: none;
+}
+
+#idWeergave > div > div[data-agenda-instellingen="agenda-instellingen"] > div.block > .content > form {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+#idWeergave > div > div[data-agenda-instellingen="agenda-instellingen"] > div.block > .content > form > div > label {
+    color: var(--mooie-text-color);
+}
+
+
+/* Nieuwe afspraak */
+
+html #agenda-afspraak-bewerken-container > section > div {
+    border: none;
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset label {
+    color: var(--mooie-text-color);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset .radio input[type=radio]~label {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset input {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset  span.k-widget.k-datepicker.k-header.ng-binding > span {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border: none !important;
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset div > span.check > label > span {
+    background-color: var(--mooie-bg-color-hover);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset > ul > li.multiple-fancy-box span > span {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+
+/* Toon selectie */
+
+html #showHuiswerk1 ~ label, html #showHuiswerk2 ~ label {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+/* Herhalingspatroon */
+
+html #recurrencePatternText {
+    color: var(--mooie-text-color);
+}
+
+
+/* Afsprakenlijst */
+
+html #afsprakenLijst > div.k-grid-content > table {
+    border: none;
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr {
+    background-color: var(--mooie-bg-color);
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr.k-grouping-row td{
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr td {
+    background-color: var(--mooie-bg-color);
+    border: none;
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr td span {
+    color: var(--mooie-text-color);
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr td.icon-column span {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mooie-text-color);
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr td .alt-nrblock i {
+    color: var(--mooie-text-color) !important;
 }

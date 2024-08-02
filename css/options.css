@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#optionsBody {
+    text-align: center;
+    margin-top: 50vh;
+    transform: translate(0, -50%);
+}
