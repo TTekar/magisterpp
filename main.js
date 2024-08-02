@@ -91,6 +91,8 @@ const init3 = function() {
 
               this.classList.add("customButtonClicked")
 
+              document.querySelector("body > div.container").style.paddingRight = "0"
+
               const sideButtons = document.querySelectorAll(".main-menu>li>a")
 
               sideButtons.forEach(button => {
@@ -121,6 +123,7 @@ const init3 = function() {
                   event.preventDefault();
                   hiddenUI = false;
                   link.classList.remove("nonCustomButtonNotClicked")
+                  document.querySelector("body > div.container").style.paddingRight = "8px"
                   document.querySelector(".customButton").classList.remove("customButtonClicked")
                 }
               }
