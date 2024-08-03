@@ -12,10 +12,10 @@ html body {
     --dna-secondary: transparent;
     --dna-background: transparent;
     
-    --primary-background: #0E4772; /*licht*/
-    --secondary-background: #023660; /*donker*/
+    --primary-background: #0E4772; /*/ licht */
+    --secondary-background: #023660; /*/ donker */
     
-    --background-1: #0065A0; /*iets lichter dan licht*/
+    --background-1: #0065A0; /*/ iets lichter dan licht */
 }
 
 html ::selection {
@@ -26,7 +26,7 @@ html .content-container {
     border: none;
 } 
 
-/*! Scroll bar */
+/*~ Scroll bar */
 
 html ::-webkit-scrollbar {
     width: 5px;
@@ -47,7 +47,7 @@ html ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-background); 
 }
 
-/*! Nav bar */
+/*~ Nav bar */
 
 html body > div.container > div.menu-host.loading > nav > div.menu-footer { /* Inklappen <a> background */
     background-color: var(--primary-background);
@@ -71,13 +71,13 @@ html body > div.container > div.menu-host.loading > nav > div.menu-container > u
 }
 
 
-/*! Vandaag */
+/*~ Vandaag */
 
 /* html .vandaag-drag-hint {  HIDE DRAG
     display: none !important;
 } */
 
-/* Agenda */
+/*/ Agenda */
 
 html #agenda-widget > div {
     background-color: var(--mooie-bg-color-mid);
@@ -158,7 +158,7 @@ html #agendawidgetlistcontainer li > a > div > div.icon-block span.agenda-text-i
 
 
 
-/* Mededelingen */
+/*/ Mededelingen */
 
 html #berichten-widget > div {
     background-color: var(--mooie-bg-color-mid);
@@ -220,7 +220,7 @@ html #berichten-widget .list li {
 }
 
 
-/* Cijfers */
+/*/ Cijfers */
 
 html #cijfers-leerling > div {
     background-color: var(--mooie-bg-color-mid);
@@ -296,7 +296,7 @@ html #cijfers-leerling > div > div > ul.list.arrow-list {
     border: none;
 }
 
-/* Notificaties */
+/*/ Notificaties */
 
 html #notificatie-widget > div {
     background-color: var(--mooie-bg-color-mid);
@@ -350,13 +350,13 @@ html #notificatie-widget .list li {
     border-top: none;
 }
 
-/* Edit toggle button */
+/*/ Edit toggle button */
 
 html #edit-toggle-btn:hover {
     background-color: var(--mooie-bg-color-hover);
 }
 
-/* Edit vandaag */
+/*/ Edit vandaag */
 
 html #vandaag-container > aside > div.content-container {
     border: none;
@@ -415,7 +415,7 @@ html body > li.widget-drag-hint {
     color: var(--mooie-text-color);
 }
 
-/* Droppable */
+/*/ Droppable */
 
 #vandaag-container .droppable {
     background-color: var(--mooie-bg-color) !important;
@@ -428,7 +428,7 @@ html body > li.widget-drag-hint {
 }
 
 
-/*! Agenda */
+/*~ Agenda */
 
 /*? Side panel */
 
@@ -576,7 +576,7 @@ html [id$="-list"].k-list-container.k-popup > div > ul[id$="_listbox"].k-list li
 
 
 
-/* Agenda- */
+/*/ Agenda- */
 
 html #afsprakenlijst-container > dna-page-header > span {
     color: var(--mooie-text-color);
@@ -633,7 +633,7 @@ html #afsprakenLijst {
 }
 
 
-/* Afspraak informatie */
+/*/ Afspraak informatie */
 
 html #agenda-lesdashboard-container > section > div {
     border: none;
@@ -698,7 +698,7 @@ html #agenda-lesdashboard-container > aside > .head-bar > ul.tabs li a {
     color: var(--mooie-text-color);
 }
 
-/* Agenda instellingen */
+/*/ Agenda instellingen */
 
 #idWeergave > div > div[data-agenda-instellingen="agenda-instellingen"] > div.block {
     background-color: var(--mooie-bg-color-mid);
@@ -722,7 +722,7 @@ html #agenda-lesdashboard-container > aside > .head-bar > ul.tabs li a {
 }
 
 
-/* Nieuwe afspraak */
+/*/ Nieuwe afspraak */
 
 html #agenda-afspraak-bewerken-container > section > div {
     border: none;
@@ -761,7 +761,7 @@ html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-a
 }
 
 
-/* Toon selectie */
+/*/ Toon selectie */
 
 html #showHuiswerk1 ~ label, html #showHuiswerk2 ~ label {
     background-color: var(--mooie-bg-color-hover);
@@ -769,14 +769,13 @@ html #showHuiswerk1 ~ label, html #showHuiswerk2 ~ label {
     border: none;
 }
 
-/* Herhalingspatroon */
+/*/ Herhalingspatroon */
 
 html #recurrencePatternText {
     color: var(--mooie-text-color);
 }
 
-
-/* Afsprakenlijst */
+/*/ Afsprakenlijst */
 
 html #afsprakenLijst > div.k-grid-content > table {
     border: none;
@@ -808,3 +807,6 @@ html #afsprakenLijst > div.k-grid-content > table tr td.icon-column span {
 html #afsprakenLijst > div.k-grid-content > table tr td .alt-nrblock i {
     color: var(--mooie-text-color) !important;
 }
+
+
+
