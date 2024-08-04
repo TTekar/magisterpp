@@ -9,7 +9,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
             if (changeInfo.status == "loading") {
                 if (splitUrl[1] == "magister") {
                     chrome.tabs.insertCSS(tabId, {
-                        file: "lightMode.css"
+                        file: "css/lightMode.css"
                     }, () => {
                         console.log("inserted")
                     })

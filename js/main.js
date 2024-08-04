@@ -12,10 +12,10 @@ div1.style.top = "154px";
 div1.style.display = "inline-block";
 div1.style.zIndex = "100";
 
-const iframe = document.createElement("iframe");
-iframe.src = "https://www.jordanmlu.nl/agenda/";
-iframe.width = "100%";
-iframe.height = "100%";
+// const iframe = document.createElement("iframe");
+// iframe.src = "https://www.jordanmlu.nl/agenda/";
+// iframe.width = "100%";
+// iframe.height = "100%";
 
 var hiddenUI = false;
 

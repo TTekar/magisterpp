@@ -4,7 +4,7 @@
     "description": "Magister but just better.",
     "version": "0.8.2",
     "options_ui": {
-        "page": "options.html",
+        "page": "html/options.html",
         "open_in_tab": true
       },
     "icons": {
@@ -21,20 +21,20 @@
     },
     "content_scripts": [{
         "matches": ["https://*.magister.net/*"],
-        "js": ["main.js"],
-        "css": ["main.css"]
+        "js": ["js/main.js"],
+        "css": ["css/main.css"]
     }, {
         "matches": ["https://*.magister.net/error.html?*"],
-        "css": ["error.css"],
-        "js": ["error.js"]
+        "css": ["css/error.css"],
+        "js": ["js/error.js"]
     }, {
         "matches": ["https://accounts.magister.net/account/login?*"],
-        "css": ["account.css"],
-        "js": ["account.js"]
+        "css": ["css/account.css"],
+        "js": ["js/account.js"]
     }, {
         "matches": ["https://*.magister.net/magister-berichten/*"],
-        "css": ["berichten.css"],
-        "js": ["berichten.js"],
+        "css": ["css/berichten.css"],
+        "js": ["js/berichten.js"],
         "all_frames": true
     }],
     "permissions": [
@@ -44,7 +44,7 @@
       ],
     "background": {
         "scripts": [
-            "bg.js"
+            "js/bg.js"
         ]
     }
 }
