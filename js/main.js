@@ -149,10 +149,12 @@ var checkYoBadCijfers = window.setInterval(function(){
 
   const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
 
-  /// Bad cijfer hide
+  /// Settings
   chrome.storage.sync.get(
-      { cijfers: false },
+      { cijfers: false , hideHelpBtn: true },
       (items) => {
+
+        /// Bad cijfer hide
         if (items.cijfers) {
           if(currentLocationSplit == "magister.net/magister/#/vandaag"){
               var cijfer = document.querySelector("span.cijfer.ng-binding")
@@ -169,6 +171,14 @@ var checkYoBadCijfers = window.setInterval(function(){
               }
           }
         }
+
+        /// Hide help button
+        if (items.hideHelpBtn) {
+          document.getElementById("help-menu").parentElement.style.display = "none"
+        }else {
+          document.getElementById("help-menu").parentElement.style.display = "block"
+        }
+        
       }
   );
   
