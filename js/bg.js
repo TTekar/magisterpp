@@ -3,7 +3,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     var splitUrl = tab.url.split(".")
 
     chrome.storage.sync.get(
-        { darkMode: true },
+        { darkMode: false },
         (items) => {
           if (!items.darkMode) {
             if (changeInfo.status == "loading") {
@@ -11,7 +11,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                     chrome.tabs.insertCSS(tabId, {
                         file: "css/lightMode.css"
                     }, () => {
-                        console.log("inserted")
+                        console.log("inserted light mode stylesheet")
                     })
                 }
             }

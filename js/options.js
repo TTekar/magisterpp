@@ -15,7 +15,7 @@ const saveOptions = () => {
 
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { darkMode: true, keuzeBtn: true, cijfers: false },
+    { darkMode: false, keuzeBtn: true, cijfers: false },
     (items) => {
       document.getElementById('darkMode').checked = items.darkMode;
       document.getElementById('keuzeBtn').checked = items.keuzeBtn;
@@ -38,7 +38,7 @@ var darkOrLightMode = window.setInterval(function(){
   const cijferLabel = document.getElementById("cijfersLabel")
 
   chrome.storage.sync.get(
-    { darkMode: true },
+    { darkMode: false },
     (items) => {
       if (items.darkMode) {       // dark mode ui
         

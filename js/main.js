@@ -54,7 +54,7 @@ const init3 = function() {
 
 
       chrome.storage.sync.get(
-        { keuzeBtn: true },
+        { keuzeBtn: true, darkMode: false },
         (items) => {
           if (items.keuzeBtn) {
             // Keuzemap button
@@ -105,7 +105,13 @@ const init3 = function() {
                   
               } else {
                 const iframeKeuze = document.createElement("iframe")
-                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze"
+
+                if (items.darkMode) {
+                  iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magDark"
+                }else {
+                  iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magLight"
+                }
+
                 iframeKeuze.id = "iframeKeuze"
                 iframeKeuze.style.width = "100%"
                 iframeKeuze.style.height = "100%"
