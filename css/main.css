@@ -1001,3 +1001,20 @@ html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade
 html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.herkansingKolom {
     background-color: var(--mooie-bg-color) !important;
 }
+
+
+
+
+/*~ Examen */
+
+html section.main > .content-container > .examen-widget > .examen-card {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html section.main > .content-container > .examen-widget > .examen-card > .child-widget {
+    background-color: var(--mooie-bg-color-hover);
+    border: none;
+    color: var(--mooie-text-color);
+}
