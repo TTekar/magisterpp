@@ -12,11 +12,6 @@ div1.style.top = "154px";
 div1.style.display = "inline-block";
 div1.style.zIndex = "100";
 
-// const iframe = document.createElement("iframe");
-// iframe.src = "https://www.jordanmlu.nl/agenda/";
-// iframe.width = "100%";
-// iframe.height = "100%";
-
 var hiddenUI = false;
 
 function getWeekNumber(date = new Date()) {
@@ -33,15 +28,9 @@ function getWeekNumber(date = new Date()) {
 }
 
 const init3 = function() {
-
-    // container1.prepend(div1);
-
-    // div1.appendChild(iframe);
-
-  
     
     setTimeout(() => {
-      // Set custom pfp
+      //~ Set custom pfp
       const divUserMenu = document.querySelector("a#user-menu");
       var pfp = divUserMenu.querySelector("figure img");
 
@@ -52,14 +41,15 @@ const init3 = function() {
           pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
       }
 
-
+      
+      
+      //~ Keuze plattegrond
       chrome.storage.sync.get(
         { keuzeBtn: true, darkMode: false },
         (items) => {
           if (items.keuzeBtn) {
-            // Keuzemap button
 
-            // Keuze page
+            /// Keuze page
             const mainView = document.querySelector("div.view.ng-scope")
             const coverDiv = document.createElement("div")
 
@@ -74,8 +64,7 @@ const init3 = function() {
 
                 
 
-            // Button
-
+            /// Define button
             const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
             const newButtonList = document.createElement("li");
             buttonsSideList.appendChild(newButtonList)
@@ -85,24 +74,13 @@ const init3 = function() {
                 
             newButton.classList.add("customButton")
             newButton.style.borderRadius = "6px"
+
+            /// Keuze plattegrond button onclick
             newButton.onclick = function(event) {
-              event.preventDefault();
-              hiddenUI = true;
 
-              this.classList.add("customButtonClicked")
-
-              document.querySelector("body > div.container").style.paddingRight = "0"
-
-              const sideButtons = document.querySelectorAll(".main-menu>li>a")
-
-              sideButtons.forEach(button => {
-                if (!button.classList.contains("customButton")) {
-                  button.classList.add("nonCustomButtonNotClicked")
-                }
-              })
-
+              /// Make the iframe if its not there yet
               if (document.getElementById("iframeKeuze") != null) {
-                  
+                // do absolutely nothing                  
               } else {
                 const iframeKeuze = document.createElement("iframe")
 
@@ -117,10 +95,31 @@ const init3 = function() {
                 iframeKeuze.style.height = "100%"
                 coverDiv.appendChild(iframeKeuze)
               }
+
+              /// Show UI
+              event.preventDefault();
+              hiddenUI = true;
+
+              document.querySelector("body > div.container").style.paddingRight = "0"
+              
+              /// Button darker
+              this.classList.add("customButtonClicked")
+
+              /// All other buttons lighter
+              const sideButtons = document.querySelectorAll(".main-menu>li>a")
+
+              sideButtons.forEach(button => {
+                if (!button.classList.contains("customButton")) {
+                  button.classList.add("nonCustomButtonNotClicked")
+                }
+              })
+              
             };
             
+            /// Append button
             newButtonList.appendChild(newButton);
 
+            /// Do things when pressing other buttons (ie revert some shit and change dark button)
             const buttonsInListA = buttonsSideList.querySelectorAll("li a")
 
             for (const link of buttonsInListA) {
@@ -135,6 +134,8 @@ const init3 = function() {
               }
               
             }
+
+
           }
         }
       );
