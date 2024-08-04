@@ -553,9 +553,10 @@ html sm-tab[id^="id"] div.block > .content > form {
     background-color: var(--mooie-bg-color-mid);
 }
 
-html sm-tab[id^="id"] div.block > .content > form input~label {
+html sm-tab[id^="id"] div.block > .content > form input[type="radio"]~label {
     background-color: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
+    border: 1px solid var(--mid-gray);
 }
 
 html sm-tab[id^="id"] div.block > .content > form input[type="checkbox"]~label > span {
@@ -1023,3 +1024,105 @@ html section.main > .content-container > .examen-widget > .examen-card > .child-
     border: none;
     color: var(--mooie-text-color);
 }
+
+
+
+/*~ Studiewijzers */
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > h3 {
+    border: none;
+    box-shadow: none;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > h3 > span.color-label {
+    display: none;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > h3 > b {
+    color: var(--mooie-text-color);
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 1rem;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > h3 > strong {
+    color: var(--mid-gray);
+    font-size: .75rem;
+    padding-bottom: 5px;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-radius: 0 0 15px 15px;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > div.clearfix {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-left: 4px solid var(--primary-background);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > div.clearfix p {
+    color: var(--mooie-text-color);
+    font-size: .75rem !important;
+    line-height: 1rem;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-left: 4px solid var(--primary-background);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li {
+    border-color: var(--mid-gray);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li span {
+    color: var(--mid-gray);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border-radius: 0 0 15px 15px;
+    border: none;
+    box-shadow: none;
+}
+
+/*/ Side list  */
+
+#idStudiewijzers > div > div > div.block > div.content > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    outline: none;
+    border-color: var(--mid-gray);
+}
+
+#idStudiewijzers > div > div > div.block > div.content > ul > li:hover {
+    background-color: var(--mooie-bg-color-hover);
+    outline: none;
+}
+
+#idStudiewijzers > div > div > div.block > div.content > ul > li > a {
+    color: var(--mooie-text-color);
+}
+
+html #idMultimedia div.block > div > * {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+
+
+
+
