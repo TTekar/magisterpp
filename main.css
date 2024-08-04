@@ -14,8 +14,13 @@ html body {
     
     --primary-background: #0E4772; /*/ licht */
     --secondary-background: #023660; /*/ donker */
+    --secondary-background-darker: #14212d; /*/ --background-secondary with opacity .2 */
     
     --background-1: #0065A0; /*/ iets lichter dan licht */
+
+    --mid-gray: #7f7f7fff;
+
+    --cijfers-background-opacity: .15;
 }
 
 html ::selection {
@@ -26,7 +31,7 @@ html .content-container {
     border: none;
 } 
 
-/*~ Scroll bar */
+/*? Scroll bar */
 
 html ::-webkit-scrollbar {
     width: 5px;
@@ -110,7 +115,7 @@ html #agenda-widget > div > footer.endlink {
 
 html #agenda-widget > div > footer.endlink > a {
     color: var(--mooie-text-color);
-    text-decoration: underline dashed #7f7f7f;
+    text-decoration: underline dashed var(--mid-gray);
     
 }
 
@@ -198,7 +203,7 @@ html #berichten-widget > div > footer.endlink {
 
 html #berichten-widget > div > footer.endlink > a {
     color: var(--mooie-text-color);
-    text-decoration: underline dashed #7f7f7f;
+    text-decoration: underline dashed var(--mid-gray);
     
 }
 
@@ -261,7 +266,7 @@ html #cijfers-leerling > div > footer.endlink {
 
 html #cijfers-leerling > div > footer.endlink > a {
     color: var(--mooie-text-color);
-    text-decoration: underline dashed #7f7f7f;
+    text-decoration: underline dashed var(--mid-gray);
     
 }
 
@@ -329,8 +334,7 @@ html #notificatie-widget > div > footer.endlink {
 
 html #notificatie-widget > div > footer.endlink > a {
     color: var(--mooie-text-color);
-    text-decoration: underline dashed #7f7f7f;
-    
+    text-decoration: underline dashed var(--mid-gray);
 }
 
 html #notificatie-widget .list {
@@ -357,10 +361,6 @@ html #edit-toggle-btn:hover {
 }
 
 /*/ Edit vandaag */
-
-html #vandaag-container > aside > div.content-container {
-    border: none;
-}
 
 html #idWidgets > div > div > div > div {
     background-color: var(--mooie-bg-color-mid);
@@ -419,44 +419,24 @@ html body > li.widget-drag-hint {
 
 #vandaag-container .droppable {
     background-color: var(--mooie-bg-color) !important;
-    border: 2px dotted #7f7f7f;
+    border: 2px dotted var(--mid-gray);
 }
 
 #vandaag-container .droppable.drag-over {
     background-color: var(--mooie-bg-color) !important;
-    border: 2px solid #7f7f7f;
+    border: 2px solid var(--mid-gray);
 }
 
 
 /*~ Agenda */
 
+html .agenda-text-icon.outline {
+    background-color: inherit;
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
 /*? Side panel */
-
-html #idDetails > div > div > div.block {
-    background-color: var(--mooie-bg-color-mid);
-    border: none;
-}
-
-html #idDetails > div > div > div.block > h3 {
-    box-shadow: none;
-    border: none;
-    color: var(--mooie-text-color);
-}
-
-html #idDetails > div > div > div.block > div.content {
-    background-color: var(--mooie-bg-color-mid);
-    border: none;
-}
-
-html #idDetails > div > div > div.block > div.content dl {
-    background-color: var(--mooie-bg-color-mid);
-    border: none;
-}
-
-html #idDetails > div > div > div.block > div.content dl dd, html #idDetails > div > div > div.block > div.content dl dt {
-    border: none;
-    color: var(--mooie-text-color);
-}
 
 html #huiswerk-info span, html #huiswerk-info-text {
     color: var(--mooie-text-color);
@@ -533,105 +513,196 @@ html .k-calendar .k-content tbody td.k-state-hover a {
     background: var(--mooie-bg-color-hover) !important;
 }
 
+/*? Side panel */
+/*? idDetails idWeergave idBerekening */
+
+html sm-tab[id^="id"] div.block > div.content dl {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html sm-tab[id^="id"] div.block > div.content dl dd, 
+html sm-tab[id^="id"] div.block > div.content dl dt {
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+html sm-tab[id^="id"] div.block {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 5px;
+}
+
+html sm-tab[id^="id"] div.block h3 {
+    border: none;
+    color: var(--mooie-text-color);
+    text-align: center;
+    box-shadow: none;
+}
+
+html sm-tab[id^="id"] div.block > .content {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html sm-tab[id^="id"] div.block > .content label {
+    color: var(--mooie-text-color);
+}
+
+html sm-tab[id^="id"] div.block > .content > form {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html sm-tab[id^="id"] div.block > .content > form input[type="checkbox"]~label > span {
+    background-color: var(--mooie-bg-color-mid);
+    border: 1px solid var(--mid-gray);
+}
+
+html sm-tab[id^="id"] div.block > .content > form input[type="checkbox"]~label > span:hover {
+    border: 1px solid var(--mooie-text-color);
+}
+
+html sm-tab[id^="id"] div.block > .content table tr,
+html sm-tab[id^="id"] div.block > .content table tr th,
+html sm-tab[id^="id"] div.block > .content table tr td {
+    background-color: var(--mooie-bg-color-mid);
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--mooie-text-color);
+}
+
+html sm-tab[id^="id"] div.block > .content > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html sm-tab[id^="id"] div.block > .content > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+
+
 /*? fancy-select */
 
-html .fancy-select .k-dropdown-wrap.k-state-default {
+/*/ Dropdown */
+
+html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default {
     background-color: var(--mooie-bg-color-hover);
     color: var(--mooie-text-color);
     border: 1px solid var(--mooie-bg-color-hover);
 }
 
-html .fancy-select .k-dropdown-wrap.k-state-active {
+html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-active {
     background-color: var(--mooie-bg-color-hover) !important;
     color: var(--mooie-text-color);
     border: 1px solid var(--mooie-bg-color-hover);
 }
 
-html .fancy-select .k-dropdown-wrap.k-state-default.k-state-hover {
+html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default.k-state-hover {
     background-color: var(--mooie-bg-color-hover) !important;
     color: var(--mooie-text-color) !important;
 }
 
-html .fancy-select .k-dropdown-wrap.k-state-default span.k-input {
+html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default span.k-input {
     color: var(--mooie-text-color);
 }
 
-html [id$="-list"].k-list-container.k-popup {
+/*/ List popup */
+
+html .k-list-container.k-popup {
     border: none !important;
+    background-color: var(--mooie-bg-color-mid);
 }
 
-html [id$="-list"].k-list-container.k-popup > div > ul[id$="_listbox"].k-list {
+html .k-list-container.k-popup > div > ul.k-list {
     box-shadow: none !important;
     border: none !important;
 }
 
-html [id$="-list"].k-list-container.k-popup > div > ul[id$="_listbox"].k-list li.k-item {
+html .k-list-container.k-popup > div > ul.k-list li.k-item {
     background-color: var(--mooie-bg-color-mid) !important;
     color: var(--mooie-text-color) !important;
     border: none !important;
 }
 
+/*/ Multiselect */
+
+html .fancy-select > .k-multiselect {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    box-shadow: none;
+    border: none;
+}
+
+html .fancy-select > .k-multiselect.k-state-hover {
+    border: none !important;
+}
+
+html .fancy-select > .k-multiselect > .k-multiselect-wrap {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    box-shadow: none;
+    border: none;
+}
+
+html .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mid-gray);
+}
+
+html .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li.k-state-hover {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color) !important;
+    border: 1px solid var(--mooie-text-color) !important;
+}
 
 
+/*? Containers */
 
+html [id$="-container"] > dna-page-header > span {
+    color: var(--mooie-text-color);
+}
+
+html [id$="-container"] > dna-page-header > dna-button-bar > dna-button:not(:last-child):hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html [id$="-container"] > section > div,
+html [id$="-container"] > section > div > div.loading-overlay.ng-isolate-scope,
+html [id$="-container"] > section > div > div.loading-overlay {
+    background-color: var(--mooie-bg-color);
+}
+
+html [id$="-container"] > section > div.content-container,
+html [id$="-container"] > aside > .content-container,
+html [id$="-container"] > aside > .head-bar > ul.tabs {
+    border: none;
+}
+
+html [id$="-container"] > aside > .head-bar > ul.tabs li a {
+    color: var(--mooie-text-color);
+}
+
+/*? Icon and text for containers */
+
+html [id$="-container"] > section > div > div.loading-overlay > div::before {
+    width: auto;
+    height: 125px;
+    line-height: 125px;
+    font-size: 109px;
+    color: var(--mid-gray);
+}
+
+html [id$="-container"] > section > div > div.loading-overlay > div > p {
+    color: var(--mid-gray);
+}
 
 
 /*/ Agenda- */
-
-html #afsprakenlijst-container > dna-page-header > span {
-    color: var(--mooie-text-color);
-}
-
-html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:not(:last-child):hover {
-    background-color: var(--mooie-bg-color-hover);
-}
-
-html #afsprakenlijst-container > section > div {
-    background-color: var(--mooie-bg-color);
-}
-
-html #afsprakenlijst-container > section > div > div.loading-overlay.ng-isolate-scope {
-    background-color: var(--mooie-bg-color);
-}
-
-html #afsprakenlijst-container > section > div > div.loading-overlay {
-    background-color: var(--mooie-bg-color);
-}
-
-html #afsprakenlijst-container > section > div.content-container {
-    border: none;
-}
-
-html #agenda-container > dna-page-header > span {
-    color: var(--mooie-text-color);
-}
-
-html #agenda-container > dna-page-header > dna-button-bar > dna-button:not(:last-child):hover {
-    background-color: var(--mooie-bg-color-hover);
-}
-
-html #agenda-container > section > div {
-    background-color: var(--mooie-bg-color);
-}
-
-html #agenda-container > section > div > div.loading-overlay.ng-isolate-scope {
-    background-color: var(--mooie-bg-color);
-}
-
-html #agenda-container > section > div > div.loading-overlay {
-    background-color: var(--mooie-bg-color);
-}
-
-html #agenda-container > section > div.content-container {
-    border: none;
-}
-
-html #afsprakenLijst {
-    background-color: var(--mooie-bg-color);
-    border: none;
-    outline: none;
-}
-
 
 /*/ Afspraak informatie */
 
@@ -684,41 +755,6 @@ html #huiswerkOmschrijving footer.endlink {
     border: none;
     box-shadow: none;
     border-radius: 15px;
-}
-
-html #agenda-lesdashboard-container > aside > .content-container {
-    border: none;
-}
-
-html #agenda-lesdashboard-container > aside > .head-bar > ul.tabs {
-    border: none;
-}
-
-html #agenda-lesdashboard-container > aside > .head-bar > ul.tabs li a {
-    color: var(--mooie-text-color);
-}
-
-/*/ Agenda instellingen */
-
-#idWeergave > div > div[data-agenda-instellingen="agenda-instellingen"] > div.block {
-    background-color: var(--mooie-bg-color-mid);
-    border: none;
-    border-radius: 5px;
-}
-
-#idWeergave > div > div[data-agenda-instellingen="agenda-instellingen"] > div.block > h3 {
-    border: none;
-    color: var(--mooie-text-color);
-    text-align: center;
-    box-shadow: none;
-}
-
-#idWeergave > div > div[data-agenda-instellingen="agenda-instellingen"] > div.block > .content > form {
-    background-color: var(--mooie-bg-color-mid);
-}
-
-#idWeergave > div > div[data-agenda-instellingen="agenda-instellingen"] > div.block > .content > form > div > label {
-    color: var(--mooie-text-color);
 }
 
 
@@ -777,6 +813,12 @@ html #recurrencePatternText {
 
 /*/ Afsprakenlijst */
 
+html #afsprakenLijst {
+    background-color: var(--mooie-bg-color);
+    border: none;
+    outline: none;
+}
+
 html #afsprakenLijst > div.k-grid-content > table {
     border: none;
 }
@@ -787,11 +829,13 @@ html #afsprakenLijst > div.k-grid-content > table tr {
 
 html #afsprakenLijst > div.k-grid-content > table tr.k-grouping-row td{
     background-color: var(--mooie-bg-color-mid);
+    border: none;
 }
 
 html #afsprakenLijst > div.k-grid-content > table tr td {
     background-color: var(--mooie-bg-color);
     border: none;
+    border-bottom: 1px solid var(--mid-gray);
 }
 
 html #afsprakenLijst > div.k-grid-content > table tr td span {
@@ -809,4 +853,151 @@ html #afsprakenLijst > div.k-grid-content > table tr td .alt-nrblock i {
 }
 
 
+/*~ Afwezigheid */
 
+html #aanwezigheid > table {
+    border: none;
+}
+
+/*/ Headers  */
+
+html #aanwezigheid > table > thead > tr:hover {
+    box-shadow: none;
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #aanwezigheid > table > thead > tr > th {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #aanwezigheid > table > thead > tr > th > span {
+    color: var(--mid-gray);
+}
+
+/*/ Bodies  */
+
+html #aanwezigheid > table > tbody > tr:hover {
+    box-shadow: none;
+    background-color: var(--mooie-bg-color);
+}
+
+html #aanwezigheid > table > tbody > tr > td {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+/*/ Afwezigheid totalen  */
+
+html #aanwezigheid-totalen div.block {
+    background-color: var(--mooie-bg-color-hover);
+    border: none;
+}
+
+html #aanwezigheid-totalen div.block > h3 {
+    color: var(--mooie-text-color);
+    border: none;
+    box-shadow: none;
+    font-size: 1rem;
+}
+
+html #aanwezigheid-totalen div.block > div.content {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #aanwezigheid-totalen div.block > div.content > ul.list {
+    border: none;
+}
+
+html #aanwezigheid-totalen div.block > div.content > ul.list > li {
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+
+/*~ Cijferoverzichtgrid */
+
+html #cijfers-container > dna-page-header > dna-button-group > dna-button:nth-child(1):hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #cijferslaatstbehaalderesultaten-uitgebreideweergave:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+html #cijfers-container > .main > div.content-container-cijfers {
+    border: none;
+    background-color: var(--mooie-bg-color);
+}
+
+html #cijferoverzichtgrid {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color);
+}
+
+/*/ Header  */
+
+html #cijferoverzichtgrid > .k-grid-header {
+    border: 1px solid var(--mooie-bg-color-hover);
+    background-color: var(--mooie-bg-color-mid) !important;
+}
+
+html #cijferoverzichtgrid > .k-grid-header table > thead > tr > th {
+    background: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    font-weight: 500;
+    border-color: var(--mid-gray);
+}
+
+html #cijferoverzichtgrid > .k-grid-header table > thead > tr > th > a {
+    color: var(--mooie-text-color);
+    font-weight: 500;
+}
+
+/*/ Body  */
+
+html #cijferoverzichtgrid > .k-grid-content {
+    border: 1px solid var(--mooie-bg-color-hover);
+    background-color: var(--mooie-bg-color-mid) !important;
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr {
+    background: var(--mooie-bg-color-mid);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td {
+    border: 1px solid var(--mid-gray);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td:nth-child(2) {
+    border-left: none;
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td.k-state-selected {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td.k-state-selected > span.grade {
+    color: var(--mooie-text-color);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade {
+    background-color: var(--mooie-bg-color);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.empty {
+    background: var(--mooie-bg-color) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAGElEQVQImWO4evXqfwYoQGZjCBCWpJ5RAEVOKenK4yvqAAAAAElFTkSuQmCC) repeat !important;
+    opacity: var(--cijfers-background-opacity);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.gemiddeldecolumn {
+    background-color: var(--secondary-background-darker) !important; 
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.herkansingKolom {
+    background-color: var(--mooie-bg-color) !important;
+}

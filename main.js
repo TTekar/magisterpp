@@ -139,11 +139,14 @@ const init3 = function() {
 }
 
 var checkYoBadCijfers = window.setInterval(function(){
+
+    const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
+
     chrome.storage.sync.get(
         { cijfers: false },
         (items) => {
           if (items.cijfers) {
-            if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/vandaag"){
+            if(currentLocationSplit == "magister.net/magister/#/vandaag"){
                 var cijfer = document.querySelector("span.cijfer.ng-binding")
 
                 if (cijfer.innerHTML.length > 4) {
@@ -162,10 +165,19 @@ var checkYoBadCijfers = window.setInterval(function(){
     );
     
 
-    if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/vandaag"){
+    // Edit layout button 
+    if(currentLocationSplit == "magister.net/magister/#/vandaag"){
       if (document.getElementById("edit-toggle-btn").offsetWidth > 32 ) {
         document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>'
       }
+    }
+
+
+    // Cijcers lijst wel knop donker
+    if(currentLocationSplit == "magister.net/magister/#/cijfers/cijferoverzicht" || currentLocationSplit == "magister.net/magister/#/cijfers"){
+      document.getElementById("menu-cijfers").parentElement.classList.add("active")
+    }else {
+      document.getElementById("menu-cijfers").parentElement.classList.remove("active")
     }
     
     
