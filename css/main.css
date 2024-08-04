@@ -553,6 +553,11 @@ html sm-tab[id^="id"] div.block > .content > form {
     background-color: var(--mooie-bg-color-mid);
 }
 
+html sm-tab[id^="id"] div.block > .content > form input~label {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
 html sm-tab[id^="id"] div.block > .content > form input[type="checkbox"]~label > span {
     background-color: var(--mooie-bg-color-mid);
     border: 1px solid var(--mid-gray);

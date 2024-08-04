@@ -147,105 +147,108 @@ const init3 = function() {
 
 var checkYoBadCijfers = window.setInterval(function(){
 
-    const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
+  const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
 
-    chrome.storage.sync.get(
-        { cijfers: false },
-        (items) => {
-          if (items.cijfers) {
-            if(currentLocationSplit == "magister.net/magister/#/vandaag"){
-                var cijfer = document.querySelector("span.cijfer.ng-binding")
+  /// Bad cijfer hide
+  chrome.storage.sync.get(
+      { cijfers: false },
+      (items) => {
+        if (items.cijfers) {
+          if(currentLocationSplit == "magister.net/magister/#/vandaag"){
+              var cijfer = document.querySelector("span.cijfer.ng-binding")
 
-                if (cijfer.innerHTML.length > 4) {
-                    return
-                }
+              if (cijfer.innerHTML.length > 4) {
+                  return
+              }
 
-                if (parseFloat(cijfer.innerHTML) < 5.5) {
-                    cijfer.innerHTML = "<5,5"
-                }
-                if (cijfer.innerHTML.toUpperCase().includes("Z") || cijfer.innerHTML.toUpperCase().includes("O")) {
-                   cijfer.innerHTML = "< v"
-                }
-            }
+              if (parseFloat(cijfer.innerHTML) < 5.5) {
+                  cijfer.innerHTML = "<5,5"
+              }
+              if (cijfer.innerHTML.toUpperCase().includes("Z") || cijfer.innerHTML.toUpperCase().includes("O")) {
+                 cijfer.innerHTML = "< v"
+              }
           }
         }
-    );
-    
-
-    // Edit layout button 
-    if(currentLocationSplit == "magister.net/magister/#/vandaag"){
-      if (document.getElementById("edit-toggle-btn").offsetWidth > 32 ) {
-        document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>'
       }
-    }
-
-
-    // Cijcers lijst wel knop donker
-    if(currentLocationSplit == "magister.net/magister/#/cijfers/cijferoverzicht" || currentLocationSplit == "magister.net/magister/#/cijfers"){
-      document.getElementById("menu-cijfers").parentElement.classList.add("active")
-    }else {
-      document.getElementById("menu-cijfers").parentElement.classList.remove("active")
-    }
-    
-    
-
-    // Check for hidden ui shit
-    const divToHide = document.querySelector("div.view.ng-scope")
-    const coverDiv = document.getElementById("coverDiv")
-
-    if (hiddenUI) {
-      divToHide.style.display = "none"
-      coverDiv.style.display = "flex"
-    }else {
-      divToHide.style.display = "block"
-      coverDiv.style.display = "none"
-    }
+  );
   
 
-    const studiewijzersListItems = document.querySelectorAll('div.studiewijzer-list.normaal > ul > li');
-    
-    //const colors = ['#FFA3A3', '#F2DC9B', '#D1FFA3', '#A3FFBA', '#A3FFFF', '#A3BAFF', '#CC9BF2'];
-    //const colors = ['#0e4772', '#023660'];
-    const colors = ['#131519'];
-    const opacity = 0.75;
-
-    function hexToRgba(hex, alpha) {
-      const bigint = parseInt(hex.slice(1), 16);
-      const r = (bigint >> 16) & 255;
-      const g = (bigint >> 8) & 255;
-      const b = bigint & 255;
-      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  /// Edit layout button 
+  if(currentLocationSplit == "magister.net/magister/#/vandaag"){
+    if (document.getElementById("edit-toggle-btn").offsetWidth > 32 ) {
+      document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>'
+    }
   }
 
-    studiewijzersListItems.forEach((li, index) => {
-        const spans = li.querySelectorAll('a span');
-        if (spans.length > 1) {
-            spans[1].remove();
-        }
 
-        const colorIndex = index % colors.length;
-        const rgbaColor = hexToRgba(colors[colorIndex], opacity);
-        li.style.backgroundColor = rgbaColor;
-    });
+  /// Cijcers lijst wel knop donker
+  if(currentLocationSplit == "magister.net/magister/#/cijfers/cijferoverzicht" || currentLocationSplit == "magister.net/magister/#/cijfers"){
+    document.getElementById("menu-cijfers").parentElement.classList.add("active")
+  }else {
+    document.getElementById("menu-cijfers").parentElement.classList.remove("active")
+  }
+  
+  
 
-    const asideHeadBar = document.querySelector('aside.ng-isolate-scope > div.head-bar');
-    const asideTabs = asideHeadBar.querySelector('ul.tabs');
-    const asideSheets = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets');
-    const asideSpan = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets .block h3 span');
+  /// Check for hidden ui shit
+  const divToHide = document.querySelector("div.view.ng-scope")
+  const coverDiv = document.getElementById("coverDiv")
 
-    if (asideTabs.childElementCount == 1) {
-      asideHeadBar.style.display = "none";
-      asideSheets.style.padding = "0px"
-    }
+  if (hiddenUI) {
+    divToHide.style.display = "none"
+    coverDiv.style.display = "flex"
+  }else {
+    divToHide.style.display = "block"
+    coverDiv.style.display = "none"
+  }
 
-    try {
-      asideSpan.remove();
-    }catch {
-      
-    }
+  /// Studiewijzers grid
+  const studiewijzersListItems = document.querySelectorAll('div.studiewijzer-list.normaal > ul > li');
+  
+  ////const colors = ['#FFA3A3', '#F2DC9B', '#D1FFA3', '#A3FFBA', '#A3FFFF', '#A3BAFF', '#CC9BF2'];
+  ////const colors = ['#0e4772', '#023660'];
+  const colors = ['#020203'];
+  const opacity = 0.18;
+
+  function hexToRgba(hex, alpha) {
+    const bigint = parseInt(hex.slice(1), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+  studiewijzersListItems.forEach((li, index) => {
+      const spans = li.querySelectorAll('a span');
+      if (spans.length > 1) {
+          spans[1].remove();
+      }
+
+      const colorIndex = index % colors.length;
+      const rgbaColor = hexToRgba(colors[colorIndex], opacity);
+      li.style.backgroundColor = rgbaColor;
+  });
+
+
+  /// Remove aside tabs if == 1
+  const asideHeadBar = document.querySelector('aside.ng-isolate-scope > div.head-bar');
+  const asideTabs = asideHeadBar.querySelector('ul.tabs');
+  const asideSheets = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets');
+  const asideSpan = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets .block h3 span');
+
+  if (asideTabs.childElementCount == 1) {
+    asideHeadBar.style.display = "none";
+    asideSheets.style.padding = "0px"
+  }
+
+  try {
+    asideSpan.remove();
+  }catch {
     
+  }
+  
 
-  }, 100);
+}, 100);
 
 
   

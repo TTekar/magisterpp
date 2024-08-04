@@ -1,0 +1,26 @@
+
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > div.head {
+    background-color: var(--mooie-bg-color-hover);
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > div.head > span:nth-child(1) {
+    border: none;
+}
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border-top: 1px solid var(--mid-gray);
+}
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li:last-child {
+    border-bottom: none;
+}
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a {
+    color: var(--mooie-text-color);
+}
+
+

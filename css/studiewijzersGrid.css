@@ -1,0 +1,50 @@
+
+
+html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > .head {
+    display: none;
+}
+
+html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    gap: 10px;
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    border: none;
+}
+
+html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li {
+    text-align: center;
+    height: 150px;
+    flex: 1 1 150px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    border-radius: 15px;
+    border: none;
+}
+
+html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+    background-color: transparent;
+}
+
+html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a > span {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%;
+    background-color: transparent;
+    color: var(--mooie-text-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
