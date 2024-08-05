@@ -833,9 +833,10 @@ html #afsprakenLijst > div.k-grid-content > table tr {
     background-color: var(--mooie-bg-color);
 }
 
-html #afsprakenLijst > div.k-grid-content > table tr.k-grouping-row td{
+html #afsprakenLijst > div.k-grid-content > table tr.k-grouping-row td {
     background-color: var(--mooie-bg-color-mid);
     border: none;
+    box-shadow: none;
 }
 
 html #afsprakenLijst > div.k-grid-content > table tr td {
@@ -1122,6 +1123,81 @@ html #idMultimedia div.block > div > * {
     border: none;
 }
 
+
+
+
+/*~ Opdrachten */
+
+html #opdrachten-container > section > div > dna-card.side-widget {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+html #opdrachten-container > section > div > dna-card.side-widget label {
+    color: var(--mooie-text-color);
+}
+
+html #opdrachten-container > section > div > div.content-container > .loading-overlay {
+    background-color: var(--mooie-bg-color);    
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead {
+    background-color: var(--mooie-bg-color);    
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead > tr,
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead > tr:hover {
+    box-shadow: none;
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead > tr > th {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead > tr > th > span {
+    color: var(--mid-gray);
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > tbody > tr:hover {
+    box-shadow: none;
+    background-color: var(--mooie-bg-color);
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > tbody > tr > td {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+/*/ Details */
+
+html #opdracht-detail > dna-card {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html #opdracht-detail > dna-card .attachments a {
+    color: var(--mooie-text-color);
+}
+
+html #opdracht-detail > dna-card .disabled {
+    color: var(--mid-gray) !important;
+}
+
+html #opdracht-detail ~ .side-widget .versions > ul {
+    border: 1px solid var(--mid-gray);
+    outline: none;
+}
+
+html #opdracht-detail ~ .side-widget .versions > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+}
 
 
 
