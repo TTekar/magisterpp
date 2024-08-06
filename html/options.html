@@ -2,52 +2,81 @@
 <html>
   <head>
     <title>Options</title>
-    <link rel="stylesheet" href="../css/options.css" />
+    <link rel="stylesheet" href="../css/optionsPage/darkOptions.css" />
+    <link
+      id="lightModeStylesheet"
+      rel="stylesheet"
+      href="../css/optionsPage/lightOptions.css"
+      disabled
+    />
   </head>
-  <body id="optionsBody">
-    <label id="darkModeLabel">
-      <input type="checkbox" id="darkMode" />
-      Dark Mode
-    </label>
+  <body>
+    <div id="main">
+      <label>
+        Dark Mode
+        <label class="switch">
+          <input type="checkbox" id="darkMode" />
+          <span class="slider"></span>
+        </label>
+      </label>
 
-    <br />
+      <label>
+        Keuze Plattegrond
+        <label class="switch">
+          <input type="checkbox" id="keuzeBtn" />
+          <span class="slider"></span>
+        </label>
+      </label>
 
-    <label id="keuzeBtnLabel">
-      <input type="checkbox" id="keuzeBtn" />
-      Keuze Plattegrond
-    </label>
+      <label>
+        Studiewijzers Grid
+        <label class="switch">
+          <input type="checkbox" id="studiewijzersGrid" />
+          <span class="slider"></span>
+        </label>
+      </label>
 
-    <br />
+      <label>
+        Hide help button
+        <label class="switch">
+          <input type="checkbox" id="hideHelpBtn" />
+          <span class="slider"></span>
+        </label>
+      </label>
 
-    <label id="studiewijzersGridLabel">
-      <input type="checkbox" id="studiewijzersGrid" />
-      Studiewijzers Grid
-    </label>
+      <label>
+        Inlog custom tekst
+        <input class="textInput" type="text" id="inlogText" value="Bonjour" />
+      </label>
 
-    <br />
+      <a id="advancedSettingsA">Advanced</a>
 
-    <label id="hideHelpBtnLabel">
-      <input type="checkbox" id="hideHelpBtn" />
-      Hide help button
-    </label>
+      <div id="advancedSettings" style="display: none">
+        <label>
+          Hide pfp
+          <label class="switch">
+            <input type="checkbox" id="hidePfp" />
+            <span class="slider"></span>
+          </label>
+        </label>
 
-    <br />
+        <label>
+          Cijfers &lt;v
+          <label class="switch">
+            <input type="checkbox" id="cijfers" />
+            <span class="slider"></span>
+          </label>
+        </label>
 
-    <label id="inlogTextLabel">
-      <input type="text" id="inlogText" value="Bonjour" />
-      Inlog custom tekst
-    </label>
-
-    <br />
-
-    <label id="cijfersLabel">
-      <input type="checkbox" id="cijfers" />
-      Cijfers &lt;v
-    </label>
-
-    <br />
-
-    <div id="status"></div>
+        <label>
+          Google Sheets iframe
+          <label class="switch">
+            <input type="checkbox" id="sheets" />
+            <span class="slider"></span>
+          </label>
+        </label>
+      </div>
+    </div>
 
     <script src="../js/options.js"></script>
   </body>

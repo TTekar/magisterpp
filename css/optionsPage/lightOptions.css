@@ -1,23 +1,16 @@
-html body {
+body {
+    /* Vars */
+
     --mooie-bg-color: #ffffff;
     --mooie-bg-color-mid: #eeeeee;
     --mooie-bg-color-hover: #d2d8db;
     --mooie-text-color: #000;
-
-    --blue-text-color-light: #2b2b2b;
-
-    background-color: var(--mooie-bg-color);
-    --dna-primary: var(--mooie-text-color);
-    --dna-secondary: transparent;
-    --dna-background: transparent;
     
     --background-1: #0076ba; /*iets lichter dan licht*/
     --primary-background: #1f97f9; /*licht*/
     --secondary-background: #0683ea; /*donker*/
     --secondary-background-darker: #cde6fa; /*donker*/
     
-
     --mid-gray: #7f7f7fff;
-
-    --cijfers-background-opacity: 1;
+    --dark-gray: #bfbfbfff;
 }

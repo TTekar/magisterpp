@@ -1,18 +1,7 @@
-const div1 = document.createElement("div");
 
-var container1 = document.querySelector("body .container");
 
-div1.style.width = "25vw";
-div1.style.height = "77vh";
-div1.style.backgroundColor = "transparent";
-div1.style.position = "absolute";
-div1.style.marginBottom = "25px"
-div1.style.left = "52vw";
-div1.style.top = "154px";
-div1.style.display = "inline-block";
-div1.style.zIndex = "100";
-
-var hiddenUI = false;
+var keuzeUI = false;
+var sheetsUI = false;
 
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date);
@@ -28,130 +17,232 @@ function getWeekNumber(date = new Date()) {
 }
 
 const init3 = function() {
+  
+  setTimeout(() => {
+    //~ Set custom pfp
+    const divUserMenu = document.querySelector("a#user-menu");
+    var pfp = divUserMenu.querySelector("figure img");
+
+    if(pfp.getAttribute("alt") == "Aidan Schoester") {
+        // pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
+        pfp.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
+    }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
+        pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
+    }
+
     
-    setTimeout(() => {
-      //~ Set custom pfp
-      const divUserMenu = document.querySelector("a#user-menu");
-      var pfp = divUserMenu.querySelector("figure img");
+    
+    //~ Keuze plattegrond
+    chrome.storage.sync.get(
+      { keuzeBtn: true, darkMode: false , sheets: false },
+      (items) => {
+        if (items.keuzeBtn) {
+          
+          sheetsUI = false
+          document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
 
-      if(pfp.getAttribute("alt") == "Aidan Schoester") {
-          // pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
-          pfp.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
-      }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
-          pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
-      }
+          /// Keuze page
+          const mainView = document.querySelector("div.view.ng-scope")
+          const coverDiv = document.createElement("div")
 
-      
-      
-      //~ Keuze plattegrond
-      chrome.storage.sync.get(
-        { keuzeBtn: true, darkMode: false },
-        (items) => {
-          if (items.keuzeBtn) {
+          coverDiv.id = "coverDivKeuze"
+          coverDiv.style.position = "relative"
+          coverDiv.style.width = "100%"
+          coverDiv.style.height = "100%"
+          coverDiv.style.display = "none"
+          coverDiv.style.justifyContent = "center"
+          coverDiv.style.alignItems = "center"
+          mainView.parentElement.appendChild(coverDiv)
 
-            /// Keuze page
-            const mainView = document.querySelector("div.view.ng-scope")
-            const coverDiv = document.createElement("div")
+              
 
-            coverDiv.id = "coverDiv"
-            coverDiv.style.position = "relative"
-            coverDiv.style.width = "100%"
-            coverDiv.style.height = "100%"
-            coverDiv.style.display = "none"
-            coverDiv.style.justifyContent = "center"
-            coverDiv.style.alignItems = "center"
-            mainView.parentElement.appendChild(coverDiv)
+          /// Define button
+          const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
+          const newButtonList = document.createElement("li");
+          buttonsSideList.appendChild(newButtonList)
 
-                
+          const newButton = document.createElement("a")
+          newButton.innerHTML = `<i class="far ng-scope fa-question" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Keuze Plattegrond</span>`
+              
+          newButton.id = "customButtonKeuze"
+          newButton.classList.add("customButton")
+          newButton.style.borderRadius = "6px"
 
-            /// Define button
-            const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
-            const newButtonList = document.createElement("li");
-            buttonsSideList.appendChild(newButtonList)
+          /// Keuze plattegrond button onclick
+          newButton.onclick = function(event) {
 
-            const newButton = document.createElement("a")
-            newButton.innerHTML = `<i class="far ng-scope fa-question" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Keuze Plattegrond</span>`
-                
-            newButton.classList.add("customButton")
-            newButton.style.borderRadius = "6px"
+            /// Make the iframe if its not there yet
+            if (document.getElementById("iframeKeuze") != null) {
+              // do absolutely nothing                  
+            } else {
+              const iframeKeuze = document.createElement("iframe")
 
-            /// Keuze plattegrond button onclick
-            newButton.onclick = function(event) {
-
-              /// Make the iframe if its not there yet
-              if (document.getElementById("iframeKeuze") != null) {
-                // do absolutely nothing                  
-              } else {
-                const iframeKeuze = document.createElement("iframe")
-
-                if (items.darkMode) {
-                  iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magDark"
-                }else {
-                  iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magLight"
-                }
-
-                iframeKeuze.id = "iframeKeuze"
-                iframeKeuze.style.width = "100%"
-                iframeKeuze.style.height = "100%"
-                coverDiv.appendChild(iframeKeuze)
+              if (items.darkMode) {
+                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magDark"
+              }else {
+                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magLight"
               }
 
-              /// Show UI
-              event.preventDefault();
-              hiddenUI = true;
-
-              document.querySelector("body > div.container").style.paddingRight = "0"
-              
-              /// Button darker
-              this.classList.add("customButtonClicked")
-
-              /// All other buttons lighter
-              const sideButtons = document.querySelectorAll(".main-menu>li>a")
-
-              sideButtons.forEach(button => {
-                if (!button.classList.contains("customButton")) {
-                  button.classList.add("nonCustomButtonNotClicked")
-                }
-              })
-              
-            };
-            
-            /// Append button
-            newButtonList.appendChild(newButton);
-
-            /// Do things when pressing other buttons (ie revert some shit and change dark button)
-            const buttonsInListA = buttonsSideList.querySelectorAll("li a")
-
-            for (const link of buttonsInListA) {
-              if (!link.classList.contains("customButton")) {
-                link.onclick = function(event) {
-                  event.preventDefault();
-                  hiddenUI = false;
-                  link.classList.remove("nonCustomButtonNotClicked")
-                  document.querySelector("body > div.container").style.paddingRight = "8px"
-                  document.querySelector(".customButton").classList.remove("customButtonClicked")
-                }
-              }
-              
+              iframeKeuze.id = "iframeKeuze"
+              iframeKeuze.style.width = "100%"
+              iframeKeuze.style.height = "100%"
+              coverDiv.appendChild(iframeKeuze)
             }
 
+            /// Show UI
+            event.preventDefault();
+            keuzeUI = true;
 
+            document.querySelector("body > div.container").style.paddingRight = "0"
+            
+            /// Button darker
+            this.classList.add("customButtonClicked")
+
+            /// All other buttons lighter
+            const sideButtons = document.querySelectorAll(".main-menu>li>a")
+
+            sideButtons.forEach(button => {
+              if (!button.classList.contains("customButton")) {
+                button.classList.add("nonCustomButtonNotClicked")
+              }
+            })
+
+            if (items.sheets) {
+              ////document.getElementById("customButtonSheets").classList.add("nonCustomButtonNotClicked")
+              document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
+            }
+            
+          };
+          
+          /// Append button
+          newButtonList.appendChild(newButton);
+
+          /// Do things when pressing other buttons (ie revert some shit and change dark button)
+          const buttonsInListA = buttonsSideList.querySelectorAll("li a")
+
+          for (const link of buttonsInListA) {
+            if (!link.classList.contains("customButton")) {
+              link.onclick = function(event) {
+                event.preventDefault();
+                keuzeUI = false;
+                link.classList.remove("nonCustomButtonNotClicked")
+                document.querySelector("body > div.container").style.paddingRight = "8px"
+                document.querySelector(".customButton").classList.remove("customButtonClicked")
+              }
+            }
+            
           }
         }
-      );
-        
-      
 
-    }, 1000);  
+
+        if (items.sheets) {
+
+          keuzeUI = false
+          document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
+
+          /// Sheets page
+          const mainView = document.querySelector("div.view.ng-scope")
+          const coverDiv = document.createElement("div")
+
+          coverDiv.id = "coverDivSheets"
+          coverDiv.style.position = "relative"
+          coverDiv.style.width = "100%"
+          coverDiv.style.height = "100%"
+          coverDiv.style.display = "none"
+          coverDiv.style.justifyContent = "center"
+          coverDiv.style.alignItems = "center"
+          mainView.parentElement.appendChild(coverDiv)
+
+              
+
+          /// Define button
+          const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
+          const newButtonList = document.createElement("li");
+          buttonsSideList.appendChild(newButtonList)
+
+          const newButton = document.createElement("a")
+          newButton.innerHTML = `<i class="far ng-scope fa-table" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Sheets</span>`
+              
+          newButton.id = "customButtonSheets"
+          newButton.classList.add("customButton")
+          newButton.style.borderRadius = "6px"
+
+          /// Sheets plattegrond button onclick
+          newButton.onclick = function(event) {
+
+            /// Make the iframe if its not there yet
+            if (document.getElementById("iframeSheets") != null) {
+              // do absolutely nothing                  
+            } else {
+              const iframeSheets = document.createElement("iframe")
+
+              iframeSheets.src = "https://dribbble.com/shots/20448703-TimeTracker-Settings-Page"
+
+              iframeSheets.id = "iframeSheets"
+              iframeSheets.style.width = "100%"
+              iframeSheets.style.height = "100%"
+              coverDiv.appendChild(iframeSheets)
+            }
+
+            /// Show UI
+            event.preventDefault();
+            sheetsUI = true;
+
+            document.querySelector("body > div.container").style.paddingRight = "0"
+            
+            /// Button darker
+            this.classList.add("customButtonClicked")
+
+            /// All other buttons lighter
+            const sideButtons = document.querySelectorAll(".main-menu>li>a")
+
+            sideButtons.forEach(button => {
+              if (!button.classList.contains("customButton")) {
+                button.classList.add("nonCustomButtonNotClicked")
+              }
+            })
+
+            if (items.keuzeBtn) {
+              ////document.getElementById("customButtonSheets").classList.add("nonCustomButtonNotClicked")
+              document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
+            }
+            
+          };
+          
+          /// Append button
+          newButtonList.appendChild(newButton);
+
+          /// Do things when pressing other buttons (ie revert some shit and change dark button)
+          const buttonsInListA = buttonsSideList.querySelectorAll("li a")
+
+          for (const link of buttonsInListA) {
+            if (!link.classList.contains("customButton")) {
+              link.onclick = function(event) {
+                event.preventDefault();
+                sheetsUI = false;
+                link.classList.remove("nonCustomButtonNotClicked")
+                document.querySelector("body > div.container").style.paddingRight = "8px"
+                document.querySelector(".customButton").classList.remove("customButtonClicked")
+              }
+            }
+            
+          }
+        }
+      }
+    );
+      
+    
+
+  }, 1000);  
 }
 
-var checkYoBadCijfers = window.setInterval(function(){
+var update100ms = window.setInterval(function(){
 
   const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
 
-  /// Settings
+  /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false },
       (items) => {
 
         /// Bad cijfer hide
@@ -179,6 +270,14 @@ var checkYoBadCijfers = window.setInterval(function(){
           document.getElementById("help-menu").parentElement.style.display = "block"
         }
         
+        /// Hide pfp
+
+        if (items.hidePfp){
+          document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
+            img.style.width = "0"
+          })
+        }
+
       }
   );
   
@@ -202,14 +301,21 @@ var checkYoBadCijfers = window.setInterval(function(){
 
   /// Check for hidden ui shit
   const divToHide = document.querySelector("div.view.ng-scope")
-  const coverDiv = document.getElementById("coverDiv")
+  const coverDivKeuze = document.getElementById("coverDivKeuze")
+  const coverDivSheets = document.getElementById("coverDivSheets")
 
-  if (hiddenUI) {
+  if (keuzeUI) {
     divToHide.style.display = "none"
-    coverDiv.style.display = "flex"
+    coverDivKeuze.style.display = "flex"
+    coverDivSheets.style.display = "none"
+  }else if (sheetsUI) {
+    divToHide.style.display = "none"
+    coverDivKeuze.style.display = "none"
+    coverDivSheets.style.display = "flex"
   }else {
     divToHide.style.display = "block"
-    coverDiv.style.display = "none"
+    coverDivKeuze.style.display = "none"
+    coverDivSheets.style.display = "none"
   }
 
   /// Studiewijzers grid
@@ -256,18 +362,12 @@ var checkYoBadCijfers = window.setInterval(function(){
   }catch {
     
   }
+
+
   
 
 }, 100);
 
 
-  
-// var intervalId = window.setInterval(function(){
-//     if(window.location.href.split("?")[0] == "https://hermanjordan.magister.net/magister/#/agenda"){
-//         div1.style.display = "block";
-//     }else {
-//         div1.style.display = "none";
-//     }
-//   }, 200);
 
 init3();

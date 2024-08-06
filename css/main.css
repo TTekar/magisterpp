@@ -12,11 +12,11 @@ html body {
     --dna-secondary: transparent;
     --dna-background: transparent;
     
+    --background-1: #0065A0; /*/ iets lichter dan licht */
     --primary-background: #0E4772; /*/ licht */
     --secondary-background: #023660; /*/ donker */
     --secondary-background-darker: #14212d; /*/ --background-secondary with opacity .2 */
     
-    --background-1: #0065A0; /*/ iets lichter dan licht */
 
     --mid-gray: #7f7f7fff;
 
