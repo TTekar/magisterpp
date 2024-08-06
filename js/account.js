@@ -8,16 +8,22 @@ const init2 = function() {
     // img.style.float = "right";
     // div.appendChild(img);
 
-    const form = document.getElementsByClassName("podium");
-    const h1 = document.createElement("h1");
-    h1.innerHTML = "Bonjour";
-    h1.style.marginTop = "35px";
-    form[0].prepend(h1);
+    const form = document.getElementsByClassName("podium")
+    const h1 = document.createElement("h1")
 
+    chrome.storage.sync.get(
+        { inlogText: "Bonjour" },
+        (items) => {
+            h1.innerHTML = items.inlogText;
+        }
+    )
 
-    var appContainer = document.querySelector('.app-container');
-    var secondDiv = appContainer.children[1];
-    appContainer.removeChild(secondDiv);
+    h1.style.marginTop = "35px"
+    form[0].prepend(h1)
+
+    var appContainer = document.querySelector('.app-container')
+    var secondDiv = appContainer.children[1]
+    appContainer.removeChild(secondDiv)
 }
 
 init2();

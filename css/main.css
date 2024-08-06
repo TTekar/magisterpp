@@ -1118,7 +1118,7 @@ html #studiewijzer-detail-container > section.main > div > ul > li > div.block >
     color: var(--mooie-text-color);
 }
 
-html #idMultimedia div.block > div > * {
+html #idMultimedia div.block > div  * {
     background-color: var(--mooie-bg-color-mid);
     border: none;
 }
@@ -1200,5 +1200,74 @@ html #opdracht-detail ~ .side-widget .versions > ul > li {
 }
 
 
+/*~ Bronnen */
+
+html #mappen,
+html #mappen > .widget > .block,
+html #mappen > .widget > .block > .content-auto ul > li,
+html #mappen > .widget > .block > .content-auto ul > li a {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+html #mappen > .widget > .block > h3 {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #mappen ~ .rest-column {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #bestanden {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+html #bestanden > .widget > .block > h3,
+html #bestanden > .widget > .block > span {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: none;
+    border-color: var(--mid-gray);
+}
+
+html #bestanden > .widget > .block > div {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #bestanden > .widget > .block > div > p {
+    color: var(--mid-gray);
+    border-color: var(--mid-gray);
+}
+
+html #bestanden > .widget > .block > div > ul.list > li,
+html #bestanden > .widget > .block > div > ul.list > li  a{
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
 
 
+#bronnen-container > dna-page-header > dna-button-bar > dna-overlay-trigger > dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+body > dna-overlay-container > dna-overlay > dna-menu {
+    background-color: var(--mooie-bg-color-hover);
+    border: none;
+}
+
+body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item {
+    color: var(--mooie-text-color);
+}
+
+body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
