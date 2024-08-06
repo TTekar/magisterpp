@@ -39,20 +39,25 @@ const init3 = function() {
         if (items.keuzeBtn) {
           
           sheetsUI = false
-          document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
+          console.info(sheetsUI)
+          const customButtonSheets = document.getElementById("customButtonSheets");
+          if (customButtonSheets) {
+            customButtonSheets.classList.remove("customButtonClicked");
+          }
+          ////document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
 
           /// Keuze page
           const mainView = document.querySelector("div.view.ng-scope")
-          const coverDiv = document.createElement("div")
+          const coverDivKeuze = document.createElement("div")
 
-          coverDiv.id = "coverDivKeuze"
-          coverDiv.style.position = "relative"
-          coverDiv.style.width = "100%"
-          coverDiv.style.height = "100%"
-          coverDiv.style.display = "none"
-          coverDiv.style.justifyContent = "center"
-          coverDiv.style.alignItems = "center"
-          mainView.parentElement.appendChild(coverDiv)
+          coverDivKeuze.id = "coverDivKeuze"
+          coverDivKeuze.style.position = "relative"
+          coverDivKeuze.style.width = "100%"
+          coverDivKeuze.style.height = "100%"
+          coverDivKeuze.style.display = "none"
+          coverDivKeuze.style.justifyContent = "center"
+          coverDivKeuze.style.alignItems = "center"
+          mainView.parentElement.appendChild(coverDivKeuze)
 
               
 
@@ -86,7 +91,7 @@ const init3 = function() {
               iframeKeuze.id = "iframeKeuze"
               iframeKeuze.style.width = "100%"
               iframeKeuze.style.height = "100%"
-              coverDiv.appendChild(iframeKeuze)
+              coverDivKeuze.appendChild(iframeKeuze)
             }
 
             /// Show UI
@@ -108,7 +113,6 @@ const init3 = function() {
             })
 
             if (items.sheets) {
-              ////document.getElementById("customButtonSheets").classList.add("nonCustomButtonNotClicked")
               document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
             }
             
@@ -123,11 +127,19 @@ const init3 = function() {
           for (const link of buttonsInListA) {
             if (!link.classList.contains("customButton")) {
               link.onclick = function(event) {
-                event.preventDefault();
-                keuzeUI = false;
-                link.classList.remove("nonCustomButtonNotClicked")
-                document.querySelector("body > div.container").style.paddingRight = "8px"
-                document.querySelector(".customButton").classList.remove("customButtonClicked")
+                if (keuzeUI) {
+                  event.preventDefault();
+                  keuzeUI = false;
+                  link.classList.remove("nonCustomButtonNotClicked")
+                  document.querySelector("body > div.container").style.paddingRight = "8px"
+                  document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
+                }else if (sheetsUI) {
+                  event.preventDefault();
+                  sheetsUI = false;
+                  link.classList.remove("nonCustomButtonNotClicked")
+                  document.querySelector("body > div.container").style.paddingRight = "8px"
+                  document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
+                }
               }
             }
             
@@ -138,20 +150,25 @@ const init3 = function() {
         if (items.sheets) {
 
           keuzeUI = false
-          document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
+          console.info(keuzeUI)
+          const customButtonKeuze = document.getElementById("customButtonKeuze")
+          if (customButtonKeuze) {
+            customButtonKeuze.classList.remove("customButtonClicked");
+          }
+          ////document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
 
           /// Sheets page
           const mainView = document.querySelector("div.view.ng-scope")
-          const coverDiv = document.createElement("div")
+          const coverDivSheets = document.createElement("div")
 
-          coverDiv.id = "coverDivSheets"
-          coverDiv.style.position = "relative"
-          coverDiv.style.width = "100%"
-          coverDiv.style.height = "100%"
-          coverDiv.style.display = "none"
-          coverDiv.style.justifyContent = "center"
-          coverDiv.style.alignItems = "center"
-          mainView.parentElement.appendChild(coverDiv)
+          coverDivSheets.id = "coverDivSheets"
+          coverDivSheets.style.position = "relative"
+          coverDivSheets.style.width = "100%"
+          coverDivSheets.style.height = "100%"
+          coverDivSheets.style.display = "none"
+          coverDivSheets.style.justifyContent = "center"
+          coverDivSheets.style.alignItems = "center"
+          mainView.parentElement.appendChild(coverDivSheets)
 
               
 
@@ -181,7 +198,7 @@ const init3 = function() {
               iframeSheets.id = "iframeSheets"
               iframeSheets.style.width = "100%"
               iframeSheets.style.height = "100%"
-              coverDiv.appendChild(iframeSheets)
+              coverDivSheets.appendChild(iframeSheets)
             }
 
             /// Show UI
@@ -203,7 +220,6 @@ const init3 = function() {
             })
 
             if (items.keuzeBtn) {
-              ////document.getElementById("customButtonSheets").classList.add("nonCustomButtonNotClicked")
               document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
             }
             
@@ -218,11 +234,20 @@ const init3 = function() {
           for (const link of buttonsInListA) {
             if (!link.classList.contains("customButton")) {
               link.onclick = function(event) {
-                event.preventDefault();
-                sheetsUI = false;
-                link.classList.remove("nonCustomButtonNotClicked")
-                document.querySelector("body > div.container").style.paddingRight = "8px"
-                document.querySelector(".customButton").classList.remove("customButtonClicked")
+                if (keuzeUI) {
+                  event.preventDefault();
+                  keuzeUI = false;
+                  link.classList.remove("nonCustomButtonNotClicked")
+                  document.querySelector("body > div.container").style.paddingRight = "8px"
+                  document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
+                }else if (sheetsUI) {
+                  event.preventDefault();
+                  sheetsUI = false;
+                  link.classList.remove("nonCustomButtonNotClicked")
+                  document.querySelector("body > div.container").style.paddingRight = "8px"
+                  document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
+                }
+                
               }
             }
             
