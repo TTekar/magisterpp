@@ -218,6 +218,19 @@ html dna-search-input {
     
 }
 
+html body > app-root > app-berichten-overzicht > div.container > app-bericht-list {
+    border: none;
+}
+
+html body > app-root > app-berichten-overzicht > div.container > app-bericht-list > div {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html body > app-root > app-berichten-overzicht > div.container > app-bericht-list > cdk-virtual-scroll-viewport {
+    border: none !important;
+}
+
+
 
 /* html dna-search-input #dna-control-0 {
     color: var(--mooie-text-color) !important;   
