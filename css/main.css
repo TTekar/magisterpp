@@ -1254,20 +1254,43 @@ html #bestanden > .widget > .block > div > ul.list > li  a{
 }
 
 
-#bronnen-container > dna-page-header > dna-button-bar > dna-overlay-trigger > dna-button:hover {
+html #bronnen-container > dna-page-header > dna-button-bar > dna-overlay-trigger > dna-button:hover {
     background-color: var(--mooie-bg-color-hover);
 }
 
 
-body > dna-overlay-container > dna-overlay > dna-menu {
+html body > dna-overlay-container > dna-overlay > dna-menu {
     background-color: var(--mooie-bg-color-hover);
     border: none;
 }
 
-body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item {
+html body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item {
     color: var(--mooie-text-color);
 }
 
-body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item:hover {
+html body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item:hover {
     background-color: var(--mooie-bg-color-hover);
+}
+
+
+
+
+
+
+/*~ Bestellen */
+
+html body > div.container > div.view.ng-scope > mg-leverancier-overzicht > div > section > div {
+    border: none;
+}
+
+html body > div.container > div.view.ng-scope > mg-leverancier-overzicht > div > section > div > div > div {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html body > div.container > div.view.ng-scope > mg-leverancier-overzicht > div > section > div > div > div * {
+    color: var(--mooie-text-color);
+}
+
+html #no-leveranciers-warning {
+    background-color: var(--mooie-bg-color-mid);
 }
