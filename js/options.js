@@ -8,13 +8,12 @@ const saveOptions = () => {
   const hideHelpBtn = document.getElementById('hideHelpBtn').checked
   const inlogText = document.getElementById('inlogText').value
   const hidePfp = document.getElementById('hidePfp').checked
-  const sheets = document.getElementById('sheets').checked
 
   chrome.storage.sync.set(
-    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , inlogText: inlogText , hidePfp: hidePfp , sheets: sheets },
+    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , inlogText: inlogText , hidePfp: hidePfp },
     () => {
       // do after saved
-      console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}\nsheets ${sheets}`)
+      console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}`)
     }
   )
 };
@@ -22,7 +21,7 @@ const saveOptions = () => {
 
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , sheets: false },
+    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false },
     (items) => {
       document.getElementById('darkMode').checked = items.darkMode;
       document.getElementById('keuzeBtn').checked = items.keuzeBtn;
@@ -31,7 +30,6 @@ const restoreOptions = () => {
       document.getElementById('hideHelpBtn').checked = items.hideHelpBtn; 
       document.getElementById('inlogText').value = items.inlogText; 
       document.getElementById('hidePfp').checked = items.hidePfp; 
-      document.getElementById('sheets').checked = items.sheets; 
 
       changeStyleMode()
     }

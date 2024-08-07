@@ -1,7 +1,5 @@
 
-
 var keuzeUI = false;
-var sheetsUI = false;
 
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date);
@@ -34,18 +32,10 @@ const init3 = function() {
     
     //~ Keuze plattegrond
     chrome.storage.sync.get(
-      { keuzeBtn: true, darkMode: false , sheets: false },
+      { keuzeBtn: true, darkMode: false },
       (items) => {
         if (items.keuzeBtn) {
           
-          sheetsUI = false
-          console.info(sheetsUI)
-          const customButtonSheets = document.getElementById("customButtonSheets");
-          if (customButtonSheets) {
-            customButtonSheets.classList.remove("customButtonClicked");
-          }
-          ////document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
-
           /// Keuze page
           const mainView = document.querySelector("div.view.ng-scope")
           const coverDivKeuze = document.createElement("div")
@@ -111,10 +101,6 @@ const init3 = function() {
                 button.classList.add("nonCustomButtonNotClicked")
               }
             })
-
-            if (items.sheets) {
-              document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
-            }
             
           };
           
@@ -127,132 +113,17 @@ const init3 = function() {
           for (const link of buttonsInListA) {
             if (!link.classList.contains("customButton")) {
               link.onclick = function(event) {
-                if (keuzeUI) {
-                  event.preventDefault();
-                  keuzeUI = false;
-                  link.classList.remove("nonCustomButtonNotClicked")
-                  document.querySelector("body > div.container").style.paddingRight = "8px"
-                  document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
-                }else if (sheetsUI) {
-                  event.preventDefault();
-                  sheetsUI = false;
-                  link.classList.remove("nonCustomButtonNotClicked")
-                  document.querySelector("body > div.container").style.paddingRight = "8px"
-                  document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
-                }
+                event.preventDefault();
+                keuzeUI = false;
+                link.classList.remove("nonCustomButtonNotClicked")
+                document.querySelector("body > div.container").style.paddingRight = "8px"
+                document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
               }
             }
             
           }
         }
 
-
-        if (items.sheets) {
-
-          keuzeUI = false
-          console.info(keuzeUI)
-          const customButtonKeuze = document.getElementById("customButtonKeuze")
-          if (customButtonKeuze) {
-            customButtonKeuze.classList.remove("customButtonClicked");
-          }
-          ////document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
-
-          /// Sheets page
-          const mainView = document.querySelector("div.view.ng-scope")
-          const coverDivSheets = document.createElement("div")
-
-          coverDivSheets.id = "coverDivSheets"
-          coverDivSheets.style.position = "relative"
-          coverDivSheets.style.width = "100%"
-          coverDivSheets.style.height = "100%"
-          coverDivSheets.style.display = "none"
-          coverDivSheets.style.justifyContent = "center"
-          coverDivSheets.style.alignItems = "center"
-          mainView.parentElement.appendChild(coverDivSheets)
-
-              
-
-          /// Define button
-          const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
-          const newButtonList = document.createElement("li");
-          buttonsSideList.appendChild(newButtonList)
-
-          const newButton = document.createElement("a")
-          newButton.innerHTML = `<i class="far ng-scope fa-table" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Sheets</span>`
-              
-          newButton.id = "customButtonSheets"
-          newButton.classList.add("customButton")
-          newButton.style.borderRadius = "6px"
-
-          /// Sheets plattegrond button onclick
-          newButton.onclick = function(event) {
-
-            /// Make the iframe if its not there yet
-            if (document.getElementById("iframeSheets") != null) {
-              // do absolutely nothing                  
-            } else {
-              const iframeSheets = document.createElement("iframe")
-
-              iframeSheets.src = "https://dribbble.com/shots/20448703-TimeTracker-Settings-Page"
-
-              iframeSheets.id = "iframeSheets"
-              iframeSheets.style.width = "100%"
-              iframeSheets.style.height = "100%"
-              coverDivSheets.appendChild(iframeSheets)
-            }
-
-            /// Show UI
-            event.preventDefault();
-            sheetsUI = true;
-
-            document.querySelector("body > div.container").style.paddingRight = "0"
-            
-            /// Button darker
-            this.classList.add("customButtonClicked")
-
-            /// All other buttons lighter
-            const sideButtons = document.querySelectorAll(".main-menu>li>a")
-
-            sideButtons.forEach(button => {
-              if (!button.classList.contains("customButton")) {
-                button.classList.add("nonCustomButtonNotClicked")
-              }
-            })
-
-            if (items.keuzeBtn) {
-              document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
-            }
-            
-          };
-          
-          /// Append button
-          newButtonList.appendChild(newButton);
-
-          /// Do things when pressing other buttons (ie revert some shit and change dark button)
-          const buttonsInListA = buttonsSideList.querySelectorAll("li a")
-
-          for (const link of buttonsInListA) {
-            if (!link.classList.contains("customButton")) {
-              link.onclick = function(event) {
-                if (keuzeUI) {
-                  event.preventDefault();
-                  keuzeUI = false;
-                  link.classList.remove("nonCustomButtonNotClicked")
-                  document.querySelector("body > div.container").style.paddingRight = "8px"
-                  document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
-                }else if (sheetsUI) {
-                  event.preventDefault();
-                  sheetsUI = false;
-                  link.classList.remove("nonCustomButtonNotClicked")
-                  document.querySelector("body > div.container").style.paddingRight = "8px"
-                  document.getElementById("customButtonSheets").classList.remove("customButtonClicked")
-                }
-                
-              }
-            }
-            
-          }
-        }
       }
     );
       
@@ -332,15 +203,9 @@ var update100ms = window.setInterval(function(){
   if (keuzeUI) {
     divToHide.style.display = "none"
     coverDivKeuze.style.display = "flex"
-    coverDivSheets.style.display = "none"
-  }else if (sheetsUI) {
-    divToHide.style.display = "none"
-    coverDivKeuze.style.display = "none"
-    coverDivSheets.style.display = "flex"
-  }else {
+  } else {
     divToHide.style.display = "block"
     coverDivKeuze.style.display = "none"
-    coverDivSheets.style.display = "none"
   }
 
   /// Studiewijzers grid
