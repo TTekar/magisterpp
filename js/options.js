@@ -54,12 +54,12 @@ document.querySelectorAll("#main label input").forEach((input) => {
   input.addEventListener('change', saveOptions)
 })
 
-// document.getElementById('darkMode').addEventListener('change', saveOptions)
-// document.getElementById('keuzeBtn').addEventListener('change', saveOptions)
-// document.getElementById('cijfers').addEventListener('change', saveOptions)
-// document.getElementById('studiewijzersGrid').addEventListener('change', saveOptions)
-// document.getElementById('hideHelpBtn').addEventListener('change', saveOptions)
-// document.getElementById('inlogText').addEventListener('change', saveOptions)
+//// document.getElementById('darkMode').addEventListener('change', saveOptions)
+//// document.getElementById('keuzeBtn').addEventListener('change', saveOptions)
+//// document.getElementById('cijfers').addEventListener('change', saveOptions)
+//// document.getElementById('studiewijzersGrid').addEventListener('change', saveOptions)
+//// document.getElementById('hideHelpBtn').addEventListener('change', saveOptions)
+//// document.getElementById('inlogText').addEventListener('change', saveOptions)
 
 
 document.getElementById("advancedSettingsA").onclick = function(event) {
