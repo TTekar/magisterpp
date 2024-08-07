@@ -1274,6 +1274,49 @@ html body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item:hover
 
 
 
+/*~ Leermiddelen */
+
+html #idWeergave > div > div > div > div.block > div.content > form > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #idWeergave > div > div > div > div.block > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #idWeergave > div > div > div > div.block > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+html #leermiddelen-container > dna-page-header > dna-button-bar > dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table {
+    border: none;
+}
+
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table > thead > tr > th {
+    border-color: var(--mid-gray);
+    background-color: var(--mooie-bg-color-hover);
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table > tbody > tr,
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table > tbody > tr > td,
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table > tbody > tr > td > a {
+    border-color: var(--mid-gray);
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
 
 
 
