@@ -116,7 +116,6 @@ html #agenda-widget > div > footer.endlink {
 html #agenda-widget > div > footer.endlink > a {
     color: var(--mooie-text-color);
     text-decoration: underline dashed var(--mid-gray);
-    
 }
 
 html #agenda-widget .list {
@@ -669,11 +668,11 @@ html .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li.k-state-hove
 
 /*? Containers */
 
-html [id$="-container"] > dna-page-header > span {
+html [id$="-container"] > dna-page-header  span {
     color: var(--mooie-text-color);
 }
 
-html [id$="-container"] > dna-page-header > dna-button-bar > dna-button:not(:last-child):hover {
+html [id$="-container"]  dna-page-header  dna-button-bar  dna-button:hover {
     background-color: var(--mooie-bg-color-hover);
 }
 
@@ -1336,4 +1335,130 @@ html body > div.container > div.view.ng-scope > mg-leverancier-overzicht > div >
 
 html #no-leveranciers-warning {
     background-color: var(--mooie-bg-color-mid);
+}
+
+
+/*~ Profiel */
+
+#profiel-container > section .block {
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-radius: 15px;
+}
+
+#profiel-container > section .block > h3 {
+    color: var(--mooie-text-color);
+    border: none;
+    box-shadow: none;
+}
+
+#profiel-container > section .block > .content {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    box-shadow: none;
+    border: none;
+}
+
+#profiel-container > section .block > .content * {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+#profiel-container > section .block > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+#profiel-container > section .block > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+
+/*~ Portfoliodocumenten */
+
+html #portfoliodocumenten-container > section > div > div {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+html #portfoliodocumenten-container > section > div > div > div  ul {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border: none !important;
+    color: var(--mooie-text-color);
+}
+
+html #portfoliodocumenten-container > section > div > div > div  ul > li {
+    border-color: var(--mid-gray);
+}
+
+html #portfoliodocumenten-container > section > div > div > div  ul  .k-state-hover > a {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color);
+}
+
+html #portfoliodocumenten-container > section > div > div > div  ul  .k-state-selected > a {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color);
+}
+
+html #portfoliodocumenten-container > section > div > div.col.double-col.ng-isolate-scope > div > div > div > h3 {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #portfoliodocumenten-container > section > div > div.col.double-col.ng-isolate-scope > div > div > div > .empty-message {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #portfoliodocumenten-container > section > div > div.col.double-col.ng-isolate-scope > div > div > div > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #portfoliodocumenten-container > section > div > div.col.double-col.ng-isolate-scope > div > div > div > ul > li > a:hover {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+}
+
+
+html #idBronnen .block > .sources > h3 {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #idBronnen .block > .sources > div > ul {
+    border: none;
+}
+
+html #idBronnen .block > .sources > div > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html #idBronnen .block > .sources > div > ul > li > a {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #idBronnen .block > .sources > div > ul > li > a:hover {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #idBronnen .block > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #idBronnen .block > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
 }
