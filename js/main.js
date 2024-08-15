@@ -73,9 +73,9 @@ const init3 = function() {
               const iframeKeuze = document.createElement("iframe")
 
               if (items.darkMode) {
-                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magDark"
+                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magDark&sidebar=1"
               }else {
-                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magLight"
+                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magLight&sidebar=1"
               }
 
               iframeKeuze.id = "iframeKeuze"
