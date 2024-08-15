@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Options</title>
+    <link rel="stylesheet" href="../css/optionsPage/darkOptions.css" />
+    <link
+      id="lightModeStylesheet"
+      rel="stylesheet"
+      href="../css/optionsPage/lightOptions.css"
+      disabled
+    />
+  </head>
+  <body>
+    <div id="main">
+      <label>
+        Dark Mode
+        <label class="switch">
+          <input type="checkbox" id="darkMode" />
+          <span class="slider"></span>
+        </label>
+      </label>
+
+      <label>
+        Keuze Plattegrond
+        <label class="switch">
+          <input type="checkbox" id="keuzeBtn" />
+          <span class="slider"></span>
+        </label>
+      </label>
+
+      <label>
+        Studiewijzers Grid
+        <label class="switch">
+          <input type="checkbox" id="studiewijzersGrid" />
+          <span class="slider"></span>
+        </label>
+      </label>
+
+      <label>
+        Hide help button
+        <label class="switch">
+          <input type="checkbox" id="hideHelpBtn" />
+          <span class="slider"></span>
+        </label>
+      </label>
+
+      <label>
+        Inlog custom tekst
+        <input class="textInput" type="text" id="inlogText" value="Bonjour" />
+      </label>
+
+      <a id="advancedSettingsA">Advanced</a>
+
+      <div id="advancedSettings" style="display: none">
+        <label>
+          Hide pfp
+          <label class="switch">
+            <input type="checkbox" id="hidePfp" />
+            <span class="slider"></span>
+          </label>
+        </label>
+
+        <label>
+          Cijfers &lt;v
+          <label class="switch">
+            <input type="checkbox" id="cijfers" />
+            <span class="slider"></span>
+          </label>
+        </label>
+      </div>
+    </div>
+
+    <script src="../js/options.js"></script>
+  </body>
+</html>

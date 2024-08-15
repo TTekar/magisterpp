@@ -1,0 +1,1464 @@
+html body {
+    --mooie-bg-color: #1F2228;
+    --mooie-bg-color-mid: #191C21;
+    --mooie-bg-color-hover: #171A1E;
+    --mooie-text-color: #fff;
+    --mooie-text-color-white: #fff;
+
+    --blue-text-color-light: #a2c5e5;
+
+    background-color: var(--mooie-bg-color);
+    --dna-primary: var(--mooie-text-color);
+    --dna-secondary: transparent;
+    --dna-background: transparent;
+    
+    --background-1: #0065A0; /*/ iets lichter dan licht */
+    --primary-background: #0E4772; /*/ licht */
+    --secondary-background: #023660; /*/ donker */
+    --secondary-background-darker: #14212d; /*/ --background-secondary with opacity .2 */
+    
+
+    --mid-gray: #7f7f7fff;
+
+    --cijfers-background-opacity: .15;
+}
+
+html ::selection {
+    background-color: #7f7f7f3f;
+}
+
+html .content-container {
+    border: none;
+} 
+
+/*? Scroll bar */
+
+html ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+  
+html ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #0002;
+}
+   
+html ::-webkit-scrollbar-thumb {
+    background: var(--primary-background); 
+    border-radius: 5px;
+}
+  
+html ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-background); 
+}
+
+/*~ Nav bar */
+
+html body > div.container > div.menu-host.loading > nav > div.menu-footer { /* Inklappen <a> background */
+    background-color: var(--primary-background);
+    border-top: transparent;
+}
+
+html body > div.container > div.menu-host.loading > nav > div.menu-container > ul > li > a.customButton:hover {
+    background-color: var(--secondary-background);
+}
+
+html body > div.container > div.menu-host.loading > nav > div.menu-container > ul > li > .customButtonClicked {
+    background-color: var(--secondary-background);
+}
+
+html body > div.container > div.menu-host.loading > nav > div.menu-container > ul > li > .nonCustomButtonNotClicked {
+    background-color: var(--primary-background) !important;
+}
+
+html body > div.container > div.menu-host.loading > nav > div.menu-container > ul > li > .nonCustomButtonNotClicked:hover {
+    background-color: var(--secondary-background) !important;
+}
+
+
+/*~ Vandaag */
+
+/* html .vandaag-drag-hint {  HIDE DRAG
+    display: none !important;
+} */
+
+/*/ Agenda */
+
+html #agenda-widget > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #agenda-widget > div > img.loading-image {
+    display: none !important;
+}
+
+html #agenda-widget > div > h3 {
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #agenda-widget > div > div.content {
+    background-color: inherit;
+}
+
+html #agenda-widget > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #agenda-widget > div > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+html #agenda-widget .list {
+    border: none;
+}
+
+html #agenda-widget .list li a{
+    color: var(--mooie-text-color);
+}
+
+html #agenda-widget .list li a:hover{
+    background-color: var(--mooie-bg-color-hover) !important;
+}
+
+html #agenda-widget .list li {
+    background-color: var(--mooie-bg-color-mid);
+    border-top: none;
+}
+
+/* html #agenda-widget .agenda-list li.alert span.time:before {
+    color: #1680b0;
+    content: "";
+    margin: 0;
+}
+
+html #agendawidgetlistcontainer .les-bottom .icon-block>.text-icon.icon-only:first-of-type {
+    display: none;
+}
+
+html #agenda-widget .agenda-list li.alert span.time:after {
+    display: none;
+} */
+
+html #agendawidgetlistcontainer li > a > div > div.les-info > span.alt-nrblock.ng-scope > i {
+    color: var(--mooie-text-color) !important;
+}
+
+html #agendawidgetlistcontainer li > a > div > div.icon-block span.agenda-text-icon {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mooie-text-color);
+}
+
+
+
+
+/*/ Mededelingen */
+
+html #berichten-widget > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #berichten-widget > div > img.loading-image {
+    display: none !important;
+}
+
+html #berichten-widget > div > h3 {
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #berichten-widget > div > h3 > b {
+    color: var(--mooie-text-color);
+    font-weight: normal;
+    font-size: 1rem;
+    font-style: normal;
+}
+
+html #berichten-widget > div > div.content {
+    background-color: inherit;
+}
+
+html #berichten-widget > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #berichten-widget > div > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+    
+}
+
+html #berichten-widget .list {
+    border: none;
+}
+
+html #berichten-widget .list li a{
+    color: var(--mooie-text-color);
+}
+
+html #berichten-widget .list li a:hover{
+    background-color: var(--mooie-bg-color-hover) !important;
+}
+
+html #berichten-widget .list li {
+    background-color: var(--mooie-bg-color-mid);
+    border-top: none;
+}
+
+
+/*/ Cijfers */
+
+html #cijfers-leerling > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+
+html #cijfers-leerling > div > img.loading-image {
+    display: none !important;
+}
+
+html #cijfers-leerling > div > h3 {
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #cijfers-leerling > div > h3 > b {
+    color: var(--mooie-text-color);
+    font-weight: normal;
+    font-size: 1rem;
+    font-style: normal;
+}
+
+html #cijfers-leerling > div > div.content {
+    background-color: inherit;
+}
+
+html #cijfers-leerling > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #cijfers-leerling > div > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+    
+}
+
+html #cijfers-leerling .list {
+    border: none;
+}
+
+html #cijfers-leerling .list li a{
+    color: var(--mooie-text-color);
+}
+
+html #cijfers-leerling .list li a:hover{
+    background-color: var(--mooie-bg-color-hover) !important;
+}
+
+html #cijfers-leerling .list li {
+    background-color: var(--mooie-bg-color-mid);
+    border-top: none;
+}
+
+html #cijfers-leerling .last-grade {
+    color: #fff;
+    background-color: var(--primary-background);
+}
+
+html #cijfers-leerling .no-data .last-grade {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #cijfers-leerling > div > div > ul.list.arrow-list {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+/*/ Notificaties */
+
+html #notificatie-widget > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #notificatie-widget > div > img.loading-image {
+    display: none !important;
+}
+
+html #notificatie-widget > div > h3 {
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #notificatie-widget > div > div.content {
+    background-color: inherit;
+}
+
+html #notificatie-widget > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #notificatie-widget > div > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+html #notificatie-widget .list {
+    border: none;
+}
+
+html #notificatie-widget .list li a{
+    color: var(--mooie-text-color);
+}
+
+html #notificatie-widget .list li a:hover{
+    background-color: var(--mooie-bg-color-hover) !important;
+}
+
+html #notificatie-widget .list li {
+    background-color: var(--mooie-bg-color-mid);
+    border-top: none;
+}
+
+/*/ Edit toggle button */
+
+html #edit-toggle-btn:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+/*/ Edit vandaag */
+
+html #idWidgets > div > div > div > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #idWidgets > div > div > div > div > h3 > b {
+    text-align: center;
+    color: var(--mooie-text-color);
+    font-size: 1rem;
+}
+
+html #idWidgets > div > div > div > div > h3 {
+    border: none;
+    box-shadow: none;
+}
+
+html #idWidgets > div > div > div > div > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #idWidgets > div > div > div > div > div > ul > li {
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #idWidgets > div > div > div > div > div > ul > li:hover {
+    border: none !important;
+    outline: none !important;
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #idWidgets > div > div > div > div > div > div > span::before {
+    color: var(--mooie-text-color);
+}
+
+html #idWidgets > div > div > div > div > div > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none !important;
+}
+
+html #idWidgets > div > div > div > div > div > div.drag-over {
+    background-color: var(--mooie-bg-color-mid) !important;
+}
+
+html body > li.widget-drag-hint {
+    color: var(--mooie-text-color);
+}
+
+/*/ Droppable */
+
+#vandaag-container .droppable {
+    background-color: var(--mooie-bg-color) !important;
+    border: 2px dotted var(--mid-gray);
+}
+
+#vandaag-container .droppable.drag-over {
+    background-color: var(--mooie-bg-color) !important;
+    border: 2px solid var(--mid-gray);
+}
+
+
+/*~ Agenda */
+
+html .agenda-text-icon.outline {
+    background-color: inherit;
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+/*? Side panel */
+
+html #huiswerk-info span, html #huiswerk-info-text {
+    color: var(--mooie-text-color);
+}
+
+html #afsprakenlijst-container > aside > div.head-bar > ul.tabs {
+    border: none;
+}
+
+html #afsprakenlijst-container > aside > div.head-bar > ul.tabs > li > a {
+    color: var(--mooie-text-color);
+}
+
+html #agenda-container > aside > div.head-bar > ul.tabs > li > a {
+    color: var(--mooie-text-color);
+}
+
+
+/*? Kalender */
+html .k-calendar {
+    background-color: var(--mooie-bg-color-mid);
+    border: 2px solid var(--mooie-bg-color-mid);
+    border-radius: 5px;
+}
+
+html .k-calendar > .k-header {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html .k-calendar > .k-header > .k-nav-fast {
+    color: var(--mooie-text-color);
+}
+
+html .k-calendar > .k-content {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html .k-calendar thead th {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    font-weight: normal;
+}
+
+html .k-calendar tbody .k-other-month {
+    opacity: 0.3;
+    background: none;
+}
+
+html .k-calendar td.range-select {
+    background-color: var(--primary-background) !important;
+    border-top: none;
+    border-bottom: none;
+}
+
+html .k-calendar .k-header .k-state-hover {
+    background-image: none !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none;
+}
+
+html .k-calendar .k-content tbody td.k-state-hover{
+    background: var(--mooie-bg-color-hover) !important;
+    border-color: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+html .k-calendar .k-content tbody td.k-state-hover a {
+    color: var(--mooie-text-color) !important;
+    background-image: none;
+    background: var(--mooie-bg-color-hover) !important;
+}
+
+/*? Side panel */
+/*? idDetails idWeergave idBerekening */
+
+html sm-tab[id^="id"] div.block > div.content dl {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html sm-tab[id^="id"] div.block > div.content dl dd, 
+html sm-tab[id^="id"] div.block > div.content dl dt {
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+html sm-tab[id^="id"] div.block {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 5px;
+}
+
+html sm-tab[id^="id"] div.block h3 {
+    border: none;
+    color: var(--mooie-text-color);
+    text-align: center;
+    box-shadow: none;
+}
+
+html sm-tab[id^="id"] div.block > .content {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html sm-tab[id^="id"] div.block > .content label {
+    color: var(--mooie-text-color);
+}
+
+html sm-tab[id^="id"] div.block > .content > form {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html sm-tab[id^="id"] div.block > .content > form input[type="radio"]~label {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mid-gray);
+}
+
+html sm-tab[id^="id"] div.block > .content > form input[type="checkbox"]~label > span {
+    background-color: var(--mooie-bg-color-mid);
+    border: 1px solid var(--mid-gray);
+}
+
+html sm-tab[id^="id"] div.block > .content > form input[type="checkbox"]~label > span:hover {
+    border: 1px solid var(--mooie-text-color);
+}
+
+html sm-tab[id^="id"] div.block > .content table tr,
+html sm-tab[id^="id"] div.block > .content table tr th,
+html sm-tab[id^="id"] div.block > .content table tr td {
+    background-color: var(--mooie-bg-color-mid);
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--mooie-text-color);
+}
+
+html sm-tab[id^="id"] div.block > .content > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html sm-tab[id^="id"] div.block > .content > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+
+
+/*? fancy-select */
+
+/*/ Dropdown */
+
+html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mooie-bg-color-hover);
+}
+
+html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-active {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mooie-bg-color-hover);
+}
+
+html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default.k-state-hover {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color) !important;
+}
+
+html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default span.k-input {
+    color: var(--mooie-text-color);
+}
+
+/*/ List popup */
+
+html .k-list-container.k-popup {
+    border: none !important;
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html .k-list-container.k-popup > div > ul.k-list {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+html .k-list-container.k-popup > div > ul.k-list li.k-item {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    border: none !important;
+}
+
+/*/ Multiselect */
+
+html .fancy-select > .k-multiselect {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    box-shadow: none;
+    border: none;
+}
+
+html .fancy-select > .k-multiselect.k-state-hover {
+    border: none !important;
+}
+
+html .fancy-select > .k-multiselect > .k-multiselect-wrap {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    box-shadow: none;
+    border: none;
+}
+
+html .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mid-gray);
+}
+
+html .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li.k-state-hover {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color) !important;
+    border: 1px solid var(--mooie-text-color) !important;
+}
+
+
+/*? Containers */
+
+html [id$="-container"] > dna-page-header  span {
+    color: var(--mooie-text-color);
+}
+
+html [id$="-container"]  dna-page-header  dna-button-bar  dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html [id$="-container"] > section > div,
+html [id$="-container"] > section > div > div.loading-overlay.ng-isolate-scope,
+html [id$="-container"] > section > div > div.loading-overlay {
+    background-color: var(--mooie-bg-color);
+}
+
+html [id$="-container"] > section > div.content-container,
+html [id$="-container"] > aside > .content-container,
+html [id$="-container"] > aside > .head-bar > ul.tabs {
+    border: none;
+}
+
+html [id$="-container"] > aside > .head-bar > ul.tabs li a {
+    color: var(--mooie-text-color);
+}
+
+/*? Icon and text for containers */
+
+html [id$="-container"] > section > div > div.loading-overlay > div::before {
+    width: auto;
+    height: 125px;
+    line-height: 125px;
+    font-size: 109px;
+    color: var(--mid-gray);
+}
+
+html [id$="-container"] > section > div > div.loading-overlay > div > p {
+    color: var(--mid-gray);
+}
+
+
+/*~ Agenda- */
+
+/*/ Afspraak informatie */
+
+html #agenda-lesdashboard-container > section > div {
+    border: none;
+}
+
+html #agenda-lesdashboard-container > dna-page-header > dna-button-bar > dna-overlay-trigger > dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #huiswerkOmschrijving {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+    border-radius: 15px;
+}
+
+html #huiswerkOmschrijving h3 {
+    border: none;
+    box-shadow: none;
+}
+
+html #huiswerkOmschrijving h3 b {
+    color: var(--mooie-text-color);
+}
+
+html #huiswerkOmschrijving h3 .block-menu {
+    border: none;
+    display: none; /* hide huiswerk fullscreen */
+}
+
+html #huiswerkOmschrijving .attachment-bar {
+    border: none;
+    box-shadow: none;
+}
+
+html #huiswerkOmschrijving .content {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #huiswerkOmschrijving .content p {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #huiswerkOmschrijving footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+
+/*/ Nieuwe afspraak */
+
+html #agenda-afspraak-bewerken-container > section > div {
+    border: none;
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset label {
+    color: var(--mooie-text-color);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset .radio input[type=radio]~label {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset input {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset  span.k-widget.k-datepicker.k-header.ng-binding > span {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border: none !important;
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset div > span.check > label > span {
+    background-color: var(--mooie-bg-color-hover);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset > ul > li.multiple-fancy-box span > span {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+
+/*/ Toon selectie */
+
+html #showHuiswerk1 ~ label, html #showHuiswerk2 ~ label {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+/*/ Herhalingspatroon */
+
+html #recurrencePatternText {
+    color: var(--mooie-text-color);
+}
+
+/*/ Afsprakenlijst */
+
+html #afsprakenLijst {
+    background-color: var(--mooie-bg-color);
+    border: none;
+    outline: none;
+}
+
+html #afsprakenLijst > div.k-grid-content > table {
+    border: none;
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr {
+    background-color: var(--mooie-bg-color);
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr.k-grouping-row td {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr td {
+    background-color: var(--mooie-bg-color);
+    border: none;
+    border-bottom: 1px solid var(--mid-gray);
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr td span {
+    color: var(--mooie-text-color);
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr td.icon-column span {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mooie-text-color);
+}
+
+html #afsprakenLijst > div.k-grid-content > table tr td .alt-nrblock i {
+    color: var(--mooie-text-color) !important;
+}
+
+
+/*~ Afwezigheid */
+
+html #aanwezigheid > table {
+    border: none;
+}
+
+/*/ Headers  */
+
+html #aanwezigheid > table > thead > tr:hover {
+    box-shadow: none;
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #aanwezigheid > table > thead > tr > th {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #aanwezigheid > table > thead > tr > th > span {
+    color: var(--mid-gray);
+}
+
+/*/ Bodies  */
+
+html #aanwezigheid > table > tbody > tr:hover {
+    box-shadow: none;
+    background-color: var(--mooie-bg-color);
+}
+
+html #aanwezigheid > table > tbody > tr > td {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+/*/ Afwezigheid totalen  */
+
+html #aanwezigheid-totalen div.block {
+    background-color: var(--mooie-bg-color-hover);
+    border: none;
+}
+
+html #aanwezigheid-totalen div.block > h3 {
+    color: var(--mooie-text-color);
+    border: none;
+    box-shadow: none;
+    font-size: 1rem;
+}
+
+html #aanwezigheid-totalen div.block > div.content {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #aanwezigheid-totalen div.block > div.content > ul.list {
+    border: none;
+}
+
+html #aanwezigheid-totalen div.block > div.content > ul.list > li {
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+
+/*~ Cijferoverzichtgrid */
+
+html #cijfers-container > dna-page-header > dna-button-group > dna-button:nth-child(1):hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #cijferslaatstbehaalderesultaten-uitgebreideweergave:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+html #cijfers-container > .main > div.content-container-cijfers {
+    border: none;
+    background-color: var(--mooie-bg-color);
+}
+
+html #cijferoverzichtgrid {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color);
+}
+
+/*/ Header  */
+
+html #cijferoverzichtgrid > .k-grid-header {
+    border: 1px solid var(--mooie-bg-color-hover);
+    background-color: var(--mooie-bg-color-mid) !important;
+}
+
+html #cijferoverzichtgrid > .k-grid-header table > thead > tr > th {
+    background: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    font-weight: 500;
+    border-color: var(--mid-gray);
+}
+
+html #cijferoverzichtgrid > .k-grid-header table > thead > tr > th > a {
+    color: var(--mooie-text-color);
+    font-weight: 500;
+}
+
+/*/ Body  */
+
+html #cijferoverzichtgrid > .k-grid-content {
+    border: 1px solid var(--mooie-bg-color-hover);
+    background-color: var(--mooie-bg-color-mid) !important;
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr {
+    background: var(--mooie-bg-color-mid);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td {
+    border: 1px solid var(--mid-gray);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td:nth-child(2) {
+    border-left: none;
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td.k-state-selected {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td.k-state-selected > span.grade {
+    color: var(--mooie-text-color);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade {
+    background-color: var(--mooie-bg-color);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.empty {
+    background: var(--mooie-bg-color) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAGElEQVQImWO4evXqfwYoQGZjCBCWpJ5RAEVOKenK4yvqAAAAAElFTkSuQmCC) repeat !important;
+    opacity: var(--cijfers-background-opacity);
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.gemiddeldecolumn {
+    background-color: var(--secondary-background-darker) !important; 
+}
+
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.herkansingKolom {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+
+
+
+/*~ Examen */
+
+html section.main > .content-container > .examen-widget > .examen-card {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html section.main > .content-container > .examen-widget > .examen-card > .child-widget {
+    background-color: var(--mooie-bg-color-hover);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+
+
+/*~ Studiewijzers */
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > h3 {
+    border: none;
+    box-shadow: none;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > h3 > span.color-label {
+    display: none;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > h3 > b {
+    color: var(--mooie-text-color);
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 1rem;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > h3 > strong {
+    color: var(--mid-gray);
+    font-size: .75rem;
+    padding-bottom: 5px;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-radius: 0 0 15px 15px;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > div.clearfix {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-left: 4px solid var(--primary-background);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > div.clearfix p {
+    color: var(--mooie-text-color);
+    font-size: .75rem !important;
+    line-height: 1rem;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-left: 4px solid var(--primary-background);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li {
+    border-color: var(--mid-gray);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li span {
+    color: var(--mid-gray);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border-radius: 0 0 15px 15px;
+    border: none;
+    box-shadow: none;
+}
+
+/*/ Side list  */
+
+#idStudiewijzers > div > div > div.block > div.content > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    outline: none;
+    border-color: var(--mid-gray);
+}
+
+#idStudiewijzers > div > div > div.block > div.content > ul > li:hover {
+    background-color: var(--mooie-bg-color-hover);
+    outline: none;
+}
+
+#idStudiewijzers > div > div > div.block > div.content > ul > li > a {
+    color: var(--mooie-text-color);
+}
+
+html #idMultimedia div.block > div  * {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+
+
+
+/*~ Opdrachten */
+
+html #opdrachten-container > section > div > dna-card.side-widget {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+html #opdrachten-container > section > div > dna-card.side-widget label {
+    color: var(--mooie-text-color);
+}
+
+html #opdrachten-container > section > div > div.content-container > .loading-overlay {
+    background-color: var(--mooie-bg-color);    
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead {
+    background-color: var(--mooie-bg-color);    
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead > tr,
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead > tr:hover {
+    box-shadow: none;
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead > tr > th {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > thead > tr > th > span {
+    color: var(--mid-gray);
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > tbody > tr:hover {
+    box-shadow: none;
+    background-color: var(--mooie-bg-color);
+}
+
+html #opdrachten-container > section > div > div.content-container > .scroll-table > table > tbody > tr > td {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+/*/ Details */
+
+html #opdracht-detail > dna-card {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html #opdracht-detail > dna-card .attachments a {
+    color: var(--mooie-text-color);
+}
+
+html #opdracht-detail > dna-card .disabled {
+    color: var(--mid-gray) !important;
+}
+
+html #opdracht-detail ~ .side-widget .versions > ul {
+    border: 1px solid var(--mid-gray);
+    outline: none;
+}
+
+html #opdracht-detail ~ .side-widget .versions > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+
+/*~ Bronnen */
+
+html #mappen,
+html #mappen > .widget > .block,
+html #mappen > .widget > .block > .content-auto ul > li,
+html #mappen > .widget > .block > .content-auto ul > li a {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+html #mappen > .widget > .block > h3 {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #mappen ~ .rest-column {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #bestanden {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+html #bestanden > .widget > .block > h3,
+html #bestanden > .widget > .block > span {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    border: none;
+    border-color: var(--mid-gray);
+}
+
+html #bestanden > .widget > .block > div {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #bestanden > .widget > .block > div > p {
+    color: var(--mid-gray);
+    border-color: var(--mid-gray);
+}
+
+html #bestanden > .widget > .block > div > ul.list > li,
+html #bestanden > .widget > .block > div > ul.list > li  a{
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+
+html #bronnen-container > dna-page-header > dna-button-bar > dna-overlay-trigger > dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+html body > dna-overlay-container > dna-overlay > dna-menu {
+    background-color: var(--mooie-bg-color-hover);
+    border: none;
+}
+
+html body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item {
+    color: var(--mooie-text-color);
+}
+
+html body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+
+/*~ Leermiddelen */
+
+html #idWeergave > div > div > div > div.block > div.content > form > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #idWeergave > div > div > div > div.block > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #idWeergave > div > div > div > div.block > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+html #leermiddelen-container > dna-page-header > dna-button-bar > dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table {
+    border: none;
+}
+
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table > thead > tr > th {
+    border-color: var(--mid-gray);
+    background-color: var(--mooie-bg-color-hover);
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table > tbody > tr,
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table > tbody > tr > td,
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table > tbody > tr > td > a {
+    border-color: var(--mid-gray);
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+
+
+/*~ Bestellen */
+
+html body > div.container > div.view.ng-scope > mg-leverancier-overzicht > div > section > div {
+    border: none;
+}
+
+html body > div.container > div.view.ng-scope > mg-leverancier-overzicht > div > section > div > div > div {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html body > div.container > div.view.ng-scope > mg-leverancier-overzicht > div > section > div > div > div * {
+    color: var(--mooie-text-color);
+}
+
+html #no-leveranciers-warning {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+
+/*~ Profiel */
+
+#profiel-container > section .block {
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-radius: 15px;
+}
+
+#profiel-container > section .block > h3 {
+    color: var(--mooie-text-color);
+    border: none;
+    box-shadow: none;
+}
+
+#profiel-container > section .block > .content {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    box-shadow: none;
+    border: none;
+}
+
+#profiel-container > section .block > .content * {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+#profiel-container > section .block > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+#profiel-container > section .block > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+
+/*~ Portfoliodocumenten */
+
+html #portfoliodocumenten-container > section > div > div {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+html #portfoliodocumenten-container > section > div > div > div  ul {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border: none !important;
+    color: var(--mooie-text-color);
+}
+
+html #portfoliodocumenten-container > section > div > div > div  ul > li {
+    border-color: var(--mid-gray);
+}
+
+html #portfoliodocumenten-container > section > div > div > div  ul  .k-state-hover > a {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color);
+}
+
+html #portfoliodocumenten-container > section > div > div > div  ul  .k-state-selected > a {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color);
+}
+
+html #portfoliodocumenten-container > section > div > div.col.double-col.ng-isolate-scope > div > div > div > h3 {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #portfoliodocumenten-container > section > div > div.col.double-col.ng-isolate-scope > div > div > div > .empty-message {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #portfoliodocumenten-container > section > div > div.col.double-col.ng-isolate-scope > div > div > div > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #portfoliodocumenten-container > section > div > div.col.double-col.ng-isolate-scope > div > div > div > ul > li > a:hover {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+}
+
+
+html #idBronnen .block > .sources > h3 {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #idBronnen .block > .sources > div > ul {
+    border: none;
+}
+
+html #idBronnen .block > .sources > div > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html #idBronnen .block > .sources > div > ul > li > a {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #idBronnen .block > .sources > div > ul > li > a:hover {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #idBronnen .block > footer.endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #idBronnen .block > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}

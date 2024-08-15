@@ -16,6 +16,8 @@ html body {
     --secondary-background: #023660;
     
     --background-1: #0065A0; 
+
+    --mid-gray: #7f7f7fff;
 }
 
 html body {
@@ -215,6 +217,19 @@ html dna-search-input {
     color: var(--mooie-text-color) !important;
     
 }
+
+html body > app-root > app-berichten-overzicht > div.container > app-bericht-list {
+    border: none;
+}
+
+html body > app-root > app-berichten-overzicht > div.container > app-bericht-list > div {
+    background-color: var(--mooie-bg-color) !important;
+}
+
+html body > app-root > app-berichten-overzicht > div.container > app-bericht-list > cdk-virtual-scroll-viewport {
+    border: none !important;
+}
+
 
 
 /* html dna-search-input #dna-control-0 {
