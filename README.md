@@ -15,7 +15,7 @@ Een extensie die verandert hoe Magister eruitziet en nieuwe features toevoegt.
 - Wat andere kleine domme dingen
 
 De meeste van deze features kan je in de instellingen van de extensie aan en uit zetten. 
-Als je zelf ideeën hebt voor nieuwe features, kan je dat bij _[Issues](https://github.com/TTekar/magisterExtension/issues)_ zetten.
+Als je zelf ideeën hebt voor nieuwe features, kan je dat bij _[issues](https://github.com/TTekar/magisterExtension/issues)_ zetten.
 
 ## Installatie
 
