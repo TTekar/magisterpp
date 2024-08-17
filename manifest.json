@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name" : "Better Magister",
     "description": "Magister but just better.",
-    "version": "0.9.1",
+    "version": "0.10.0",
     "options_ui": {
         "page": "html/options.html",
         "open_in_tab": true
@@ -12,12 +12,14 @@
         "48": "/icons/48.png",
         "128": "/icons/128.png"
     },
-    "page_action": {
+    "action": {
+        "default_popup": "html/popupOptions.html",
         "default_icon": {
             "16": "/icons/16.png",
             "48": "/icons/48.png",
             "128": "/icons/128.png"
-        }
+        },
+        "default_title": "Instellingen openen"
     },
     "content_scripts": [{
         "matches": ["https://*.magister.net/*"],
@@ -40,11 +42,13 @@
     "permissions": [
         "storage",
         "tabs",
-        "https://*.magister.net/*"
-      ],
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "*://*.magister.net/*"
+    ],
     "background": {
-        "scripts": [
-            "js/bg.js"
-        ]
+        "service_worker": "js/service_worker.js"
     }
 }
