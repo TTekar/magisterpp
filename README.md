@@ -38,7 +38,8 @@ Dit is de makkelijkste en snelste manier om de nieuwste versie van de extensie t
 
 De keuze plattegrond is een nieuwe manier om alle keuzes weer te geven door gebruik te maken van een plattegrond van de school. Deze extensie voegt een kop toe om het makkelijker te maken om de keuzes te zien. Je kan de keuze plattegrond ook zien door naar https://jordanmlu.netlify.app/keuze te gaan.
 
-![keuzePlattegrond](https://github.com/user-attachments/assets/95daf9d5-ecc4-4826-a4ee-0dc5f740afab)
+![image](https://github.com/user-attachments/assets/49c6a26a-51e6-45fb-aeaa-86d40018c137)
+
 
 ## Bijdragen
 
