@@ -52,6 +52,48 @@ html ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-background); 
 }
 
+
+
+/*~ accounts.magister.net */
+
+html mip-root > mip-header > dna-overlay-trigger > dna-avatar {
+    color: var(--mooie-text-color);
+}
+
+html mip-root > main > mip-profile-page > section * {
+    color: var(--mooie-text-color) !important;
+}
+
+html dna-overlay-container > dna-overlay > dna-menu > dna-menu-item:focus {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+html mip-root > main > mip-profile-page > div > mip-username-and-password-card > dna-card {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html mip-root > main > mip-profile-page > div > mip-username-and-password-card > dna-card * {
+    color: var(--mooie-text-color);
+}
+
+html mip-root > main > mip-profile-page > div > div.card-col dna-card {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+html mip-root > main > mip-profile-page > div > div.card-col dna-card * {
+    color: var(--mooie-text-color);
+}
+
+html mip-root > main > mip-profile-page > div > div.card-col dna-card dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
 /*~ Nav bar */
 
 html body > div.container > div.menu-host.loading > nav > div.menu-footer { /* Inklappen <a> background */
