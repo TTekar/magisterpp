@@ -1462,3 +1462,211 @@ html #idBronnen .block > footer.endlink > a {
     color: var(--mooie-text-color);
     text-decoration: underline dashed var(--mid-gray);
 }
+
+
+
+/*~ Mijn Gegevens */
+
+#instellingen-container > section > div > form > div.content-container .card {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+#instellingen-container > section > div > form > div.content-container .card .photo img {
+    border-radius: 15px;
+}
+
+#instellingen-container > section > div > form > div.content-container .card .person-info * {
+    color: var(--mooie-text-color);
+}
+
+
+#instellingen-container > section > div > form > div.content-container .widget > .block {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > h3 {
+    color: var(--mooie-text-color);
+    box-shadow: none;
+    border: none;
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > h3 .question > a{
+    color: var(--mooie-text-color);
+}
+
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > div {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > div ul {
+    border: none;
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > div ul li {
+    border-color: var(--mid-gray);
+    background-color: var(--mooie-bg-color-mid);
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > div ul li * {
+    color: var(--mooie-text-color);
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > div > fieldset label {
+    color: var(--mooie-text-color);
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > div > fieldset input {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-hover);
+    border: none;
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > div > fieldset .check > label > span {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+
+#instellingen-container > section > div > form > div.content-container mg-toestemmings-antwoorden > .block {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+#instellingen-container > section > div > form > div.content-container mg-toestemmings-antwoorden > .block > h3 {
+    color: var(--mooie-text-color);
+    box-shadow: none;
+    border: none;
+}
+
+#instellingen-container > section > div > form > div.content-container mg-toestemmings-antwoorden > .block .answer-list > div {
+    color: var(--mooie-text-color);
+}
+
+#instellingen-container > section > div > form > div.content-container mg-toestemmings-antwoorden > .block .answer-list .last-modified-message {
+    color: var(--mid-gray);
+}
+
+#agenda-delen-widget > div > div > share-ical-link {
+    color: var(--mooie-text-color) !important;
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+#instellingen-container > section > div > form > div.content-container .widget > .block > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+
+/*/ Speech bubble */
+
+html .speech-bubble {
+    background-color: var(--mooie-bg-color-hover) !important;
+    color: var(--mooie-text-color) !important;
+    border-color: var(--mid-gray) !important;
+}
+
+html .triangle-border-container {
+    border-color: var(--mid-gray);
+}
+
+html .speech-triangle {
+    display: none !important;
+}
+
+
+/*/ Toestemming */
+
+html div.container > div.view.ng-scope > mg-toestemming-wijzigen > section.main > div.toestemmings-container > ng-container > ng-container > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+
+html div.container > div.view.ng-scope > mg-toestemming-wijzigen > section.main > div.toestemmings-container > ng-container > ng-container > div div.toestemming-header-text {
+    color: var(--mooie-text-color);
+}
+
+html div.container > div.view.ng-scope > mg-toestemming-wijzigen > section.main > div.toestemmings-container > ng-container > ng-container > div div.explanatory-text {
+    color: var(--mooie-text-color);
+}
+
+html div.container > div.view.ng-scope > mg-toestemming-wijzigen > section.main > div.toestemmings-container > ng-container > ng-container > div > mg-toestemmings-editor .toestemmings-control-group {
+    border: none;
+}
+
+html div.container > div.view.ng-scope > mg-toestemming-wijzigen > section.main > div.toestemmings-container > ng-container > ng-container > div > mg-toestemmings-editor .toestemmings-control-group > mg-toestemmings-control {
+    border-color: var(--mid-gray);
+}
+
+html div.container > div.view.ng-scope > mg-toestemming-wijzigen > section.main > div.toestemmings-container > ng-container > ng-container > div > mg-toestemmings-editor .toestemmings-control-group > mg-toestemmings-control > .answer-container {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html div.container > div.view.ng-scope > mg-toestemming-wijzigen > section.main > div.toestemmings-container > ng-container > ng-container > div > mg-toestemmings-editor .toestemmings-control-group > mg-toestemmings-control > .answer-container > div {
+    color: var(--mooie-text-color);
+}
+
+
+html div.container > div.view.ng-scope > mg-toestemming-wijzigen > section.main > div.toestemmings-container > ng-container > ng-container > div > mg-toestemmings-editor > ng-container > div > div.icl-card-footer > div.right-btns > button.icl-btn.icl-btn-link-primary.ng-binding.ng-scope {
+    color: var(--mooie-text-color);
+}
+
+
+
+/*~ User Menu */
+
+html #user-menu > span {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    color: var(--mooie-text-color);
+}
+
+html #user-menu > span::after {
+    border-right: 5px solid var(--mooie-bg-color-mid);
+}
+
+
+html #user-menu ~ .popup-menu {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #user-menu ~ .popup-menu > h3 {
+    color: var(--mooie-text-color);
+}
+
+html #user-menu ~ .popup-menu > ul > li > a {
+    color: var(--mooie-text-color);
+}
+
+
+
+/*? Toast */
+
+html .toasts > div {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+}
+
+html .toasts > div > span,
+html .toasts > div > em {
+    color: var(--mooie-text-color);
+}
+
+html .toasts > div > i {
+    background-color: var(--mooie-bg-color-hover);
+}
