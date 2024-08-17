@@ -15,7 +15,7 @@ Een extensie die verandert hoe Magister eruitziet en nieuwe features toevoegt.
 - Wat andere kleine domme dingen
 
 De meeste van deze features kan je in de instellingen van de extensie aan en uit zetten. 
-Als je zelf ideeën hebt voor nieuwe features, kan je dat bij _Issues_ zetten.
+Als je zelf ideeën hebt voor nieuwe features, kan je dat bij _[Issues](https://github.com/TTekar/magisterExtension/issues)_ zetten.
 
 ## Installatie
 
@@ -42,6 +42,6 @@ De keuze plattegrond is een nieuwe manier om alle keuzes weer te geven door gebr
 
 Voel je vrij om zelf bij te dragen aan het maken van deze extensie. Je kan een nieuwe branch maken voor je feature en een pull request maken. 
 
-Kan je zelf niet programmeren maar heb je wel een goed idee voor een feature of heb je een bug gevonden? Maak dan een nieuwe issue aan zodat het snel opgelost kan worden.
+Kan je zelf niet programmeren maar heb je wel een goed idee voor een feature of heb je een bug gevonden? Maak dan een nieuwe [issue](https://github.com/TTekar/magisterExtension/issues) aan zodat het snel opgelost kan worden.
 
 
