@@ -21,7 +21,7 @@ Als je zelf ideeën hebt voor nieuwe features, kan je dat bij _[issues](https://
 
 ### Methode 1
 
-1. Ga naar de _[Releases](https://github.com/TTekar/magisterExtension/releases)_ pagina
+1. Ga naar de _[releases](https://github.com/TTekar/magisterExtension/releases)_ pagina
 2. Download het .crx bestand
 3. Open het bestand met je browser
 
