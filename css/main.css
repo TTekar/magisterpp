@@ -563,7 +563,8 @@ html sm-tab[id^="id"] div.block > div.content dl {
 }
 
 html sm-tab[id^="id"] div.block > div.content dl dd, 
-html sm-tab[id^="id"] div.block > div.content dl dt {
+html sm-tab[id^="id"] div.block > div.content dl dt,
+html sm-tab[id^="id"] div.block > div.content dl dt span {
     color: var(--mooie-text-color);
     border-color: var(--mid-gray);
 }
@@ -630,6 +631,10 @@ html sm-tab[id^="id"] div.block > .content > footer.endlink > a {
     text-decoration: underline dashed var(--mid-gray);
 }
 
+/*! Agenda Opmerking info */
+html #opmerking-info-text {
+    color: var(--mooie-text-color);
+}
 
 
 /*? fancy-select */
