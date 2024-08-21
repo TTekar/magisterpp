@@ -145,6 +145,7 @@ var update100ms = window.setInterval(function(){
       { cijfers: false , hideHelpBtn: true , hidePfp: false },
       (items) => {
 
+
         /// Bad cijfer hide
         if (items.cijfers) {
           if(currentLocationSplit == "magister.net/magister/#/vandaag"){
@@ -241,17 +242,19 @@ var update100ms = window.setInterval(function(){
 
 
   /// Remove aside tabs if == 1
-  const asideHeadBar = document.querySelector('aside.ng-isolate-scope > div.head-bar');
-  const asideTabs = asideHeadBar.querySelector('ul.tabs');
-  const asideSheets = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets');
-  const asideSpan = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets .block h3 span');
-
-  if (asideTabs.childElementCount == 1) {
-    asideHeadBar.style.display = "none";
-    asideSheets.style.padding = "0px"
-  }
+  
 
   try {
+    const asideHeadBar = document.querySelector('aside.ng-isolate-scope > div.head-bar');
+    const asideTabs = asideHeadBar.querySelector('ul.tabs');
+    const asideSheets = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets');
+    const asideSpan = document.querySelector('aside.ng-isolate-scope > div.content-container > div.sheets .block h3 span');
+
+    if (asideTabs.childElementCount == 1) {
+      asideHeadBar.style.display = "none";
+      asideSheets.style.padding = "0px"
+    }
+    
     asideSpan.remove();
   }catch {
     
