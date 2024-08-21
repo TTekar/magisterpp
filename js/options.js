@@ -8,12 +8,13 @@ const saveOptions = () => {
   const hideHelpBtn = document.getElementById('hideHelpBtn').checked
   const inlogText = document.getElementById('inlogText').value
   const hidePfp = document.getElementById('hidePfp').checked
+  const customPfp = document.getElementById('customPfp').checked
 
   chrome.storage.sync.set(
-    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , inlogText: inlogText , hidePfp: hidePfp },
+    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp },
     () => {
       // do after saved
-      console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}`)
+      console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}\ncustomPfp:${customPfp}`)
     }
   )
 };
@@ -21,7 +22,7 @@ const saveOptions = () => {
 
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false },
+    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false },
     (items) => {
       document.getElementById('darkMode').checked = items.darkMode;
       document.getElementById('keuzeBtn').checked = items.keuzeBtn;
@@ -30,6 +31,7 @@ const restoreOptions = () => {
       document.getElementById('hideHelpBtn').checked = items.hideHelpBtn; 
       document.getElementById('inlogText').value = items.inlogText; 
       document.getElementById('hidePfp').checked = items.hidePfp; 
+      document.getElementById('customPfp').checked = items.customPfp; 
 
       changeStyleMode()
     }

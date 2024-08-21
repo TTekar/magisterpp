@@ -17,23 +17,27 @@ function getWeekNumber(date = new Date()) {
 const init3 = function() {
   
   setTimeout(() => {
-    //~ Set custom pfp
-    const divUserMenu = document.querySelector("a#user-menu");
-    var pfp = divUserMenu.querySelector("figure img");
-
-    if(pfp.getAttribute("alt") == "Aidan Schoester") {
-        // pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
-        pfp.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
-    }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
-        pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
-    }
-
     
     
     //~ Keuze plattegrond
     chrome.storage.sync.get(
-      { keuzeBtn: true, darkMode: false },
+      { keuzeBtn: true, darkMode: false, customPfp: false },
       (items) => {
+
+        //~ Set custom pfp
+        if (items.customPfp) {
+          const divUserMenu = document.querySelector("a#user-menu");
+          var pfp = divUserMenu.querySelector("figure img");
+  
+          if(pfp.getAttribute("alt") == "Aidan Schoester") {
+              // pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
+              pfp.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
+          }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
+              pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
+          }
+        }
+
+
         if (items.keuzeBtn) {
           
           /// Keuze page
