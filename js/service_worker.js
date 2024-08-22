@@ -15,6 +15,66 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                     // Dark Mode
                     if (!items.darkMode) {
                         cssToInsert.push("css/lightMode.css");
+
+
+                        chrome.scripting.getRegisteredContentScripts((scripts) => {
+                            
+                            const existingScript = scripts.find(script => script.id === "berichten-light-mode");
+                        
+                            if (existingScript) {
+                                chrome.scripting.updateContentScripts([{
+                                    id: "berichten-light-mode",
+                                    css: ["css/lightMode.css"],
+                                    matches: ["*://*.magister.net/magister-berichten*"],
+                                    allFrames: true,
+                                    runAt: "document_start",
+                                }])
+                                .then(() => console.log("registration complete"))
+                                .catch((err) => console.warn("unexpected error", err))
+                            }else {
+                                chrome.scripting.registerContentScripts([{
+                                    id: "berichten-light-mode",
+                                    css: ["css/lightMode.css"],
+                                    matches: ["*://*.magister.net/magister-berichten*"],
+                                    allFrames: true,
+                                    runAt: "document_start",
+                                }])
+                                .then(() => console.log("registration complete"))
+                                .catch((err) => console.warn("unexpected error", err))
+                            }
+                        
+                        
+                        });
+                        
+                    }else {
+                        chrome.scripting.getRegisteredContentScripts((scripts) => {
+                            
+                            const existingScript = scripts.find(script => script.id === "berichten-light-mode");
+                        
+                            if (existingScript) {
+                                chrome.scripting.updateContentScripts([{
+                                    id: "berichten-light-mode",
+                                    css: ["css/darkMode.css"],
+                                    matches: ["*://*.magister.net/magister-berichten*"],
+                                    allFrames: true,
+                                    runAt: "document_start",
+                                }])
+                                .then(() => console.log("registration complete"))
+                                .catch((err) => console.warn("unexpected error", err))
+                            }else {
+                                chrome.scripting.registerContentScripts([{
+                                    id: "berichten-light-mode",
+                                    css: ["css/darkMode.css"],
+                                    matches: ["*://*.magister.net/magister-berichten*"],
+                                    allFrames: true,
+                                    runAt: "document_start",
+                                }])
+                                .then(() => console.log("registration complete"))
+                                .catch((err) => console.warn("unexpected error", err))
+                            }
+                        
+                        
+                        });
                     }
 
                     // Studiewijzers Grid
