@@ -1140,6 +1140,19 @@ html #studiewijzer-detail-container > section.main > div > ul > li > div.block >
     color: var(--mid-gray);
 }
 
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li > div > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li > div > ul > li:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li > div > ul > li > a{
+    color: var(--mooie-text-color);
+}
+
 html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > footer.endlink {
     background-color: var(--mooie-bg-color-mid);
     border-radius: 0 0 15px 15px;
@@ -1717,3 +1730,54 @@ html .toasts > div > em {
 html .toasts > div > i {
     background-color: var(--mooie-bg-color-hover);
 }
+
+
+/*? Dialog */
+
+html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog {
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+    border-radius: 15px;
+}
+
+html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > .content-pane {
+    background-color: var(--mooie-bg-color-mid);
+    border-radius: 15px;
+}
+
+html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > .content-pane > h3 {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-bottom: 1px var(--mid-gray) solid;
+    box-shadow: none;
+    text-align: center;
+    padding-left: 0px !important;
+}
+
+html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > .content-pane > div {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+}
+
+html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > .content-pane > div p {
+    color: var(--mooie-text-color);
+}
+
+html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > .content-pane > footer {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-top: 1px var(--mid-gray) solid;
+    box-shadow: none;
+    border-radius: 0px 0px 15px 15px;
+}
+
+html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > .content-pane > footer > a.primary-button {
+    border-radius: 15px;
+}
+
+html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > .content-pane > footer > a.secondary-button {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
