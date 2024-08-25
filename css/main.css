@@ -252,19 +252,46 @@ html #berichten-widget .list {
     border: none;
 }
 
-html #berichten-widget .list li a{
+html #berichten-widget .list li {
+    background-color: var(--mooie-bg-color-mid);
+    border-bottom: 1px solid var(--mid-gray);
+    border-top: none;
+}
+
+html #berichten-widget .list li.alert.unread {
+    background-color: var(--mooie-bg-color-mid);
+    border-bottom: 1px solid var(--mid-gray);
+    border-left: 3px solid var(--background-1);
+}
+
+html #berichten-widget .list li a {
     color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
 }
 
 html #berichten-widget .list li a:hover{
     background-color: var(--mooie-bg-color-hover) !important;
 }
 
-html #berichten-widget .list li {
-    background-color: var(--mooie-bg-color-mid);
-    border-top: none;
+html #berichten-widget .list li a span.from,
+html #berichten-widget .list li a span.msg {
+    color: var(--mooie-text-color);
 }
 
+html #berichten-widget .list li a span.date span {
+    color: var(--mid-gray);
+}
+
+html #berichten-widget > .block > .content > .msg-detail > .border-bottom {
+    border-color: var(--mid-gray);
+}
+
+html #berichten-widget > .block > .content > .msg-detail h5,
+html #berichten-widget > .block > .content > .msg-detail dt,
+html #berichten-widget > .block > .content > .msg-detail dd,
+html #berichten-widget > .block > .content > .msg-detail p {
+    color: var(--mooie-text-color);
+}
 
 /*/ Cijfers */
 
