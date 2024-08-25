@@ -264,6 +264,12 @@ html #berichten-widget .list li.alert.unread {
     border-left: 3px solid var(--background-1);
 }
 
+html #berichten-widget .list li:last-child {
+    background-color: var(--mooie-bg-color-mid);
+    border-bottom: none;
+    border-left: 3px solid var(--background-1);
+}
+
 html #berichten-widget .list li a {
     color: var(--mooie-text-color);
     background-color: var(--mooie-bg-color-mid);
