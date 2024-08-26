@@ -148,6 +148,31 @@ html #agenda-widget > div > div.content {
     background-color: inherit;
 }
 
+html #agenda-widget > div > div.content > div > h4 {
+    border: none;
+    border-top: 1px solid var(--mid-gray);
+    background: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    box-shadow: none;
+}
+
+html #agenda-widget > div > div.content > div > ul.roosterwijziging > li {
+    border: none;
+    border-bottom: 1px solid var(--mid-gray);
+    background: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color);
+}
+
+html #agenda-widget > div > div.content > div > ul.roosterwijziging > li:last-child {
+    border: none !important;
+}
+
+html #agenda-widget > div > div.content > div > ul.roosterwijziging > li span.nrblock {
+    background-color: var(--background-1);
+}
+
+
+
 html #agenda-widget > div > footer.endlink {
     background-color: inherit;
     border: none;
