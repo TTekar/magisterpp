@@ -1839,3 +1839,102 @@ html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > 
     text-decoration: underline dashed var(--mid-gray);
 }
 
+
+
+/*~ Les details agenda */
+
+html #agenda-section > .content-container > .widget > .block {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 15px;
+}
+
+
+
+html #agenda-section > .content-container > .widget > .block > h3,
+html #agenda-section > .content-container > .widget > .block > h3 > span {
+    border: none;
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+
+
+html #agenda-section > .content-container > .widget > .block > .content {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #agenda-section > .content-container > .widget > .block > .content > table {
+    border: none;
+}
+
+html #agenda-section > .content-container > .widget > .block > .content > table > thead > tr > th {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+    box-shadow: none;
+}
+
+html #agenda-section > .content-container > .widget > .block > .content > table > tbody > tr > td {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+    box-shadow: none;
+}
+
+
+html #agenda-section > .content-container > .widget > .block > footer.endlink {
+    background-color: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+html #agenda-section > .content-container > .widget > .block > footer.endlink > a {
+    color: var(--mooie-text-color);
+    text-decoration: underline dashed var(--mid-gray);
+}
+
+html #idLesrooster > div > div > div > div {
+    background: var(--mooie-bg-color-mid);
+    border-radius: 15px;
+}
+
+html #idLesrooster > div > div > div > div > ul > li {
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #idLesrooster > div > div > div > div > ul > li a {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #idLesrooster > div > div > div > div > ul > li a:hover {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #idLesrooster > div > div > div > div > ul > li a span {
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #idLesrooster > div > div > div > div > ul > li a span:hover {
+    border: none;
+    background-color: var(--mooie-bg-color-hover);
+}
+
+/* html #idLesrooster > div > div:nth-child(2) > div > div {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #idLesrooster > div > div:nth-child(2) > div > div > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #idLesrooster > div > div:nth-child(2) > div > div > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+} */
