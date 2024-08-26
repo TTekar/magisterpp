@@ -267,7 +267,7 @@ html #berichten-widget .list li.alert.unread {
 html #berichten-widget .list li:last-child {
     background-color: var(--mooie-bg-color-mid);
     border-bottom: none;
-    border-left: 3px solid var(--background-1);
+    border-top: none;
 }
 
 html #berichten-widget .list li a {
