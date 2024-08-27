@@ -154,22 +154,28 @@ html #agenda-widget > div > div.content > div > h4 {
     background: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
     box-shadow: none;
+    opacity: .67;
 }
 
-html #agenda-widget > div > div.content > div > ul.roosterwijziging > li {
+html #agenda-widget > div > div.content > div > ul > li {
     border: none;
     border-bottom: 1px solid var(--mid-gray);
     background: var(--mooie-bg-color-mid) !important;
     color: var(--mooie-text-color);
 }
 
-html #agenda-widget > div > div.content > div > ul.roosterwijziging > li:last-child {
+html #agenda-widget > div > div.content > div > ul > li:last-child {
     border: none !important;
 }
 
-html #agenda-widget > div > div.content > div > ul.roosterwijziging > li span.nrblock {
+html #agenda-widget > div > div.content > div > ul > li span.nrblock {
     background-color: var(--background-1);
 }
+
+html #agenda-widget > div > div.content > div > ul.roosterwijziging {
+    opacity: .67;
+}
+
 
 
 
@@ -291,7 +297,7 @@ html #berichten-widget .list li.alert.unread {
 
 html #berichten-widget .list li:last-child {
     background-color: var(--mooie-bg-color-mid);
-    border-bottom: none;
+    border-bottom: none !important;
     border-top: none;
 }
 
@@ -387,7 +393,7 @@ html #cijfers-leerling .list li {
 }
 
 html #cijfers-leerling .last-grade {
-    color: #fff;
+    color: var(--mooie-text-color);
     background-color: var(--primary-background);
 }
 
@@ -1925,16 +1931,3 @@ html #idLesrooster > div > div > div > div > ul > li a span:hover {
     background-color: var(--mooie-bg-color-hover);
 }
 
-/* html #idLesrooster > div > div:nth-child(2) > div > div {
-    background-color: var(--mooie-bg-color-mid);
-}
-
-html #idLesrooster > div > div:nth-child(2) > div > div > ul > li {
-    background-color: var(--mooie-bg-color-mid);
-    border-color: var(--mid-gray);
-}
-
-html #idLesrooster > div > div:nth-child(2) > div > div > ul > li {
-    background-color: var(--mooie-bg-color-mid);
-    border-color: var(--mid-gray);
-} */

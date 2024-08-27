@@ -38,6 +38,7 @@ const init3 = function() {
         }
 
 
+        //~ Keuze Plattegrond 
         if (items.keuzeBtn) {
           
           /// Keuze page
@@ -53,7 +54,7 @@ const init3 = function() {
           coverDivKeuze.style.alignItems = "center"
           mainView.parentElement.appendChild(coverDivKeuze)
 
-              
+          
 
           /// Define button
           const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
@@ -142,11 +143,25 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false },
       (items) => {
 
+        //~ Custom widget height
+        const vandaagWidgets = document.querySelectorAll("#vandaag-container > .main > .content-container > div > .ng-scope > div > div > .widget")
 
-        /// Bad cijfer hide
+        vandaagWidgets.forEach((widget) => {
+          const contentDiv = widget.querySelector(".content")
+
+          if (widget.classList.contains("widget-high")) {
+            contentDiv.style.height = `${items.widgetCustomHigh}px`
+          }else {
+            contentDiv.style.height = `${items.widgetCustomLow}px`
+          }
+
+        })
+
+
+        //~ Bad cijfer hide
         if (items.cijfers) {
           if(currentLocationSplit == "magister.net/magister/#/vandaag"){
               var cijfer = document.querySelector("span.cijfer.ng-binding")
@@ -164,20 +179,26 @@ var update100ms = window.setInterval(function(){
           }
         }
 
-        /// Hide help button
+        //~ Hide help button
         if (items.hideHelpBtn) {
           document.getElementById("help-menu").parentElement.style.display = "none"
         }else {
           document.getElementById("help-menu").parentElement.style.display = "block"
         }
         
-        /// Hide pfp
-
+        //~ Hide pfp
         if (items.hidePfp){
           document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
             img.style.width = "0"
           })
         }
+
+        // //~ Update Keuze Plattegrond Style
+        // if (items.darkMode && document.querySelector("#coverDivKeuze > iframe").src != "https://jordanmlu.netlify.app/keuze?style=magDark&sidebar=1") {
+        //   document.querySelector("#coverDivKeuze > iframe").src = "https://jordanmlu.netlify.app/keuze?style=magDark&sidebar=1"
+        // }else if (!items.darkMode && document.querySelector("#coverDivKeuze > iframe").src != "https://jordanmlu.netlify.app/keuze?style=magLight&sidebar=1") {
+        //   document.querySelector("#coverDivKeuze > iframe").src = "https://jordanmlu.netlify.app/keuze?style=magLight&sidebar=1"
+        // }
 
       }
   );

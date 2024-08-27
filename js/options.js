@@ -9,12 +9,14 @@ const saveOptions = () => {
   const inlogText = document.getElementById('inlogText').value
   const hidePfp = document.getElementById('hidePfp').checked
   const customPfp = document.getElementById('customPfp').checked
+  const widgetCustomHigh = document.getElementById('widgetCustomHigh').value
+  const widgetCustomLow = document.getElementById('widgetCustomLow').value
 
   chrome.storage.sync.set(
-    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp },
+    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp , widgetCustomHigh: widgetCustomHigh , widgetCustomLow: widgetCustomLow },
     () => {
       // do after saved
-      console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}\ncustomPfp:${customPfp}`)
+      console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}\ncustomPfp:${customPfp}\nwidgetCustomHigh:${widgetCustomHigh}\nwidgetCustomLow:${widgetCustomLow}`)
     }
   )
 };
@@ -22,7 +24,7 @@ const saveOptions = () => {
 
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false },
+    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 },
     (items) => {
       document.getElementById('darkMode').checked = items.darkMode;
       document.getElementById('keuzeBtn').checked = items.keuzeBtn;
@@ -32,6 +34,8 @@ const restoreOptions = () => {
       document.getElementById('inlogText').value = items.inlogText; 
       document.getElementById('hidePfp').checked = items.hidePfp; 
       document.getElementById('customPfp').checked = items.customPfp; 
+      document.getElementById('widgetCustomHigh').value = items.widgetCustomHigh; 
+      document.getElementById('widgetCustomLow').value = items.widgetCustomLow; 
 
       changeStyleMode()
     }
@@ -75,3 +79,14 @@ document.getElementById("advancedSettingsA").onclick = function(event) {
     advSetDiv.style.display = "none"
   }
 }
+
+//~ Reset numeber inputs
+document.getElementById("resetWidgetCustomHigh").addEventListener("click", () => {
+  document.getElementById('widgetCustomHigh').value = 385
+  saveOptions()
+})
+
+document.getElementById("resetWidgetCustomLow").addEventListener("click", () => {
+  document.getElementById('widgetCustomLow').value = 145
+  saveOptions()
+})

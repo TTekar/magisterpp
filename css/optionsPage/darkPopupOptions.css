@@ -1,78 +1,77 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    /* Vars */
-    
-    --mooie-bg-color: #1F2228;
-    --mooie-bg-color-mid: #191C21;
-    --mooie-bg-color-hover: #171A1E;
-    --mooie-text-color: #fff;
-    
-    --background-1: #0065A0; /*/ iets lichter dan licht */
-    --primary-background: #0E4772; /*/ licht */
-    --secondary-background: #023660; /*/ donker */
-    --secondary-background-darker: #14212d; /*/ --background-secondary with opacity .2 */
-    
-    --mid-gray: #7f7f7fff;
-    --dark-gray: #3f3f3fff;
+  /* Vars */
+  
+  --mooie-bg-color: #1F2228;
+  --mooie-bg-color-mid: #191C21;
+  --mooie-bg-color-hover: #171A1E;
+  --mooie-text-color: #fff;
+  
+  --background-1: #0065A0; /*/ iets lichter dan licht */
+  --primary-background: #0E4772; /*/ licht */
+  --secondary-background: #023660; /*/ donker */
+  --secondary-background-darker: #14212d; /*/ --background-secondary with opacity .2 */
+  
+  --mid-gray: #7f7f7fff;
+  --dark-gray: #3f3f3fff;
 
-    /* Style */
+  /* Style */
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* height: 100vh; */
-    background-color: var(--mooie-bg-color-mid);
-    width: 400px;
-    height: 325px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mooie-bg-color-mid);
+  width: 400px;
+  height: 400px;
 }
 
 
+.comment {
+  color: var(--mid-gray);
+}
 
 #main {
-    /* width: 50vw;
-    height: 80vh; */
-    width: 100%;
-    height: 100%;
-    background-color: var(--mooie-bg-color-mid);
-    /* border-radius: 15px; */
-    padding-bottom: 15px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--mooie-bg-color-mid);
+  padding-bottom: 15px;
 }
 
 #main > label {
-    display: block;
-    width: calc(100% - 30px);
-    margin: 15px 15px 0px 15px;
-    color: var(--mooie-text-color);
-    font-size: 16px;
-    user-select: none;
-    cursor: pointer;
+  display: block;
+  width: calc(100% - 30px);
+  margin: 15px 15px 0px 15px;
+  color: var(--mooie-text-color);
+  font-size: 16px;
+  user-select: none;
+  cursor: pointer;
 }
 
 #main > label:last-of-type {
-    margin: 15px;
+  margin: 15px;
 }
 
 #advancedSettingsA {
-    margin: 15px;
-    font-size: 16px;
-    color: var(--dark-gray);
-    cursor: pointer;
-    text-decoration: underline dashed var(--dark-gray) 1px;
-    user-select: none;
+  margin: 15px;
+  font-size: 16px;
+  color: var(--dark-gray);
+  cursor: pointer;
+  text-decoration: underline dashed var(--dark-gray) 1px;
+  user-select: none;
 }
 
 #main > #advancedSettings > label {
-    display: block;
-    width: calc(100% - 30px);
-    margin: 15px 15px 0px 15px;
-    color: var(--mid-gray);
-    font-size: 16px;
-    user-select: none;
-    cursor: pointer;
+  display: block;
+  width: calc(100% - 30px);
+  margin: 15px 15px 0px 15px;
+  color: var(--mid-gray);
+  font-size: 16px;
+  user-select: none;
+  cursor: pointer;
 }
 
 
@@ -139,16 +138,65 @@ input:checked + .slider:before {
 /*~ Text input */
 
 .textInput {
-    float: right;
-    background-color: var(--mooie-bg-color-mid);
-    border: none;
-    border-bottom: 1px solid var(--dark-gray);
-    color: var(--mooie-text-color);
-    width: min(50%, 250px);
+  float: right;
+  background-color: var(--mooie-bg-color-mid);
+  border: none;
+  border-bottom: 1px solid var(--dark-gray);
+  color: var(--mooie-text-color);
+  width: min(50%, 250px);
 }
 
 .textInput:focus {
-    border-bottom: 1px solid var(--mooie-text-color);
-    outline: none;
+  border-bottom: 1px solid var(--mooie-text-color);
+  outline: none;
 }
 
+
+
+/*~ Number input */
+
+.resetInput {
+  font-family: Lucida Sans Unicode;
+  font-weight: 900;
+  margin-right: 1ch;
+  color: var(--mid-gray);
+  cursor: pointer;
+  user-select: none;
+}
+
+.inputContainer {
+  display: inline-flex;
+  align-items: center;
+  float: right;
+}
+
+.inputContainer label {
+  margin-left: 1ch;
+  color: var(--mid-gray);
+  user-select: none;
+  cursor: pointer;
+}
+
+.numberInput {
+  background-color: var(--mooie-bg-color-mid);
+  border: none;
+  border-bottom: 1px solid var(--dark-gray);
+  color: var(--mooie-text-color);
+  width: 4ch;
+  text-align: right;
+}
+
+.numberInput:focus {
+  border-bottom: 1px solid var(--mooie-text-color);
+  outline: none;
+}
+
+.numberInput::-webkit-outer-spin-button,
+.numberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
