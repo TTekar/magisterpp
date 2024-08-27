@@ -12,7 +12,8 @@ Een extensie die verandert hoe Magister eruitziet en nieuwe features toevoegt.
 - Een [keuze plattegrond](#keuze-plattegrond)
 - Aangepaste tekst op het inlogscherm
 - Nieuwe manier om de studiewijzers weer te geven
-- Geen help knop meer (is gewoon lelijk)
+- Custom widget hoogte
+- Geen help knop meer (is gwn lelijk)
 - Wat andere kleine domme dingen
 
 De meeste van deze features kan je in de instellingen van de extensie aan en uit zetten. 
