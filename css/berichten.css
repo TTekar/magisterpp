@@ -213,9 +213,10 @@ html dna-button[_ngcontent-ng-c3506137590]:hover {
   background: var(--secondary-background);
 }
 
-html dna-search-input {
+html dna-search-input,
+html dna-search-input input {
     color: var(--mooie-text-color) !important;
-    
+    --color: var(--mooie-text-color);
 }
 
 html body > app-root > app-berichten-overzicht > div.container > app-bericht-list {
@@ -235,3 +236,91 @@ html body > app-root > app-berichten-overzicht > div.container > app-bericht-lis
 /* html dna-search-input #dna-control-0 {
     color: var(--mooie-text-color) !important;   
 } */
+
+
+
+/*~ Niueuw Bericht */
+
+html label[for^="dna-checkbox-"]::before {
+    background-color: var(--mooie-bg-color);
+    border-color: var(--mooie-text-color);
+}
+
+html label[for="select-all-input"]::before {
+    background-color: var(--mooie-bg-color);
+    border-color: var(--mooie-text-color);
+}
+
+
+html dna-editor[id^="dna-editor-"] {
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    border: 1px solid var(--mid-gray);
+}
+
+html dna-editor[id^="dna-editor-"] .dna-tool-bar {
+    border-color: var(--mid-gray);
+}
+
+html app-root > app-nieuw-bericht > form > div > div.new-message-left > div > div.input-fields > div > dna-overlay-trigger:nth-child(1) > dna-button:hover,
+html app-root > app-nieuw-bericht > form > div > div.header > dna-button-bar > dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+
+
+html dna-overlay-container > dna-overlay > dna-dialog,
+html dna-overlay-container > dna-overlay > dna-dialog::before {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html app-people-multi-select-dialog > dna-dialog-title {
+    color: var(--mooie-text-color);
+}
+
+html #dna-control-3 {
+    color: var(--mooie-text-color) !important;
+}
+
+html app-people-multi-select-dialog > div > dna-table > dna-header-row, 
+html app-people-multi-select-dialog > div > dna-table > dna-header-row > .dna-header-cell,
+html app-people-multi-select-dialog > div > dna-table > dna-row, 
+html app-people-multi-select-dialog > div > dna-table > dna-row > .dna-cell {
+    
+    background: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray) !important;
+}
+
+html app-people-multi-select-dialog > div > dna-table > dna-row:hover .dna-cell {
+    background: var(--mooie-bg-color-hover) !important;
+}
+
+html app-people-multi-select-dialog > div > div.tag-list-container.ng-star-inserted > span {
+    color: var(--mooie-text-color);
+}
+
+
+
+html dna-overlay-container > dna-overlay > dna-snack-bar-overlay {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html .empty-message {
+    color: var(--mooie-text-color);
+}
+
+html .dna-tag-list-wrapper {
+    background-color: var(--mooie-bg-color);
+}
+
+html .dna-tag-list-wrapper .dna-tag {
+    background-color: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+}
+
+html .dna-tag-list-wrapper .dna-tag:hover {
+    background-color: var(--background-1);
+}

@@ -62,7 +62,7 @@ const init3 = function() {
           buttonsSideList.appendChild(newButtonList)
 
           const newButton = document.createElement("a")
-          newButton.innerHTML = `<i class="far ng-scope fa-regular fa-compass" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Keuze Plattegrond</span>`
+          newButton.innerHTML = `<i class="far ng-scope fa-regular fa-compass" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Keuzes</span>`
               
           newButton.id = "customButtonKeuze"
           newButton.classList.add("customButton")
@@ -124,9 +124,16 @@ const init3 = function() {
                 document.querySelector("body > div.container").style.paddingRight = "8px"
                 document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
               }
-            }
-            
+            } 
           }
+
+          document.getElementById("menu-berichten-new").onclick = function(event) {
+            keuzeUI = false;
+            document.querySelector("body > div.container").style.paddingRight = "8px"
+            document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
+          }
+
+
         }
 
       }
@@ -192,13 +199,6 @@ var update100ms = window.setInterval(function(){
             img.style.width = "0"
           })
         }
-
-        // //~ Update Keuze Plattegrond Style
-        // if (items.darkMode && document.querySelector("#coverDivKeuze > iframe").src != "https://jordanmlu.netlify.app/keuze?style=magDark&sidebar=1") {
-        //   document.querySelector("#coverDivKeuze > iframe").src = "https://jordanmlu.netlify.app/keuze?style=magDark&sidebar=1"
-        // }else if (!items.darkMode && document.querySelector("#coverDivKeuze > iframe").src != "https://jordanmlu.netlify.app/keuze?style=magLight&sidebar=1") {
-        //   document.querySelector("#coverDivKeuze > iframe").src = "https://jordanmlu.netlify.app/keuze?style=magLight&sidebar=1"
-        // }
 
       }
   );
