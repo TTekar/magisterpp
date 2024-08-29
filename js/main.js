@@ -150,7 +150,7 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false },
       (items) => {
 
         //~ Custom widget height
@@ -191,6 +191,13 @@ var update100ms = window.setInterval(function(){
           document.getElementById("help-menu").parentElement.style.display = "none"
         }else {
           document.getElementById("help-menu").parentElement.style.display = "block"
+        }
+
+        //~ Hide bestellen button
+        if (items.hideBestellenBtn) {
+          document.getElementById("menu-bestellen").parentElement.style.display = "none"
+        }else {
+          document.getElementById("menu-bestellen").parentElement.style.display = "block"
         }
         
         //~ Hide pfp
