@@ -203,7 +203,11 @@ var update100ms = window.setInterval(function(){
         //~ Hide pfp
         if (items.hidePfp){
           document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
-            img.style.width = "0"
+            img.style.display = "none"
+          })
+        }else {
+          document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
+            img.style.display = "block"
           })
         }
 
