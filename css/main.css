@@ -1931,3 +1931,104 @@ html #idLesrooster > div > div > div > div > ul > li a span:hover {
     background-color: var(--mooie-bg-color-hover);
 }
 
+
+
+
+/*~ Activiteiten */
+
+html #activiteiten-container > section.main > div > sm-grid > div {
+    background-color: var(--mooie-bg-color);
+    border-radius: 15px;
+}
+
+html #activiteiten-container > section.main > div > sm-grid > div > .ngTopPanel {
+    border-color: var(--mid-gray);
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+}
+
+html #activiteiten-container > section.main > div > sm-grid > div > .ngTopPanel .ngHeaderContainer,
+html #activiteiten-container > section.main > div > sm-grid > div > .ngTopPanel .ngHeaderCell {
+    box-shadow: none;
+    border: none;
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #activiteiten-container > section.main > div > sm-grid > div > .ngTopPanel .ngHeaderGrip ,
+html #activiteiten-container > section.main > div > sm-grid > div > .ngTopPanel .ngVerticalBar {
+    display: none;
+} 
+
+
+
+html #activiteiten-container > section.main > div > sm-grid > div > .ngViewport .ngRow {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-bottom: 1px solid var(--mid-gray);
+}
+
+html #activiteiten-container > section.main > div > sm-grid > div > .ngViewport .ngCell,
+html #activiteiten-container > section.main > div > sm-grid > div > .ngViewport .ngCellText {
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+}
+
+html #activiteiten-container > section.main > div > sm-grid > div > .ngViewport .ngCell .ngVerticalBar {
+    background-color: var(--mid-gray);
+}
+
+/*/ Loading Overlay */
+
+html #activiteit-detail-container > div > div {
+    background-color: var(--mooie-bg-color);
+}
+
+html #activiteit-detail-container > div > div * {
+    color: var(--mid-gray);
+}
+
+
+/*/ Activiteit */
+
+html #activiteit-detail-container dna-card {
+    background-color: var(--mooie-bg-color-mid);
+    border-radius: 15px;
+    border: none;
+    box-shadow: none;
+}
+
+
+html #activiteit-detail-container dna-card * {
+    color: var(--mooie-text-color);
+}
+
+html #activiteit-detail-container > dna-card dna-button:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+/* Dialog */
+
+html dna-overlay-container > dna-overlay > dna-message-dialog {
+    background-color: var(--mooie-bg-color-mid);
+    border-radius: 15px;
+    color: var(--mooie-text-color);
+}
+
+html dna-overlay-container > dna-overlay > dna-message-dialog::before {
+    width: 0;
+}
+
+
+/* Popup message */
+
+html dna-overlay-container > dna-overlay > dna-snack-bar-overlay {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+    box-shadow: none;
+}

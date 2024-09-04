@@ -293,7 +293,7 @@ var update100ms = window.setInterval(function(){
   }
 
 
-  // Absentie color
+  /// Absentie color
 
   const attAbsenceRoot = document.querySelector('html div.container > div.view.ng-scope > mg-att-absence > att-absence-root')
 
@@ -314,6 +314,30 @@ var update100ms = window.setInterval(function(){
     }
   }
 
+
+  /// Activiteiten warning
+
+  const attentionAlert = document.querySelector("#activiteit-detail-container > dna-alert")
+
+  if (attentionAlert && attentionAlert.shadowRoot) {
+
+    attentionAlert.shadowRoot.querySelectorAll(".text").forEach((text) => {
+      text.style.color = "var(--mooie-text-color)"
+    })
+
+  }
+
+  /// Dialog
+
+  const dialog = document.querySelector("html dna-overlay-container > dna-overlay > dna-message-dialog")
+
+  if (dialog && dialog.shadowRoot) {
+
+    dialog.shadowRoot.querySelector("dna-dialog-title").style.color = "var(--mooie-text-color)"
+
+    dialog.shadowRoot.querySelector("dna-button-bar > dna-button:nth-child(1):hover").style.backgroundColor = "var(--mooie-bg-color-hover)"
+
+  }
 
   
 
