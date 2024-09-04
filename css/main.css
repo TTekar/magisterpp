@@ -2032,3 +2032,12 @@ html dna-overlay-container > dna-overlay > dna-snack-bar-overlay {
     border-color: var(--mid-gray);
     box-shadow: none;
 }
+
+
+
+/*~ Cijfers fix */
+
+#idDetails > div > div.widget > div.block > div.content > dl.list-dl > dd {
+    height: 32px;
+    margin: 0;
+}
