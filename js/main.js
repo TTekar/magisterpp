@@ -293,6 +293,28 @@ var update100ms = window.setInterval(function(){
   }
 
 
+  // Absentie color
+
+  const attAbsenceRoot = document.querySelector('html div.container > div.view.ng-scope > mg-att-absence > att-absence-root')
+
+  if (attAbsenceRoot && attAbsenceRoot.shadowRoot) {
+
+    const shadowRoot = attAbsenceRoot.shadowRoot
+
+    const dashboard = shadowRoot.querySelector("#outlet > att-absence-dashboard")
+
+    if (dashboard && dashboard.shadowRoot) {
+
+      const shadowRoot = dashboard.shadowRoot
+
+      const wrapperLink = shadowRoot.querySelector("div.wrapper > dna-link-card")
+
+      wrapperLink.style.color = "var(--mooie-text-color)"
+
+    }
+  }
+
+
   
 
 }, 100);
