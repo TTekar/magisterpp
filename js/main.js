@@ -21,24 +21,8 @@ const init3 = function() {
     
     //~ Keuze plattegrond
     chrome.storage.sync.get(
-      { keuzeBtn: true, darkMode: false, customPfp: false },
+      { keuzeBtn: true, darkMode: false },
       (items) => {
-
-        //~ Set custom pfp
-        if (items.customPfp) {
-          const divUserMenu = document.querySelector("a#user-menu");
-          var pfp = divUserMenu.querySelector("figure img");
-  
-          if(pfp.getAttribute("alt") == "Aidan Schoester") {
-              // pfp.setAttribute("src", "https://play-lh.googleusercontent.com/UGR4QjsBOQQV5sssh7bQtloCsMsQBBQZsnj0mvdK5XhgD-A0cCoQ1zXx1R83Qjam2vI")
-              pfp.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
-          }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
-              pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
-          }else if (pfp.getAttribute("alt") == "Thijmen Molema") {
-              pfp.setAttribute("src", "https://thijmpie.netlify.app/img/taimu.png")
-          }
-        }
-
 
         //~ Keuze Plattegrond 
         if (items.keuzeBtn) {
@@ -152,8 +136,35 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false },
       (items) => {
+
+        //~ Set custom pfp
+        if (items.customPfp) {
+          const divUserMenu = document.querySelector("a#user-menu");
+          var pfp = divUserMenu.querySelector('img[mg-http-src^="/api/leerlingen/"]');
+  
+          if(pfp.getAttribute("alt") == "Aidan Schoester") {
+
+            document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
+              img.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
+            })
+
+          }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
+
+            document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
+              img.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
+            })
+
+          }else if (pfp.getAttribute("alt") == "Thijmen Molema") {
+
+            document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
+              img.setAttribute("src", "https://thijmpie.netlify.app/img/taimu.png")
+            })
+
+          }
+        }
+
 
         //~ Custom widget height
         const vandaagWidgets = document.querySelectorAll("#vandaag-container > .main > .content-container > div > .ng-scope > div > div > .widget")

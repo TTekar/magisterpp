@@ -406,6 +406,30 @@ html #cijfers-leerling > div > div > ul.list.arrow-list {
     border: none;
 }
 
+html #cijfers-laatst-behaalde-resultaten-container > section > div > div.wide-widget,
+html #cijfers-laatst-behaalde-resultaten-container > section > div > div.wide-widget > div.table-block,
+html #cijfers-laatst-behaalde-resultaten-container > section > div > div.wide-widget > div.table-block div.content,
+html #cijfers-laatst-behaalde-resultaten-container > section > div > div.wide-widget > div.table-block div.content > table.data-overview,
+html #cijfers-laatst-behaalde-resultaten-container > section > div > div.wide-widget > div.table-block div.content > table.data-overview > thead > tr {
+    background-color: var(--mooie-bg-color);
+}
+
+
+html #cijfers-laatst-behaalde-resultaten-container > section > div > div.wide-widget > div.table-block div.content > table.data-overview > thead > tr:hover {
+    box-shadow: none;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section > div > div.wide-widget > div.table-block div.content > table.data-overview > thead > tr > th {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border-color: var(--mid-gray);
+    box-shadow: none;
+}
+
+
+
+
+
 /*/ Notificaties */
 
 html #notificatie-widget > div {
@@ -677,10 +701,14 @@ html sm-tab[id^="id"] div.block > .content > form input[type="checkbox"]~label >
 html sm-tab[id^="id"] div.block > .content table tr,
 html sm-tab[id^="id"] div.block > .content table tr th,
 html sm-tab[id^="id"] div.block > .content table tr td {
-    background-color: var(--mooie-bg-color-mid);
+    background-color: var(--mooie-bg-color-mid) !important;
     border: none !important;
     box-shadow: none !important;
     color: var(--mooie-text-color);
+}
+
+html sm-tab[id^="id"] div.block > .content dd {
+    margin-left: 0px !important;
 }
 
 html sm-tab[id^="id"] div.block > .content > footer.endlink {
@@ -2037,7 +2065,9 @@ html dna-overlay-container > dna-overlay > dna-snack-bar-overlay {
 
 /*~ Cijfers fix */
 
-#idDetails > div > div.widget > div.block > div.content > dl.list-dl > dd {
+html #cijfers-laatst-behaalde-resultaten-container #idDetails > div > div.widget > div.block > div.content > dl.list-dl > dd {
     height: 32px;
     margin: 0;
 }
+
+
