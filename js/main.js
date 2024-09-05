@@ -34,6 +34,8 @@ const init3 = function() {
               pfp.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
           }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
               pfp.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
+          }else if (pfp.getAttribute("alt") == "Thijmen Molema") {
+              pfp.setAttribute("src", "https://thijmpie.netlify.app/img/taimu.png")
           }
         }
 
