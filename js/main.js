@@ -369,6 +369,11 @@ var update100ms = window.setInterval(function(){
   }
 
 
+  /// Remove &nbsp; from agenda
+
+  document.querySelectorAll("#afsprakenLijst .inhoud-opmerking").forEach((span) => {
+    span.innerHTML = span.innerHTML.replace(/&amp;nbsp;*$/, "")
+  })
   
 
   

@@ -1331,10 +1331,19 @@ html #opdrachten-container > section > div > div.content-container > .scroll-tab
 }
 
 html #opdrachten-container > section > div > div.content-container > .scroll-table > table > tbody > tr > td {
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
     border-color: var(--mid-gray);
 }
+
+/* opdrachten inleveren text area */
+
+html #opdrachtinleverenleerling > div > div > div > div > div.textareaContainer.ng-scope > textarea {
+    background: content-box;
+    border-color: var(--mid-gray);
+    color: var(--mooie-text-color);
+}
+
 
 /*/ Details */
 
@@ -1480,6 +1489,15 @@ html #leermiddelen-container > section > div > div.wide-widget > div > div > tab
     color: var(--mooie-text-color);
 }
 
+/* small border fix */
+
+html #leermiddelen-container > section > div > div.wide-widget > div,
+html #leermiddelen-container > section > div > div.wide-widget > div > .content > .data-overview > *,
+html #leermiddelen-container > section > div > div.wide-widget > div > .content > .data-overview > thead > tr,
+html #leermiddelen-container > section > div > div.wide-widget > div > div > table,
+html #leermiddelen-container > section > div > div.loading-overlay {
+    background: var(--mooie-bg-color);
+}
 
 
 /*~ Bestellen */
