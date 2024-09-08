@@ -12,9 +12,14 @@ const saveOptions = () => {
   const hideBestellenBtn = document.getElementById('hideBestellenBtn').checked
   const widgetCustomHigh = document.getElementById('widgetCustomHigh').value
   const widgetCustomLow = document.getElementById('widgetCustomLow').value
+  
+  const autoLogin = document.getElementById('autoLogin').checked
+  const username = document.getElementById('username').value
+  const password = document.getElementById('password').value
+
 
   chrome.storage.sync.set(
-    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp , widgetCustomHigh: widgetCustomHigh , widgetCustomLow: widgetCustomLow , hideBestellenBtn: hideBestellenBtn },
+    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp , widgetCustomHigh: widgetCustomHigh , widgetCustomLow: widgetCustomLow , hideBestellenBtn: hideBestellenBtn , autoLogin: autoLogin , username: username , password: password },
     () => {
       // do after saved
       // console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}\ncustomPfp:${customPfp}\nwidgetCustomHigh:${widgetCustomHigh}\nwidgetCustomLow:${widgetCustomLow}`)
@@ -25,19 +30,23 @@ const saveOptions = () => {
 
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , hideBestellenBtn: false },
+    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , hideBestellenBtn: false , autoLogin: false , username: "" , password: "" },
     (items) => {
       document.getElementById('darkMode').checked = items.darkMode;
       document.getElementById('keuzeBtn').checked = items.keuzeBtn;
       document.getElementById('cijfers').checked = items.cijfers;
       document.getElementById('studiewijzersGrid').checked = items.studiewijzersGrid;
-      document.getElementById('hideHelpBtn').checked = items.hideHelpBtn; 
-      document.getElementById('inlogText').value = items.inlogText; 
-      document.getElementById('hidePfp').checked = items.hidePfp; 
-      document.getElementById('customPfp').checked = items.customPfp; 
-      document.getElementById('hideBestellenBtn').checked = items.hideBestellenBtn; 
-      document.getElementById('widgetCustomHigh').value = items.widgetCustomHigh; 
-      document.getElementById('widgetCustomLow').value = items.widgetCustomLow; 
+      document.getElementById('hideHelpBtn').checked = items.hideHelpBtn;
+      document.getElementById('inlogText').value = items.inlogText;
+      document.getElementById('hidePfp').checked = items.hidePfp;
+      document.getElementById('customPfp').checked = items.customPfp;
+      document.getElementById('hideBestellenBtn').checked = items.hideBestellenBtn;
+      document.getElementById('widgetCustomHigh').value = items.widgetCustomHigh;
+      document.getElementById('widgetCustomLow').value = items.widgetCustomLow;
+
+      document.getElementById('autoLogin').checked = items.autoLogin;
+      document.getElementById('username').value = items.username;
+      document.getElementById('password').value = items.password;
 
       changeStyleMode()
     }
