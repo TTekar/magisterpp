@@ -224,6 +224,22 @@ var update100ms = window.setInterval(function(){
           })
         }
 
+        //~ Aantekeningen text color
+
+        const iframe = document.querySelector("#idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr > td.k-editable-area > iframe")
+
+        try {
+          const iframeDocument = iframe.contentWindow.document
+          if (items.darkMode) {
+            iframeDocument.body.style.color = "#fff"
+          }else {
+            iframeDocument.body.style.color = "#000"
+          }
+          
+        } catch {
+
+        }
+
       }
   );
   
@@ -351,6 +367,9 @@ var update100ms = window.setInterval(function(){
     dialog.shadowRoot.querySelector("dna-button-bar > dna-button:nth-child(1):hover").style.backgroundColor = "var(--mooie-bg-color-hover)"
 
   }
+
+
+  
 
   
 

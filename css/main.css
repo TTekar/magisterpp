@@ -21,6 +21,8 @@ html body {
     --mid-gray: #7f7f7fff;
 
     --cijfers-background-opacity: .15;
+
+    --icon-filter: invert(100%) brightness(150%);
 }
 
 html ::selection {
@@ -29,7 +31,7 @@ html ::selection {
 
 html .content-container {
     border: none;
-} 
+}
 
 /*? Scroll bar */
 
@@ -850,6 +852,10 @@ html [id$="-container"] > section > div > div.loading-overlay > div > p {
 
 /*/ Afspraak informatie */
 
+html #afsprakenlijst-container > section > div.content-container {
+    background-color: var(--mooie-bg-color);
+}
+
 html #agenda-lesdashboard-container > section > div {
     border: none;
 }
@@ -968,17 +974,17 @@ html #afsprakenLijst > div.k-grid-content > table {
 }
 
 html #afsprakenLijst > div.k-grid-content > table tr {
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color-mid);
 }
 
 html #afsprakenLijst > div.k-grid-content > table tr.k-grouping-row td {
-    background-color: var(--mooie-bg-color-mid);
+    background-color: var(--mooie-bg-color-hover);
     border: none;
     box-shadow: none;
 }
 
 html #afsprakenLijst > div.k-grid-content > table tr td {
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color-mid);
     border: none;
     border-bottom: 1px solid var(--mid-gray);
 }
@@ -986,6 +992,11 @@ html #afsprakenLijst > div.k-grid-content > table tr td {
 html #afsprakenLijst > div.k-grid-content > table tr td span {
     color: var(--mooie-text-color);
 }
+
+html #afsprakenLijst > div.k-grid-content > table tr td span.nrblock.ng-binding.ng-scope {
+    background-color: var(--mooie-bg-color-mid);
+}
+
 
 html #afsprakenLijst > div.k-grid-content > table tr td.icon-column span {
     background-color: var(--mooie-bg-color);
@@ -1871,6 +1882,61 @@ html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > 
 html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > .dialog > .content-pane > footer > a.secondary-button {
     color: var(--mooie-text-color);
     text-decoration: underline dashed var(--mid-gray);
+}
+
+/*~ Huiswerk agenda */
+
+html #huiswerkomschrijving .comment {
+    border-color: var(--mid-gray);
+    color: var(--mooie-text-color);
+}
+
+html #huiswerkomschrijving .attachment-bar {
+    border-color: var(--mid-gray);
+}
+
+html #huiswerkomschrijving .attachment-bar::before {
+    color: var(--mooie-text-color);
+}
+
+html #huiswerkomschrijving .attachment-bar > .ng-scope > em {
+    color: var(--mid-gray);
+}
+
+/*/ Huiswerk Large */
+
+html div.container > div.dialog-overlay.ng-binding.ng-isolate-scope > div.dialog > div.content-pane > div.dialog-content {
+    color: var(--mooie-text-color);
+}
+
+
+/*? Aantekeningen */
+
+html #idAantekeningen > div > .widget > .block > .content.aantekeningen,
+html #idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget {
+    background: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr[role="presentation"] > td > ul.k-editor-toolbar {
+    box-shadow: none;
+    border-color: var(--mid-gray);
+}
+
+html #idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr[role="presentation"] > td > ul.k-editor-toolbar > li > a {
+    border-color: var(--mid-gray);
+    background: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr[role="presentation"] > td > ul.k-editor-toolbar > li > a > span {
+    color: var(--mooie-text-color);
+    filter: var(--icon-filter);
+}
+
+html #idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr > td.k-editable-area > iframe {
+    color: var(--mooie-text-color);
+    background: var(--mooie-bg-color-mid);
 }
 
 

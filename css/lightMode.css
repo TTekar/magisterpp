@@ -20,4 +20,6 @@ html body {
     --mid-gray: #7f7f7fff !important;
 
     --cijfers-background-opacity: 1 !important;
+
+    --icon-filter: brightness(50%) !important;
 }
