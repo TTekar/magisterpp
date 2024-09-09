@@ -2,7 +2,7 @@
 Een extensie die verandert hoe Magister eruitziet en nieuwe features toevoegt.
 
 > [!NOTE]
-> Deze extensie is voornamelijk gemaakt voor leerlingen van het Jordan MLU. Er zitten dus features in die speciaal voor het Jordan gemaakt zijn, en misschien werken een paar kleine dingen niet als je niet op het Jordan zit.
+> Deze extensie is gemaakt voor leerlingen van het Jordan MLU. Er zitten features in die speciaal voor het Jordan gemaakt zijn, en misschien werken een paar kleine dingen niet als je niet op het Jordan zit.
 
 
 ## Features
