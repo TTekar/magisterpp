@@ -1,25 +1,105 @@
 
 var keuzeUI = false;
 
-function getWeekNumber(date = new Date()) {
-  const inputDate = new Date(date);
-  if (isNaN(inputDate)) {
-      return "Invalid date";
-  }
+var madeKeuzeIframe = false;
 
-  const startDate = new Date(inputDate.getFullYear(), 0, 1);
-  const dayOfYear = Math.ceil((inputDate - startDate + 1) / (24 * 60 * 60 * 1000));
-  const weekNumber = Math.ceil(dayOfYear / 7);
-  
-  return weekNumber;
+
+const weekToPensum = { // schooljaar 2024-2025
+  1: "",
+  2: " - 2.8",
+  3: " - LB-2 / SE-2",
+  4: " - 3.1",
+  5: " - 3.2",
+  6: " - 3.3",
+  7: " - 3.4",
+  8: " - 3.5",
+  9: "",
+  10: " - 3.6",
+  11: " - 3.7 / SE-3A",
+  12: " - Projectweek",
+  13: " - 3.8",
+  14: " - LB-3 / SE-3B",
+  15: " - 4.1",
+  16: " - 4.2",
+  17: "",
+  18: "",
+  19: " - 4.3",
+  20: " - 4.4",
+  21: " - 4.5",
+  22: " - 4.6",
+  23: " - 4.7 / SE-4",
+  24: " - 4.8",
+  25: " - 4.9",
+  26: " - 4.10",
+  27: " - LB-4",
+  28: "",
+  29: "",
+  30: "",
+  31: "",
+  32: "",
+  33: "",
+  34: "",
+  35: " - 1.1",
+  36: " - 1.2",
+  37: " - 1.3",
+  38: " - 1.4",
+  39: " - 1.5",
+  40: " - 1.6",
+  41: " - 1.7",
+  42: " - 1.8",
+  43: " - LB-1 / SE-1",
+  44: "",
+  45: " - 2.1",
+  46: " - 2.2",
+  47: " - 2.3",
+  48: " - 2.4",
+  49: " - 2.5",
+  50: " - 2.6",
+  51: " - 2.7",
+  52: "",
+  53: ""
 }
 
-const init3 = function() {
+
+function getWeekNumber(date = new Date()) {
+  const inputDate = new Date(date)
+  if (isNaN(inputDate)) {
+      return "Invalid date"
+  }
+
+  const startDate = new Date(inputDate.getFullYear(), 0, 1)
+  const dayOfYear = Math.ceil((inputDate - startDate + 1) / (24 * 60 * 60 * 1000))
+  const weekNumber = Math.ceil(dayOfYear / 7)
   
-  setTimeout(() => {
-    
-    
-    //~ Keuze plattegrond
+  return weekNumber
+}
+
+function getISOWeekNumber(date = new Date()) {
+  const inputDate = new Date(date);
+  if (isNaN(inputDate)) {
+      return "Invalid date"
+  }
+
+  const day = inputDate.getUTCDay()
+  const nearestThursday = new Date(inputDate)
+  nearestThursday.setUTCDate(inputDate.getUTCDate() + 4 - (day === 0 ? 7 : day))
+
+  const yearStart = new Date(Date.UTC(nearestThursday.getUTCFullYear(), 0, 1))
+
+  const weekNumber = Math.ceil(((nearestThursday - yearStart) / (24 * 60 * 60 * 1000) + 1) / 7)
+
+  return weekNumber
+}
+
+
+var update100ms = window.setInterval(function(){
+
+  const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
+
+
+  //~ Keuze plattegrond
+
+  if (!madeKeuzeIframe) {
     chrome.storage.sync.get(
       { keuzeBtn: true, darkMode: false },
       (items) => {
@@ -58,9 +138,7 @@ const init3 = function() {
           newButton.onclick = function(event) {
 
             /// Make the iframe if its not there yet
-            if (document.getElementById("iframeKeuze") != null) {
-              // do absolutely nothing                  
-            } else {
+            if (!document.getElementById("iframeKeuze")) {
               const iframeKeuze = document.createElement("iframe")
 
               if (items.darkMode) {
@@ -119,20 +197,14 @@ const init3 = function() {
             document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
           }
 
+          madeKeuzeIframe = true
 
         }
 
       }
     );
-      
-    
+  }
 
-  }, 1000);  
-}
-
-var update100ms = window.setInterval(function(){
-
-  const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
 
   /// Chrome storage
   chrome.storage.sync.get(
@@ -175,7 +247,12 @@ var update100ms = window.setInterval(function(){
           if (widget.classList.contains("widget-high")) {
             contentDiv.style.height = `${items.widgetCustomHigh}px`
           }else {
-            contentDiv.style.height = `${items.widgetCustomLow}px`
+            if (items.widgetCustomLow == 0) {
+              const calcLow = (items.widgetCustomHigh - 92) / 2
+              contentDiv.style.height = `${calcLow}px`
+            }else {
+              contentDiv.style.height = `${items.widgetCustomLow}px`
+            }
           }
 
         })
@@ -246,16 +323,16 @@ var update100ms = window.setInterval(function(){
 
   /// Edit layout button 
   if(currentLocationSplit == "magister.net/magister/#/vandaag"){
-    if (document.getElementById("edit-toggle-btn").offsetWidth > 32 ) {
+    if (document.getElementById("edit-toggle-btn") && document.getElementById("edit-toggle-btn").offsetWidth > 32 ) {
       document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>'
     }
   }
 
 
-  /// Cijcers lijst wel knop donker
-  if(currentLocationSplit == "magister.net/magister/#/cijfers/cijferoverzicht" || currentLocationSplit == "magister.net/magister/#/cijfers"){
+  /// Cijfers lijst wel knop donker
+  if((currentLocationSplit == "magister.net/magister/#/cijfers/cijferoverzicht" || currentLocationSplit == "magister.net/magister/#/cijfers") && document.getElementById("menu-cijfers")) {
     document.getElementById("menu-cijfers").parentElement.classList.add("active")
-  }else {
+  }else if (document.getElementById("menu-cijfers")) {
     document.getElementById("menu-cijfers").parentElement.classList.remove("active")
   }
   
@@ -264,17 +341,19 @@ var update100ms = window.setInterval(function(){
   /// Check for hidden ui shit
   const divToHide = document.querySelector("div.view.ng-scope")
   const coverDivKeuze = document.getElementById("coverDivKeuze")
-  const coverDivSheets = document.getElementById("coverDivSheets")
 
-  if (keuzeUI) {
-    divToHide.style.display = "none"
-    coverDivKeuze.style.display = "flex"
-  } else {
-    divToHide.style.display = "block"
-    coverDivKeuze.style.display = "none"
+  if (divToHide && coverDivKeuze) {
+    if (keuzeUI) {
+      divToHide.style.display = "none"
+      coverDivKeuze.style.display = "flex"
+    } else {
+      divToHide.style.display = "block"
+      coverDivKeuze.style.display = "none"
+    }
   }
+  
 
-  /// Studiewijzers grid
+  ///! Studiewijzers grid
   const studiewijzersListItems = document.querySelectorAll('div.studiewijzer-list.normaal > ul > li');
   
   ////const colors = ['#FFA3A3', '#F2DC9B', '#D1FFA3', '#A3FFBA', '#A3FFFF', '#A3BAFF', '#CC9BF2'];
@@ -376,10 +455,32 @@ var update100ms = window.setInterval(function(){
   })
   
 
+  /// Datum week
+
+  const week = "1.3"
+
+  const pageHeader = document.querySelector("#vandaag-container > dna-page-header")
+
+  if (pageHeader && pageHeader.shadowRoot) {
+
+    if (!pageHeader.shadowRoot.getElementById("mpp-week-style")) {
+      const style = document.createElement('style');
+      style.id = "mpp-week-style"
+      style.textContent = `
+        div.container > div > div.title::after {
+          content: "${weekToPensum[getISOWeekNumber()]}";
+          color: var(--mid-gray);
+        }
+      `;
+
+      pageHeader.shadowRoot.querySelector("div.container > div > div.title").style.userSelect = "none"
+
+      pageHeader.shadowRoot.appendChild(style);
+     
+    }
+  }
+
   
 
 }, 100);
 
-
-
-init3();

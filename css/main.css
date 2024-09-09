@@ -229,7 +229,7 @@ html #agendawidgetlistcontainer li > a > div > div.les-info > span.alt-nrblock.n
 }
 
 html #agendawidgetlistcontainer li > a > div > div.icon-block span.agenda-text-icon {
-    background-color: var(--mooie-bg-color);
+    background-color: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
     border: 1px solid var(--mooie-text-color);
 }
@@ -1812,6 +1812,7 @@ html div.container > div.view.ng-scope > mg-toestemming-wijzigen > section.main 
 html #user-menu > span {
     background-color: var(--mooie-bg-color-mid);
     border: none;
+    box-shadow: none;
     color: var(--mooie-text-color);
 }
 
@@ -2155,3 +2156,23 @@ html #cijfers-laatst-behaalde-resultaten-container #idDetails > div > div.widget
 }
 
 
+
+/*~ Datum week */
+
+.mpp-datum-week {
+    color: var(--mid-gray);
+}
+
+
+/*~ menu berichten new */
+
+html #menu-berichten-new > span {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+html #menu-berichten-new > span::after {
+    border-right: 5px solid var(--mooie-bg-color-mid);
+}

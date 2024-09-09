@@ -74,6 +74,66 @@ body {
   cursor: pointer;
 }
 
+/*~ New radio */
+
+.radioButtons {
+  height: .7ch;
+  width: fit-content;
+  display: inline;
+  float: right;
+}
+
+.radioButtons label {
+  width: 75px;
+  display: inline;
+  background-color: var(--mooie-bg-color-mid);
+  border: 1px solid var(--mid-gray);
+  margin-left: -23px;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 0px;
+  opacity: .35;
+  transition: ease .5s;
+}
+
+.radioButtons label:nth-of-type(1) {
+  border-radius: 15px 0px 0px 15px;
+}
+
+.radioButtons label:nth-last-of-type(1) {
+  border-radius: 0px 15px 15px 0px;
+}
+
+.radioButtons label:hover {
+  opacity: .7;
+  transition: ease .5s;
+}
+
+.radioButtons input[type="radio"]:checked+label {
+  opacity: 1;
+  transition: ease .5s;
+}
+
+input[type="radio"] {
+  visibility: hidden;
+}
+
+/*~ Icons */
+
+label[for="dark"]::before {
+  content: "\f186";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+label[for="light"]::before {
+  content: "\f185";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
+
 
 /*~ Toggle Switch */
 
