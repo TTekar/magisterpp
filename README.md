@@ -23,18 +23,17 @@ Als je zelf ideeën hebt voor nieuwe features, kan je dat bij _[issues](https://
 
 ### Methode 1
 
-1. Ga naar de _[releases](https://github.com/TTekar/magisterExtension/releases)_ pagina
-2. Download het .crx bestand
-3. Open het bestand met je browser
-
-Dit is de makkelijkste en snelste manier om de nieuwste versie van de extensie te installeren.
-
-### Methode 2
-
 1. Clone of download de repository
 2. Ga naar de extensie pagina van je browser (bijv. chrome://extensions/)
 3. Schakel "Ontwikkelaarsmodus" in
 4. Klik op "Uitgepakt laden" en selecteer de map met de bestanden van deze extensie
+
+### Methode 2 (niet chrome)
+
+1. Ga naar de _[releases](https://github.com/TTekar/magisterExtension/releases)_ pagina
+2. Download het .crx bestand
+3. Open het bestand met je browser
+
 
 ## Keuze Plattegrond
 
