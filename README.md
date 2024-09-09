@@ -1,4 +1,4 @@
-# Better Magister
+# Magister++
 Een extensie die verandert hoe Magister eruitziet en nieuwe features toevoegt.
 
 > [!NOTE]
