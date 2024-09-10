@@ -107,11 +107,13 @@ body {
 
 .radioButtons label:hover {
   opacity: .7;
+  text-shadow: 0px 0px 2px var(--mid-gray);
   transition: ease .5s;
 }
 
 .radioButtons input[type="radio"]:checked+label {
   opacity: 1;
+  text-shadow: 0px 0px 4px var(--mid-gray);
   transition: ease .5s;
 }
 
