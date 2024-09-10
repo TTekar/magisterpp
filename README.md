@@ -9,12 +9,15 @@ Een extensie die verandert hoe Magister eruitziet en nieuwe features toevoegt.
 
 - Net wat andere UI design
 - Light / Dark mode
-- Een [keuze plattegrond](#keuze-plattegrond)
+- Custom profielfoto (of geen)
+- Auto login
 - Aangepaste tekst op het inlogscherm
-- Nieuwe manier om de studiewijzers weer te geven
+- Een [keuze plattegrond](#keuze-plattegrond)
+- Studiewijzers in een rooster weergeven
 - Custom widget hoogte
-- Geen help knop meer (is gwn lelijk)
-- Wat andere kleine domme dingen
+- Nutteloze knoppen verstoppen
+
+En nog meer.
 
 De meeste van deze features kan je in de instellingen van de extensie aan en uit zetten. 
 Als je zelf ideeën hebt voor nieuwe features, kan je dat bij _[issues](https://github.com/TTekar/magisterExtension/issues)_ zetten.
