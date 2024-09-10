@@ -61,6 +61,22 @@ const weekToPensum = { // schooljaar 2024-2025
 }
 
 
+const targetNode = document.body
+
+const callback = function(mutationsList, observer) {
+    for (let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            if (mutation.addedNodes.length > 0) {
+              if (document.querySelector('[id^="drag-"].vandaag-drag-hint')) document.querySelector('[id^="drag-"].vandaag-drag-hint').remove()
+            }
+        }
+    }
+}
+
+const observer = new MutationObserver(callback)
+var observing = false
+
+
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date)
   if (isNaN(inputDate)) {
@@ -208,33 +224,29 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true },
       (items) => {
 
         //~ Set custom pfp
         if (items.customPfp) {
-          const divUserMenu = document.querySelector("a#user-menu");
-          var pfp = divUserMenu.querySelector('img[mg-http-src^="/api/leerlingen/"]');
-  
-          if(pfp.getAttribute("alt") == "Aidan Schoester") {
 
-            document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
-              img.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
-            })
+          chrome.storage.local.get(
+            {  userImage: "" },
+            (items) => {
+              document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
 
-          }else if(pfp.getAttribute("alt") == "Joppe Tummers") {
+                if(document.querySelector("#user-menu > figure > img").getAttribute("alt") == "Aidan Schoester") {
 
-            document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
-              img.setAttribute("src", "https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg")
-            })
+                  img.setAttribute("src", `https://thijmpie.netlify.app/img/adanPfp/${getWeekNumber()}.jpg`)
 
-          }else if (pfp.getAttribute("alt") == "Thijmen Molema") {
+                }else {
 
-            document.querySelectorAll('img[mg-http-src^="/api/leerlingen/"]').forEach((img) => {
-              img.setAttribute("src", "https://thijmpie.netlify.app/img/taimu.png")
-            })
+                  img.setAttribute("src", items.userImage)
 
-          }
+                }
+              })
+            }
+          );
         }
 
 
@@ -301,21 +313,18 @@ var update100ms = window.setInterval(function(){
           })
         }
 
-        //~ Aantekeningen text color
 
-        const iframe = document.querySelector("#idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr > td.k-editable-area > iframe")
+        //~ Hide widget drag  
 
-        try {
-          const iframeDocument = iframe.contentWindow.document
-          if (items.darkMode) {
-            iframeDocument.body.style.color = "#fff"
-          }else {
-            iframeDocument.body.style.color = "#000"
-          }
-          
-        } catch {
-
+        if (!items.widgetDrag && !observing) {
+          observer.observe(targetNode, { childList: true, subtree: true })
+          observing = true
+        }else if(items.widgetDrag) {
+          observer.disconnect()
+          observing = false
         }
+
+
 
       }
   );
@@ -353,32 +362,32 @@ var update100ms = window.setInterval(function(){
   }
   
 
-  ///! Studiewijzers grid
-  const studiewijzersListItems = document.querySelectorAll('div.studiewijzer-list.normaal > ul > li');
+  /// Studiewijzers grid
+  // const studiewijzersListItems = document.querySelectorAll('div.studiewijzer-list.normaal > ul > li');
   
-  ////const colors = ['#FFA3A3', '#F2DC9B', '#D1FFA3', '#A3FFBA', '#A3FFFF', '#A3BAFF', '#CC9BF2'];
-  ////const colors = ['#0e4772', '#023660'];
-  const colors = ['#020203'];
-  const opacity = 0.18;
+  // ////const colors = ['#FFA3A3', '#F2DC9B', '#D1FFA3', '#A3FFBA', '#A3FFFF', '#A3BAFF', '#CC9BF2'];
+  // ////const colors = ['#0e4772', '#023660'];
+  // const colors = ['#020203'];
+  // const opacity = 0.18;
 
-  function hexToRgba(hex, alpha) {
-    const bigint = parseInt(hex.slice(1), 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-  }
+  // function hexToRgba(hex, alpha) {
+  //   const bigint = parseInt(hex.slice(1), 16);
+  //   const r = (bigint >> 16) & 255;
+  //   const g = (bigint >> 8) & 255;
+  //   const b = bigint & 255;
+  //   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  // }
 
-  studiewijzersListItems.forEach((li, index) => {
-      const spans = li.querySelectorAll('a span');
-      if (spans.length > 1) {
-          spans[1].remove();
-      }
+  // studiewijzersListItems.forEach((li, index) => {
+  //     const spans = li.querySelectorAll('a span');
+  //     if (spans.length > 1) {
+  //         spans[1].remove();
+  //     }
 
-      const colorIndex = index % colors.length;
-      const rgbaColor = hexToRgba(colors[colorIndex], opacity);
-      li.style.backgroundColor = rgbaColor;
-  });
+  //     const colorIndex = index % colors.length;
+  //     const rgbaColor = hexToRgba(colors[colorIndex], opacity);
+  //     li.style.backgroundColor = rgbaColor;
+  // });
 
 
   /// Remove aside tabs if == 1
@@ -477,6 +486,19 @@ var update100ms = window.setInterval(function(){
 
       pageHeader.shadowRoot.appendChild(style);
      
+    }
+  }
+
+  /// Aantekeningen text color
+
+  const iframe = document.querySelector("#idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr > td.k-editable-area > iframe")
+
+  if (iframe) {
+    const iframeDocument = iframe.contentWindow.document
+    if (items.darkMode) {
+      iframeDocument.body.style.color = "#fff"
+    }else {
+      iframeDocument.body.style.color = "#000"
     }
   }
 

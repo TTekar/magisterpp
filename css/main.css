@@ -609,6 +609,7 @@ html .k-calendar thead th {
     background-color: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
     font-weight: normal;
+    border-color: var(--mid-gray);
 }
 
 html .k-calendar tbody .k-other-month {
@@ -616,8 +617,20 @@ html .k-calendar tbody .k-other-month {
     background: none;
 }
 
-html .k-calendar td.range-select {
+html .k-calendar .k-content tbody td {
+    border-color: var(--mid-gray);
+}
+
+html .k-calendar .k-content tbody td.range-select {
     background-color: var(--primary-background) !important;
+    border-top: none;
+    border-bottom: none;
+}
+
+html .k-calendar .k-content tbody td.range-select.k-state-hover,
+html .k-calendar .k-content tbody td.range-select.k-state-hover a {
+    background-color: var(--secondary-background) !important;
+    color: var(--mooie-text-color) !important;
     border-top: none;
     border-bottom: none;
 }
@@ -630,7 +643,7 @@ html .k-calendar .k-header .k-state-hover {
     box-shadow: none;
 }
 
-html .k-calendar .k-content tbody td.k-state-hover{
+html .k-calendar .k-content tbody td.k-state-hover {
     background: var(--mooie-bg-color-hover) !important;
     border-color: none !important;
     -moz-box-shadow: none !important;
@@ -642,6 +655,16 @@ html .k-calendar .k-content tbody td.k-state-hover a {
     color: var(--mooie-text-color) !important;
     background-image: none;
     background: var(--mooie-bg-color-hover) !important;
+}
+
+html .k-calendar .k-content tbody td.k-state-selected,
+html .k-calendar .k-content tbody td.k-state-selected a {
+    color: var(--mooie-text-color) !important;
+    background: var(--mooie-bg-color-hover) !important;
+    border-color: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 /*? Side panel */
@@ -689,6 +712,7 @@ html sm-tab[id^="id"] div.block > .content > form input[type="radio"]~label {
     background-color: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
     border: 1px solid var(--mid-gray);
+    box-shadow: none;
 }
 
 html sm-tab[id^="id"] div.block > .content > form input[type="checkbox"]~label > span {
@@ -1007,6 +1031,59 @@ html #afsprakenLijst > div.k-grid-content > table tr td.icon-column span {
 html #afsprakenLijst > div.k-grid-content > table tr td .alt-nrblock i {
     color: var(--mooie-text-color) !important;
 }
+
+/* Agenda Dag- Weekoverzicht */
+
+html #scheduler {
+    background-color: var(--mooie-bg-color);
+    border-radius: 0;
+}
+
+html #scheduler > table.k-scheduler-layout {
+    color: var(--mooie-text-color);
+}
+
+html #scheduler > table.k-scheduler-layout .k-scheduler-times {
+    border: none;
+}
+
+html #scheduler > table.k-scheduler-layout .k-scheduler-times tr,
+html #scheduler > table.k-scheduler-layout .k-scheduler-times tr th {
+    border-color: var(--mid-gray);
+    background-color: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+}
+
+html #scheduler > table.k-scheduler-layout .k-scheduler-header-wrap {
+    border: none;
+}
+
+html #scheduler > table.k-scheduler-layout .k-scheduler-header-wrap td,
+html #scheduler > table.k-scheduler-layout .k-scheduler-header-wrap th {
+    box-shadow: none !important;
+    background: var(--mooie-bg-color) !important;
+    border-color: var(--mid-gray);
+}
+
+html #scheduler > table.k-scheduler-layout .k-scheduler-table tr td {
+    background-color: var(--mooie-bg-color);
+    border-color: var(--mid-gray);
+    color: var(--mooie-text-color);
+}
+
+html #scheduler > table.k-scheduler-layout .k-scheduler-table tr td.k-nonwork-hour {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+    color: var(--mooie-text-color);
+}
+
+html #scheduler > table.k-scheduler-layout .k-scheduler-content .k-event {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+    border-radius: 8px;
+    color: var(--mooie-text-color);
+}
+
 
 
 /*~ Afwezigheid */
@@ -1393,6 +1470,10 @@ html #mappen ~ .rest-column {
     border-color: var(--mid-gray);
 }
 
+html #mappen .widget ul.list {
+    border-color: var(--mid-gray);
+}
+
 html #bestanden {
     background-color: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
@@ -1414,6 +1495,10 @@ html #bestanden > .widget > .block > div {
 
 html #bestanden > .widget > .block > div > p {
     color: var(--mid-gray);
+    border-color: var(--mid-gray);
+}
+
+html #bestanden > .widget > .block > div > ul.list {
     border-color: var(--mid-gray);
 }
 
@@ -1910,6 +1995,10 @@ html #huiswerkomschrijving .comment {
     color: var(--mooie-text-color);
 }
 
+html #huiswerkomschrijving .comment * {
+    color: var(--mooie-text-color);
+}
+
 html #huiswerkomschrijving .attachment-bar {
     border-color: var(--mid-gray);
 }
@@ -2175,4 +2264,10 @@ html #menu-berichten-new > span {
 
 html #menu-berichten-new > span::after {
     border-right: 5px solid var(--mooie-bg-color-mid);
+}
+
+
+/*/ Error ? */
+html div.message > p {
+    color: var(--mooie-text-color);
 }

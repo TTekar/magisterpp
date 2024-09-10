@@ -21,8 +21,9 @@ html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > u
     display: flex; 
     justify-content: center; 
     align-items: center;
-    border-radius: 15px;
+    border-radius: 32px;
     border: none;
+    background-color: var(--mooie-bg-color-mid);
 }
 
 html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a {
@@ -34,7 +35,8 @@ html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > u
     width: 100%;
     height: 100%;
     padding: 5%;
-    background-color: transparent;
+    background-color: var(--mooie-bg-color-mid);
+    border-radius: 32px;
 }
 
 html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a > span {
@@ -46,5 +48,6 @@ html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > u
     color: var(--mooie-text-color);
     font-size: 1.2rem;
     font-weight: 600;
+    border: none;
 }
 

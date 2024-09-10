@@ -132,3 +132,10 @@ html .splash-container.bg_forgot_password_webp {
 html .podium>h1 {
     text-align: center;
 }
+
+
+/* Loading text */
+
+html div.app-container > div.challenge-container > div.podium_container > div.podium > div.loading-message {
+    color: var(--mooie-text-color);
+}
