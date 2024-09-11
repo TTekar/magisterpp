@@ -585,6 +585,10 @@ html #agenda-container > aside > div.head-bar > ul.tabs > li > a {
     color: var(--mooie-text-color);
 }
 
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(4):hover {
+    background-color: var(--primary-background);
+}
+
 
 /*? Kalender */
 html .k-calendar {
@@ -645,7 +649,7 @@ html .k-calendar .k-header .k-state-hover {
 
 html .k-calendar .k-content tbody td.k-state-hover {
     background: var(--mooie-bg-color-hover) !important;
-    border-color: none !important;
+    border-color: var(--mid-gray) !important;
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -954,7 +958,7 @@ html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-a
 }
 
 html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset  span.k-widget.k-datepicker.k-header.ng-binding > span {
-    background-color: var(--mooie-bg-color-mid) !important;
+    background-color: var(--mooie-bg-color-hover) !important;
     border: none !important;
 }
 
@@ -964,10 +968,14 @@ html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-a
     color: var(--mooie-text-color);
 }
 
-html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset > ul > li.multiple-fancy-box span > span {
-    background-color: var(--mooie-bg-color-mid) !important;
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset > ul > li.multiple-fancy-box > .fancy-select > span > span {
+    background-color: var(--mooie-bg-color-hover) !important;
     border: none;
     color: var(--mooie-text-color);
+}
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.new-appointment-block > fieldset > ul > li.multiple-fancy-box > .fancy-select > span,
+html #agenda-afspraak-bewerken-container .k-datepicker {
+    background-color: var(--mooie-bg-color-mid) !important;
 }
 
 
@@ -2048,6 +2056,36 @@ html #idAantekeningen > div > .widget > .block > .content.aantekeningen > .widge
 }
 
 
+/*~ Agenda nieuwe afspraak text container */
+
+html #agenda-afspraak-bewerken-container > section > div,
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.wysiwyg.k-content {
+    background: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.wysiwyg.k-content table > tbody > tr[role="presentation"] > td > ul.k-editor-toolbar {
+    box-shadow: none;
+    border-color: var(--mid-gray);
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.wysiwyg.k-content  table > tbody > tr[role="presentation"] > td > ul.k-editor-toolbar > li > a {
+    border-color: var(--mid-gray);
+    background: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.wysiwyg.k-content  table > tbody > tr[role="presentation"] > td > ul.k-editor-toolbar > li > a > span {
+    color: var(--mooie-text-color);
+    filter: var(--icon-filter);
+}
+
+html #agenda-afspraak-bewerken-container > section > div > div.widget.wide.wysiwyg.k-content table > tbody > tr > td.k-editable-area > iframe {
+    color: var(--mooie-text-color);
+    background: var(--mooie-bg-color-mid);
+}
+
 
 /*~ Les details agenda */
 
@@ -2083,13 +2121,29 @@ html #agenda-section > .content-container > .widget > .block > .content > table 
     box-shadow: none;
 }
 
+html #agenda-section > .content-container > .widget > .block > .content > table > tbody > tr  {
+    background-color: var(--mooie-bg-color-mid);
+}
+
 html #agenda-section > .content-container > .widget > .block > .content > table > tbody > tr > td {
     background-color: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
-    border-color: var(--mid-gray);
+    border-color: var(--mid-gray) !important;
     box-shadow: none;
 }
 
+html #studiewijzersContainer > div > ul {
+    border-color: var(--mid-gray);
+}
+
+#studiewijzersContainer > div > ul > li {
+    border-color: var(--mid-gray);
+    background-color: var(--mooie-bg-color-mid);
+}
+
+#studiewijzersContainer > div > ul > li > a {
+    color: var(--mooie-text-color);
+}
 
 html #agenda-section > .content-container > .widget > .block > footer.endlink {
     background-color: inherit;
@@ -2271,3 +2325,81 @@ html #menu-berichten-new > span::after {
 html div.message > p {
     color: var(--mooie-text-color);
 }
+
+
+/* shell-blocker */
+
+html .shell-blocker {
+    background-color: color-mix(in srgb, var(--mooie-bg-color-mid) 35%, transparent);
+}
+
+
+/* faux label */
+
+html .collapsed-menu #faux-label {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+}
+
+html div.container > div.menu-host.loading.collapsed-menu > nav > div.menu-container > ul > li > a > span::after {
+    border-right-color: var(--mooie-bg-color-mid);
+}
+
+
+
+/* faux popup menu */
+
+html div.container > div.menu-host.loading.collapsed-menu > nav > div.faux.popup-menu {
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+}
+
+html div.container > div.menu-host.loading.collapsed-menu > nav > div.faux.popup-menu::after {
+    border-right-color: var(--mooie-bg-color-mid);
+}
+
+html div.container > div.menu-host.loading.collapsed-menu > nav > div.faux.popup-menu h3,
+html div.container > div.menu-host.loading.collapsed-menu > nav > div.faux.popup-menu a {
+    color: var(--mooie-text-color);
+}
+
+html div.container > div.menu-host.loading.collapsed-menu > nav > div.faux.popup-menu a:hover {
+    background-color: var(--mooie-bg-color-hover);
+}
+
+
+
+
+/*! Studiewijzers list */
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > div.head {
+    background-color: var(--mooie-bg-color-hover);
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > div.head > span:nth-child(1) {
+    border: none;
+}
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border-top: 1px solid var(--mid-gray);
+}
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li:last-child {
+    border-bottom: none;
+}
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a {
+    color: var(--mooie-text-color);
+}
+
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a span {
+    border-color: var(--mid-gray);
+}
+

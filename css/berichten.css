@@ -54,11 +54,29 @@ html div.cdk-virtual-scroll-content-wrapper div.bericht-item.ng-star-inserted {
     border: none;
     border-radius: 15px;
     margin-bottom: 5px;
+    opacity: 1;
 }
 
 html div.cdk-virtual-scroll-content-wrapper div.bericht-item.ng-star-inserted:hover {
     background-color: var(--mooie-bg-color-hover) !important;
 }
+
+html div.cdk-virtual-scroll-content-wrapper div.bericht-item.ng-star-inserted.niet-gelezen {
+    background-color: var(--mooie-bg-color-hover) !important;
+    /* border: 1px solid var(--mid-gray); */
+    border-radius: 15px;
+    margin-bottom: 5px;
+    opacity: 1;
+}
+
+html div.cdk-virtual-scroll-content-wrapper:has(div.bericht-item.ng-star-inserted.niet-gelezen) div.bericht-item.ng-star-inserted {
+    opacity: .7;
+}
+
+html div.cdk-virtual-scroll-content-wrapper:has(div.bericht-item.ng-star-inserted.niet-gelezen) div.bericht-item.ng-star-inserted.niet-gelezen {
+    opacity: 1;
+}
+
 
 html .cdk-drag.ng-star-inserted span.naam {
     color: var(--mooie-text-color) !important;
@@ -323,4 +341,56 @@ html .dna-tag-list-wrapper .dna-tag {
 
 html .dna-tag-list-wrapper .dna-tag:hover {
     background-color: var(--background-1);
+}
+
+
+
+/*~ map maken */
+
+html dna-overlay-container > dna-overlay > dna-dialog > app-add-folder-dialog > dna-dialog-title {
+    color: var(--mooie-text-color);
+}
+
+
+/*~ Popup */
+
+html dna-overlay-container > dna-overlay > dna-menu {
+    border: none;
+    background: var(--mooie-bg-color);
+}
+
+
+html dna-overlay-container > dna-overlay > dna-menu > dna-menu-item {
+    background: var(--mooie-bg-color);
+    color: var(--mooie-text-color);
+    --disabled: opacity(.35);
+}
+
+html dna-overlay-container > dna-overlay > dna-menu > dna-menu-item:hover {
+    background: var(--mooie-bg-color-hover);
+    color: var(--mooie-text-color);
+    filter: none;
+}
+
+/*/ Backdrop */
+
+html .dna-backdrop {
+    background-color: color-mix(in srgb, var(--mooie-bg-color-mid) 35%, transparent);
+}
+
+/* verwijderen */
+
+body > dna-overlay-container > dna-overlay > dna-dialog > app-delete-folder-dialog * {
+    color: var(--mooie-text-color);
+}
+
+
+/*~ Folders container */
+
+html app-root > app-berichten-overzicht > div.container > div.folders-container {
+    min-width: 20%;
+}
+
+html app-root > app-berichten-overzicht > div.container > app-bericht-list {
+    min-width: 25%;
 }

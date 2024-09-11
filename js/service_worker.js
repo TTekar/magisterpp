@@ -80,8 +80,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                     // Studiewijzers Grid
                     if (items.studiewijzersGrid) {
                         cssToInsert.push("css/studiewijzersGrid.css");
-                    } else {
-                        cssToInsert.push("css/studiewijzersList.css");
                     }
 
 

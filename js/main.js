@@ -134,7 +134,9 @@ var update100ms = window.setInterval(function(){
           coverDivKeuze.style.display = "none"
           coverDivKeuze.style.justifyContent = "center"
           coverDivKeuze.style.alignItems = "center"
-          mainView.parentElement.appendChild(coverDivKeuze)
+
+          if (mainView) mainView.parentElement.appendChild(coverDivKeuze)
+          else return
 
           
 
@@ -326,6 +328,30 @@ var update100ms = window.setInterval(function(){
 
 
 
+        //~ Aantekeningen text color
+
+        const iframe = document.querySelector("#idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr > td.k-editable-area > iframe")
+
+        if (iframe) {
+          const iframeDocument = iframe.contentWindow.document
+          if (items.darkMode) {
+            iframeDocument.body.style.color = "#fff"
+          }else {
+            iframeDocument.body.style.color = "#000"
+          }
+        }
+
+        const iframeAgenda = document.querySelector("#agenda-afspraak-bewerken-container > section > div > div.widget.wide.wysiwyg.k-content > table > tbody > tr > td > iframe")
+
+        if (iframeAgenda) {
+          const iframeDocument = iframeAgenda.contentWindow.document
+          if (items.darkMode) {
+            iframeDocument.body.style.color = "#fff"
+          }else {
+            iframeDocument.body.style.color = "#000"
+          }
+        }
+
       }
   );
   
@@ -489,19 +515,165 @@ var update100ms = window.setInterval(function(){
     }
   }
 
-  /// Aantekeningen text color
+  const span = document.querySelector("#customButtonKeuze > span")
 
-  const iframe = document.querySelector("#idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr > td.k-editable-area > iframe")
+  if ( window.getComputedStyle(span, '::after').content !== "none" && window.getComputedStyle(span, '::after').content !== "" ) {
+    const fauxLabel = document.getElementById("faux-label")
+    fauxLabel.style.display = "block"
+    fauxLabel.innerHTML = "Keuzes"
 
-  if (iframe) {
-    const iframeDocument = iframe.contentWindow.document
-    if (items.darkMode) {
-      iframeDocument.body.style.color = "#fff"
-    }else {
-      iframeDocument.body.style.color = "#000"
-    }
+    const menuContainerTop = document.querySelector("body > div.container > div.menu-host.loading.collapsed-menu > nav > div.menu-container").getBoundingClientRect().top
+
+    const spanRect = span.getBoundingClientRect()
+    const spanCenterY = spanRect.top + (spanRect.height / 2) - menuContainerTop - 12
+
+    fauxLabel.style.top = `${spanCenterY}px`
   }
 
+
+
+  //~ Absentie
+
+  if (currentLocationSplit === "magister.net/magister/#/att-absence") {
+
+    document.querySelector("body > .container").style.paddingRight = "0"
+
+    const attAbs = document.querySelector("body > div.container > div.view.ng-scope > mg-att-absence > att-absence-root")
+    const attAbsDashDOM = attAbs.shadowRoot.querySelector("#outlet > att-absence-dashboard").shadowRoot
+
+    const pageHeader = attAbsDashDOM.querySelector("dna-page-header")
+
+    pageHeader.style.backgroundColor = "var(--primary-background)"
+
+
+    attAbsDashDOM.querySelector(".wrapper > dna-link-card").shadowRoot.querySelectorAll(".arrow").forEach((item) => {
+      item.style.color = "var(--mooie-bg-color)"
+    })
+
+  }
+
+  if (currentLocationSplit === "magister.net/magister/#/att-absence/absence-overview-student") {
+    document.querySelector("body > .container").style.paddingRight = "0"
+
+    const attAbs = document.querySelector("body > div.container > div.view.ng-scope > mg-att-absence > att-absence-root")
+    const attAbsOverDOM = attAbs.shadowRoot.querySelector("#outlet > att-absence-overview-student").shadowRoot
+
+    attAbs.shadowRoot.querySelector("#outlet > att-absence-overview-student").style.backgroundColor = "var(--mooie-bg-color)"
+
+    const scrollbarStyle = document.createElement("style")
+    scrollbarStyle.id = "scrollbarStyle"
+
+    scrollbarStyle.textContent = `
+    *::-webkit-scrollbar {
+      width: 5px !important;
+      height: 5px !important;
+    }
+
+    *::-webkit-scrollbar-track {
+      border-radius: 10px !important;
+      background-color: var(--mooie-bg-color) !important;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background: var(--primary-background) !important; 
+      border-radius: 5px !important;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-background) !important; 
+    }`
+
+    if (!attAbs.shadowRoot.getElementById("scrollbarStyle")) attAbs.shadowRoot.appendChild(scrollbarStyle)
+
+    const pageHeader = attAbsOverDOM.querySelector("dna-page-header")
+
+    pageHeader.style.backgroundColor = "var(--primary-background)"
+
+
+    const dnaTabs = attAbsOverDOM.querySelector("dna-tabs")
+    dnaTabs.style.backgroundColor = "var(--mooie-bg-color)"
+    
+    dnaTabs.querySelector("dna-tab > .page-content > att-lesson-registrations").style.backgroundColor = "var(--mooie-bg-color)"
+    dnaTabs.querySelector("dna-tab > .page-content > att-lesson-registrations").style.color = "var(--mooie-text-color)"
+
+    dnaTabs.querySelector("dna-tab > .page-content > att-report-list").style.backgroundColor = "var(--mooie-bg-color)"
+    dnaTabs.querySelector("dna-tab > .page-content > att-report-list").style.color = "var(--mooie-text-color)"
+
+    dnaTabs.querySelector("dna-tab-bar").style.backgroundColor = "var(--mooie-bg-color)"
+
+    dnaTabs.querySelectorAll("dna-tab-bar > dna-tab-button").forEach((btn) => { btn.style.color = "var(--mooie-text-color)" })
+
+    dnaTabs.querySelector("dna-tab > .page-content > att-report-list").shadowRoot.querySelector("ul").style.color = "var(--mooie-text-color)"
+
+    dnaTabs.querySelector("dna-tab > .page-content > att-report-list").shadowRoot.querySelector("ul > li").setAttribute("style", "")
+
+    const hoverStyle = document.createElement("style")
+    hoverStyle.id = "hoverStyle"
+
+    hoverStyle.textContent = `
+    ul > li:hover {
+      background-color: var(--mooie-bg-color-hover);
+    }`
+
+    if (!dnaTabs.querySelector("dna-tab > .page-content > att-report-list").shadowRoot.getElementById("hoverStyle")) dnaTabs.querySelector("dna-tab > .page-content > att-report-list").shadowRoot.appendChild(hoverStyle)
+
+  }
+
+  if (currentLocationSplit.replace(/\/[^\/]+$/,"") == "magister.net/magister/#/att-absence/details") {
+    document.querySelector("body > .container").style.paddingRight = "0"
+
+    const attAbs = document.querySelector("body > div.container > div.view.ng-scope > mg-att-absence > att-absence-root")
+    const attAbsOverDOM = attAbs.shadowRoot.querySelector("#outlet > att-parent-student-absence-details").shadowRoot
+
+    attAbs.shadowRoot.querySelector("#outlet > att-parent-student-absence-details").style.backgroundColor = "var(--mooie-bg-color)"
+
+    const scrollbarStyle = document.createElement("style")
+    scrollbarStyle.id = "scrollbarStyle"
+
+    scrollbarStyle.textContent = `
+    *::-webkit-scrollbar {
+      width: 5px !important;
+      height: 5px !important;
+    }
+
+    *::-webkit-scrollbar-track {
+      border-radius: 10px !important;
+      background-color: var(--mooie-bg-color) !important;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background: var(--primary-background) !important; 
+      border-radius: 5px !important;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-background) !important; 
+    }`
+
+    if (!attAbs.shadowRoot.getElementById("scrollbarStyle")) attAbs.shadowRoot.appendChild(scrollbarStyle)
+
+    const pageHeader = attAbsOverDOM.querySelector("dna-page-header")
+
+    pageHeader.style.backgroundColor = "var(--primary-background)"
+
+
+
+    const cardStyle = document.createElement("style")
+    cardStyle.id = "cardStyle"
+
+    cardStyle.textContent = `
+    .page-content > dna-card {
+      background: var(--mooie-bg-color-mid);
+      border-color: transparent;
+      color: var(--mooie-text-color);
+      --dna-control-border: var(--mid-gray);
+    }`
+
+    if (!attAbsOverDOM.getElementById("cardStyle")) attAbsOverDOM.appendChild(cardStyle)
+
+    
+  }
+  
   
 
 }, 100);
