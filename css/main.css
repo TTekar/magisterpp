@@ -389,6 +389,10 @@ html #cijfers-leerling .list li a:hover{
     background-color: var(--mooie-bg-color-hover) !important;
 }
 
+html #cijfers-leerling .list li a::after {
+    border-left-color: var(--mid-gray) !important;
+}
+
 html #cijfers-leerling .list li {
     background-color: var(--mooie-bg-color-mid);
     border-top: none;
@@ -406,6 +410,11 @@ html #cijfers-leerling .no-data .last-grade {
 html #cijfers-leerling > div > div > ul.list.arrow-list {
     background-color: var(--mooie-bg-color-mid);
     border: none;
+}
+
+html #cijfers-leerling > div > div > ul {
+    background-color: var(--mooie-bg-color-mid) !important;
+    border-bottom: none !important;
 }
 
 html #cijfers-laatst-behaalde-resultaten-container > section > div > div.wide-widget,
@@ -429,7 +438,88 @@ html #cijfers-laatst-behaalde-resultaten-container > section > div > div.wide-wi
 }
 
 
+html #cijfers-laatst-behaalde-resultaten-container #idDetails {
+    margin-top: 16px;
+}
 
+
+/*~ Cijfers lijst */
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview {
+  border-collapse: separate; 
+  border-spacing: 0 16px;
+  border: none;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview colgroup {
+    display: none;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > thead {
+    display: none;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr {
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr::after {
+    content: "";
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr > td {
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+
+
+html .c-front-td {
+    width: 70% !important;
+    padding: 4px 16px !important;
+    border-radius: 16px 0 0 16px !important;
+}
+
+html .c-info {
+    color: var(--mooie-text-color);
+    font-weight: bold;
+}
+
+html .c-info-div {
+    color: var(--mid-gray);
+    font-weight: bold;
+    padding: 0 12px;
+}
+
+html .c-back-td {
+    width: 30% !important;
+    padding: 4px 16px !important;
+    border-radius: 0 16px 16px 0 !important;
+    position: relative;
+}
+
+html .c-cijfer {
+    float: right;
+    padding-right: 16px;
+    color: var(--mooie-text-color);
+    font-weight: bold;
+}
+
+html .c-weging {
+    float: right;
+    color: var(--mid-gray);
+}
+
+html .c-dag {
+    float: right;
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    color: var(--mid-gray);
+    opacity: .5;
+}
 
 
 /*/ Notificaties */
@@ -2293,7 +2383,7 @@ html dna-overlay-container > dna-overlay > dna-snack-bar-overlay {
 
 /*~ Cijfers fix */
 
-html #cijfers-laatst-behaalde-resultaten-container #idDetails > div > div.widget > div.block > div.content > dl.list-dl > dd {
+html #cijfers-laatst-behaalde-resultaten-container #idDetails > div > div.widget > div.block > div.content > dl.list-dl > dd:nth-child(2) {
     height: 32px;
     margin: 0;
 }

@@ -674,6 +674,78 @@ var update100ms = window.setInterval(function(){
     
   }
   
+
+
+  if (currentLocationSplit === "magister.net/magister/#/cijfers") {
+    
+    const cijferTrs = document.querySelectorAll("#cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr")
+
+    cijferTrs.forEach((tr) => {
+      if (!tr.classList.contains("customCijfersItem")) {
+        const vak = tr.querySelector(`td[data-ng-bind="cijfer.vak.omschrijving"]`).innerHTML
+        const dag = tr.querySelector(`td[data-ng-bind^="cijfer.ingevoerdOp"]`).innerHTML
+        const wat = tr.querySelector(`td[data-ng-bind="cijfer.omschrijving"]`).innerHTML
+        const cijfer = tr.querySelector(`td[data-ng-bind="cijfer.waarde"]`).innerHTML
+        const weging = tr.children.item(4).innerHTML
+
+        console.log(vak, "," , dag, "," , wat, "," , cijfer, ",", weging)
+
+        // Clear shit
+        tr.innerHTML = ""
+
+        // Make better shit
+        // part 1
+
+        const frontTd = document.createElement("td")
+        frontTd.classList.add("c-front-td")
+
+        const vakSpan = document.createElement("span")
+        vakSpan.classList.add("c-info")
+        vakSpan.innerHTML = vak
+
+        const divSpan = document.createElement("span")
+        divSpan.classList.add("c-info-div")
+        divSpan.innerHTML = "—"
+
+        const watSpan = document.createElement("span")
+        watSpan.classList.add("c-info")
+        watSpan.innerHTML = wat
+
+        tr.appendChild(frontTd)
+        frontTd.appendChild(vakSpan)
+        frontTd.appendChild(divSpan)
+        frontTd.appendChild(watSpan)
+
+        // part 2
+
+        const backTd = document.createElement("td")
+        backTd.classList.add("c-back-td")
+
+        const cijferSpan = document.createElement("span")
+        cijferSpan.classList.add("c-cijfer")
+        cijferSpan.innerHTML = cijfer
+
+        const wegingSpan = document.createElement("span")
+        wegingSpan.classList.add("c-weging")
+        wegingSpan.innerHTML = weging
+
+        const dagSpan = document.createElement("span")
+        dagSpan.classList.add("c-dag")
+        dagSpan.innerHTML = dag
+
+
+        
+        tr.appendChild(backTd)
+        // backTd.appendChild(dagSpan)
+        backTd.appendChild(wegingSpan)
+        backTd.appendChild(cijferSpan)
+
+        tr.classList.add("customCijfersItem")
+
+      }
+    })
+
+  }
   
 
 }, 100);
