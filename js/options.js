@@ -188,7 +188,6 @@ const updateFileUpload = () => {
 
 document.addEventListener('DOMContentLoaded', restoreOptions)
 
-// document.getElementById('darkMode').addEventListener('change', changeStyleMode)
 document.getElementById('dark').addEventListener('change', changeStyleMode)
 document.getElementById('light').addEventListener('change', changeStyleMode)
 
@@ -196,13 +195,6 @@ document.getElementById('light').addEventListener('change', changeStyleMode)
 document.querySelectorAll("#main label input").forEach((input) => {
   input.addEventListener('change', saveOptions)
 })
-
-//// document.getElementById('darkMode').addEventListener('change', saveOptions)
-//// document.getElementById('keuzeBtn').addEventListener('change', saveOptions)
-//// document.getElementById('cijfers').addEventListener('change', saveOptions)
-//// document.getElementById('studiewijzersGrid').addEventListener('change', saveOptions)
-//// document.getElementById('hideHelpBtn').addEventListener('change', saveOptions)
-//// document.getElementById('inlogText').addEventListener('change', saveOptions)
 
 
 //~ Reset numeber inputs

@@ -253,42 +253,50 @@ var update100ms = window.setInterval(function(){
 
 
         //~ Custom widget height
-        const vandaagWidgets = document.querySelectorAll("#vandaag-container > .main > .content-container > div > .ng-scope > div > div > .widget")
 
-        vandaagWidgets.forEach((widget) => {
-          const contentDiv = widget.querySelector(".content")
+        if (currentLocationSplit === "magister.net/magister/#/vandaag") {
 
-          if (widget.classList.contains("widget-high")) {
-            contentDiv.style.height = `${items.widgetCustomHigh}px`
-          }else {
-            if (items.widgetCustomLow == 0) {
-              const calcLow = (items.widgetCustomHigh - 92) / 2
-              contentDiv.style.height = `${calcLow}px`
+          const vandaagWidgets = document.querySelectorAll("#vandaag-container > .main > .content-container > div > .ng-scope > div > div > .widget")
+
+          vandaagWidgets.forEach((widget) => {
+            const contentDiv = widget.querySelector(".content")
+          
+            if (widget.classList.contains("widget-high")) {
+              contentDiv.style.height = `${items.widgetCustomHigh}px`
             }else {
-              contentDiv.style.height = `${items.widgetCustomLow}px`
+              if (items.widgetCustomLow == 0) {
+                const calcLow = (items.widgetCustomHigh - 92) / 2
+                contentDiv.style.height = `${calcLow}px`
+              }else {
+                contentDiv.style.height = `${items.widgetCustomLow}px`
+              }
             }
-          }
+          
+          })
 
-        })
+        }
+        
 
 
         //~ Bad cijfer hide
-        if (items.cijfers) {
-          if(currentLocationSplit == "magister.net/magister/#/vandaag"){
-              var cijfer = document.querySelector("span.cijfer.ng-binding")
+        if (items.cijfers && currentLocationSplit === "magister.net/magister/#/vandaag") {
+          
+          var cijfer = document.querySelector("span.cijfer.ng-binding")
 
-              if (cijfer.innerHTML.length > 4) {
-                  return
-              }
-
-              if (parseFloat(cijfer.innerHTML) < 5.5) {
-                  cijfer.innerHTML = "<5,5"
-              }
-              if (cijfer.innerHTML.toUpperCase().includes("Z") || cijfer.innerHTML.toUpperCase().includes("O")) {
-                 cijfer.innerHTML = "< v"
-              }
+          if (cijfer.innerHTML.length > 4) {
+              return
           }
+
+          if (parseFloat(cijfer.innerHTML) < 5.5) {
+              cijfer.innerHTML = "<5,5"
+          }
+          if (cijfer.innerHTML.toUpperCase().includes("Z") || cijfer.innerHTML.toUpperCase().includes("O")) {
+             cijfer.innerHTML = "< v"
+          }
+          
         }
+
+
 
         //~ Hide help button
         if (items.hideHelpBtn) {
@@ -297,12 +305,16 @@ var update100ms = window.setInterval(function(){
           document.getElementById("help-menu").parentElement.style.display = "block"
         }
 
+
+
         //~ Hide bestellen button
         if (items.hideBestellenBtn) {
           document.getElementById("menu-bestellen").parentElement.style.display = "none"
         }else {
           document.getElementById("menu-bestellen").parentElement.style.display = "block"
         }
+
+
         
         //~ Hide pfp
         if (items.hidePfp){
@@ -330,34 +342,38 @@ var update100ms = window.setInterval(function(){
 
         //~ Aantekeningen text color
 
-        const iframe = document.querySelector("#idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr > td.k-editable-area > iframe")
+        if (currentLocationSplit.includes("magister.net/magister/#/agenda")) {
+          const iframe = document.querySelector("#idAantekeningen > div > .widget > .block > .content.aantekeningen > .widget table > tbody > tr > td.k-editable-area > iframe")
 
-        if (iframe) {
-          const iframeDocument = iframe.contentWindow.document
-          if (items.darkMode) {
-            iframeDocument.body.style.color = "#fff"
-          }else {
-            iframeDocument.body.style.color = "#000"
+          if (iframe) {
+            const iframeDocument = iframe.contentWindow.document
+            if (items.darkMode) {
+              iframeDocument.body.style.color = "#fff"
+            }else {
+              iframeDocument.body.style.color = "#000"
+            }
+          }
+
+          const iframeAgenda = document.querySelector("#agenda-afspraak-bewerken-container > section > div > div.widget.wide.wysiwyg.k-content > table > tbody > tr > td > iframe")
+
+          if (iframeAgenda) {
+            const iframeDocument = iframeAgenda.contentWindow.document
+            if (items.darkMode) {
+              iframeDocument.body.style.color = "#fff"
+            }else {
+              iframeDocument.body.style.color = "#000"
+            }
           }
         }
 
-        const iframeAgenda = document.querySelector("#agenda-afspraak-bewerken-container > section > div > div.widget.wide.wysiwyg.k-content > table > tbody > tr > td > iframe")
-
-        if (iframeAgenda) {
-          const iframeDocument = iframeAgenda.contentWindow.document
-          if (items.darkMode) {
-            iframeDocument.body.style.color = "#fff"
-          }else {
-            iframeDocument.body.style.color = "#000"
-          }
-        }
+        
 
       }
   );
   
 
   /// Edit layout button 
-  if(currentLocationSplit == "magister.net/magister/#/vandaag"){
+  if(currentLocationSplit === "magister.net/magister/#/vandaag"){
     if (document.getElementById("edit-toggle-btn") && document.getElementById("edit-toggle-btn").offsetWidth > 32 ) {
       document.getElementById("edit-toggle-btn").innerHTML = '<dna-icon name="far-pencil"></dna-icon><button aria-hidden="true" style="display: none" tabindex="-1" type="button"></button>'
     }
@@ -388,7 +404,7 @@ var update100ms = window.setInterval(function(){
   }
   
 
-  /// Studiewijzers grid
+  /// Studiewijzers grid multi color bs
   // const studiewijzersListItems = document.querySelectorAll('div.studiewijzer-list.normaal > ul > li');
   
   // ////const colors = ['#FFA3A3', '#F2DC9B', '#D1FFA3', '#A3FFBA', '#A3FFFF', '#A3BAFF', '#CC9BF2'];
@@ -417,7 +433,6 @@ var update100ms = window.setInterval(function(){
 
 
   /// Remove aside tabs if == 1
-  
 
   try {
     const asideHeadBar = document.querySelector('aside.ng-isolate-scope > div.head-bar');
@@ -438,24 +453,27 @@ var update100ms = window.setInterval(function(){
 
   /// Absentie color
 
-  const attAbsenceRoot = document.querySelector('html div.container > div.view.ng-scope > mg-att-absence > att-absence-root')
+  if (currentLocationSplit === "magister.net/magister/#/att-absence") {
+    const attAbsenceRoot = document.querySelector('html div.container > div.view.ng-scope > mg-att-absence > att-absence-root')
 
-  if (attAbsenceRoot && attAbsenceRoot.shadowRoot) {
+    if (attAbsenceRoot && attAbsenceRoot.shadowRoot) {
 
-    const shadowRoot = attAbsenceRoot.shadowRoot
+      const shadowRoot = attAbsenceRoot.shadowRoot
 
-    const dashboard = shadowRoot.querySelector("#outlet > att-absence-dashboard")
+      const dashboard = shadowRoot.querySelector("#outlet > att-absence-dashboard")
 
-    if (dashboard && dashboard.shadowRoot) {
+      if (dashboard && dashboard.shadowRoot) {
 
-      const shadowRoot = dashboard.shadowRoot
+        const shadowRoot = dashboard.shadowRoot
 
-      const wrapperLink = shadowRoot.querySelector("div.wrapper > dna-link-card")
+        const wrapperLink = shadowRoot.querySelector("div.wrapper > dna-link-card")
 
-      wrapperLink.style.color = "var(--mooie-text-color)"
+        wrapperLink.style.color = "var(--mooie-text-color)"
 
+      }
     }
   }
+  
 
 
   /// Activiteiten warning
@@ -485,50 +503,59 @@ var update100ms = window.setInterval(function(){
 
   /// Remove &nbsp; from agenda
 
-  document.querySelectorAll("#afsprakenLijst .inhoud-opmerking").forEach((span) => {
-    span.innerHTML = span.innerHTML.replace(/&amp;nbsp;*$/, "")
-  })
-  
+  if (currentLocationSplit === "magister.net/magister/#/agenda") {
+    document.querySelectorAll("#afsprakenLijst .inhoud-opmerking").forEach((span) => {
+      span.innerHTML = span.innerHTML.replace(/&amp;nbsp;*$/, "")
+    })
+  }
+
 
   /// Datum week
 
-  const week = "1.3"
+  if (currentLocationSplit === "magister.net/magister/#/vandaag") {
+    const week = "1.3"
 
-  const pageHeader = document.querySelector("#vandaag-container > dna-page-header")
+    const pageHeader = document.querySelector("#vandaag-container > dna-page-header")
 
-  if (pageHeader && pageHeader.shadowRoot) {
+    if (pageHeader && pageHeader.shadowRoot) {
 
-    if (!pageHeader.shadowRoot.getElementById("mpp-week-style")) {
-      const style = document.createElement('style');
-      style.id = "mpp-week-style"
-      style.textContent = `
-        div.container > div > div.title::after {
-          content: "${weekToPensum[getISOWeekNumber()]}";
-          color: var(--mid-gray);
-        }
-      `;
+      if (!pageHeader.shadowRoot.getElementById("mpp-week-style")) {
+        const style = document.createElement('style');
+        style.id = "mpp-week-style"
+        style.textContent = `
+          div.container > div > div.title::after {
+            content: "${weekToPensum[getISOWeekNumber()]}";
+            color: var(--mid-gray);
+          }
+        `;
 
-      pageHeader.shadowRoot.querySelector("div.container > div > div.title").style.userSelect = "none"
+        pageHeader.shadowRoot.querySelector("div.container > div > div.title").style.userSelect = "none"
 
-      pageHeader.shadowRoot.appendChild(style);
-     
+        pageHeader.shadowRoot.appendChild(style);
+      
+      }
     }
-  }
+  }  
+
+  /// Keuze button small hover text 
 
   const span = document.querySelector("#customButtonKeuze > span")
 
-  if ( window.getComputedStyle(span, '::after').content !== "none" && window.getComputedStyle(span, '::after').content !== "" ) {
-    const fauxLabel = document.getElementById("faux-label")
-    fauxLabel.style.display = "block"
-    fauxLabel.innerHTML = "Keuzes"
-
-    const menuContainerTop = document.querySelector("body > div.container > div.menu-host.loading.collapsed-menu > nav > div.menu-container").getBoundingClientRect().top
-
-    const spanRect = span.getBoundingClientRect()
-    const spanCenterY = spanRect.top + (spanRect.height / 2) - menuContainerTop - 12
-
-    fauxLabel.style.top = `${spanCenterY}px`
+  if (span) {
+    if ( window.getComputedStyle(span, '::after').content !== "none" && window.getComputedStyle(span, '::after').content !== "" ) {
+      const fauxLabel = document.getElementById("faux-label")
+      fauxLabel.style.display = "block"
+      fauxLabel.innerHTML = "Keuzes"
+  
+      const menuContainerTop = document.querySelector("body > div.container > div.menu-host.loading.collapsed-menu > nav > div.menu-container").getBoundingClientRect().top
+  
+      const spanRect = span.getBoundingClientRect()
+      const spanCenterY = spanRect.top + (spanRect.height / 2) - menuContainerTop - 12
+  
+      fauxLabel.style.top = `${spanCenterY}px`
+    }
   }
+  
 
 
 
@@ -687,8 +714,6 @@ var update100ms = window.setInterval(function(){
         const wat = tr.querySelector(`td[data-ng-bind="cijfer.omschrijving"]`).innerHTML
         const cijfer = tr.querySelector(`td[data-ng-bind="cijfer.waarde"]`).innerHTML
         const weging = tr.children.item(4).innerHTML
-
-        console.log(vak, "," , dag, "," , wat, "," , cijfer, ",", weging)
 
         // Clear shit
         tr.innerHTML = ""

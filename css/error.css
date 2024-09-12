@@ -6,19 +6,14 @@ html .podium header {
     padding-top: 0;
 }
 
-html #error {
-    color: #fff;
+html .podium header h1 {
+    color: var(--background-1);
 }
 
-html .godImg {
-    width: 300px;
-    height: 171px;
+html #error {
+    color: var(--mooie-text-color);
 }
 
 html .goaway, html .ball, html .logo img, html .podium footer, html .podium img {
     display: none;
-}
-
-html .getBetter {
-    color: #fff;
 }
