@@ -702,7 +702,7 @@ var update100ms = window.setInterval(function(){
   }
   
 
-
+  //~ Cijfers list new
   if (currentLocationSplit === "magister.net/magister/#/cijfers") {
     
     const cijferTrs = document.querySelectorAll("#cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr")
@@ -770,6 +770,58 @@ var update100ms = window.setInterval(function(){
       }
     })
 
+  }
+
+  //~ Opdrachten list new
+  if (currentLocationSplit === "magister.net/magister/#/elo/opdrachten") {
+    
+    const opdrachtenTrs = document.querySelectorAll("#opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr")
+
+    opdrachtenTrs.forEach((tr) => {
+      if (!tr.classList.contains("customCijfersItem")) {
+        const vak = tr.querySelector(`td[data-ng-bind="opdracht.Vak"]`).innerHTML
+        const titel = tr.querySelector(`td[data-ng-bind="opdracht.Titel"]`).innerHTML
+        const inleverenVoor = tr.querySelector(`td[data-ng-bind^="opdracht.InleverenVoor"]`).innerHTML
+        const status = tr.querySelector(`td > div > span`).innerHTML
+        const beoordeling = tr.querySelector(`td[data-ng-bind="getBeoordeling(opdracht)"]`).innerHTML
+
+        tr.innerHTML = ""
+
+        const inleverenVoorTd = document.createElement("td")
+        inleverenVoorTd.classList.add("o-inleveren")
+        const formatDate = inleverenVoor.split("-")[0] + "-" + inleverenVoor.split("-")[1] + "-" + "20" + inleverenVoor.split("-")[2]
+        inleverenVoorTd.innerHTML = formatDate
+
+        const vakTd = document.createElement("td")
+        vakTd.classList.add("o-vak")
+        vakTd.innerHTML = vak
+
+        const titelTd = document.createElement("td")
+        titelTd.classList.add("o-titel")
+        titelTd.innerHTML = titel
+
+        const beoordelingTd = document.createElement("td")
+        beoordelingTd.classList.add("o-beoordeling")
+        beoordelingTd.innerHTML = beoordeling
+
+        const statusTd = document.createElement("td")
+        statusTd.classList.add("o-status")
+        statusTd.innerHTML = status
+
+        tr.appendChild(inleverenVoorTd)
+        tr.appendChild(vakTd)
+        tr.appendChild(titelTd)
+        tr.appendChild(statusTd)
+        tr.appendChild(beoordelingTd)
+
+      }
+    })
+
+  }
+
+  //~ Studiewijzers list new
+  if (currentLocationSplit === "magister.net/magister/#/elo/studiewijzer") {
+    //TODO zelfde als opdrachten alleen dan studiewijzers
   }
   
 

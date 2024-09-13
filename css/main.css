@@ -443,7 +443,7 @@ html #cijfers-laatst-behaalde-resultaten-container #idDetails {
 }
 
 
-/*~ Cijfers lijst */
+/*~ nieuw Cijfers lijst */
 
 html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview {
   border-collapse: separate; 
@@ -520,6 +520,108 @@ html .c-dag {
     color: var(--mid-gray);
     opacity: .5;
 }
+
+
+
+/*~ Opdrachten nieuw */
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table {
+  border-collapse: separate; 
+  border-spacing: 0 16px;
+  border: none;
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table colgroup {
+    display: none;
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > thead {
+    display: none;
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr {
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr::after {
+    content: "";
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr > td {
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+
+html .o-inleveren {
+    color: var(--mid-gray) !important;
+    background-color: var(--mooie-bg-color) !important;
+    width: 10% !important;
+    font-weight: normal !important;
+    text-align: right !important;
+    padding-right: 8px !important;
+}
+
+html .o-vak {
+    color: var(--mid-gray) !important;
+    font-weight: normal !important;
+    width: 10% !important;
+    border-radius: 16px 0 0 16px !important;
+    text-align: right !important;
+}
+
+html .o-titel {
+    color: var(--mooie-text-color) !important;
+    font-weight: bold !important;
+    width: 50% !important;
+}
+
+html .o-beoordeling {
+    color: var(--mooie-text-color) !important;
+    font-weight: bold !important;
+    width: 10% !important;
+    border-radius: 0 16px 16px 0 !important;
+}
+
+html .o-status {
+    color: var(--mid-gray) !important;
+    font-weight: normal !important;
+    width: 20% !important;
+    text-align: right !important;
+}
+
+
+/* html .c-back-td {
+    width: 30% !important;
+    padding: 4px 16px !important;
+    border-radius: 0 16px 16px 0 !important;
+    position: relative;
+}
+
+html .c-cijfer {
+    float: right;
+    padding-right: 16px;
+    color: var(--mooie-text-color);
+    font-weight: bold;
+}
+
+html .c-weging {
+    float: right;
+    color: var(--mid-gray);
+}
+
+html .c-dag {
+    float: right;
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    color: var(--mid-gray);
+    opacity: .5;
+} */
+
+
 
 
 /*/ Notificaties */
@@ -1543,6 +1645,16 @@ html #opdracht-detail ~ .side-widget .versions > ul {
 
 html #opdracht-detail ~ .side-widget .versions > ul > li {
     background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #opdracht-details-attachments > div {
+    background-color: var(--mooie-bg-color-mid);
+    border-color: var(--mid-gray);
+}
+
+html #opdracht-details-attachments > div a {
+    color: var(--mooie-text-color);
 }
 
 
