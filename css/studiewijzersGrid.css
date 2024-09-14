@@ -49,5 +49,9 @@ html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > u
     font-size: 1.2rem;
     font-weight: 600;
     border: none;
+    padding: 0 !important;
 }
 
+html #studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a > span:nth-child(2) {
+    display: none;
+}

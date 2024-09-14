@@ -443,186 +443,6 @@ html #cijfers-laatst-behaalde-resultaten-container #idDetails {
 }
 
 
-/*~ nieuw Cijfers lijst */
-
-html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview {
-  border-collapse: separate; 
-  border-spacing: 0 16px;
-  border: none;
-}
-
-html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview colgroup {
-    display: none;
-}
-
-html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > thead {
-    display: none;
-}
-
-html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr {
-    background-color: var(--mooie-bg-color-mid);
-    box-shadow: none;
-    border-radius: 8px;
-}
-
-html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr::after {
-    content: "";
-}
-
-html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr > td {
-    color: var(--mooie-text-color);
-    border: none;
-}
-
-
-
-html .c-front-td {
-    width: 70% !important;
-    padding: 4px 16px !important;
-    border-radius: 16px 0 0 16px !important;
-}
-
-html .c-info {
-    color: var(--mooie-text-color);
-    font-weight: bold;
-}
-
-html .c-info-div {
-    color: var(--mid-gray);
-    font-weight: bold;
-    padding: 0 12px;
-}
-
-html .c-back-td {
-    width: 30% !important;
-    padding: 4px 16px !important;
-    border-radius: 0 16px 16px 0 !important;
-    position: relative;
-}
-
-html .c-cijfer {
-    float: right;
-    padding-right: 16px;
-    color: var(--mooie-text-color);
-    font-weight: bold;
-}
-
-html .c-weging {
-    float: right;
-    color: var(--mid-gray);
-}
-
-html .c-dag {
-    float: right;
-    position: absolute;
-    top: 20px;
-    right: 5px;
-    color: var(--mid-gray);
-    opacity: .5;
-}
-
-
-
-/*~ Opdrachten nieuw */
-
-html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table {
-  border-collapse: separate; 
-  border-spacing: 0 16px;
-  border: none;
-}
-
-html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table colgroup {
-    display: none;
-}
-
-html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > thead {
-    display: none;
-}
-
-html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr {
-    background-color: var(--mooie-bg-color-mid);
-    box-shadow: none;
-    border-radius: 8px;
-}
-
-html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr::after {
-    content: "";
-}
-
-html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr > td {
-    color: var(--mooie-text-color);
-    border: none;
-}
-
-
-html .o-inleveren {
-    color: var(--mid-gray) !important;
-    background-color: var(--mooie-bg-color) !important;
-    width: 10% !important;
-    font-weight: normal !important;
-    text-align: right !important;
-    padding-right: 8px !important;
-}
-
-html .o-vak {
-    color: var(--mid-gray) !important;
-    font-weight: normal !important;
-    width: 10% !important;
-    border-radius: 16px 0 0 16px !important;
-    text-align: right !important;
-}
-
-html .o-titel {
-    color: var(--mooie-text-color) !important;
-    font-weight: bold !important;
-    width: 50% !important;
-}
-
-html .o-beoordeling {
-    color: var(--mooie-text-color) !important;
-    font-weight: bold !important;
-    width: 10% !important;
-    border-radius: 0 16px 16px 0 !important;
-}
-
-html .o-status {
-    color: var(--mid-gray) !important;
-    font-weight: normal !important;
-    width: 20% !important;
-    text-align: right !important;
-}
-
-
-/* html .c-back-td {
-    width: 30% !important;
-    padding: 4px 16px !important;
-    border-radius: 0 16px 16px 0 !important;
-    position: relative;
-}
-
-html .c-cijfer {
-    float: right;
-    padding-right: 16px;
-    color: var(--mooie-text-color);
-    font-weight: bold;
-}
-
-html .c-weging {
-    float: right;
-    color: var(--mid-gray);
-}
-
-html .c-dag {
-    float: right;
-    position: absolute;
-    top: 20px;
-    right: 5px;
-    color: var(--mid-gray);
-    opacity: .5;
-} */
-
-
-
 
 /*/ Notificaties */
 
@@ -2576,32 +2396,214 @@ html div.container > div.menu-host.loading.collapsed-menu > nav > div.faux.popup
 
 
 
-/*! Studiewijzers list */
+/*! Studiewijzers list --new */
 
 #studiewijzer-container > section > div > div.studiewijzer-list.normaal > div.head {
-    background-color: var(--mooie-bg-color-hover);
-    box-shadow: none;
-    color: var(--mooie-text-color);
-}
-
-#studiewijzer-container > section > div > div.studiewijzer-list.normaal > div.head > span:nth-child(1) {
-    border: none;
+    display: none;
 }
 
 #studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li {
     background-color: var(--mooie-bg-color-mid) !important;
-    border-top: 1px solid var(--mid-gray);
+    border: none;
+    border-radius: 16px;
+    margin-bottom: 16px;
 }
 
-#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li:last-child {
-    border-bottom: none;
-}
-
-#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a {
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a span:nth-child(1) {
     color: var(--mooie-text-color);
+    border: none;
+    font-weight: bold;
+    padding-left: 16px;
 }
 
-#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a span {
-    border-color: var(--mid-gray);
+#studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a span:nth-child(2) {
+    color: var(--mid-gray);
+    border: none;
+    text-align: right;
+    font-weight: normal;
+    padding-right: 16px;
+}
+
+
+
+
+/*~ nieuw Cijfers lijst */
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview {
+  border-collapse: separate; 
+  border-spacing: 0 16px;
+  border: none;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview colgroup {
+    display: none;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > thead {
+    display: none;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr {
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr::after {
+    content: "";
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-container > div.wide-widget > div.table-block > div.content > table.data-overview > tbody > tr > td {
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+
+html .c-dag {
+    color: var(--mid-gray) !important;
+    background-color: var(--mooie-bg-color) !important;
+    width: 10% !important;
+    font-weight: normal !important;
+    text-align: right !important;
+    padding-right: 8px !important;
+}
+
+html .c-front-td {
+    width: 60% !important;
+    padding: 4px 16px !important;
+    border-radius: 16px 0 0 16px !important;
+}
+
+html .c-info {
+    color: var(--mooie-text-color);
+    font-weight: bold;
+    padding-left: 8px;
+}
+
+html .c-info-div {
+    color: var(--mid-gray);
+    font-weight: bold;
+    padding: 0 12px;
+}
+
+html .c-back-td {
+    width: 30% !important;
+    padding: 4px 16px !important;
+    border-radius: 0 16px 16px 0 !important;
+    position: relative;
+}
+
+html .c-cijfer {
+    float: right;
+    padding-right: 16px;
+    color: var(--mooie-text-color);
+    font-weight: bold;
+}
+
+html .c-weging {
+    float: right;
+    color: var(--mid-gray);
+}
+
+
+
+/*~ Opdrachten nieuw */
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table {
+  border-collapse: separate; 
+  border-spacing: 0 16px;
+  border: none;
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table colgroup {
+    display: none;
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > thead {
+    display: none;
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr {
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr::after {
+    content: "";
+}
+
+html #opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr > td {
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+
+html .o-inleveren {
+    color: var(--mid-gray) !important;
+    background-color: var(--mooie-bg-color) !important;
+    width: 10% !important;
+    font-weight: normal !important;
+    text-align: right !important;
+    padding-right: 8px !important;
+}
+
+html .o-vak {
+    color: var(--mid-gray) !important;
+    font-weight: normal !important;
+    width: 10% !important;
+    border-radius: 16px 0 0 16px !important;
+    text-align: right !important;
+}
+
+html .o-titel {
+    color: var(--mooie-text-color) !important;
+    font-weight: bold !important;
+    width: 50% !important;
+}
+
+html .o-beoordeling {
+    color: var(--mooie-text-color) !important;
+    font-weight: bold !important;
+    width: 10% !important;
+    border-radius: 0 16px 16px 0 !important;
+}
+
+html .o-status {
+    color: var(--mid-gray) !important;
+    font-weight: normal !important;
+    width: 20% !important;
+    text-align: right !important;
+}
+
+
+
+/*~ Betere toetsinformatie en agenda afspraak */
+html #cijfers-laatst-behaalde-resultaten-container #idDetails .block,
+html #afsprakenlijst-container #idDetails .block {
+    border-radius: 16px;
+
+}
+
+html #cijfers-laatst-behaalde-resultaten-container #idDetails .block > .content > .list-dl,
+html #afsprakenlijst-container #idDetails .block > .content > .list-dl {
+    padding: 8px;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container #idDetails .block > .content > .list-dl > dt,
+html #afsprakenlijst-container #idDetails .block > .content > .list-dl > dt {
+    text-align: right;
+    border: none;
+    color: var(--mid-gray);
+    font-weight: normal;
+    width: 40%;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container #idDetails .block > .content > .list-dl > dd,
+html #afsprakenlijst-container #idDetails .block > .content > .list-dl > dd {
+    text-align: left;
+    border: none;
+    border-left: 1px solid var(--mid-gray);
+    width: 60%;
 }
 

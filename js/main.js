@@ -719,6 +719,13 @@ var update100ms = window.setInterval(function(){
         tr.innerHTML = ""
 
         // Make better shit
+
+        // part 0
+
+        const dagTd = document.createElement("td")
+        dagTd.classList.add("c-dag")
+        dagTd.innerHTML = dag
+
         // part 1
 
         const frontTd = document.createElement("td")
@@ -736,6 +743,7 @@ var update100ms = window.setInterval(function(){
         watSpan.classList.add("c-info")
         watSpan.innerHTML = wat
 
+        tr.appendChild(dagTd)
         tr.appendChild(frontTd)
         frontTd.appendChild(vakSpan)
         frontTd.appendChild(divSpan)
@@ -754,14 +762,8 @@ var update100ms = window.setInterval(function(){
         wegingSpan.classList.add("c-weging")
         wegingSpan.innerHTML = weging
 
-        const dagSpan = document.createElement("span")
-        dagSpan.classList.add("c-dag")
-        dagSpan.innerHTML = dag
-
-
         
         tr.appendChild(backTd)
-        // backTd.appendChild(dagSpan)
         backTd.appendChild(wegingSpan)
         backTd.appendChild(cijferSpan)
 
