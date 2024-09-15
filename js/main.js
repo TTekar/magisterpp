@@ -501,15 +501,6 @@ var update100ms = window.setInterval(function(){
   }
 
 
-  /// Remove &nbsp; from agenda
-
-  if (currentLocationSplit === "magister.net/magister/#/agenda") {
-    document.querySelectorAll("#afsprakenLijst .inhoud-opmerking").forEach((span) => {
-      span.innerHTML = span.innerHTML.replace(/&amp;nbsp;*$/, "")
-    })
-  }
-
-
   /// Datum week
 
   if (currentLocationSplit === "magister.net/magister/#/vandaag") {
@@ -823,7 +814,6 @@ var update100ms = window.setInterval(function(){
 
   }
 
-
   //~ Leermiddelen list new
   if (currentLocationSplit === "magister.net/magister/#/leermiddelen") {
     
@@ -832,48 +822,14 @@ var update100ms = window.setInterval(function(){
     leermiddelenTrs.forEach((tr) => {
       if (!tr.classList.contains("customLeermiddelenItem")) {
         const soort = tr.querySelector(`td[data-on="leermiddel.Soort"] span`)
-        // const vak = tr.querySelector(`td[data-ng-bind="leermiddel.Vak.Afkorting"]`).innerHTML
-        // const titel = tr.querySelector(`td[data-ng-show="isDigitaalMateriaal(leermiddel.MateriaalType)"]`)
-        // const titelA = tr.querySelector(`td[data-ng-show="isDigitaalMateriaal(leermiddel.MateriaalType)"] a`).outerHTML
-        // const ean = tr.querySelector(`td[data-ng-bind="leermiddel.EAN"]`).innerHTML
-
-        // tr.innerHTML = ""
-
-        // const soortTd = document.createElement("td")
-        // soortTd.classList.add("l-soort")
         const soorten = {
           "School": "S",
           "Huur": "H",
           "Koop": "K",
           "Digitaal": "D"
         }
-        // soortTd.title = soort
-        // soortTd.innerHTML = soorten[soort]
 
         soort.innerHTML = soorten[soort.innerHTML]
-
-        // const vakTd = document.createElement("td")
-        // vakTd.classList.add("l-vak")
-        // vakTd.innerHTML = vak
-
-        // const titelTd = document.createElement("td")
-        // titelTd.classList.add("l-titel")
-        // titelTd.setAttribute("data-ng-show", "isDigitaalMateriaal(leermiddel.MateriaalType)")
-        // titelTd.innerHTML = titelA
-
-        // const beoordelingTd = document.createElement("td")
-        // beoordelingTd.classList.add("o-beoordeling")
-        // beoordelingTd.innerHTML = beoordeling
-
-        // const statusTd = document.createElement("td")
-        // statusTd.classList.add("o-status")
-        // statusTd.innerHTML = status
-
-        // tr.appendChild(soortTd)
-        // tr.appendChild(vakTd)
-        // tr.appendChild(titelTd)
-        // tr.appendChild(statusTd)
-        // tr.appendChild(beoordelingTd)
 
         tr.classList.add("customLeermiddelenItem")
 
@@ -882,6 +838,146 @@ var update100ms = window.setInterval(function(){
 
   }
   
+  //!  ADD THIS TO THE NEW AGENDA Remove &nbsp; from agenda
+
+  if (currentLocationSplit === "magister.net/magister/#/agenda") {
+    document.querySelectorAll("#afsprakenLijst .inhoud-opmerking").forEach((span) => {
+      span.innerHTML = span.innerHTML.replace(/&amp;nbsp;*$/, "")
+    })
+  }
+  
+  //~ Agenda list new
+  if (currentLocationSplit === "magister.net/magister/#/agenda") {
+    
+    const agendaTrs = document.querySelectorAll("#afsprakenLijst > div.k-grid-content > table > tbody > tr")
+
+    agendaTrs.forEach((tr) => {
+      if (!tr.classList.contains("customOpdrachtenItem")) {
+        if (tr.classList.contains("k-grouping-row")) { /// dagen
+
+          tr.querySelector("td > p > a.k-i-collapse").remove()
+          tr.querySelector("td > p > span > span.iconic").remove()
+
+          const dagText = tr.querySelector("td > p > span > strong")
+
+          dagText.innerHTML = dagText.innerHTML.charAt(0).toUpperCase() + dagText.innerHTML.slice(1);
+
+
+        }else {  /// afspraken
+
+          const tijd = tr.querySelector(`td:nth-child(2) > span > span`).innerHTML
+
+          var uur = ""
+
+          try {
+            uur = tr.querySelector(`td:nth-child(3) > span > span[ng-bind="dataItem.lesuur"]`).innerHTML
+          }catch {
+
+          }
+
+          const les = tr.querySelector(`td:nth-child(3) > span > span[data-ng-bind-template]`).innerHTML
+
+          var locatie = ""
+
+          try {
+            locatie = tr.querySelector(`td:nth-child(3) > span > span:nth-child(3)`).innerHTML
+          }catch {
+
+          }
+
+          var opmerking = ""
+
+          try {
+            opmerking = tr.querySelector(`td:nth-child(4) > span > span.inhoud-opmerking`).innerHTML
+          }catch {
+
+          }
+
+          var iconText = ""
+
+          try {
+            iconText = tr.querySelector(`td:nth-child(6) > span.agenda-text-icon`).innerHTML
+          }catch {
+
+          }
+          
+          // console.log(tijd, uur, les, locatie, opmerking, iconText)
+        
+
+
+          tr.innerHTML = ""
+
+          const tijdTd = document.createElement("td")
+          tijdTd.classList.add("a-tijd")
+          
+          var formatTime1 = ""
+          var formatTime2 = ""
+
+          if (tijd === "hele dag") {
+            formatTime1 = "hele"
+            formatTime2 = "dag"
+          }else {
+            formatTime1 = tijd.split("-")[0].slice(0, -1)
+            formatTime2 = tijd.split("-")[1].substring(1)
+          }
+
+          const tijdSpan1 = document.createElement("span")
+          const tijdSpan2 = document.createElement("span")
+          
+          tijdSpan1.innerHTML = formatTime1
+          tijdSpan2.innerHTML = formatTime2
+
+          tr.appendChild(tijdTd)
+          tijdTd.appendChild(tijdSpan1)
+          tijdTd.appendChild(tijdSpan2)
+
+
+
+          const uurTd = document.createElement("td")
+          uurTd.classList.add("a-uur")
+          uurTd.innerHTML = uur
+
+          const lesTd = document.createElement("td")
+          lesTd.classList.add("a-les")
+          lesTd.innerHTML = les
+
+
+          
+          const divTd = document.createElement("td")
+          divTd.classList.add("a-div")
+          divTd.innerHTML = "—"
+
+
+          const locatieTd = document.createElement("td")
+          locatieTd.classList.add("a-locatie")
+          locatieTd.innerHTML = locatie.replace(/^\((.*)\)$/, '$1');
+
+
+          const opmerkingTd = document.createElement("td")
+          opmerkingTd.classList.add("a-opmerking")
+          opmerkingTd.innerHTML = opmerking
+
+          const iconTd = document.createElement("td")
+          iconTd.classList.add("a-icon")
+          iconTd.innerHTML = iconText
+
+
+          tr.appendChild(uurTd)
+          tr.appendChild(lesTd)
+          tr.appendChild(divTd)
+          tr.appendChild(locatieTd)
+          tr.appendChild(iconTd)
+          tr.appendChild(opmerkingTd)
+
+        }
+        
+
+        tr.classList.add("customOpdrachtenItem")
+
+      }
+    })
+
+  }
 
 }, 100);
 

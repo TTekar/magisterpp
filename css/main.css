@@ -1174,9 +1174,9 @@ html #recurrencePatternText {
     color: var(--mooie-text-color);
 }
 
-/*/ Afsprakenlijst */
+/*~ Afsprakenlijst */
 
-html #afsprakenLijst {
+/* html #afsprakenLijst {
     background-color: var(--mooie-bg-color);
     border: none;
     outline: none;
@@ -1219,9 +1219,153 @@ html #afsprakenLijst > div.k-grid-content > table tr td.icon-column span {
 
 html #afsprakenLijst > div.k-grid-content > table tr td .alt-nrblock i {
     color: var(--mooie-text-color) !important;
+} */
+
+html #afsprakenLijst {
+    background-color: var(--mooie-bg-color);
+    border: none;
+    outline: none;
 }
 
-/* Agenda Dag- Weekoverzicht */
+html #afsprakenLijst table {
+    border: none;
+}
+
+html #afsprakenLijst table tr.k-grouping-row {
+    background-color: var(--mooie-bg-color);
+    border: none;
+    box-shadow: none;
+}
+
+html #afsprakenLijst table tr.k-grouping-row td {
+    background-color: var(--mooie-bg-color);
+    border: none;
+    color: var(--mooie-text-color);
+    box-shadow: none;
+    pointer-events: none;
+}
+
+html #afsprakenLijst table tr.k-grouping-row td > p > span > strong {
+    color: var(--mooie-text-color);
+    font-size: 14px;
+}
+
+
+
+html #afsprakenLijst > div.k-grid-content > table {
+  border-collapse: separate !important; 
+  border-spacing: 0 16px !important;
+  border: none !important;
+  table-layout: auto !important;
+}
+
+html #afsprakenLijst > div.k-grid-content > table colgroup {
+    display: none;
+}
+
+html #afsprakenLijst > div.k-grid-content > table > thead {
+    display: none;
+}
+
+html #afsprakenLijst > div.k-grid-content > table > tbody {
+    background: var(--mooie-bg-color) !important;
+}
+
+html #afsprakenLijst > div.k-grid-content > table > tbody > tr:not(.k-grouping-row) {
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+    border: none !important;
+    border-radius: 8px;
+}
+
+html #afsprakenLijst > div.k-grid-content > table > tbody > tr.k-state-selected:not(.k-grouping-row) {
+    background-color: var(--mooie-bg-color-hover);
+    text-shadow: 0 0 4px var(--mid-gray);
+}
+
+html #afsprakenLijst > div.k-grid-content > table > tbody > tr:not(.k-grouping-row)::after {
+    content: "";
+}
+
+html #afsprakenLijst > div.k-grid-content > table > tbody > tr:not(.k-grouping-row):hover {
+    text-shadow: 0 0 4px var(--mid-gray);
+}
+
+html #afsprakenLijst > div.k-grid-content > table > tbody > tr:not(.k-grouping-row) > td {
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html .a-tijd {
+    color: var(--mid-gray) !important;
+    background-color: var(--mooie-bg-color) !important;
+    width: 5% !important;
+    font-weight: normal !important;
+    text-align: right !important;
+    padding-right: 8px !important;
+}
+
+html .a-uur {
+    color: var(--mid-gray) !important;
+    font-weight: normal !important;
+    width: 1em !important;
+    border-radius: 16px 0 0 16px !important;
+    text-align: left !important;
+    padding: 0 12px !important;
+}
+
+html .a-les {
+    color: var(--mooie-text-color) !important;
+    font-weight: bold !important;
+    width: 15% !important;
+    text-align: left !important;
+}
+
+html .a-div {
+    color: var(--mid-gray) !important;
+    font-weight: bold !important;
+    padding: 0 16px 0 0 !important;
+    width: 2em !important;
+}
+
+html .a-locatie {
+    color: var(--mooie-text-color) !important;
+    font-weight: bold !important;
+    width: 10% !important;
+    text-align: left !important;
+}
+
+html .a-opmerking {
+    color: var(--mid-gray) !important;
+    font-weight: normal !important;
+    text-align: left !important;
+    border-radius: 0 16px 16px 0 !important;
+    padding: 4px 64px 4px 0px !important;
+}
+
+html .a-icon {
+    color: var(--mooie-text-color) !important;
+    font-weight: bold !important;
+    width: 10% !important;
+    text-align: right !important;
+    padding-right: 8px !important;
+}
+
+
+
+/*~ Agenda instellingen side */
+
+html #afsprakenlijst-container #idWeergave .block {
+    border-radius: 16px;
+}
+
+html #afsprakenlijst-container #idWeergave .block .content {
+    padding: 4px;
+}
+
+
+
+/*~ Agenda Dag- Weekoverzicht */
 
 html #scheduler {
     background-color: var(--mooie-bg-color);
@@ -2966,13 +3110,28 @@ html #afsprakenlijst-container #idDetails .block > .content > .list-dl {
 }
 
 html #cijfers-laatst-behaalde-resultaten-container #idDetails .block > .content > .list-dl > dt,
-html #afsprakenlijst-container #idDetails .block > .content > .list-dl > dt {
+html #afsprakenlijst-container #idDetails .block > .content > .list-dl > dt,
+html #afsprakenlijst-container #idDetails .block > .content > .list-dl > dt > span {
     text-align: right;
     border: none;
     color: var(--mid-gray);
     font-weight: normal;
     width: 40%;
     min-height: 32px;
+    display: inline;
+}
+
+html #afsprakenlijst-container #idDetails #opmerking-info-text,
+html #afsprakenlijst-container #idDetails #huiswerk-info-text {
+    text-align: left;
+    border: none;
+    border-left: 1px solid var(--mid-gray);
+    width: 60%;
+    min-height: 32px;
+    display: block;
+    position: relative;
+    top: -23px;
+    left: 40%;
 }
 
 html #cijfers-laatst-behaalde-resultaten-container #idDetails .block > .content > .list-dl > dd,
@@ -3013,4 +3172,8 @@ html #idMultimedia div.block > div .endlink {
     box-shadow: none;
     border-radius: 0 0 16px 16px;
 }
+
+
+
+
 
