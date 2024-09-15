@@ -597,9 +597,9 @@ html #agenda-container > aside > div.head-bar > ul.tabs > li > a {
     color: var(--mooie-text-color);
 }
 
-html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(4):hover {
+/* html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(4):hover {
     background-color: var(--primary-background);
-}
+} */
 
 
 /*? Kalender */
@@ -765,97 +765,247 @@ html sm-tab[id^="id"] div.block > .content > footer.endlink > a {
     text-decoration: underline dashed var(--mid-gray);
 }
 
-/*! Agenda Opmerking info */
-html #opmerking-info-text {
-    color: var(--mooie-text-color);
+
+
+/*~ Radio in id* */
+
+html sm-tab[id^="id"] .radio-buttons {
+  height: 32px !important;
+  width: 100% !important;
+  display: block !important;
+  margin-top: 8px !important;
+}
+
+html sm-tab[id^="id"] .radio-buttons label {
+  width: 50% !important;
+  height: auto !important;
+  display: inline !important;
+  background-color: var(--mooie-bg-color-mid) !important;
+  border: 1px solid var(--mid-gray) !important;
+  padding: 5px 10px !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  line-height: 24px !important;
+  border-radius: 0px !important;
+  opacity: .35 !important;
+  transition: opacity ease .5s !important;
+}
+
+html sm-tab[id^="id"] .radio-buttons .radio label::before {
+    content: "" !important;
+}
+
+html sm-tab[id^="id"] .radio-buttons .radio:nth-child(1) label {
+  border-radius: 16px 0px 0px 16px !important;
+}
+
+html sm-tab[id^="id"] .radio-buttons .radio:nth-last-child(1) label {
+  border-radius: 0px 16px 16px 0px !important;
+}
+
+html sm-tab[id^="id"] .radio-buttons .radio label:hover {
+  opacity: .7 !important;
+  text-shadow: 0px 0px 2px var(--mid-gray) !important;
+  transition: opacity ease .5s !important;
+}
+
+html sm-tab[id^="id"] .radio-buttons .radio input[type="radio"]:checked + label {
+  opacity: 1 !important;
+  text-shadow: 0px 0px 4px var(--mid-gray) !important;
+  transition: opacity ease .5s !important;
 }
 
 
-/*? fancy-select */
 
-/*/ Dropdown */
+/*? Fancy select dropdown id* new */
 
-html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default {
-    background-color: var(--mooie-bg-color-hover);
-    color: var(--mooie-text-color);
-    border: 1px solid var(--mooie-bg-color-hover);
+
+html sm-tab[id^="id"] .fancy-select > span.k-dropdown {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    margin-top: 8px !important;
 }
 
-html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-active {
-    background-color: var(--mooie-bg-color-hover) !important;
-    color: var(--mooie-text-color);
-    border: 1px solid var(--mooie-bg-color-hover);
+html sm-tab[id^="id"] .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    border: 1px solid var(--mid-gray) !important;
+    border-radius: 16px !important;
+    padding-left: 8px !important;
+    opacity: .7 !important;
+    transition: opacity ease .5s !important;
 }
 
-html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default.k-state-hover {
-    background-color: var(--mooie-bg-color-hover) !important;
+html sm-tab[id^="id"] .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default span.k-input {
     color: var(--mooie-text-color) !important;
 }
 
-html .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-default span.k-input {
-    color: var(--mooie-text-color);
+html sm-tab[id^="id"] .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-hover {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    text-shadow: 0px 0px 4px var(--mid-gray) !important;
+    opacity: 1 !important;
+    transition: opacity ease .5s !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-active {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    border: 1px solid var(--mid-gray) !important;
+    text-shadow: 0px 0px 8px var(--mid-gray) !important;
+    opacity: 1 !important;
+    transition: opacity ease .5s !important;
+    border-radius: 16px 16px 0 0 !important;
+    border-bottom: 1px dashed var(--mid-gray) !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > span.k-dropdown > .k-dropdown-wrap.k-state-focused {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    text-shadow: 0px 0px 4px var(--mid-gray) !important;
+    opacity: 1 !important;
+    transition: opacity ease .5s !important;
+    box-shadow: none !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > span.k-dropdown > .k-dropdown-wrap .k-icon.k-i-arrow-s {
+    color: var(--mid-gray) !important;
 }
 
 /*/ List popup */
 
 html .k-list-container.k-popup {
     border: none !important;
-    background-color: var(--mooie-bg-color-mid);
+    background-color: transparent !important;
 }
 
 html .k-list-container.k-popup > div > ul.k-list {
     box-shadow: none !important;
     border: none !important;
+    background-color: transparent !important;
+}
+
+html .k-list-container.k-popup > div {
+    height: auto !important;
+    max-height: 400px !important;
 }
 
 html .k-list-container.k-popup > div > ul.k-list li.k-item {
     background-color: var(--mooie-bg-color-mid) !important;
     color: var(--mooie-text-color) !important;
     border: none !important;
+    border-left: 1px solid var(--mid-gray) !important;
+    border-right: 1px solid var(--mid-gray) !important;
+}
+
+html .k-list-container.k-popup > div > ul.k-list li.k-item:last-child {
+    border-bottom: 1px solid var(--mid-gray) !important;
+    border-radius: 0 0 16px 16px !important;
+}
+
+html .k-list-container.k-popup > div > ul.k-list li.k-item.k-state-hover {
+    text-shadow: 0 0 4px var(--mooie-text-color) !important;
+}
+
+html .k-list-container.k-popup > div > ul.k-list li.k-item.k-state-selected {
+    background-color: var(--mooie-bg-color-hover) !important;
+    text-shadow: 0 0 4px var(--mooie-text-color) !important;
 }
 
 /*/ Multiselect */
 
-html .fancy-select > .k-multiselect {
-    background-color: var(--mooie-bg-color-hover);
-    color: var(--mooie-text-color);
-    box-shadow: none;
-    border: none;
-}
-
-html .fancy-select > .k-multiselect.k-state-hover {
-    border: none !important;
-}
-
-html .fancy-select > .k-multiselect > .k-multiselect-wrap {
-    background-color: var(--mooie-bg-color-hover);
-    color: var(--mooie-text-color);
-    box-shadow: none;
-    border: none;
-}
-
-html .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li {
-    background-color: var(--mooie-bg-color-hover);
-    color: var(--mooie-text-color);
-    border: 1px solid var(--mid-gray);
-}
-
-html .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li.k-state-hover {
-    background-color: var(--mooie-bg-color-hover) !important;
+html sm-tab[id^="id"] .fancy-select > .k-multiselect {
+    background-color: var(--mooie-bg-color-mid) !important;
     color: var(--mooie-text-color) !important;
-    border: 1px solid var(--mooie-text-color) !important;
+    box-shadow: none !important;
+    border: none !important;
+    opacity: .7 !important;
+    transition: opacity ease .5s !important;
+    margin-top: 8px !important;
 }
+
+html sm-tab[id^="id"] .fancy-select > .k-multiselect.k-state-hover {
+    text-shadow: 0px 0px 4px var(--mid-gray) !important;
+    opacity: 1 !important;
+    transition: opacity ease .5s !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > .k-multiselect.k-state-focused > .k-multiselect-wrap {
+    text-shadow: 0px 0px 4px var(--mid-gray) !important;
+    opacity: 1 !important;
+    transition: opacity ease .5s !important;
+    box-shadow: none !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > .k-multiselect.k-state-border-down > .k-multiselect-wrap {
+    text-shadow: 0px 0px 8px var(--mid-gray) !important;
+    opacity: 1 !important;
+    transition: opacity ease .5s !important;
+    box-shadow: none !important;
+    border-radius: 16px 16px 0 0 !important;
+    border-bottom: 1px dashed var(--mid-gray) !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > .k-multiselect > .k-multiselect-wrap {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    box-shadow: none !important;
+    border: 1px solid var(--mid-gray) !important;
+    border-radius: 16px !important;
+    padding: 4px !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > .k-multiselect > .k-multiselect-wrap input {
+    color: var(--mooie-text-color) !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    border: 1px solid var(--mid-gray) !important;
+    border-radius: 8px !important;
+    margin: 2px !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li.k-state-hover {
+    background-color: var(--mooie-bg-color-mid) !important;
+    color: var(--mooie-text-color) !important;
+    border: 1px solid var(--mid-gray) !important;
+    text-shadow: 0px 0px 4px var(--mid-gray) !important;
+}
+
+html sm-tab[id^="id"] .fancy-select > .k-multiselect > .k-multiselect-wrap > ul > li span.k-i-close::after {
+    font-size: 10px !important;
+}
+
+
+
+/*! Agenda Opmerking info */
+html #opmerking-info-text {
+    color: var(--mooie-text-color);
+}
+
 
 
 /*? Containers */
 
-html [id$="-container"] > dna-page-header  span {
+html [id$="-container"] > dna-page-header span {
     color: var(--mooie-text-color);
 }
 
-html [id$="-container"]  dna-page-header  dna-button-bar  dna-button:hover {
-    background-color: var(--mooie-bg-color-hover);
+html [id$="-container"] dna-page-header dna-button-bar dna-button:hover {
+    /* background-color: var(--mooie-bg-color-hover); */
+    filter: background-color brightness(0.7);
 }
+
+/*! Agenda afdrukken uitzondering */
+
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(1):hover {
+    background-color: var(--mooie-bg-color-hover);
+    filter: background-color brightness(0.7);
+}
+
+
 
 html [id$="-container"] > section > div,
 html [id$="-container"] > section > div > div.loading-overlay.ng-isolate-scope,
@@ -871,7 +1021,26 @@ html [id$="-container"] > aside > .head-bar > ul.tabs {
 
 html [id$="-container"] > aside > .head-bar > ul.tabs li a {
     color: var(--mooie-text-color);
+    font-weight: normal;
 }
+
+html [id$="-container"] > aside > .head-bar > ul.tabs li a:hover {
+    color: var(--mooie-text-color);
+    font-weight: normal;
+    text-shadow: 0 0 4px var(--mooie-text-color);
+}
+
+html [id$="-container"] > aside > .head-bar > ul.tabs li.active a {
+    color: var(--mooie-text-color);
+    font-weight: normal;
+    text-shadow: 0 0 8px var(--mooie-text-color);
+}
+
+html [id$="-container"] > aside > .head-bar > ul.tabs li.active {
+    border-color: var(--mid-gray);
+}
+
+
 
 /*? Icon and text for containers */
 
@@ -1199,6 +1368,10 @@ html #cijferoverzichtgrid > .k-grid-header {
     background-color: var(--mooie-bg-color-mid) !important;
 }
 
+html #cijferoverzichtgrid > .k-grid-header .k-grid-header-wrap {
+    border: none !important;
+}
+
 html #cijferoverzichtgrid > .k-grid-header table > thead > tr > th {
     background: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
@@ -1253,6 +1426,85 @@ html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade
 
 html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.herkansingKolom {
     background-color: var(--mooie-bg-color) !important;
+}
+
+
+/*~ Cijferoverzicht idDetails */
+
+
+html #cijfers-container #idDetails .block {
+    border-radius: 16px;
+
+}
+
+html #cijfers-container #idDetails .block > .content > .list-dl {
+    padding: 8px;
+}
+
+html #cijfers-container #idDetails .block > .content > .list-dl > dt {
+    text-align: right;
+    border: none;
+    color: var(--mid-gray);
+    font-weight: normal;
+    width: 45%;
+    min-height: 32px;
+}
+
+html #cijfers-container #idDetails .block > .content > .list-dl > dd {
+    text-align: left;
+    border: none;
+    border-left: 1px solid var(--mid-gray);
+    width: 55%;
+    min-height: 32px;
+}
+
+
+/*~ idBerekening cijferoverzicht */
+
+html #cijfers-container #idBerekening .block {
+    border-radius: 16px;
+}
+
+html #cijfers-container #idBerekening .block > .content {
+    padding: 0 4px 8px 4px;
+}
+
+html #cijfers-container #idBerekening .block > .content .cijfer-berekend tr {
+    background-color: var(--mooie-bg-color-mid);
+}
+
+html #cijfers-container #idBerekening .block > .content .cijfer-berekend tr th:first-child,
+html #cijfers-container #idBerekening .block > .content .cijfer-berekend tr td:first-child {
+    text-align: right;
+    color: var(--mid-gray);
+    font-weight: normal;
+    border-right: 1px solid var(--mid-gray) !important;
+    padding-right: 8px;
+    width: 40%;
+}
+
+html #cijfers-container #idBerekening .block > .content .cijfer-berekend tr th:nth-child(2),
+html #cijfers-container #idBerekening .block > .content .cijfer-berekend tr td:nth-child(2){
+    font-weight: normal;
+    padding-left: 8px;
+    width: 30%;
+    text-align: center;
+}
+
+html #cijfers-container #idBerekening .block > .content .cijfer-berekend tr th:nth-child(3),
+html #cijfers-container #idBerekening .block > .content .cijfer-berekend tr td:nth-child(3){
+    font-weight: normal;
+    color: var(--mid-gray);
+    width: 30%;
+    text-align: center;
+}
+
+
+/*~ idWeergave cijferoverzicht */
+
+html #cijfers-container #idWeergave .block {
+    border-radius: 16px;
+    padding: 4px;
 }
 
 
@@ -1313,7 +1565,7 @@ html #studiewijzer-detail-container > section.main > div > ul > li > div.block >
 html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > div.clearfix {
     background-color: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
-    border-left: 4px solid var(--primary-background);
+    border-left: 3px solid var(--primary-background);
 }
 
 html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > div.clearfix p {
@@ -1325,7 +1577,7 @@ html #studiewijzer-detail-container > section.main > div > ul > li > div.block >
 html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul {
     background-color: var(--mooie-bg-color-mid);
     color: var(--mooie-text-color);
-    border-left: 4px solid var(--primary-background);
+    border-left: 3px solid var(--primary-background);
 }
 
 html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li {
@@ -1360,26 +1612,39 @@ html #studiewijzer-detail-container > section.main > div > ul > li > div.block >
     box-shadow: none;
 }
 
-/*/ Side list  */
+/*/ Side list   idStudiewijzers */
 
-#idStudiewijzers > div > div > div.block > div.content > ul > li {
+html #idStudiewijzers div.block > h3 {
+    background-color: var(--mooie-bg-color);
+    border-bottom: 1px solid var(--mid-gray);
+}
+
+html #idStudiewijzers div.block > div.content {
+    background-color: var(--mooie-bg-color);
+}
+
+html #idStudiewijzers div.block > div.content > ul > li {
     background-color: var(--mooie-bg-color-mid);
     outline: none;
-    border-color: var(--mid-gray);
-}
-
-#idStudiewijzers > div > div > div.block > div.content > ul > li:hover {
-    background-color: var(--mooie-bg-color-hover);
-    outline: none;
-}
-
-#idStudiewijzers > div > div > div.block > div.content > ul > li > a {
-    color: var(--mooie-text-color);
-}
-
-html #idMultimedia div.block > div  * {
-    background-color: var(--mooie-bg-color-mid);
     border: none;
+    border-radius: 16px;
+    margin-top: 8px;
+}
+
+html #idStudiewijzers div.block > div.content > ul > li:hover {
+    background-color: var(--mooie-bg-color-hover);
+    text-shadow: 0 0 4px var(--mooie-text-color);
+    outline: none;
+}
+
+html #idStudiewijzers div.block > div.content > ul > li.selected {
+    text-shadow: 0 0 8px var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-hover);
+}
+
+html #idStudiewijzers div.block > div.content > ul > li > a {
+    color: var(--mooie-text-color);
+    text-align: center;
 }
 
 
@@ -1562,57 +1827,149 @@ html body > dna-overlay-container > dna-overlay > dna-menu > dna-menu-item:hover
 
 /*~ Leermiddelen */
 
-html #idWeergave > div > div > div > div.block > div.content > form > ul > li {
-    background-color: var(--mooie-bg-color-mid);
-    border-color: var(--mid-gray);
+/* Side */
+
+html #leermiddelen-container #idWeergave .block {
+    border-radius: 16px;
 }
 
-html #idWeergave > div > div > div > div.block > footer.endlink {
+html #leermiddelen-container #idWeergave .block > .content {
+    padding: 4px;
+}
+
+html #leermiddelen-container #idWeergave .block > .content > form > ul > li {
+    background-color: var(--mooie-bg-color-mid);
+    border: none !important;
+}
+
+html #leermiddelen-container #idWeergave .block > .endlink {
     background-color: var(--mooie-bg-color-mid);
     border: none;
     box-shadow: none;
     border-radius: 15px;
 }
 
-html #idWeergave > div > div > div > div.block > footer.endlink > a {
+html #leermiddelen-container #idWeergave .block > .endlink > a {
     color: var(--mooie-text-color);
     text-decoration: underline dashed var(--mid-gray);
 }
+
+/* Details */
+
+html #leermiddelen-container #idDetails .block {
+    border-radius: 16px;
+}
+
+html #leermiddelen-container #idDetails .block > .content {
+    padding: 0 4px 8px 4px;
+}
+
+html #leermiddelen-container #idDetails .block > .content dl dt {
+    color: var(--mid-gray) !important;
+    text-align: right !important;
+    font-weight: normal !important;
+    border: none !important;
+    width: 30%;
+}
+
+html #leermiddelen-container #idDetails .block > .content dl dd {
+    color: var(--mooie-text-color) !important;
+    text-align: left !important;
+    font-weight: bold !important;
+    border-left: 1px solid var(--mid-gray) !important;
+    width: 70%;
+}
+
+
+/* Button top */
 
 html #leermiddelen-container > dna-page-header > dna-button-bar > dna-button:hover {
     background-color: var(--mooie-bg-color-hover);
 }
 
 
-html #leermiddelen-container > section > div > div.wide-widget > div > div > table {
+/* Table */
+
+html #leermiddelen-container table.data-overview {
+    border-collapse: separate; 
+    border-spacing: 0 16px;
+    border: none;
+    background-color: var(--mooie-bg-color);
+}
+
+
+html #leermiddelen-container table.data-overview colgroup {
+    display: none;
+}
+
+html #leermiddelen-container table.data-overview > thead {
+    display: none;
+}
+
+html #leermiddelen-container table.data-overview > tbody > tr {
+    background-color: var(--mooie-bg-color-mid);
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+html #leermiddelen-container table.data-overview > tbody > tr::after {
+    content: "";
+}
+
+html #leermiddelen-container table.data-overview > tbody > tr > td {
+    color: var(--mooie-text-color);
     border: none;
 }
 
-html #leermiddelen-container > section > div > div.wide-widget > div > div > table > thead > tr > th {
-    border-color: var(--mid-gray);
-    background-color: var(--mooie-bg-color-hover);
-    box-shadow: none;
-    color: var(--mooie-text-color);
+
+html #leermiddelen-container table.data-overview > tbody > tr > td[data-on="leermiddel.Soort"] {
+    color: var(--mid-gray) !important;
+    font-weight: normal !important;
+    width: 1em !important;
+    border-radius: 16px 0 0 16px !important;
+    text-align: left !important;
+    padding-left: 12px !important;
 }
 
-html #leermiddelen-container > section > div > div.wide-widget > div > div > table > tbody > tr,
-html #leermiddelen-container > section > div > div.wide-widget > div > div > table > tbody > tr > td,
-html #leermiddelen-container > section > div > div.wide-widget > div > div > table > tbody > tr > td > a {
-    border-color: var(--mid-gray);
-    background-color: var(--mooie-bg-color-mid);
-    box-shadow: none;
-    color: var(--mooie-text-color);
+html #leermiddelen-container table.data-overview > tbody > tr > td[data-ng-bind="leermiddel.Vak.Afkorting"] {
+    color: var(--mid-gray) !important;
+    font-weight: normal !important;
+    width: 10% !important;
+    text-align: right !important;
 }
 
-/* small border fix */
-
-html #leermiddelen-container > section > div > div.wide-widget > div,
-html #leermiddelen-container > section > div > div.wide-widget > div > .content > .data-overview > *,
-html #leermiddelen-container > section > div > div.wide-widget > div > .content > .data-overview > thead > tr,
-html #leermiddelen-container > section > div > div.wide-widget > div > div > table,
-html #leermiddelen-container > section > div > div.loading-overlay {
-    background: var(--mooie-bg-color);
+html #leermiddelen-container table.data-overview > tbody > tr > td[data-ng-show="isDigitaalMateriaal(leermiddel.MateriaalType)"] a {
+    color: var(--mooie-text-color) !important;
+    font-weight: normal !important;
+    text-decoration: underline dashed var(--mid-gray) !important;
+    text-align: left !important;
 }
+
+html #leermiddelen-container table.data-overview > tbody > tr > td[data-ng-show="isDigitaalMateriaal(leermiddel.MateriaalType)"] a:hover {
+    color: var(--mooie-text-color) !important;
+    font-weight: normal !important;
+    text-decoration: underline solid var(--mid-gray) !important;
+    text-align: left !important;
+    text-shadow: 0 0 2px var(--mooie-text-color) !important;
+}
+
+html #leermiddelen-container table.data-overview > tbody > tr > td[data-ng-bind="leermiddel.EAN"] {
+    color: var(--mid-gray) !important;
+    font-weight: normal !important;
+    width: 15% !important;
+    text-align: right !important;
+    border-radius: 0 16px 16px 0 !important;
+    padding-right: 12px !important;
+}
+
+
+
+
+
+
+
+
+
 
 
 /*~ Bestellen */
@@ -2424,6 +2781,16 @@ html div.container > div.menu-host.loading.collapsed-menu > nav > div.faux.popup
     padding-right: 16px;
 }
 
+/*/ Settings */
+
+#studiewijzer-container #idWeergave > div > div.widget.ng-scope > .block {
+    border-radius: 16px;
+}
+
+#studiewijzer-container #idWeergave > div > div.widget.ng-scope > .block > .content {
+    padding: 4px;
+}
+
 
 
 
@@ -2576,9 +2943,17 @@ html .o-status {
     text-align: right !important;
 }
 
+/*/ Set width 100% */
+
+html #opdrachten-container > section > .opdrachten-scroll {
+    max-width: 100%;
+}
+
+
 
 
 /*~ Betere toetsinformatie en agenda afspraak */
+
 html #cijfers-laatst-behaalde-resultaten-container #idDetails .block,
 html #afsprakenlijst-container #idDetails .block {
     border-radius: 16px;
@@ -2597,6 +2972,7 @@ html #afsprakenlijst-container #idDetails .block > .content > .list-dl > dt {
     color: var(--mid-gray);
     font-weight: normal;
     width: 40%;
+    min-height: 32px;
 }
 
 html #cijfers-laatst-behaalde-resultaten-container #idDetails .block > .content > .list-dl > dd,
@@ -2605,5 +2981,36 @@ html #afsprakenlijst-container #idDetails .block > .content > .list-dl > dd {
     border: none;
     border-left: 1px solid var(--mid-gray);
     width: 60%;
+    min-height: 32px;
+}
+
+
+/*~ Multimedia style */
+
+html #idMultimedia img[src="assets/images/PlayerPlaceHolder.png"] {
+    /* width: 0; */
+    clip-path: inset(0 1px 0 1px);
+}
+
+html #idMultimedia div.block {
+    border-radius: 16px;
+}
+
+html #idMultimedia div.block > h3 {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    border-radius: 16px 16px 0 0;
+}
+
+html #idMultimedia div.block > div .content {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+}
+
+html #idMultimedia div.block > div .endlink {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    border-radius: 0 0 16px 16px;
 }
 

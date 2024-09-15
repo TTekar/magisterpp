@@ -780,7 +780,7 @@ var update100ms = window.setInterval(function(){
     const opdrachtenTrs = document.querySelectorAll("#opdrachten-container > section > div > div > div.scroll-table.opdrachten-list.normaal > table > tbody > tr")
 
     opdrachtenTrs.forEach((tr) => {
-      if (!tr.classList.contains("customCijfersItem")) {
+      if (!tr.classList.contains("customOpdrachtenItem")) {
         const vak = tr.querySelector(`td[data-ng-bind="opdracht.Vak"]`).innerHTML
         const titel = tr.querySelector(`td[data-ng-bind="opdracht.Titel"]`).innerHTML
         const inleverenVoor = tr.querySelector(`td[data-ng-bind^="opdracht.InleverenVoor"]`).innerHTML
@@ -816,14 +816,70 @@ var update100ms = window.setInterval(function(){
         tr.appendChild(statusTd)
         tr.appendChild(beoordelingTd)
 
+        tr.classList.add("customOpdrachtenItem")
+
       }
     })
 
   }
 
-  //~ Studiewijzers list new
-  if (currentLocationSplit === "magister.net/magister/#/elo/studiewijzer") {
-    //TODO zelfde als opdrachten alleen dan studiewijzers
+
+  //~ Leermiddelen list new
+  if (currentLocationSplit === "magister.net/magister/#/leermiddelen") {
+    
+    const leermiddelenTrs = document.querySelectorAll("#leermiddelen-container table.data-overview > tbody > tr")
+
+    leermiddelenTrs.forEach((tr) => {
+      if (!tr.classList.contains("customLeermiddelenItem")) {
+        const soort = tr.querySelector(`td[data-on="leermiddel.Soort"] span`)
+        // const vak = tr.querySelector(`td[data-ng-bind="leermiddel.Vak.Afkorting"]`).innerHTML
+        // const titel = tr.querySelector(`td[data-ng-show="isDigitaalMateriaal(leermiddel.MateriaalType)"]`)
+        // const titelA = tr.querySelector(`td[data-ng-show="isDigitaalMateriaal(leermiddel.MateriaalType)"] a`).outerHTML
+        // const ean = tr.querySelector(`td[data-ng-bind="leermiddel.EAN"]`).innerHTML
+
+        // tr.innerHTML = ""
+
+        // const soortTd = document.createElement("td")
+        // soortTd.classList.add("l-soort")
+        const soorten = {
+          "School": "S",
+          "Huur": "H",
+          "Koop": "K",
+          "Digitaal": "D"
+        }
+        // soortTd.title = soort
+        // soortTd.innerHTML = soorten[soort]
+
+        soort.innerHTML = soorten[soort.innerHTML]
+
+        // const vakTd = document.createElement("td")
+        // vakTd.classList.add("l-vak")
+        // vakTd.innerHTML = vak
+
+        // const titelTd = document.createElement("td")
+        // titelTd.classList.add("l-titel")
+        // titelTd.setAttribute("data-ng-show", "isDigitaalMateriaal(leermiddel.MateriaalType)")
+        // titelTd.innerHTML = titelA
+
+        // const beoordelingTd = document.createElement("td")
+        // beoordelingTd.classList.add("o-beoordeling")
+        // beoordelingTd.innerHTML = beoordeling
+
+        // const statusTd = document.createElement("td")
+        // statusTd.classList.add("o-status")
+        // statusTd.innerHTML = status
+
+        // tr.appendChild(soortTd)
+        // tr.appendChild(vakTd)
+        // tr.appendChild(titelTd)
+        // tr.appendChild(statusTd)
+        // tr.appendChild(beoordelingTd)
+
+        tr.classList.add("customLeermiddelenItem")
+
+      }
+    })
+
   }
   
 

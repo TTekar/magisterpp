@@ -1,4 +1,4 @@
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
     if (changeInfo.status == "loading") {
 
@@ -8,73 +8,13 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
             chrome.storage.sync.get(
                 { darkMode: false , studiewijzersGrid: false },
-                (items) => {
+                async (items) => {
 
                     let cssToInsert = [];
 
-                    // Dark Mode
+                    // Light Mode
                     if (!items.darkMode) {
-                        cssToInsert.push("css/lightMode.css");
-
-
-                        chrome.scripting.getRegisteredContentScripts((scripts) => {
-                            
-                            const existingScript = scripts.find(script => script.id === "berichten-light-mode");
-                        
-                            if (existingScript) {
-                                chrome.scripting.updateContentScripts([{
-                                    id: "berichten-light-mode",
-                                    css: ["css/lightMode.css"],
-                                    matches: ["*://*.magister.net/magister-berichten*"],
-                                    allFrames: true,
-                                    runAt: "document_start",
-                                }])
-                                .then(() => console.log("registration complete"))
-                                .catch((err) => console.warn("unexpected error", err))
-                            }else {
-                                chrome.scripting.registerContentScripts([{
-                                    id: "berichten-light-mode",
-                                    css: ["css/lightMode.css"],
-                                    matches: ["*://*.magister.net/magister-berichten*"],
-                                    allFrames: true,
-                                    runAt: "document_start",
-                                }])
-                                .then(() => console.log("registration complete"))
-                                .catch((err) => console.warn("unexpected error", err))
-                            }
-                        
-                        
-                        });
-                        
-                    }else {
-                        chrome.scripting.getRegisteredContentScripts((scripts) => {
-                            
-                            const existingScript = scripts.find(script => script.id === "berichten-light-mode");
-                        
-                            if (existingScript) {
-                                chrome.scripting.updateContentScripts([{
-                                    id: "berichten-light-mode",
-                                    css: ["css/darkMode.css"],
-                                    matches: ["*://*.magister.net/magister-berichten*"],
-                                    allFrames: true,
-                                    runAt: "document_start",
-                                }])
-                                .then(() => console.log("registration complete"))
-                                .catch((err) => console.warn("unexpected error", err))
-                            }else {
-                                chrome.scripting.registerContentScripts([{
-                                    id: "berichten-light-mode",
-                                    css: ["css/darkMode.css"],
-                                    matches: ["*://*.magister.net/magister-berichten*"],
-                                    allFrames: true,
-                                    runAt: "document_start",
-                                }])
-                                .then(() => console.log("registration complete"))
-                                .catch((err) => console.warn("unexpected error", err))
-                            }
-                        
-                        
-                        });
+                        cssToInsert.push("css/lightMode.css"); 
                     }
 
                     // Studiewijzers Grid
@@ -83,19 +23,50 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                     }
 
 
-                    cssToInsert.forEach((cssFile) => {
-                        chrome.scripting.insertCSS({
+                    console.log(cssToInsert)
+
+                    for (const cssFile of cssToInsert) {
+                        await chrome.scripting.insertCSS({
                             target: { tabId: tabId },
-                            files: [cssFile]
-                        }, () => {
-                            console.log(`Inserted ${cssFile}`);
-                        });
-                    });
+                            files: [cssFile],
+                        }).then(() => console.log(`Inserted ${cssFile}`))
+                          .catch((err) => console.warn(`Error inserting ${cssFile}`, err));
+                    }
+
+                    handleBerichtenStyle(items.darkMode);
                 }
             );
         }
     }
 })
+
+
+async function handleBerichtenStyle(isDarkMode) {
+    await chrome.scripting.getRegisteredContentScripts().then(async (scripts) => {
+        const existingScript = scripts.find(script => script.id === "berichten-light-mode");
+
+        if (existingScript) {
+            await chrome.scripting.updateContentScripts([{
+                id: "berichten-light-mode",
+                css: [isDarkMode ? "css/darkMode.css" : "css/lightMode.css"],
+                matches: ["*://*.magister.net/magister-berichten*"],
+                allFrames: true,
+                runAt: "document_start",
+            }]).then(() => console.log("Updated berichten content script"))
+              .catch((err) => console.warn("Error updating content script", err));
+        } else {
+            await chrome.scripting.registerContentScripts([{
+                id: "berichten-light-mode",
+                css: [isDarkMode ? "css/darkMode.css" : "css/lightMode.css"],
+                matches: ["*://*.magister.net/magister-berichten*"],
+                allFrames: true,
+                runAt: "document_start",
+            }]).then(() => console.log("Registered berichten content script"))
+              .catch((err) => console.warn("Error registering content script", err));
+        }
+    });
+}
+
 
 // Open options page when clicking on thingy
 chrome.action.onClicked.addListener(() => {
