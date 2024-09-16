@@ -1176,50 +1176,6 @@ html #recurrencePatternText {
 
 /*~ Afsprakenlijst */
 
-/* html #afsprakenLijst {
-    background-color: var(--mooie-bg-color);
-    border: none;
-    outline: none;
-}
-
-html #afsprakenLijst > div.k-grid-content > table {
-    border: none;
-}
-
-html #afsprakenLijst > div.k-grid-content > table tr {
-    background-color: var(--mooie-bg-color-mid);
-}
-
-html #afsprakenLijst > div.k-grid-content > table tr.k-grouping-row td {
-    background-color: var(--mooie-bg-color-hover);
-    border: none;
-    box-shadow: none;
-}
-
-html #afsprakenLijst > div.k-grid-content > table tr td {
-    background-color: var(--mooie-bg-color-mid);
-    border: none;
-    border-bottom: 1px solid var(--mid-gray);
-}
-
-html #afsprakenLijst > div.k-grid-content > table tr td span {
-    color: var(--mooie-text-color);
-}
-
-html #afsprakenLijst > div.k-grid-content > table tr td span.nrblock.ng-binding.ng-scope {
-    background-color: var(--mooie-bg-color-mid);
-}
-
-
-html #afsprakenLijst > div.k-grid-content > table tr td.icon-column span {
-    background-color: var(--mooie-bg-color);
-    color: var(--mooie-text-color);
-    border: 1px solid var(--mooie-text-color);
-}
-
-html #afsprakenLijst > div.k-grid-content > table tr td .alt-nrblock i {
-    color: var(--mooie-text-color) !important;
-} */
 
 html #afsprakenLijst {
     background-color: var(--mooie-bg-color);
@@ -1254,7 +1210,7 @@ html #afsprakenLijst table tr.k-grouping-row td > p > span > strong {
 
 html #afsprakenLijst > div.k-grid-content > table {
   border-collapse: separate !important; 
-  border-spacing: 0 16px !important;
+  border-spacing: 0 8px !important;
   border: none !important;
   table-layout: auto !important;
 }
@@ -1294,9 +1250,11 @@ html #afsprakenLijst > div.k-grid-content > table > tbody > tr:not(.k-grouping-r
 html #afsprakenLijst > div.k-grid-content > table > tbody > tr:not(.k-grouping-row) > td {
     color: var(--mooie-text-color);
     border: none;
+    padding: 8px 0;
 }
 
 html .a-tijd {
+    position: relative !important;
     color: var(--mid-gray) !important;
     background-color: var(--mooie-bg-color) !important;
     width: 5% !important;
@@ -1305,13 +1263,25 @@ html .a-tijd {
     padding-right: 8px !important;
 }
 
+html .a-tijd span:first-child {
+    position: absolute !important;
+    top: -8px !important;
+    right: 4px !important;
+}
+
+html .a-tijd span:last-child {
+    position: absolute !important;
+    bottom: -8px !important;
+    right: 4px !important;
+}
+
 html .a-uur {
     color: var(--mid-gray) !important;
     font-weight: normal !important;
     width: 1em !important;
     border-radius: 16px 0 0 16px !important;
     text-align: left !important;
-    padding: 0 12px !important;
+    padding: 12px 8px 12px 8px !important;
 }
 
 html .a-les {
