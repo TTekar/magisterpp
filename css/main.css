@@ -998,12 +998,39 @@ html [id$="-container"] dna-page-header dna-button-bar dna-button:hover {
     filter: background-color brightness(0.7);
 }
 
-/*! Agenda afdrukken uitzondering */
 
-html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(1):hover {
-    background-color: var(--mooie-bg-color-hover);
-    filter: background-color brightness(0.7);
+
+/*! Agenda buttons uitzonderingen */
+
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(1),
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(2),
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(3) {
+    background-color: var(--mooie-bg-color);
+    border: 2px solid var(--background-1) !important;
+    color: var(--background-1) !important;
 }
+
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(1):hover,
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(2):hover,
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(3):hover {
+    background-color: var(--mooie-bg-color-hover);
+    border: 2px solid var(--background-1) !important;
+    color: var(--background-1) !important;
+}
+
+
+
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(4) {
+    background-color: var(--background-1) !important;
+    border: none !important;
+}
+
+html #afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(4):hover {
+    background-color: var(--secondary-background) !important;
+    border: none !important;
+}
+
+
 
 
 
@@ -1265,14 +1292,14 @@ html .a-tijd {
 
 html .a-tijd span:first-child {
     position: absolute !important;
-    top: -8px !important;
-    right: 4px !important;
+    top: -6px !important;
+    right: 6px !important;
 }
 
 html .a-tijd span:last-child {
     position: absolute !important;
-    bottom: -8px !important;
-    right: 4px !important;
+    bottom: -6px !important;
+    right: 6px !important;
 }
 
 html .a-uur {
@@ -1310,7 +1337,7 @@ html .a-opmerking {
     font-weight: normal !important;
     text-align: left !important;
     border-radius: 0 16px 16px 0 !important;
-    padding: 4px 64px 4px 0px !important;
+    padding: 4px 32px 4px 0px !important;
 }
 
 html .a-icon {
@@ -1319,6 +1346,11 @@ html .a-icon {
     width: 10% !important;
     text-align: right !important;
     padding-right: 8px !important;
+}
+
+html .a-end {
+    background-color: var(--mooie-bg-color) !important;
+    width: 16px !important;
 }
 
 
@@ -2878,6 +2910,7 @@ html div.container > div.menu-host.loading.collapsed-menu > nav > div.faux.popup
     border: none;
     border-radius: 16px;
     margin-bottom: 16px;
+    margin-right: 16px;
 }
 
 #studiewijzer-container > section > div > div.studiewijzer-list.normaal > ul > li > a span:nth-child(1) {
@@ -2905,6 +2938,47 @@ html div.container > div.menu-host.loading.collapsed-menu > nav > div.faux.popup
     padding: 4px;
 }
 
+
+
+/*! Cijferlijst laatste cijfers custom buttons */
+
+/* cijferlijst */
+html #cijfers-laatst-behaalde-resultaten-container > dna-page-header > dna-button-group > dna-button:nth-child(1) {
+    display: none !important;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > dna-page-header > dna-button-group > dna-button:nth-child(2) {
+    background-color: var(--mooie-bg-color) !important;
+    border: 2px solid var(--background-1) !important;
+    color: var(--background-1) !important;
+    border-radius: 16px !important;
+    transition: all ease .25s !important;
+}
+
+html #cijfers-laatst-behaalde-resultaten-container > dna-page-header > dna-button-group > dna-button:nth-child(2):hover {
+    box-shadow: 0 0 4px var(--background-1), inset 0 0 4px var(--background-1) !important;
+    text-shadow: 0 0 8px var(--background-1) !important;
+    transition: all ease .25s !important;
+}
+
+/* cijfergrid */
+html #cijfers-container > dna-page-header > dna-button-group > dna-button:nth-child(2) {
+    display: none !important;
+}
+
+html #cijfers-container > dna-page-header > dna-button-group > dna-button:nth-child(1) {
+    background-color: var(--mooie-bg-color) !important;
+    border: 2px solid var(--background-1) !important;
+    color: var(--background-1) !important;
+    border-radius: 16px !important;
+    transition: all ease .25s !important;
+}
+
+html #cijfers-container > dna-page-header > dna-button-group > dna-button:nth-child(1):hover {
+    box-shadow: 0 0 4px var(--background-1), inset 0 0 4px var(--background-1) !important;
+    text-shadow: 0 0 8px var(--background-1) !important;
+    transition: all ease .25s !important;
+}
 
 
 
@@ -2943,32 +3017,29 @@ html #cijfers-laatst-behaalde-resultaten-container > section.main > div.content-
 html .c-dag {
     color: var(--mid-gray) !important;
     background-color: var(--mooie-bg-color) !important;
-    width: 10% !important;
+    width: 15% !important;
     font-weight: normal !important;
     text-align: right !important;
     padding-right: 8px !important;
 }
 
-html .c-front-td {
-    width: 60% !important;
-    padding: 4px 16px !important;
+html .c-vak {
+    padding: 4px 8px 4px 8px !important;
     border-radius: 16px 0 0 16px !important;
+    color: var(--mid-gray) !important;
+    text-align: right !important;
+    font-weight: normal !important;
+    width: 25% !important;
 }
 
-html .c-info {
+html .c-wat {
     color: var(--mooie-text-color);
-    font-weight: bold;
-    padding-left: 8px;
-}
-
-html .c-info-div {
-    color: var(--mid-gray);
-    font-weight: bold;
-    padding: 0 12px;
+    font-weight: bold !important;
+    text-align: left !important;
 }
 
 html .c-back-td {
-    width: 30% !important;
+    width: 25% !important;
     padding: 4px 16px !important;
     border-radius: 0 16px 16px 0 !important;
     position: relative;
@@ -2984,6 +3055,11 @@ html .c-cijfer {
 html .c-weging {
     float: right;
     color: var(--mid-gray);
+}
+
+html .c-end {
+    background-color: var(--mooie-bg-color) !important;
+    width: 16px !important;
 }
 
 
@@ -3057,12 +3133,24 @@ html .o-status {
     text-align: right !important;
 }
 
+html .o-end {
+    background-color: var(--mooie-bg-color) !important;
+    width: 16px !important;
+}
+
+
 /*/ Set width 100% */
 
 html #opdrachten-container > section > .opdrachten-scroll {
     max-width: 100%;
 }
 
+
+/*~ Leermiddelen custom */
+html .l-end {
+    background-color: var(--mooie-bg-color) !important;
+    width: 16px !important;
+}
 
 
 

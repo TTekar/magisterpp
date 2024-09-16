@@ -719,26 +719,17 @@ var update100ms = window.setInterval(function(){
 
         // part 1
 
-        const frontTd = document.createElement("td")
-        frontTd.classList.add("c-front-td")
-
-        const vakSpan = document.createElement("span")
-        vakSpan.classList.add("c-info")
+        const vakSpan = document.createElement("td")
+        vakSpan.classList.add("c-vak")
         vakSpan.innerHTML = vak
 
-        const divSpan = document.createElement("span")
-        divSpan.classList.add("c-info-div")
-        divSpan.innerHTML = "—"
-
-        const watSpan = document.createElement("span")
-        watSpan.classList.add("c-info")
+        const watSpan = document.createElement("td")
+        watSpan.classList.add("c-wat")
         watSpan.innerHTML = wat
 
         tr.appendChild(dagTd)
-        tr.appendChild(frontTd)
-        frontTd.appendChild(vakSpan)
-        frontTd.appendChild(divSpan)
-        frontTd.appendChild(watSpan)
+        tr.appendChild(vakSpan)
+        tr.appendChild(watSpan)
 
         // part 2
 
@@ -757,6 +748,11 @@ var update100ms = window.setInterval(function(){
         tr.appendChild(backTd)
         backTd.appendChild(wegingSpan)
         backTd.appendChild(cijferSpan)
+
+        const endTd = document.createElement("td")
+        endTd.classList.add("c-end")
+        
+        tr.appendChild(endTd)
 
         tr.classList.add("customCijfersItem")
 
@@ -807,8 +803,12 @@ var update100ms = window.setInterval(function(){
         tr.appendChild(statusTd)
         tr.appendChild(beoordelingTd)
 
-        tr.classList.add("customOpdrachtenItem")
+        const endTd = document.createElement("td")
+        endTd.classList.add("o-end")
 
+        tr.appendChild(endTd)
+
+        tr.classList.add("customOpdrachtenItem")
       }
     })
 
@@ -831,6 +831,11 @@ var update100ms = window.setInterval(function(){
 
         soort.innerHTML = soorten[soort.innerHTML]
 
+        const endTd = document.createElement("td")
+        endTd.classList.add("l-end")
+        
+        tr.appendChild(endTd)
+
         tr.classList.add("customLeermiddelenItem")
 
       }
@@ -838,17 +843,13 @@ var update100ms = window.setInterval(function(){
 
   }
   
-  //!  ADD THIS TO THE NEW AGENDA Remove &nbsp; from agenda
-
-  if (currentLocationSplit === "magister.net/magister/#/agenda") {
-    document.querySelectorAll("#afsprakenLijst .inhoud-opmerking").forEach((span) => {
-      span.innerHTML = span.innerHTML.replace(/&amp;nbsp;*$/, "")
-    })
-  }
-  
   //~ Agenda list new
   if (currentLocationSplit === "magister.net/magister/#/agenda") {
     
+    document.querySelectorAll("#afsprakenLijst .inhoud-opmerking").forEach((span) => {
+      span.innerHTML = span.innerHTML.replace(/&amp;nbsp;*$/, "")
+    })
+
     const agendaTrs = document.querySelectorAll("#afsprakenLijst > div.k-grid-content > table > tbody > tr")
 
     agendaTrs.forEach((tr) => {
@@ -961,6 +962,9 @@ var update100ms = window.setInterval(function(){
           iconTd.classList.add("a-icon")
           iconTd.innerHTML = iconText
 
+          const endTd = document.createElement("td")
+          endTd.classList.add("a-end")
+
 
           tr.appendChild(uurTd)
           tr.appendChild(lesTd)
@@ -968,6 +972,7 @@ var update100ms = window.setInterval(function(){
           tr.appendChild(locatieTd)
           tr.appendChild(iconTd)
           tr.appendChild(opmerkingTd)
+          tr.appendChild(endTd)
 
         }
         
