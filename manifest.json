@@ -22,19 +22,20 @@
         "default_title": "Instellingen openen"
     },
     "content_scripts": [{
-        "matches": ["https://*.magister.net/*"],
-        "js": ["js/main.js"],
-        "css": ["css/main.css"]
+        "matches": ["*://*.magister.net/*"],
+        "js": ["js/util.js", "js/api.js", "js/main.js"],
+        "css": ["css/main.css"],
+        "run_at": "document_start"
     }, {
-        "matches": ["https://*.magister.net/error.html?*"],
+        "matches": ["*://*.magister.net/error.html?*"],
         "css": ["css/error.css"],
         "js": ["js/error.js"]
     }, {
-        "matches": ["https://accounts.magister.net/account/login?*"],
+        "matches": ["*://accounts.magister.net/account/login?*"],
         "css": ["css/account.css"],
         "js": ["js/account.js"]
     }, {
-        "matches": ["https://*.magister.net/magister-berichten/*"],
+        "matches": ["*://*.magister.net/magister-berichten/*"],
         "css": ["css/berichten.css"],
         "js": ["js/berichten.js"],
         "all_frames": true
@@ -44,6 +45,7 @@
         "tabs",
         "activeTab",
         "webNavigation",
+        "webRequest",
         "scripting"
     ],
     "host_permissions": [

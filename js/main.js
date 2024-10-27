@@ -61,8 +61,6 @@ const weekToPensum = { // schooljaar 2024-2025
 }
 
 
-const targetNode = document.body
-
 const callback = function(mutationsList, observer) {
     for (let mutation of mutationsList) {
         if (mutation.type === 'childList') {
@@ -331,7 +329,7 @@ var update100ms = window.setInterval(function(){
         //~ Hide widget drag  
 
         if (!items.widgetDrag && !observing) {
-          observer.observe(targetNode, { childList: true, subtree: true })
+          observer.observe(document.body, { childList: true, subtree: true })
           observing = true
         }else if(items.widgetDrag) {
           observer.disconnect()
@@ -986,3 +984,38 @@ var update100ms = window.setInterval(function(){
 
 }, 100);
 
+
+function getDayStartAndEnd(dateString) {
+  const [day, month, year] = dateString.split("-").map(Number)
+
+  const start = new Date(year, month - 1, day, 0, 0, 0, 0)
+  const end = new Date(year, month - 1, day, 23, 59, 59, 999)
+
+  return { start, end }
+}
+
+
+const asyncFunc = async () => {
+  const { start, end } = getDayStartAndEnd("02-10-2024")
+
+  const events = await MagisterApi.events(start, end)
+
+  const filteredEvents = events.filter(event => {
+    const eventStart = new Date(event.Start)
+
+    return eventStart >= start && eventStart <= end
+  });
+
+  console.log(filteredEvents)
+
+  const msg = await MagisterApi.messages()
+  console.log(msg)
+
+  const ex = await MagisterApi.accountInfo()
+  console.log(ex)
+
+  const st = await MagisterApi.messageContent(2901245)
+  console.log(st)
+}
+
+asyncFunc()
