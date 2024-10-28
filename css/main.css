@@ -3233,5 +3233,43 @@ html #idMultimedia div.block > div .endlink {
 
 
 
+/*~ Search Box */
 
+html #searchBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9990;
+    background-color: #00000040;
+    backdrop-filter: blur(2px);
+}
+
+html #searchBox #searchInput {
+    position: relative;
+    width: 600px;
+    height: 48px;
+    margin-top: 100px;
+    margin-left: calc(50vw - 300px);
+    margin-right: calc(50vw - 300px);
+    padding: 0 12px;
+    z-index: 9999;
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+    border-radius: 16px;
+    font-size: 24px;
+}
+
+html #searchBox #searchResults {
+    width: 600px;
+    height: calc(100vh - 248px);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: calc(50vw - 300px);
+    margin-right: calc(50vw - 300px);
+    z-index: 9999;
+    background-color: red;
+}
 

@@ -74,6 +74,7 @@ const callback = function(mutationsList, observer) {
 const observer = new MutationObserver(callback)
 var observing = false
 
+const keysPressed = new Set();
 
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date)
@@ -982,6 +983,34 @@ var update100ms = window.setInterval(function(){
 
   }
 
+
+
+  //~ Search box
+
+  if (!document.getElementById("searchBox")) {
+    const searchBox = document.createElement("div")
+    searchBox.id = "searchBox"
+    searchBox.style.display = "none"
+    searchBox.addEventListener("click", (event) => {
+      if (event.target === event.currentTarget) {
+        toggleSearchBox()
+      }
+    })
+
+    const searchInput = document.createElement("input")
+    searchInput.type = "text"
+    searchInput.id = "searchInput"
+    searchInput.addEventListener("input", search)
+
+    const searchResults = document.createElement("ul")
+    searchResults.id = "searchResults"
+    
+    document.body.appendChild(searchBox)
+    searchBox.appendChild(searchInput)
+    searchBox.appendChild(searchResults)
+  }
+  
+
 }, 100);
 
 
@@ -1007,15 +1036,86 @@ const asyncFunc = async () => {
   });
 
   console.log(filteredEvents)
-
-  const msg = await MagisterApi.messages()
-  console.log(msg)
-
-  const ex = await MagisterApi.accountInfo()
-  console.log(ex)
-
-  const st = await MagisterApi.messageContent(2901245)
-  console.log(st)
 }
 
 asyncFunc()
+
+function toggleSearchBox() {
+  const searchBox = document.getElementById("searchBox")
+
+  if (searchBox.style.display === "none") {
+    searchBox.style.display = "block"
+    const searchInput = document.getElementById("searchInput")
+    searchInput.focus()
+    searchInput.value = ""
+    document.getElementById("searchResults").innerHTML = ""
+  }else {
+    searchBox.style.display = "none"
+  }
+}
+
+async function search() {
+  const searchInput = document.getElementById("searchInput")
+  const searchResults = document.getElementById("searchResults")
+  const input = searchInput.value.toLowerCase()
+
+  const studiewijzers = await MagisterApi.studiewijzers()
+
+  for (const studiewijzer of studiewijzers) {
+    const onderdelen = await MagisterApi.studiewijzerParts(studiewijzer.Id)
+    
+    console.log(onderdelen)
+
+    
+    for (const onderdeel of onderdelen) {
+      console.log(onderdeel.Id)
+      const bronnen = await MagisterApi.studiewijzerSources(studiewijzer.Id, onderdeel.Id)
+      console.log(bronnen)
+    }
+    
+  }
+
+
+  var matches = []
+
+  studiewijzers.forEach((studiewijzer) => {
+    if (studiewijzer.Titel.toLowerCase().includes(input)) {
+      matches.push(studiewijzer)
+    }
+  })
+
+  searchResults.innerHTML = ""
+
+  matches.forEach(match => {
+    const li = document.createElement("li")
+    li.classList.add("searchResult")
+    li.addEventListener("click", () => {
+      toggleSearchBox()
+      window.location.replace(window.location.href.split(".")[0] + `.magister.net/magister/#/elo/studiewijzer/${match.Id}?overzichtType=0&geselecteerdVak=Alle%20vakken`)
+    })
+
+    const title = document.createElement("span")
+    title.classList.add("resultTitle")
+    title.textContent = match.Titel
+
+    searchResults.appendChild(li)
+    li.appendChild(title)
+  })
+
+  console.log(matches)
+}
+
+//~ Hotkeys
+document.addEventListener("keydown", (event) => {
+  keysPressed.add(event.code);
+  keysPressed.add(event.key);
+
+  if (keysPressed.has("Control") && keysPressed.has("KeyK")) {
+    toggleSearchBox()
+  }
+});
+
+document.addEventListener("keyup", (event) => {
+  keysPressed.delete(event.code);
+  keysPressed.delete(event.key);
+});
