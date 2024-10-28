@@ -162,23 +162,23 @@ const MagisterApi = {
     },
     studiewijzerParts: async (studiewijzerId) => {
         return new Promise(async (resolve, reject) => {
-            magisterApiCache.studiewijzerPart ??=
+            magisterApiCache[`studiewijzerPart${studiewijzerId}`] ??=
                 fetchWrapper(
                     `https://${magisterApiSchoolName}.magister.net/api/leerlingen/$USERID/studiewijzers/${studiewijzerId}`, null, "studiewijzerPart"
                 )
             resolve(
-                (await magisterApiCache.studiewijzerPart)?.Onderdelen.Items || []
+                (await magisterApiCache[`studiewijzerPart${studiewijzerId}`])?.Onderdelen.Items || []
             )
         })
     },
     studiewijzerSources: async (studiewijzerId, onderdeelId) => {
         return new Promise(async (resolve, reject) => {
-            magisterApiCache.studiewijzerSources ??=
+            magisterApiCache[`studiewijzerSources${studiewijzerId}${onderdeelId}`] ??=
                 fetchWrapper(
                     `https://${magisterApiSchoolName}.magister.net/api/leerlingen/$USERID/studiewijzers/${studiewijzerId}/onderdelen/${onderdeelId}`, null, "studiewijzerSources"
                 )
             resolve(
-                (await magisterApiCache.studiewijzerSources)?.Bronnen || []
+                (await magisterApiCache[`studiewijzerSources${studiewijzerId}${onderdeelId}`])?.Bronnen || []
             )
         })
     },

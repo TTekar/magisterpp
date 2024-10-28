@@ -1061,21 +1061,20 @@ async function search() {
 
   const studiewijzers = await MagisterApi.studiewijzers()
 
+  var studiewijzersBronnen = []
+
   for (const studiewijzer of studiewijzers) {
     const onderdelen = await MagisterApi.studiewijzerParts(studiewijzer.Id)
-    
-    console.log(onderdelen)
 
-    
     for (const onderdeel of onderdelen) {
-      console.log(onderdeel.Id)
       const bronnen = await MagisterApi.studiewijzerSources(studiewijzer.Id, onderdeel.Id)
-      console.log(bronnen)
+      bronnen.forEach(bron => {
+        studiewijzersBronnen.push(bron)
+      })
     }
-    
   }
 
-
+  // check search
   var matches = []
 
   studiewijzers.forEach((studiewijzer) => {
@@ -1083,6 +1082,14 @@ async function search() {
       matches.push(studiewijzer)
     }
   })
+
+  studiewijzersBronnen.forEach((bron) => {
+    if (bron.Naam.toLowerCase().includes(input)) {
+      matches.push(bron)
+    }
+  })
+
+  console.log(matches)
 
   searchResults.innerHTML = ""
 
@@ -1092,11 +1099,12 @@ async function search() {
     li.addEventListener("click", () => {
       toggleSearchBox()
       window.location.replace(window.location.href.split(".")[0] + `.magister.net/magister/#/elo/studiewijzer/${match.Id}?overzichtType=0&geselecteerdVak=Alle%20vakken`)
-    })
+    }) //TODO fix click for the bronnen   so like split the studiewijzers and bronnen up in two pieces   to also make code below better
 
     const title = document.createElement("span")
     title.classList.add("resultTitle")
-    title.textContent = match.Titel
+    if (match.Titel) title.textContent = match.Titel
+    if (match.Naam) title.textContent = match.Naam
 
     searchResults.appendChild(li)
     li.appendChild(title)
