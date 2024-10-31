@@ -1210,7 +1210,7 @@ async function search() {
     },
     {
       "title": "Mijn gegevens",
-      "btnId": "mijn-instellingen"
+      "btnId": "mijnGegevens"
     },
     {
       "title": "Keuzes",
@@ -1283,18 +1283,40 @@ async function search() {
     else if(match.page) {
       const li = document.createElement("li")
       li.classList.add("searchResult")
-      li.addEventListener("click", () => {
-        if (window.location.href.includes("magister.net/magister/#/berichten")) {
-          document.getElementById(match.page.btnId).click()
-          toggleSearchBox()
-          setTimeout(() => {
+      if (match.page.btnId === "mijnGegevens") {
+        li.addEventListener("click", () => {
+          if (window.location.href.includes("magister.net/magister/#/berichten")) {
+            document.getElementById("menu-vandaag").click()
+            toggleSearchBox()
+            setTimeout(() => {
+              document.getElementById("menu-vandaag").click()
+            }, 100)
+            setTimeout(() => {
+              window.location.replace(window.location.href.split(".")[0] + `.magister.net/magister/#/mijn-instellingen`)
+            }, 500)
+          }else {
+            toggleSearchBox()
+            document.getElementById("menu-vandaag").click()
+            setTimeout(() => {
+              window.location.replace(window.location.href.split(".")[0] + `.magister.net/magister/#/mijn-instellingen`)
+            }, 100)
+          }
+        })
+      }else {
+        li.addEventListener("click", () => {
+          if (window.location.href.includes("magister.net/magister/#/berichten")) {
             document.getElementById(match.page.btnId).click()
-          }, 100);
-        }else {
-          toggleSearchBox()
-          document.getElementById(match.page.btnId).click()
-        }
-      })
+            toggleSearchBox()
+            setTimeout(() => {
+              document.getElementById(match.page.btnId).click()
+            }, 100)
+          }else {
+            toggleSearchBox()
+            document.getElementById(match.page.btnId).click()
+          }
+        })
+      }
+      
 
       const title = document.createElement("span")
       title.classList.add("resultTitle")
@@ -1323,8 +1345,7 @@ async function search() {
   resultsStudiewijzers.insertBefore(studiewijzersTitle, resultsStudiewijzers.firstChild)
 
 
-
-  searchResults.firstChild.classList.add("selected")
+  searchResults.querySelector(".searchResult").classList.add("selected")
 }
 
 function moveSelectedIndexDown() {

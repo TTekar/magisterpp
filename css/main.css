@@ -3024,7 +3024,7 @@ html .c-dag {
 }
 
 html .c-vak {
-    padding: 4px 8px 4px 8px !important;
+    padding: 0px 8px 0px 8px !important;
     border-radius: 16px 0 0 16px !important;
     color: var(--mid-gray) !important;
     text-align: right !important;
@@ -3040,7 +3040,7 @@ html .c-wat {
 
 html .c-back-td {
     width: 25% !important;
-    padding: 4px 16px !important;
+    padding: 0px 16px !important;
     border-radius: 0 16px 16px 0 !important;
     position: relative;
 }
@@ -3295,12 +3295,18 @@ html #searchBox #searchResults {
 
 html #searchBox #searchResults #resultsPages {
     width: 100%;
-    background-color: #a2c5e5;
+    background-color: transparent;
 }
 
 html #searchBox #searchResults #resultsStudiewijzers {
     width: 100%;
-    background-color: #6b6c2e;
+    background-color: transparent;
+}
+
+html #searchBox #searchResults h1 {
+    font-size: 20px;
+    color: var(--mooie-text-color);
+    padding: 8px 8px 0 8px;
 }
 
 html #searchBox #searchResults .searchResult {
