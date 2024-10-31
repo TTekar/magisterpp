@@ -3,25 +3,13 @@
   <head>
     <title>Options</title>
     <link rel="stylesheet" href="../css/optionsPage/darkPopupOptions.css" />
-    <link
-      id="lightModeStylesheet"
-      rel="stylesheet"
-      href="../css/optionsPage/lightOptions.css"
-      disabled
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link id="lightModeStylesheet" rel="stylesheet" href="../css/optionsPage/lightOptions.css" disabled />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   </head>
   <body>
     <div id="main">
       <div id="sidebar">
-        <a
-          id="sb-appearance"
-          class="sidebar-button selected"
-          title="Appearance"
-        ></a>
+        <a id="sb-appearance" class="sidebar-button selected" title="Appearance"></a>
         <a id="sb-layout" class="sidebar-button" title="Layout"></a>
         <a id="sb-login" class="sidebar-button" title="Login"></a>
         <a id="sb-experimental" class="sidebar-button" title="Experimental"></a>
@@ -45,12 +33,7 @@
 
           <label>
             Login text
-            <input
-              class="textInput"
-              type="text"
-              id="inlogText"
-              value="Bonjour"
-            />
+            <input class="textInput" type="text" id="inlogText" value="Bonjour" />
           </label>
 
           <label>
@@ -77,13 +60,7 @@
             Widget height <span class="comment">(Large)</span>
             <div class="inputContainer">
               <span id="resetWidgetCustomHigh" class="resetInput">&#8635;</span>
-              <input
-                class="numberInput"
-                type="number"
-                min="1"
-                id="widgetCustomHigh"
-                value="385"
-              />
+              <input class="numberInput" type="number" min="1" id="widgetCustomHigh" value="385" />
               <label for="widgetCustomHigh">px</label>
             </div>
           </label>
@@ -92,13 +69,7 @@
             Widget height <span class="comment">(Small)</span>
             <div class="inputContainer" title="0 = auto">
               <span id="resetWidgetCustomLow" class="resetInput">&#8635;</span>
-              <input
-                class="numberInput"
-                type="number"
-                min="1"
-                id="widgetCustomLow"
-                value="145"
-              />
+              <input class="numberInput" type="number" min="1" id="widgetCustomLow" value="145" />
               <label for="widgetCustomLow">px</label>
             </div>
           </label>
@@ -152,6 +123,16 @@
               <label for="h-visible">Visible</label>
               <input type="radio" name="help" id="h-hidden" />
               <label for="h-hidden">Hidden</label>
+            </div>
+          </label>
+
+          <label>
+            Zoeken button
+            <div class="radioButtons">
+              <input type="radio" name="zoeken" id="z-visible" />
+              <label for="z-visible">Visible</label>
+              <input type="radio" name="zoeken" id="z-hidden" />
+              <label for="z-hidden">Hidden</label>
             </div>
           </label>
         </div>

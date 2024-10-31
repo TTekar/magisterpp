@@ -236,7 +236,7 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: false },
       (items) => {
 
         //~ Set custom pfp
@@ -322,6 +322,13 @@ var update100ms = window.setInterval(function(){
           document.getElementById("menu-bestellen").parentElement.style.display = "none"
         }else {
           document.getElementById("menu-bestellen").parentElement.style.display = "block"
+        }
+
+        //~ Zoeken btn hidden/shown
+        if (items.hideZoekenBtn) {
+          document.getElementById("searchButton").style.display = "none"
+        }else {
+          document.getElementById("searchButton").style.display = "block"
         }
 
 

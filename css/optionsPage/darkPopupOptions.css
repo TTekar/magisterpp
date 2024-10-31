@@ -248,6 +248,7 @@ label[for="sw-grid"]::before {
 }
 
 label[for="bs-visible"]::before,
+label[for="z-visible"]::before,
 label[for="h-visible"]::before {
   content: "\f06e";
   font-family: "Font Awesome 6 Free";
@@ -256,6 +257,7 @@ label[for="h-visible"]::before {
 }
 
 label[for="bs-hidden"]::before,
+label[for="z-hidden"]::before,
 label[for="h-hidden"]::before {
   content: "\f070";
   font-family: "Font Awesome 6 Free";
