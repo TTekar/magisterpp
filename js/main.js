@@ -74,7 +74,13 @@ const callback = function(mutationsList, observer) {
 const observer = new MutationObserver(callback)
 var observing = false
 
-const keysPressed = new Set();
+const keysPressed = new Set()
+
+var selectedSearchIndex = 0
+
+var setBerichtenIframeUp = true
+var setBerichtenIframeDown = true
+
 
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date)
@@ -173,6 +179,7 @@ var update100ms = window.setInterval(function(){
             /// Show UI
             event.preventDefault();
             keuzeUI = true;
+            
 
             document.querySelector("body > div.container").style.paddingRight = "0"
             
@@ -187,6 +194,10 @@ var update100ms = window.setInterval(function(){
                 button.classList.add("nonCustomButtonNotClicked")
               }
             })
+
+            
+            setKeuzeIframeDown = true
+            setKeuzeIframeUp = true
             
           };
           
@@ -1000,18 +1011,76 @@ var update100ms = window.setInterval(function(){
     const searchInput = document.createElement("input")
     searchInput.type = "text"
     searchInput.id = "searchInput"
+    searchInput.setAttribute("autocomplete", "off")
     searchInput.addEventListener("input", search)
 
     const searchResults = document.createElement("ul")
     searchResults.id = "searchResults"
+
+    const resultsPages = document.createElement("li")
+    resultsPages.id = "resultsPages"
+
+    const resultsStudiewijzers = document.createElement("li")
+    resultsStudiewijzers.id = "resultsStudiewijzers"
     
     document.body.appendChild(searchBox)
     searchBox.appendChild(searchInput)
     searchBox.appendChild(searchResults)
+    searchResults.appendChild(resultsPages)
+    searchResults.appendChild(resultsStudiewijzers)
+  }
+
+  //~ Open search button
+  if (!document.getElementById("searchButton")) {
+    const searchButtonDiv = document.createElement("div")
+    searchButtonDiv.id = "searchButton"
+    searchButtonDiv.classList.add("menu-button")
+    searchButtonDiv.innerHTML = `<a id="searchButtonA"><i class="fa-solid fa-magnifying-glass"></i><span>Zoeken (CTRL+K)</span></a>`
+  
+    const appbar = document.querySelector("body > div.container > div.appbar-host > mg-appbar > div.appbar")
+    appbar.insertBefore(searchButtonDiv, appbar.firstChild)
+    document.getElementById("searchButtonA").addEventListener("click", toggleSearchBox)
   }
   
+  //! Delete first afwezigheid btn
+  const afwezigheidBtns = document.querySelectorAll('#menu-afwezigheid'); 
+  if (afwezigheidBtns.length > 1) {
+    afwezigheidBtns[0].parentElement.remove();
+  }
+
+  // Set iframe event listeners for key up/down
+  const berichtenIframe = document.getElementById("berichten-nieuw-frame")
+
+  if (berichtenIframe){
+    if (setBerichtenIframeDown){
+      berichtenIframe.contentWindow.document.addEventListener("keydown", (event) => {
+        document.dispatchEvent(
+          new KeyboardEvent('keydown', {key: event.key, code: event.code})
+        )
+      })
+      setBerichtenIframeDown = false
+    }
+    if (setBerichtenIframeUp){
+      berichtenIframe.contentWindow.document.addEventListener("keyup", (event) => {
+        document.dispatchEvent(
+          new KeyboardEvent('keyup', {key: event.key, code: event.code})
+        )
+      })
+      setBerichtenIframeUp = false
+    }
+  }
+
+
 
 }, 100);
+
+window.navigation.addEventListener("navigate", (event) => {
+  setTimeout(() => {
+    setBerichtenIframeDown = true
+    setBerichtenIframeUp = true
+  }, 500);
+})
+
 
 
 function getDayStartAndEnd(dateString) {
@@ -1048,102 +1117,278 @@ function toggleSearchBox() {
     const searchInput = document.getElementById("searchInput")
     searchInput.focus()
     searchInput.value = ""
-    document.getElementById("searchResults").innerHTML = ""
+    document.getElementById("resultsPages").innerHTML = ""
+    document.getElementById("resultsStudiewijzers").innerHTML = ""
+    selectedSearchIndex = 0
+    search()
   }else {
     searchBox.style.display = "none"
   }
 }
 
+function formatText(str) {
+  return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\//g, ' ').replace(/\s/g, '')
+}
+
 async function search() {
   const searchInput = document.getElementById("searchInput")
   const searchResults = document.getElementById("searchResults")
+  const resultsPages = document.getElementById("resultsPages")
+  const resultsStudiewijzers = document.getElementById("resultsStudiewijzers")
   const input = searchInput.value.toLowerCase()
 
   const studiewijzers = await MagisterApi.studiewijzers()
 
-  /// bronnen
-  // var studiewijzersBronnen = []
-
-  // for (const studiewijzer of studiewijzers) {
-  //   const onderdelen = await MagisterApi.studiewijzerParts(studiewijzer.Id)
-
-  //   for (const onderdeel of onderdelen) {
-  //     const bronnen = await MagisterApi.studiewijzerSources(studiewijzer.Id, onderdeel.Id)
-  //     bronnen.forEach(bron => {
-  //       studiewijzersBronnen.push(bron)
-  //     })
-  //   }
-  // }
+  const pages = [
+    {
+      "title": "Vandaag",
+      "btnId": "menu-vandaag"
+    },
+    {
+      "title": "Agenda",
+      "btnId": "menu-agenda"
+    },
+    {
+      "title": "Afwezigheid",
+      "btnId": "menu-afwezigheid"
+    },
+    {
+      "title": "Cijfers",
+      "btnId": "menu-cijfers"
+    },
+    {
+      "title": "Examen",
+      "btnId": "menu-examen"
+    },
+    {
+      "title": "LVS/Logboeken",
+      "btnId": "menu-logboeken"
+    },
+    {
+      "title": "LVS/Toetsen",
+      "btnId": "menu-toetsen"
+    },
+    {
+      "title": "OPP",
+      "btnId": "menu-opp"
+    },
+    {
+      "title": "ELO/Bronnen",
+      "btnId": "menu-bronnen"
+    },
+    {
+      "title": "ELO/Studiewijzers",
+      "btnId": "menu-studiewijzers"
+    },
+    {
+      "title": "ELO/Opdrachten",
+      "btnId": "menu-opdrachten"
+    },
+    {
+      "title": "Portfolio/Profiel",
+      "btnId": "menu-profiel"
+    },
+    {
+      "title": "Portfolio/Portfoliodocumenten",
+      "btnId": "menu-portfoliodocumenten"
+    },
+    {
+      "title": "Portfolio/Beoordeelde documenten",
+      "btnId": "menu-beoordeelde-producten"
+    },
+    {
+      "title": "Activiteiten",
+      "btnId": "menu-activiteiten"
+    },
+    {
+      "title": "Leermiddelen",
+      "btnId": "menu-leermiddelen"
+    },
+    {
+      "title": "Berichten",
+      "btnId": "menu-berichten-new"
+    },
+    {
+      "title": "Mijn gegevens",
+      "btnId": "mijn-instellingen"
+    },
+    {
+      "title": "Keuzes",
+      "btnId": "customButtonKeuze"
+    }
+  ]
 
   // check search
   var matches = []
 
-  studiewijzers.forEach((studiewijzer) => {
-    if (studiewijzer.Titel.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(input.normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
-      matches.push({ studiewijzer })
+  pages.forEach((page) => {
+    const position = formatText(page.title).indexOf(formatText(input))
+
+    if (position !== -1) { 
+      matches.push({ page, position })
     }
+
+    // if (formatText(page.title).includes(formatText(input))) {
+    //   matches.push({ page })
+    // }
   })
 
-  /// bronnen
-  // studiewijzersBronnen.forEach((bron) => {
-  //   if (bron.Naam.toLowerCase().includes(input)) {
-  //     matches.push({ bron })
-  //   }
-  // })
 
-  console.log(matches)
+  studiewijzers.forEach((studiewijzer) => {
+    const position = formatText(studiewijzer.Titel).indexOf(formatText(input))
 
-  searchResults.innerHTML = ""
+    if (position !== -1) { 
+      matches.push({ studiewijzer, position })
+    }
+
+    // if (formatText(studiewijzer.Titel).includes(formatText(input))) {
+    //   matches.push({ studiewijzer })
+    // }
+  })
+
+  matches.sort((a, b) => a.position - b.position);
+
+  // console.log(matches)
+
+  resultsPages.innerHTML = ""
+  resultsStudiewijzers.innerHTML = ""
+  selectedSearchIndex = 0
+  resultsStudiewijzers.style.display = "block"
+  resultsPages.style.display = "block"
 
   matches.forEach(match => {
     if (match.studiewijzer) {
       const li = document.createElement("li")
       li.classList.add("searchResult")
       li.addEventListener("click", () => {
-        toggleSearchBox()
-        window.location.replace(window.location.href.split(".")[0] + `.magister.net/magister/#/elo/studiewijzer/${match.Id}?overzichtType=0&geselecteerdVak=Alle%20vakken`)
+        if (window.location.href.includes("magister.net/magister/#/berichten")) {
+          toggleSearchBox()
+          window.location.replace(window.location.href.split(".")[0] + `.magister.net/magister/#/elo/studiewijzer/${match.studiewijzer.Id}?overzichtType=0&geselecteerdVak=Alle%20vakken`)
+          setTimeout(() => {
+            window.location.replace(window.location.href.split(".")[0] + `.magister.net/magister/#/elo/studiewijzer/${match.studiewijzer.Id}?overzichtType=0&geselecteerdVak=Alle%20vakken`)
+          }, 100);
+        }else {
+          toggleSearchBox()
+          window.location.replace(window.location.href.split(".")[0] + `.magister.net/magister/#/elo/studiewijzer/${match.studiewijzer.Id}?overzichtType=0&geselecteerdVak=Alle%20vakken`)
+        }
       })
 
       const title = document.createElement("span")
       title.classList.add("resultTitle")
       title.textContent = match.studiewijzer.Titel
 
-      searchResults.appendChild(li)
+      resultsStudiewijzers.appendChild(li)
       li.appendChild(title)
     }
-    /// bronnen
-    // else if(match.bron) {
-    //   const li = document.createElement("li")
-    //   li.classList.add("searchResult")
-    //   // li.addEventListener("click", () => {
-    //   //   toggleSearchBox()
-    //   //   window.location.replace(window.location.href.split(".")[0] + `.magister.net/magister/#/elo/studiewijzer/${match.Id}?overzichtType=0&geselecteerdVak=Alle%20vakken`)
-    //   // }) 
+    else if(match.page) {
+      const li = document.createElement("li")
+      li.classList.add("searchResult")
+      li.addEventListener("click", () => {
+        if (window.location.href.includes("magister.net/magister/#/berichten")) {
+          document.getElementById(match.page.btnId).click()
+          toggleSearchBox()
+          setTimeout(() => {
+            document.getElementById(match.page.btnId).click()
+          }, 100);
+        }else {
+          toggleSearchBox()
+          document.getElementById(match.page.btnId).click()
+        }
+      })
 
-    //   const title = document.createElement("span")
-    //   title.classList.add("resultTitle")
-    //   title.textContent = match.bron.Naam
+      const title = document.createElement("span")
+      title.classList.add("resultTitle")
+      title.textContent = match.page.title
 
-    //   searchResults.appendChild(li)
-    //   li.appendChild(title)
-    // }
+      resultsPages.appendChild(li)
+      li.appendChild(title)
+    }
     
   })
 
-  console.log(matches)
+  if (resultsPages.childElementCount == 0) {
+    resultsPages.style.display = "none"
+  }
+  
+  if (resultsStudiewijzers.childElementCount == 0) {
+    resultsStudiewijzers.style.display = "none"
+  }
+
+  const pagesTitle = document.createElement("h1")
+  pagesTitle.textContent = "Pagina's"
+  resultsPages.insertBefore(pagesTitle, resultsPages.firstChild)
+
+  const studiewijzersTitle = document.createElement("h1")
+  studiewijzersTitle.textContent = "Studiewijzers"
+  resultsStudiewijzers.insertBefore(studiewijzersTitle, resultsStudiewijzers.firstChild)
+
+
+
+  searchResults.firstChild.classList.add("selected")
 }
 
-//~ Hotkeys
-document.addEventListener("keydown", (event) => {
+function moveSelectedIndexDown() {
+  const results = document.querySelectorAll(".searchResult")
+
+  results[selectedSearchIndex].classList.remove("selected")
+  
+  selectedSearchIndex = (selectedSearchIndex + 1) % results.length
+  
+  results[selectedSearchIndex].classList.add("selected")
+}
+
+function moveSelectedIndexUp() {
+  const results = document.querySelectorAll(".searchResult")
+
+  results[selectedSearchIndex].classList.remove("selected")
+  
+  selectedSearchIndex = (selectedSearchIndex - 1 + results.length) % results.length
+  
+  results[selectedSearchIndex].classList.add("selected")
+}
+
+function clickSelectedIndex() {
+  const selectedItem = document.querySelector('#searchResults .selected');
+  
+  selectedItem.click();
+  
+}
+
+function keydownFunc(event) {
   keysPressed.add(event.code);
   keysPressed.add(event.key);
 
   if (keysPressed.has("Control") && keysPressed.has("KeyK")) {
     toggleSearchBox()
   }
-});
 
-document.addEventListener("keyup", (event) => {
+  if (document.getElementById("searchBox").style.display === "block") {
+
+    if (keysPressed.has("Escape")) {
+      toggleSearchBox()
+    }
+
+    if (keysPressed.has("Enter")) {
+      clickSelectedIndex()
+    }
+    
+    if (keysPressed.has("ArrowDown")) {
+      moveSelectedIndexDown()
+    }
+
+    if (keysPressed.has("ArrowUp")) {
+      moveSelectedIndexUp()
+    }
+
+  }
+}
+
+function keyupFunc(event) {
   keysPressed.delete(event.code);
   keysPressed.delete(event.key);
-});
+}
+
+//~ Hotkeys
+
+document.addEventListener("keydown", (event) => keydownFunc(event))
+document.addEventListener("keyup", (event) => keyupFunc(event))

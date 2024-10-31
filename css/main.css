@@ -3235,6 +3235,24 @@ html #idMultimedia div.block > div .endlink {
 
 /*~ Search Box */
 
+/*! custom scroll bar for search box */
+
+html #searchBox ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+  
+html #searchBox ::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: transparent;
+}
+   
+html #searchBox ::-webkit-scrollbar-thumb {
+    background: var(--mooie-bg-color-mid); 
+    border-radius: 4px;
+}
+
+
 html #searchBox {
     position: absolute;
     top: 0;
@@ -3243,7 +3261,7 @@ html #searchBox {
     height: 100vh;
     z-index: 9990;
     background-color: #00000040;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
 }
 
 html #searchBox #searchInput {
@@ -3264,12 +3282,69 @@ html #searchBox #searchInput {
 
 html #searchBox #searchResults {
     width: 600px;
-    height: calc(100vh - 248px);
-    margin-top: 50px;
+    height: calc(100vh - 223px);
+    margin-top: 25px;
     margin-bottom: 50px;
     margin-left: calc(50vw - 300px);
     margin-right: calc(50vw - 300px);
     z-index: 9999;
-    background-color: red;
+    background-color: transparent;
+    overflow-y: auto;
 }
 
+
+html #searchBox #searchResults #resultsPages {
+    width: 100%;
+    background-color: #a2c5e5;
+}
+
+html #searchBox #searchResults #resultsStudiewijzers {
+    width: 100%;
+    background-color: #6b6c2e;
+}
+
+html #searchBox #searchResults .searchResult {
+    padding: 8px 16px;
+    margin: 8px;
+    font-size: 16px;
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color);
+    text-shadow: 0 0 2px var(--mooie-text-color);
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+html #searchBox #searchResults .searchResult.selected {
+    text-shadow: 0 0 4px var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+}
+
+
+
+/*~ Open search button */
+
+html #searchButtonA {
+    background-color: var(--primary-background);
+}
+
+html #searchButtonA > i {
+    opacity: .5;
+    transition: opacity ease .25s;
+}
+
+html #searchButtonA:hover > i {
+    opacity: .75;
+    transition: opacity ease .25s;
+}
+
+
+html #searchButtonA > span {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+html #searchButtonA > span::after {
+    border-right: 5px solid var(--mooie-bg-color-mid);
+}
