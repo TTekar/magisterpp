@@ -2530,6 +2530,8 @@ html #huiswerkomschrijving .comment {
 
 html #huiswerkomschrijving .comment * {
     color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
 }
 
 html #huiswerkomschrijving .attachment-bar {
