@@ -1042,7 +1042,7 @@ var update100ms = window.setInterval(function(){
     const searchButtonDiv = document.createElement("div")
     searchButtonDiv.id = "searchButton"
     searchButtonDiv.classList.add("menu-button")
-    searchButtonDiv.innerHTML = `<a id="searchButtonA"><i class="fa-solid fa-magnifying-glass"></i><span>Zoeken (CTRL+K / ALT+S)</span></a>`
+    searchButtonDiv.innerHTML = `<a id="searchButtonA"><i class="fa-solid fa-magnifying-glass"></i><span>Zoeken (CTRL+K)</span></a>`
   
     const appbar = document.querySelector("body > div.container > div.appbar-host > mg-appbar > div.appbar")
     appbar.insertBefore(searchButtonDiv, appbar.firstChild)
@@ -1389,9 +1389,9 @@ function keydownFunc(event) {
   if (keysPressed.has("Control") && keysPressed.has("KeyK")) {
     toggleSearchBox()
   }
-  if (keysPressed.has("Alt") && keysPressed.has("KeyS")) {
-    toggleSearchBox()
-  }
+  // if (keysPressed.has("Alt") && keysPressed.has("KeyS")) {
+  //   toggleSearchBox()
+  // }
 
   // console.log(keysPressed)
   
