@@ -1566,9 +1566,12 @@ html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade
     opacity: var(--cijfers-background-opacity);
 }
 
-html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.gemiddeldecolumn {
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.gemiddeldecolumn,
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.docentkolom,
+html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.eloopdracht {
     background-color: var(--secondary-background-darker) !important; 
 }
+
 
 html #cijferoverzichtgrid > .k-grid-content table > tbody > tr > td > span.grade.herkansingKolom {
     background-color: var(--mooie-bg-color) !important;
