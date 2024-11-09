@@ -81,6 +81,8 @@ var selectedSearchIndex = 0
 var setBerichtenIframeUp = true
 var setBerichtenIframeDown = true
 
+var zoekenActive = false;
+
 
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date)
@@ -236,8 +238,10 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: false },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true },
       (items) => {
+
+        zoekenActive = !items.hideZoekenBtn
 
         //~ Set custom pfp
         if (items.customPfp) {
@@ -1056,26 +1060,29 @@ var update100ms = window.setInterval(function(){
   }
 
   // Set iframe event listeners for key up/down
-  const berichtenIframe = document.getElementById("berichten-nieuw-frame")
+  if (zoekenActive) {
+    const berichtenIframe = document.getElementById("berichten-nieuw-frame")
 
-  if (berichtenIframe){
-    if (setBerichtenIframeDown){
-      berichtenIframe.contentWindow.document.addEventListener("keydown", (event) => {
-        document.dispatchEvent(
-          new KeyboardEvent('keydown', {key: event.key, code: event.code})
-        )
-      })
-      setBerichtenIframeDown = false
-    }
-    if (setBerichtenIframeUp){
-      berichtenIframe.contentWindow.document.addEventListener("keyup", (event) => {
-        document.dispatchEvent(
-          new KeyboardEvent('keyup', {key: event.key, code: event.code})
-        )
-      })
-      setBerichtenIframeUp = false
+    if (berichtenIframe){
+      if (setBerichtenIframeDown){
+        berichtenIframe.contentWindow.document.addEventListener("keydown", (event) => {
+          document.dispatchEvent(
+            new KeyboardEvent('keydown', {key: event.key, code: event.code})
+          )
+        })
+        setBerichtenIframeDown = false
+      }
+      if (setBerichtenIframeUp){
+        berichtenIframe.contentWindow.document.addEventListener("keyup", (event) => {
+          document.dispatchEvent(
+            new KeyboardEvent('keyup', {key: event.key, code: event.code})
+          )
+        })
+        setBerichtenIframeUp = false
+      }
     }
   }
+  
 
 
 
@@ -1386,9 +1393,12 @@ function keydownFunc(event) {
   keysPressed.add(event.code);
   keysPressed.add(event.key);
 
-  if (keysPressed.has("Control") && keysPressed.has("KeyK")) {
-    toggleSearchBox()
+  if (zoekenActive) {
+    if (keysPressed.has("Control") && keysPressed.has("KeyK")) {
+      toggleSearchBox()
+    }
   }
+  
   // if (keysPressed.has("Alt") && keysPressed.has("KeyS")) {
   //   toggleSearchBox()
   // }
