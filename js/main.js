@@ -98,20 +98,21 @@ function getWeekNumber(date = new Date()) {
 }
 
 function getISOWeekNumber(date = new Date()) {
-  const inputDate = new Date(date);
+  const inputDate = new Date(date)
   if (isNaN(inputDate)) {
-      return "Invalid date"
+    return "Invalid date"
   }
 
-  const day = inputDate.getUTCDay()
-  const nearestThursday = new Date(inputDate)
-  nearestThursday.setUTCDate(inputDate.getUTCDate() + 4 - (day === 0 ? 7 : day))
+  const day = inputDate.getDay() || 7
 
-  const yearStart = new Date(Date.UTC(nearestThursday.getUTCFullYear(), 0, 1))
+  const nearestThursday = new Date(inputDate);
+  nearestThursday.setDate(inputDate.getDate() + 4 - day);
 
-  const weekNumber = Math.ceil(((nearestThursday - yearStart) / (24 * 60 * 60 * 1000) + 1) / 7)
+  const yearStart = new Date(nearestThursday.getFullYear(), 0, 1);
 
-  return weekNumber
+  const weekNumber = Math.ceil(((nearestThursday - yearStart) / (24 * 60 * 60 * 1000) + 1) / 7);
+
+  return weekNumber;
 }
 
 
@@ -238,7 +239,7 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false },
       (items) => {
 
         zoekenActive = !items.hideZoekenBtn
@@ -387,6 +388,135 @@ var update100ms = window.setInterval(function(){
           }
         }
 
+
+        if (items.customVandaag) {
+          const vandaagContainer = document.getElementById("vandaag-container")
+
+          if (vandaagContainer) {
+            const main = vandaagContainer.querySelector("section.main")
+
+            if (main) vandaagContainer.innerHTML = ""
+
+            //~ Date and Time
+
+            // const date = new Date("Sun Nov 11 2024 00:48:42 GMT+0100")
+            const date = new Date()
+
+            const timeString = date.toLocaleTimeString("nl-NL", {
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+            })
+
+            // console.log(timeString)
+
+            const dateString = date.toLocaleDateString("nl-NL", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })
+
+            const capitalDate = dateString.charAt(0).toUpperCase() + dateString.slice(1)
+            const index = capitalDate.indexOf(" ");
+  
+            const finalDate = capitalDate.slice(0, index) + "," + capitalDate.slice(index);
+            
+            const pensumSuffix = weekToPensum[getISOWeekNumber(date)]
+
+            // console.log(finalDate, pensumSuffix)
+
+            vandaagContainer.style.paddingRight = "0px"
+            document.querySelector("body > .container").style.paddingRight = "0px"
+            vandaagContainer.parentElement.style.paddingBottom = "0px"
+
+            //~ Main Sections
+
+            const infoWidth = 450        // TODO make this a setting   outside of create loop so it always updates and not only on refresh?
+
+            if (!vandaagContainer.querySelector("#roosterDiv")) {
+              const roosterDiv = document.createElement("div")
+              roosterDiv.id = "roosterDiv"
+              roosterDiv.style.width = `calc(100% - ${infoWidth}px)`
+              vandaagContainer.appendChild(roosterDiv)
+            }
+            if (!vandaagContainer.querySelector("#infoDiv")) {
+              const infoDiv = document.createElement("div")
+              infoDiv.id = "infoDiv"
+              infoDiv.style.width = `${infoWidth}px`
+              vandaagContainer.appendChild(infoDiv)
+            }
+
+            //~ Rooster
+
+            if (!document.getElementById("dayText")) {
+              const dayText = document.createElement("div")
+              dayText.id = "dayText"
+
+              const dateText = document.createElement("span")
+              dateText.id = "dateText"
+              dateText.textContent = finalDate
+
+              const pensumText = document.createElement("span")
+              pensumText.id = "pensumText"
+              pensumText.textContent = pensumSuffix
+
+              document.getElementById("roosterDiv").appendChild(dayText)
+              dayText.appendChild(dateText)
+              dayText.appendChild(pensumText)
+            }
+
+            //~ Info
+            
+            if (!document.getElementById("currentTime")) {
+              const currentTime = document.createElement("span")
+              currentTime.id = "currentTime"
+              document.getElementById("infoDiv").appendChild(currentTime)
+            }
+            // update text
+            document.getElementById("currentTime").textContent = timeString.replace(/:/g, " : ")
+            
+            if (!document.getElementById("cijfersCard")) {
+              const cijfersCard = document.createElement("div")
+              cijfersCard.id = "cijfersCard"
+              cijfersCard.classList.add("infoCard")
+
+              document.getElementById("infoDiv").appendChild(cijfersCard)
+
+              const laatsteCijfersText = document.createElement("span")
+              laatsteCijfersText.id = "laatsteCijfersText"
+              laatsteCijfersText.textContent = "Laatste Cijfers"
+
+              cijfersCard.appendChild(laatsteCijfersText)
+
+              const cijferWaarde = document.createElement("span")
+              cijferWaarde.id = "cijferWaarde"
+              cijfersCard.appendChild(cijferWaarde)
+
+              const cijferOmschrijving = document.createElement("span")
+              cijferOmschrijving.id = "cijferOmschrijving"
+              cijfersCard.appendChild(cijferOmschrijving)
+
+              const cijferVak = document.createElement("span")
+              cijferVak.id = "cijferVak"
+              cijfersCard.appendChild(cijferVak)
+
+              const cijferTijd = document.createElement("span")
+              cijferTijd.id = "cijferTijd"
+              cijfersCard.appendChild(cijferTijd)
+
+              MagisterApi.grades.recent(10).then(result => { // TODO make the 10 a lastN setting
+                console.log(result)
+                cijferWaarde.textContent = result[0].waarde
+                cijferOmschrijving.textContent = `${result[0].omschrijving} (x${result[0].weegfactor})`
+                cijferVak.textContent = result[0].vak.omschrijving
+                cijferTijd.textContent = formatDate(result[0].ingevoerdOp)
+              })
+            }
+
+
+          }
+        }
         
 
       }
@@ -1361,6 +1491,12 @@ async function search() {
 
   searchResults.querySelector(".searchResult").classList.add("selected")
 }
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return `${String(date.getDate()).padStart(2, '0')}-${String(date.getMonth() + 1).padStart(2, '0')}-${date.getFullYear()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+}
+
 
 function moveSelectedIndexDown() {
   const results = document.querySelectorAll(".searchResult")
