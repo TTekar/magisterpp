@@ -81,8 +81,7 @@ var selectedSearchIndex = 0
 var setBerichtenIframeUp = true
 var setBerichtenIframeDown = true
 
-var zoekenActive = false;
-
+var zoekenActive = false
 
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date)
@@ -505,14 +504,65 @@ var update100ms = window.setInterval(function(){
               cijferTijd.id = "cijferTijd"
               cijfersCard.appendChild(cijferTijd)
 
-              MagisterApi.grades.recent(10).then(result => { // TODO make the 10 a lastN setting
-                console.log(result)
-                cijferWaarde.textContent = result[0].waarde
-                cijferOmschrijving.textContent = `${result[0].omschrijving} (x${result[0].weegfactor})`
-                cijferVak.textContent = result[0].vak.omschrijving
-                cijferTijd.textContent = formatDate(result[0].ingevoerdOp)
-              })
+              
+              
+              
             }
+
+            
+
+            MagisterApi.grades.recent(5).then(result => { // TODO make the 10 a lastN setting
+              // console.log(result)
+              const nth = 0
+              cijferWaarde.textContent = result[nth].waarde
+              cijferOmschrijving.textContent = `${result[nth].omschrijving} (x${result[nth].weegfactor})`
+              cijferVak.textContent = result[nth].vak.omschrijving
+              cijferTijd.textContent = formatDate(result[nth].ingevoerdOp)
+              
+              
+              // cijfers color
+              const float = parseFloat(result[nth].waarde.replace(",", "."))
+              let value
+              if (!isNaN(float) && float >= 0 && float <= 10) {
+                value = float
+              }else if (result[nth].waarde.length <= 3) {
+                var tmpValue = 0
+                for (const char of result[nth].waarde) {
+                  if (char.toLowerCase() == "o") tmpValue += 1
+                  else if (char.toLowerCase() == "z") tmpValue += 3
+                  else if (char.toLowerCase() == "v") tmpValue += 5
+                  else if (char.toLowerCase() == "r") tmpValue += 7
+                  else if (char.toLowerCase() == "g") tmpValue += 9
+                }
+                value = tmpValue / result[nth].waarde.length
+                if (tmpValue == 0) value = 6
+              }else {
+                value = 6
+              }
+
+              const t = value / 10;
+
+              const startColor = { r: 206, g: 18, b: 8 }
+              const midColor = { r: 255, g: 147, b: 246 }
+              const endColor = { r: 167, g: 179, b: 206 }
+
+              let r, g, b;
+              if (value <= 7) {
+                const t = value / 7;
+                r = Math.round(startColor.r + (midColor.r - startColor.r) * t);
+                g = Math.round(startColor.g + (midColor.g - startColor.g) * t);
+                b = Math.round(startColor.b + (midColor.b - startColor.b) * t);
+              } else {
+                const t = (value - 7) / 3;
+                r = Math.round(midColor.r + (endColor.r - midColor.r) * t);
+                g = Math.round(midColor.g + (endColor.g - midColor.g) * t);
+                b = Math.round(midColor.b + (endColor.b - midColor.b) * t);
+              }
+
+              cijferWaarde.style.color = `rgb(${r}, ${g}, ${b})`
+            })
+
+            
 
 
           }
