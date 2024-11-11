@@ -513,14 +513,17 @@ var update100ms = window.setInterval(function(){
 
               const cijferWaarde = document.createElement("span")
               cijferWaarde.id = "cijferWaarde"
+              cijferWaarde.addEventListener("click", () => {document.getElementById("menu-cijfers").click()})
               cijfersMid.appendChild(cijferWaarde)
 
               const cijferOmschrijving = document.createElement("span")
               cijferOmschrijving.id = "cijferOmschrijving"
+              cijferOmschrijving.addEventListener("click", () => {document.getElementById("menu-cijfers").click()})
               cijfersMid.appendChild(cijferOmschrijving)
 
               const cijferVak = document.createElement("span")
               cijferVak.id = "cijferVak"
+              cijferVak.addEventListener("click", () => {document.getElementById("menu-cijfers").click()})
               cijfersMid.appendChild(cijferVak)
 
               const cijferTijd = document.createElement("span")
