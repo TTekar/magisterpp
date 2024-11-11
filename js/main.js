@@ -83,6 +83,8 @@ var setBerichtenIframeDown = true
 
 var zoekenActive = false
 
+var currentCijferId = 0
+
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date)
   if (isNaN(inputDate)) {
@@ -238,7 +240,7 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 },
       (items) => {
 
         zoekenActive = !items.hideZoekenBtn
@@ -387,6 +389,7 @@ var update100ms = window.setInterval(function(){
           }
         }
 
+        // ~~ CUSTOM VANDAAG
 
         if (items.customVandaag) {
           const vandaagContainer = document.getElementById("vandaag-container")
@@ -482,27 +485,53 @@ var update100ms = window.setInterval(function(){
 
               document.getElementById("infoDiv").appendChild(cijfersCard)
 
+              const cijfersLeft = document.createElement("div")
+              cijfersLeft.id = "cijfersLeft"
+              cijfersLeft.innerHTML = `<i class="fa-regular fa-chevron-left"></i>`
+              cijfersLeft.addEventListener("click", () => {
+                if (currentCijferId > 0) currentCijferId -= 1
+              })
+              cijfersCard.appendChild(cijfersLeft)
+
+              const cijfersMid = document.createElement("div")
+              cijfersMid.id = "cijfersMid"
+              cijfersCard.appendChild(cijfersMid)
+
+              const cifjersRight = document.createElement("div")
+              cifjersRight.id = "cijfersRight"
+              cifjersRight.innerHTML = `<i class="fa-regular fa-chevron-right"></i>`
+              cifjersRight.addEventListener("click", () => {
+                if (currentCijferId < items.maxLaatsteCijfers - 1) currentCijferId += 1
+              })
+              cijfersCard.appendChild(cifjersRight)
+
               const laatsteCijfersText = document.createElement("span")
               laatsteCijfersText.id = "laatsteCijfersText"
               laatsteCijfersText.textContent = "Laatste Cijfers"
-
-              cijfersCard.appendChild(laatsteCijfersText)
+              laatsteCijfersText.addEventListener("click", () => { currentCijferId = 0 })
+              cijfersMid.appendChild(laatsteCijfersText)
 
               const cijferWaarde = document.createElement("span")
               cijferWaarde.id = "cijferWaarde"
-              cijfersCard.appendChild(cijferWaarde)
+              cijfersMid.appendChild(cijferWaarde)
 
               const cijferOmschrijving = document.createElement("span")
               cijferOmschrijving.id = "cijferOmschrijving"
-              cijfersCard.appendChild(cijferOmschrijving)
+              cijfersMid.appendChild(cijferOmschrijving)
 
               const cijferVak = document.createElement("span")
               cijferVak.id = "cijferVak"
-              cijfersCard.appendChild(cijferVak)
+              cijfersMid.appendChild(cijferVak)
 
               const cijferTijd = document.createElement("span")
               cijferTijd.id = "cijferTijd"
-              cijfersCard.appendChild(cijferTijd)
+              cijfersMid.appendChild(cijferTijd)
+
+              
+
+              const cijferIdCurrent = document.createElement("span")
+              cijferIdCurrent.id = "cijferIdCurrent"
+              cijfersCard.appendChild(cijferIdCurrent)
 
               
               
@@ -511,13 +540,14 @@ var update100ms = window.setInterval(function(){
 
             
 
-            MagisterApi.grades.recent(5).then(result => { // TODO make the 10 a lastN setting
+            MagisterApi.grades.recent(items.maxLaatsteCijfers).then(result => { // TODO make the 10 a lastN setting
               // console.log(result)
-              const nth = 0
+              const nth = currentCijferId
               cijferWaarde.textContent = result[nth].waarde
               cijferOmschrijving.textContent = `${result[nth].omschrijving} (x${result[nth].weegfactor})`
               cijferVak.textContent = result[nth].vak.omschrijving
               cijferTijd.textContent = formatDate(result[nth].ingevoerdOp)
+              cijferIdCurrent.textContent = `${currentCijferId + 1} / ${result.length}`
               
               
               // cijfers color
@@ -544,7 +574,7 @@ var update100ms = window.setInterval(function(){
 
               const startColor = { r: 206, g: 18, b: 8 }
               const midColor = { r: 255, g: 147, b: 246 }
-              const endColor = { r: 167, g: 179, b: 206 }
+              const endColor = { r: 186, g: 201, b: 239 }
 
               let r, g, b;
               if (value <= 7) {
@@ -1543,8 +1573,16 @@ async function search() {
 }
 
 function formatDate(dateString) {
-  const date = new Date(dateString);
-  return `${String(date.getDate()).padStart(2, '0')}-${String(date.getMonth() + 1).padStart(2, '0')}-${date.getFullYear()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+  const date = new Date(dateString)
+
+  const day = date.getDate();
+  const monthName = new Intl.DateTimeFormat("nl-NL", { month: "long" }).format(date)
+  const year = date.getFullYear()
+
+  const hours = String(date.getHours()).padStart(2, '0')
+  const minutes = String(date.getMinutes()).padStart(2, '0')
+
+  return `${day} ${monthName} ${year}, ${hours}:${minutes}`
 }
 
 

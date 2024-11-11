@@ -86,6 +86,8 @@ const saveOptions = () => {
   const widgetDrag = document.getElementById('widgetDrag').checked
 
   const customVandaag = document.getElementById('v-custom').checked
+  
+  const maxLaatsteCijfers = document.getElementById('maxLaatsteCijfers').value
 
   var hidePfp
   var customPfp
@@ -102,7 +104,7 @@ const saveOptions = () => {
   }
 
   chrome.storage.sync.set(
-    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , hideZoekenBtn: hideZoekenBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp , widgetCustomHigh: widgetCustomHigh , widgetCustomLow: widgetCustomLow , hideBestellenBtn: hideBestellenBtn , autoLogin: autoLogin , username: username , password: password , widgetDrag: widgetDrag, customVandaag: customVandaag },
+    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , hideZoekenBtn: hideZoekenBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp , widgetCustomHigh: widgetCustomHigh , widgetCustomLow: widgetCustomLow , hideBestellenBtn: hideBestellenBtn , autoLogin: autoLogin , username: username , password: password , widgetDrag: widgetDrag, customVandaag: customVandaag , maxLaatsteCijfers: maxLaatsteCijfers },
     () => {
       // do after saved
       // console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}\ncustomPfp:${customPfp}\nwidgetCustomHigh:${widgetCustomHigh}\nwidgetCustomLow:${widgetCustomLow}`)
@@ -115,7 +117,7 @@ const saveOptions = () => {
 
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , hideBestellenBtn: false , autoLogin: false , username: "" , password: "" , widgetDrag: true , hideZoekenBtn: true , customVandaag: false },
+    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , hideBestellenBtn: false , autoLogin: false , username: "" , password: "" , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 },
     (items) => {
       document.getElementById('dark').checked = items.darkMode;
       document.getElementById('light').checked = !items.darkMode;
@@ -146,6 +148,8 @@ const restoreOptions = () => {
 
       document.getElementById('v-custom').checked = items.customVandaag;
       document.getElementById('v-normal').checked = !items.customVandaag;
+
+      document.getElementById('maxLaatsteCijfers').value = items.maxLaatsteCijfers;
 
       
 

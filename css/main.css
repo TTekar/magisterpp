@@ -3408,11 +3408,33 @@ html #vandaag-container #infoDiv .infoCard {
     min-height: 200px;
     background-color: var(--mooie-bg-color-hover);
     border-radius: 16px;
+    position: relative;
 }
 
 html #vandaag-container #infoDiv #cijfersCard {
     min-height: auto;
     height: auto;
+    display: flex;
+    align-items: stretch;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijfersMid {
+    width: calc(100% - 64px);
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijfersLeft,
+html #vandaag-container #infoDiv #cijfersCard #cijfersRight {
+    width: 32px;
+    display: flex;              
+    align-items: center;        
+    justify-content: center;
+    user-select: none;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijfersLeft i,
+html #vandaag-container #infoDiv #cijfersCard #cijfersRight i {
+    font-size: 28px;
+    color: var(--mid-gray);
 }
 
 html #vandaag-container #infoDiv #cijfersCard #laatsteCijfersText {
@@ -3422,6 +3444,7 @@ html #vandaag-container #infoDiv #cijfersCard #laatsteCijfersText {
     color: var(--mooie-text-color);
     font-size: 18px;
     text-align: center;
+    user-select: none;
 }
 
 html #vandaag-container #infoDiv #cijfersCard #cijferWaarde {
@@ -3464,10 +3487,20 @@ html #vandaag-container #infoDiv #cijfersCard #cijferTijd {
     display: block;
     width: 100%;
     padding: 8px 32px 16px 32px;
-    color: var(--mooie-text-color);
+    color: var(--mid-gray);
     font-size: 14px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    user-select: none;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijferIdCurrent {
+    width: auto;
+    top: 8px;
+    right: 8px;
+    color: var(--mid-gray);
+    position: absolute;
+    user-select: none;
 }
