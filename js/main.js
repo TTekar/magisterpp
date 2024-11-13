@@ -116,6 +116,12 @@ function getISOWeekNumber(date = new Date()) {
   return weekNumber;
 }
 
+function formatYMDtoDmY(dateStr) {
+  const [year, month, day] = dateStr.split("-");
+  const months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
+  return `${parseInt(day)} ${months[parseInt(month) - 1]} ${year}`;
+}
+
 
 var update100ms = window.setInterval(function(){
 
@@ -475,9 +481,10 @@ var update100ms = window.setInterval(function(){
               currentTime.id = "currentTime"
               document.getElementById("infoDiv").appendChild(currentTime)
             }
-            // update text
+            // update time
             document.getElementById("currentTime").textContent = timeString.replace(/:/g, " : ")
             
+            //~ Cijfers
             if (!document.getElementById("cijfersCard")) {
               const cijfersCard = document.createElement("div")
               cijfersCard.id = "cijfersCard"
@@ -535,14 +542,9 @@ var update100ms = window.setInterval(function(){
               const cijferIdCurrent = document.createElement("span")
               cijferIdCurrent.id = "cijferIdCurrent"
               cijfersCard.appendChild(cijferIdCurrent)
-
-              
-              
-              
             }
-
             
-
+            /// Update Cijfers
             MagisterApi.grades.recent(items.maxLaatsteCijfers).then(result => { // TODO make the 10 a lastN setting
               // console.log(result)
               const nth = currentCijferId
@@ -595,6 +597,19 @@ var update100ms = window.setInterval(function(){
               cijferWaarde.style.color = `rgb(${r}, ${g}, ${b})`
             })
 
+            //~ Mededelingen
+            if (!document.getElementById("mededelingenCard")) {
+              const mededelingenCard = document.createElement("div")
+              mededelingenCard.id = "mededelingenCard"
+              mededelingenCard.classList.add("infoCard")
+
+              document.getElementById("infoDiv").appendChild(mededelingenCard)
+
+              createMededelingen(mededelingenCard)
+  
+
+            }
+            
             
 
 
@@ -1307,6 +1322,93 @@ window.navigation.addEventListener("navigate", (event) => {
     setBerichtenIframeUp = true
   }, 500);
 })
+
+function extractBodyContent(htmlString) {
+  const bodyContentMatch = htmlString.match(/<body[^>]*>([\s\S]*?)<\/body>/i)
+  return bodyContentMatch ? bodyContentMatch[1] : ""
+}
+
+
+function createMededelingen(mededelingenCard) {
+  mededelingenCard.classList.remove("content")
+  mededelingenCard.innerHTML = ""
+  const mededelingenTitle = document.createElement("span")
+  mededelingenTitle.id = "mededelingenTitle"
+  mededelingenTitle.textContent = "Mededelingen"
+  mededelingenCard.appendChild(mededelingenTitle)
+
+
+  MagisterApi.mededelingen().then(mededelingen => {
+    
+    mededelingen.forEach(med => {
+
+      const medCard = document.createElement("div")
+      medCard.classList.add("medCard")
+      if (med.isGelezen) medCard.classList.add("gelezen")
+      mededelingenCard.appendChild(medCard)
+
+      const medSender = document.createElement("span")
+      medSender.classList.add("medSender")
+      medSender.textContent = `${med.eigenaar.voorletters} ${med.eigenaar.achternaam}`
+      medCard.appendChild(medSender)
+
+      const medTitle = document.createElement("span")
+      medTitle.classList.add("medTitle")
+      medTitle.textContent = med.onderwerp
+      medCard.appendChild(medTitle)
+
+      const medDate = document.createElement("span")
+      medDate.classList.add("medDate")
+      medDate.textContent = `${formatYMDtoDmY(med.begin)} - ${formatYMDtoDmY(med.einde)}`
+      medCard.appendChild(medDate)
+
+      medCard.addEventListener("click", () => {
+        MagisterApi.mededeling(med.id).then(content => {
+          mededelingenCard.innerHTML = ""
+          mededelingenCard.classList.add("content")
+
+          const contentTitle = document.createElement("span")
+          contentTitle.id = "contentTitle"
+          contentTitle.textContent = med.onderwerp
+          mededelingenCard.appendChild(contentTitle)
+
+          const contentAfzender = document.createElement("span")
+          contentAfzender.id = "contentAfzender"
+          contentAfzender.textContent = `Afzender: ${content.eigenaar.voorletters} ${content.eigenaar.achternaam}`
+          mededelingenCard.appendChild(contentAfzender)
+
+          let ontvangers = []
+          content.ontvangers.forEach(ontv => ontvangers.push(ontv.omschrijving))
+
+          const contentAan = document.createElement("span")
+          contentAan.id = "contentAan"
+          contentAan.textContent = `Aan: ${ontvangers.join(", ")}`
+          mededelingenCard.appendChild(contentAan)
+
+          const contentDate = document.createElement("span")
+          contentDate.id = "contentDate"
+          contentDate.textContent = `${formatYMDtoDmY(content.begin)} - ${formatYMDtoDmY(content.einde)}`
+          mededelingenCard.appendChild(contentDate)
+
+          const contentInhoud = document.createElement("div")
+          contentInhoud.id = "contentInhoud"
+          contentInhoud.innerHTML = extractBodyContent(content.inhoud)
+          mededelingenCard.appendChild(contentInhoud)
+
+          const contentTerug = document.createElement("div")
+          contentTerug.id = "contentTerug"
+          contentTerug.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`
+          contentTerug.addEventListener("click", () => {
+            createMededelingen(mededelingenCard)
+          })
+          mededelingenCard.appendChild(contentTerug)
+        })
+      })
+
+    })
+
+  })
+}
 
 
 

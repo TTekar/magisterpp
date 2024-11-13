@@ -149,6 +149,28 @@ const MagisterApi = {
             })
         }
     },
+    mededelingen: async () => {
+        return new Promise(async (resolve, reject) => {
+            magisterApiCache.mededelingen ??=
+                fetchWrapper(
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/mededelingen`, null, "mededelingen"
+                )
+            resolve(
+                (await magisterApiCache.mededelingen)?.mededelingen.items || []
+            )
+        })
+    },
+    mededeling: async (id) => {
+        return new Promise(async (resolve, reject) => {
+            magisterApiCache[`mededeling${id}`] ??=
+                fetchWrapper(
+                    `https://${magisterApiSchoolName}.magister.net/api/mededelingen/${id}`, null, "mededeling"
+                )
+            resolve(
+                (await magisterApiCache[`mededeling${id}`]) || {}
+            )
+        })
+    },
     studiewijzers: async () => {
         return new Promise(async (resolve, reject) => {
             magisterApiCache.studiewijzers ??=
