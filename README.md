@@ -1,6 +1,9 @@
 # Magister++
 Een extensie die verandert hoe Magister eruitziet en nieuwe features toevoegt.
 
+> [!WARNING]
+> Dit klopt niet helemaal meer maar ben te lui om het aan te passen. Komt wel als wat meer features af zijn.
+
 > [!NOTE]
 > Deze extensie is gemaakt voor leerlingen van het Jordan MLU. Er zitten features in die speciaal voor het Jordan gemaakt zijn, en misschien werken een paar kleine dingen niet als je niet op het Jordan zit.
 
