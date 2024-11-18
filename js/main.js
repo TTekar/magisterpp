@@ -474,6 +474,14 @@ var update100ms = window.setInterval(function(){
               dayText.appendChild(pensumText)
             }
 
+            if (!document.getElementById("dagRooster")) {
+              const dagRooster = document.createElement("div")
+              dagRooster.id = "dagRooster"
+              document.getElementById("roosterDiv").appendChild(dagRooster)
+
+            }
+
+
             //~ Info
             
             if (!document.getElementById("currentTime")) {

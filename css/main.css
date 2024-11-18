@@ -3390,6 +3390,15 @@ html #vandaag-container #roosterDiv #dayText #pensumText {
     color: var(--mid-gray);
 }
 
+
+html #vandaag-container #roosterDiv #dagRooster {
+    width: 100%;
+    padding: 32px;
+    background-color: red;
+}
+
+
+/*~ info */
 html #vandaag-container #infoDiv #currentTime {
     display: block;
     width: 100%;
