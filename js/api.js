@@ -151,7 +151,7 @@ const MagisterApi = {
     },
     mededelingen: async () => {
         return new Promise(async (resolve, reject) => {
-            magisterApiCache.mededelingen ??=
+            magisterApiCache.mededelingen =
                 fetchWrapper(
                     `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/mededelingen`, null, "mededelingen"
                 )
@@ -162,7 +162,7 @@ const MagisterApi = {
     },
     mededeling: async (id) => {
         return new Promise(async (resolve, reject) => {
-            magisterApiCache[`mededeling${id}`] ??=
+            magisterApiCache[`mededeling${id}`] =
                 fetchWrapper(
                     `https://${magisterApiSchoolName}.magister.net/api/mededelingen/${id}`, null, "mededeling"
                 )

@@ -130,7 +130,7 @@ var update100ms = window.setInterval(function(){
 
   //~ Keuze plattegrond
 
-  if (!madeKeuzeIframe) {
+  if (!document.getElementById("coverDivKeuze")) {
     chrome.storage.sync.get(
       { keuzeBtn: true, darkMode: false },
       (items) => {
@@ -475,11 +475,45 @@ var update100ms = window.setInterval(function(){
             }
 
             if (!document.getElementById("dagRooster")) {
-              const dagRooster = document.createElement("div")
+              const dagRooster = document.createElement("ul")
               dagRooster.id = "dagRooster"
               document.getElementById("roosterDiv").appendChild(dagRooster)
 
+              const { start, end } = getDayStartAndEnd(getCurrentDateFormatted(0))
+              MagisterApi.events(start, end).then(result => {
+                
+                const events = result.filter(event => {
+                  const eventStart = new Date(event.Start)
+
+                  return eventStart >= start && eventStart <= end
+                })
+
+                console.log(events)
+
+                events.forEach(event => {
+                  console.log(event)
+
+                  const eventDiv = document.createElement("li")
+                  eventDiv.classList.add("roosterEvent")
+                  dagRooster.appendChild(eventDiv)
+
+                  const vakSpan = document.createElement("span")
+                  // if (event.Vakken[0]) vakSpan.textContent = event.Vakken[0].Naam
+                  // else vakSpan.textContent = event.Omschrijving
+                  vakSpan.textContent = event.Omschrijving
+                  vakSpan.classList.add("eventVak")
+                  eventDiv.appendChild(vakSpan)
+
+
+
+
+                })
+
+              })
             }
+
+            
+            
 
 
             //~ Info
@@ -553,7 +587,7 @@ var update100ms = window.setInterval(function(){
             }
             
             /// Update Cijfers
-            MagisterApi.grades.recent(items.maxLaatsteCijfers).then(result => { // TODO make the 10 a lastN setting
+            MagisterApi.grades.recent(items.maxLaatsteCijfers).then(result => {
               // console.log(result)
               const nth = currentCijferId
               cijferWaarde.textContent = result[nth].waarde
@@ -1427,6 +1461,18 @@ function getDayStartAndEnd(dateString) {
   const end = new Date(year, month - 1, day, 23, 59, 59, 999)
 
   return { start, end }
+}
+
+function getCurrentDateFormatted(skipDays = 0) {
+  const currentDate = new Date()
+  
+  currentDate.setDate(currentDate.getDate() + skipDays)
+
+  const day = String(currentDate.getDate()).padStart(2, '0')
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0')
+  const year = currentDate.getFullYear()
+
+  return `${day}-${month}-${year}`
 }
 
 

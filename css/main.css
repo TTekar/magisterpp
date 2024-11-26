@@ -3394,7 +3394,19 @@ html #vandaag-container #roosterDiv #dayText #pensumText {
 html #vandaag-container #roosterDiv #dagRooster {
     width: 100%;
     padding: 32px;
-    background-color: red;
+}
+
+html #vandaag-container #roosterDiv #dagRooster .roosterEvent {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--mooie-bg-color-mid);
+    border-radius: 16px;
+    margin: 16px 0;
+}
+
+html #vandaag-container #roosterDiv #dagRooster .eventVak {
+    color: var(--mooie-text-color);
+    font-size: 16px;
 }
 
 
@@ -3542,12 +3554,14 @@ html #vandaag-container #infoDiv #mededelingenCard .medCard {
     /* background-color: var(--mooie-bg-color-mid); */
     border: 1px solid var(--mooie-bg-color);
     border-radius: 8px;
+    box-shadow: 0 0 5px var(--mid-gray);
     padding: 8px;
     opacity: 1;
 }
 
 html #vandaag-container #infoDiv #mededelingenCard .medCard.gelezen {
     opacity: 0.6;
+    box-shadow: none;
 }
 
 html #vandaag-container #infoDiv #mededelingenCard .medCard .medSender {
