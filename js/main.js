@@ -85,6 +85,8 @@ var zoekenActive = false
 
 var currentCijferId = 0
 
+var currentDag = 0
+
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date)
   if (isNaN(inputDate)) {
@@ -407,8 +409,11 @@ var update100ms = window.setInterval(function(){
 
             //~ Date and Time
 
-            // const date = new Date("Sun Nov 11 2024 00:48:42 GMT+0100")
             const date = new Date()
+
+            const [day, month, year] = getCurrentDateFormatted(currentDag).split("-").map(Number);
+
+            const modDate = new Date(year, month - 1, day);
 
             const timeString = date.toLocaleTimeString("nl-NL", {
               hour: "2-digit",
@@ -418,7 +423,7 @@ var update100ms = window.setInterval(function(){
 
             // console.log(timeString)
 
-            const dateString = date.toLocaleDateString("nl-NL", {
+            const dateString = modDate.toLocaleDateString("nl-NL", {
               weekday: "long",
               day: "numeric",
               month: "long",
@@ -430,7 +435,7 @@ var update100ms = window.setInterval(function(){
   
             const finalDate = capitalDate.slice(0, index) + "," + capitalDate.slice(index);
             
-            const pensumSuffix = weekToPensum[getISOWeekNumber(date)]
+            const pensumSuffix = weekToPensum[getISOWeekNumber(modDate)]
 
             // console.log(finalDate, pensumSuffix)
 
@@ -479,37 +484,7 @@ var update100ms = window.setInterval(function(){
               dagRooster.id = "dagRooster"
               document.getElementById("roosterDiv").appendChild(dagRooster)
 
-              const { start, end } = getDayStartAndEnd(getCurrentDateFormatted(0))
-              MagisterApi.events(start, end).then(result => {
-                
-                const events = result.filter(event => {
-                  const eventStart = new Date(event.Start)
-
-                  return eventStart >= start && eventStart <= end
-                })
-
-                console.log(events)
-
-                events.forEach(event => {
-                  console.log(event)
-
-                  const eventDiv = document.createElement("li")
-                  eventDiv.classList.add("roosterEvent")
-                  dagRooster.appendChild(eventDiv)
-
-                  const vakSpan = document.createElement("span")
-                  // if (event.Vakken[0]) vakSpan.textContent = event.Vakken[0].Naam
-                  // else vakSpan.textContent = event.Omschrijving
-                  vakSpan.textContent = event.Omschrijving
-                  vakSpan.classList.add("eventVak")
-                  eventDiv.appendChild(vakSpan)
-
-
-
-
-                })
-
-              })
+              loadDayEvents()
             }
 
             
@@ -1453,6 +1428,63 @@ function createMededelingen(mededelingenCard) {
 }
 
 
+function loadDayEvents() {
+  dagRooster.innerHTML = ""
+
+  const { start, end } = getDayStartAndEnd(getCurrentDateFormatted(currentDag))
+  MagisterApi.events(start, end).then(result => {
+    
+    const events = result.filter(event => {
+      const eventStart = new Date(event.Start)
+
+      return eventStart >= start && eventStart <= end
+    })
+
+    console.log(events)
+
+    events.forEach(event => {
+      console.log(event)
+
+      const eventDiv = document.createElement("li")
+      eventDiv.classList.add("roosterEvent")
+      dagRooster.appendChild(eventDiv)
+
+      const vakSpan = document.createElement("span")
+      // if (event.Vakken[0]) vakSpan.textContent = event.Vakken[0].Naam
+      // else vakSpan.textContent = event.Omschrijving
+      vakSpan.textContent = event.Omschrijving
+      vakSpan.classList.add("eventVak")
+      eventDiv.appendChild(vakSpan)
+
+
+
+
+    })
+
+  })
+
+  const [day, month, year] = getCurrentDateFormatted(currentDag).split("-").map(Number);
+  const modDate = new Date(year, month - 1, day);
+
+  const dateString = modDate.toLocaleDateString("nl-NL", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })
+
+  const capitalDate = dateString.charAt(0).toUpperCase() + dateString.slice(1)
+  const index = capitalDate.indexOf(" ");
+
+  const finalDate = capitalDate.slice(0, index) + "," + capitalDate.slice(index);
+  
+  const pensumSuffix = weekToPensum[getISOWeekNumber(modDate)]
+
+  document.getElementById("dateText").textContent = finalDate
+  document.getElementById("pensumText").textContent = pensumSuffix
+  
+}
+
 
 function getDayStartAndEnd(dateString) {
   const [day, month, year] = dateString.split("-").map(Number)
@@ -1807,6 +1839,16 @@ function keydownFunc(event) {
       moveSelectedIndexUp()
     }
 
+  }
+
+  if (keysPressed.has("ArrowRight")) {
+    currentDag++
+    loadDayEvents()
+  }
+
+  if (keysPressed.has("ArrowLeft")) {
+    currentDag--
+    loadDayEvents()
   }
 }
 
