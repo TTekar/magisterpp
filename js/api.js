@@ -79,14 +79,36 @@ const MagisterApi = {
             })
         }
     },
-    events: async (start = gatherStart, end = gatherEnd) => {
+    roosterwijzigingen: async (start = gatherStart, end = gatherEnd) => {
+        return new Promise(async (resolve, reject) => {
+            magisterApiCache['roosterwijzigingen' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)] ??=
+                fetchWrapper(
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/roosterwijzigingen?van=${start.toISOString().substring(0, 10)}&tot=${end.toISOString().substring(0, 10)}`, null, 'roosterwijzigingen'
+                )
+            resolve(
+                (await magisterApiCache['roosterwijzigingen' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)])?.Items || null
+            )
+        })
+    },
+    events: async (start = gatherStart, end = gatherEnd, status = 1) => {
         return new Promise(async (resolve, reject) => {
             magisterApiCache['events' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)] ??=
                 fetchWrapper(
-                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/afspraken?van=${start.toISOString().substring(0, 10)}&tot=${end.toISOString().substring(0, 10)}`, null, 'events'
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/afspraken?status=${status}&van=${start.toISOString().substring(0, 10)}&tot=${end.toISOString().substring(0, 10)}`, null, 'events'
                 )
             resolve(
                 (await magisterApiCache['events' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)])?.Items || null
+            )
+        })
+    },
+    event: async (id) => {
+        return new Promise(async (resolve, reject) => {
+            magisterApiCache[`event${id}`] ??=
+                fetchWrapper(
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/afspraken/${id}`, null, 'event'
+                )
+            resolve(
+                (await magisterApiCache[`event${id}`]) || null
             )
         })
     },

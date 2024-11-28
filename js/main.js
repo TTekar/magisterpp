@@ -1431,19 +1431,22 @@ function createMededelingen(mededelingenCard) {
 function loadDayEvents() {
   dagRooster.innerHTML = ""
 
-  const { start, end } = getDayStartAndEnd(getCurrentDateFormatted(currentDag))
+  const { start, end } = getDayStartAndEndString(getCurrentDateFormatted(currentDag))
+  console.log(start, end)
+  MagisterApi.roosterwijzigingen(start, end).then(r => console.log(r))
   MagisterApi.events(start, end).then(result => {
     
-    const events = result.filter(event => {
-      const eventStart = new Date(event.Start)
+    // const events = result.filter(event => {
+    //   const eventStart = new Date(event.Start)
 
-      return eventStart >= start && eventStart <= end
-    })
+    //   return eventStart >= start && eventStart <= end
+    // })
+    const events = result
 
     console.log(events)
 
     events.forEach(event => {
-      console.log(event)
+      // console.log(event)
 
       const eventDiv = document.createElement("li")
       eventDiv.classList.add("roosterEvent")
@@ -1493,6 +1496,14 @@ function getDayStartAndEnd(dateString) {
   const end = new Date(year, month - 1, day, 23, 59, 59, 999)
 
   return { start, end }
+}
+
+function getDayStartAndEndString(dateString) {
+  const [day, month, year] = dateString.split("-").map(Number)
+
+  // add one day   account for new month etc.
+
+  return { startString , endString }
 }
 
 function getCurrentDateFormatted(skipDays = 0) {
@@ -1841,15 +1852,18 @@ function keydownFunc(event) {
 
   }
 
-  if (keysPressed.has("ArrowRight")) {
-    currentDag++
-    loadDayEvents()
+  if (document.getElementById("dagRooster")) {
+    if (keysPressed.has("ArrowRight")) {
+      currentDag++
+      loadDayEvents()
+    }
+  
+    if (keysPressed.has("ArrowLeft")) {
+      currentDag--
+      loadDayEvents()
+    }
   }
-
-  if (keysPressed.has("ArrowLeft")) {
-    currentDag--
-    loadDayEvents()
-  }
+  
 }
 
 function keyupFunc(event) {
