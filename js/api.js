@@ -81,23 +81,23 @@ const MagisterApi = {
     },
     roosterwijzigingen: async (start = gatherStart, end = gatherEnd) => {
         return new Promise(async (resolve, reject) => {
-            magisterApiCache['roosterwijzigingen' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)] ??=
+            magisterApiCache['roosterwijzigingen' + start + end] ??=
                 fetchWrapper(
-                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/roosterwijzigingen?van=${start.toISOString().substring(0, 10)}&tot=${end.toISOString().substring(0, 10)}`, null, 'roosterwijzigingen'
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/roosterwijzigingen?van=${start}&tot=${end}`, null, 'roosterwijzigingen'
                 )
             resolve(
-                (await magisterApiCache['roosterwijzigingen' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)])?.Items || null
+                (await magisterApiCache['roosterwijzigingen' + start + end])?.Items || null
             )
         })
     },
-    events: async (start = gatherStart, end = gatherEnd, status = 1) => {
+    events: async (start = gatherStart, end = gatherEnd, status = 0) => {
         return new Promise(async (resolve, reject) => {
-            magisterApiCache['events' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)] ??=
+            magisterApiCache['events' + start + end] ??=
                 fetchWrapper(
-                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/afspraken?status=${status}&van=${start.toISOString().substring(0, 10)}&tot=${end.toISOString().substring(0, 10)}`, null, 'events'
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/afspraken?status=${status}&van=${start}&tot=${end}`, null, 'events'
                 )
             resolve(
-                (await magisterApiCache['events' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)])?.Items || null
+                (await magisterApiCache['events' + start + end])?.Items || null
             )
         })
     },

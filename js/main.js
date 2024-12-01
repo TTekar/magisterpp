@@ -1431,38 +1431,48 @@ function createMededelingen(mededelingenCard) {
 function loadDayEvents() {
   dagRooster.innerHTML = ""
 
-  const { start, end } = getDayStartAndEndString(getCurrentDateFormatted(currentDag))
-  console.log(start, end)
-  MagisterApi.roosterwijzigingen(start, end).then(r => console.log(r))
-  MagisterApi.events(start, end).then(result => {
+  const { start , end } = getDayStartAndEndString(getCurrentDateFormatted(currentDag))
+
+  MagisterApi.roosterwijzigingen(start, end).then(roosterResults => {
     
-    // const events = result.filter(event => {
-    //   const eventStart = new Date(event.Start)
+    const wijzigingen = roosterResults.filter(event => {
+      const eventStart = new Date(event.Start)
 
-    //   return eventStart >= start && eventStart <= end
-    // })
-    const events = result
+      const [sd, sm, sy] = start.split("-").map(Number)
+      const startAsDate = new Date(sy, sm - 1, sd)
 
-    console.log(events)
-
-    events.forEach(event => {
-      // console.log(event)
-
-      const eventDiv = document.createElement("li")
-      eventDiv.classList.add("roosterEvent")
-      dagRooster.appendChild(eventDiv)
-
-      const vakSpan = document.createElement("span")
-      // if (event.Vakken[0]) vakSpan.textContent = event.Vakken[0].Naam
-      // else vakSpan.textContent = event.Omschrijving
-      vakSpan.textContent = event.Omschrijving
-      vakSpan.classList.add("eventVak")
-      eventDiv.appendChild(vakSpan)
+      const [ed, em, ey] = end.split("-").map(Number)
+      const endAsDate = new Date(ey, em - 1, ed)
 
 
-
-
+      return eventStart >= startAsDate && eventStart <= endAsDate
     })
+
+
+    if (wijzigingen.length !== 0) {
+  
+      createEventsDay(wijzigingen)
+
+    }else {
+      MagisterApi.events(start, end, 1).then(result => {
+        const events = result.filter(event => {
+          const eventStart = new Date(event.Start)
+    
+          const [sd, sm, sy] = start.split("-").map(Number)
+          const startAsDate = new Date(sy, sm - 1, sd)
+    
+          const [ed, em, ey] = end.split("-").map(Number)
+          const endAsDate = new Date(ey, em - 1, ed)
+    
+    
+          return eventStart >= startAsDate && eventStart <= endAsDate
+        })
+    
+        createEventsDay(events)
+      })
+    }
+
+    
 
   })
 
@@ -1488,6 +1498,30 @@ function loadDayEvents() {
   
 }
 
+function createEventsDay(e) {
+
+  e.forEach(event => {
+    
+    const eventDiv = document.createElement("li")
+    eventDiv.classList.add("roosterEvent")
+    eventDiv.addEventListener("click", () => {
+      const newUrl = "https://" + window.location.href.split(".")[0].split("//")[1] + ".magister.net/magister/#/agenda/huiswerk/" + event.Id
+      // console.log(newUrl)
+      window.location.href = newUrl
+    })
+    dagRooster.appendChild(eventDiv)
+
+    const vakSpan = document.createElement("span")
+    // if (event.Vakken[0]) vakSpan.textContent = event.Vakken[0].Naam
+    // else vakSpan.textContent = event.Omschrijving
+    vakSpan.textContent = event.Omschrijving
+    vakSpan.classList.add("eventVak")
+    eventDiv.appendChild(vakSpan)
+
+  })
+
+}
+
 
 function getDayStartAndEnd(dateString) {
   const [day, month, year] = dateString.split("-").map(Number)
@@ -1500,10 +1534,17 @@ function getDayStartAndEnd(dateString) {
 
 function getDayStartAndEndString(dateString) {
   const [day, month, year] = dateString.split("-").map(Number)
+  const date = new Date(year, month - 1, day);
 
-  // add one day   account for new month etc.
+  date.setDate(date.getDate() + 1);
 
-  return { startString , endString }
+  const nextDay = String(date.getDate()).padStart(2, "0");
+  const nextMonth = String(date.getMonth() + 1).padStart(2, "0");
+  const nextYear = date.getFullYear();
+
+  endString = `${nextDay}-${nextMonth}-${nextYear}`
+
+  return { start: dateString , end: endString }
 }
 
 function getCurrentDateFormatted(skipDays = 0) {
