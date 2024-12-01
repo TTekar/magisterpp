@@ -79,14 +79,36 @@ const MagisterApi = {
             })
         }
     },
-    events: async (start = gatherStart, end = gatherEnd) => {
+    roosterwijzigingen: async (start = gatherStart, end = gatherEnd) => {
         return new Promise(async (resolve, reject) => {
-            magisterApiCache['events' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)] ??=
+            magisterApiCache['roosterwijzigingen' + start + end] ??=
                 fetchWrapper(
-                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/afspraken?van=${start.toISOString().substring(0, 10)}&tot=${end.toISOString().substring(0, 10)}`, null, 'events'
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/roosterwijzigingen?van=${start}&tot=${end}`, null, 'roosterwijzigingen'
                 )
             resolve(
-                (await magisterApiCache['events' + start.toISOString().substring(0, 10) + end.toISOString().substring(0, 10)])?.Items || null
+                (await magisterApiCache['roosterwijzigingen' + start + end])?.Items || null
+            )
+        })
+    },
+    events: async (start = gatherStart, end = gatherEnd, status = 0) => {
+        return new Promise(async (resolve, reject) => {
+            magisterApiCache['events' + start + end] ??=
+                fetchWrapper(
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/afspraken?status=${status}&van=${start}&tot=${end}`, null, 'events'
+                )
+            resolve(
+                (await magisterApiCache['events' + start + end])?.Items || null
+            )
+        })
+    },
+    event: async (id) => {
+        return new Promise(async (resolve, reject) => {
+            magisterApiCache[`event${id}`] ??=
+                fetchWrapper(
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/afspraken/${id}`, null, 'event'
+                )
+            resolve(
+                (await magisterApiCache[`event${id}`]) || null
             )
         })
     },
@@ -148,6 +170,28 @@ const MagisterApi = {
                 )
             })
         }
+    },
+    mededelingen: async () => {
+        return new Promise(async (resolve, reject) => {
+            magisterApiCache.mededelingen =
+                fetchWrapper(
+                    `https://${magisterApiSchoolName}.magister.net/api/personen/$USERID/mededelingen`, null, "mededelingen"
+                )
+            resolve(
+                (await magisterApiCache.mededelingen)?.mededelingen.items || []
+            )
+        })
+    },
+    mededeling: async (id) => {
+        return new Promise(async (resolve, reject) => {
+            magisterApiCache[`mededeling${id}`] =
+                fetchWrapper(
+                    `https://${magisterApiSchoolName}.magister.net/api/mededelingen/${id}`, null, "mededeling"
+                )
+            resolve(
+                (await magisterApiCache[`mededeling${id}`]) || {}
+            )
+        })
     },
     studiewijzers: async () => {
         return new Promise(async (resolve, reject) => {

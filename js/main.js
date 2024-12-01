@@ -81,8 +81,11 @@ var selectedSearchIndex = 0
 var setBerichtenIframeUp = true
 var setBerichtenIframeDown = true
 
-var zoekenActive = false;
+var zoekenActive = false
 
+var currentCijferId = 0
+
+var currentDag = 0
 
 function getWeekNumber(date = new Date()) {
   const inputDate = new Date(date)
@@ -98,20 +101,27 @@ function getWeekNumber(date = new Date()) {
 }
 
 function getISOWeekNumber(date = new Date()) {
-  const inputDate = new Date(date);
+  const inputDate = new Date(date)
   if (isNaN(inputDate)) {
-      return "Invalid date"
+    return "Invalid date"
   }
 
-  const day = inputDate.getUTCDay()
-  const nearestThursday = new Date(inputDate)
-  nearestThursday.setUTCDate(inputDate.getUTCDate() + 4 - (day === 0 ? 7 : day))
+  const day = inputDate.getDay() || 7
 
-  const yearStart = new Date(Date.UTC(nearestThursday.getUTCFullYear(), 0, 1))
+  const nearestThursday = new Date(inputDate);
+  nearestThursday.setDate(inputDate.getDate() + 4 - day);
 
-  const weekNumber = Math.ceil(((nearestThursday - yearStart) / (24 * 60 * 60 * 1000) + 1) / 7)
+  const yearStart = new Date(nearestThursday.getFullYear(), 0, 1);
 
-  return weekNumber
+  const weekNumber = Math.ceil(((nearestThursday - yearStart) / (24 * 60 * 60 * 1000) + 1) / 7);
+
+  return weekNumber;
+}
+
+function formatYMDtoDmY(dateStr) {
+  const [year, month, day] = dateStr.split("-");
+  const months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
+  return `${parseInt(day)} ${months[parseInt(month) - 1]} ${year}`;
 }
 
 
@@ -122,7 +132,7 @@ var update100ms = window.setInterval(function(){
 
   //~ Keuze plattegrond
 
-  if (!madeKeuzeIframe) {
+  if (!document.getElementById("coverDivKeuze")) {
     chrome.storage.sync.get(
       { keuzeBtn: true, darkMode: false },
       (items) => {
@@ -238,7 +248,7 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 },
       (items) => {
 
         zoekenActive = !items.hideZoekenBtn
@@ -387,6 +397,241 @@ var update100ms = window.setInterval(function(){
           }
         }
 
+        // ~~ CUSTOM VANDAAG
+
+        if (items.customVandaag) {
+          const vandaagContainer = document.getElementById("vandaag-container")
+
+          if (vandaagContainer) {
+            const main = vandaagContainer.querySelector("section.main")
+
+            if (main) vandaagContainer.innerHTML = ""
+
+            //~ Date and Time
+
+            const date = new Date()
+
+            const [day, month, year] = getCurrentDateFormatted(currentDag).split("-").map(Number);
+
+            const modDate = new Date(year, month - 1, day);
+
+            const timeString = date.toLocaleTimeString("nl-NL", {
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+            })
+
+            // console.log(timeString)
+
+            const dateString = modDate.toLocaleDateString("nl-NL", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })
+
+            const capitalDate = dateString.charAt(0).toUpperCase() + dateString.slice(1)
+            const index = capitalDate.indexOf(" ");
+  
+            const finalDate = capitalDate.slice(0, index) + "," + capitalDate.slice(index);
+            
+            const pensumSuffix = weekToPensum[getISOWeekNumber(modDate)]
+
+            // console.log(finalDate, pensumSuffix)
+
+            vandaagContainer.style.paddingRight = "0px"
+            document.querySelector("body > .container").style.paddingRight = "0px"
+            vandaagContainer.parentElement.style.paddingBottom = "0px"
+
+            //~ Main Sections
+
+            const infoWidth = 450        // TODO make this a setting   outside of create loop so it always updates and not only on refresh?
+
+            if (!vandaagContainer.querySelector("#roosterDiv")) {
+              const roosterDiv = document.createElement("div")
+              roosterDiv.id = "roosterDiv"
+              roosterDiv.style.width = `calc(100% - ${infoWidth}px)`
+              vandaagContainer.appendChild(roosterDiv)
+            }
+            if (!vandaagContainer.querySelector("#infoDiv")) {
+              const infoDiv = document.createElement("div")
+              infoDiv.id = "infoDiv"
+              infoDiv.style.width = `${infoWidth}px`
+              vandaagContainer.appendChild(infoDiv)
+            }
+
+            //~ Rooster
+
+            if (!document.getElementById("dayText")) {
+              const dayText = document.createElement("div")
+              dayText.id = "dayText"
+
+              const dateText = document.createElement("span")
+              dateText.id = "dateText"
+              dateText.textContent = finalDate
+
+              const pensumText = document.createElement("span")
+              pensumText.id = "pensumText"
+              pensumText.textContent = pensumSuffix
+
+              document.getElementById("roosterDiv").appendChild(dayText)
+              dayText.appendChild(dateText)
+              dayText.appendChild(pensumText)
+            }
+
+            if (!document.getElementById("dagRooster")) {
+              const dagRooster = document.createElement("ul")
+              dagRooster.id = "dagRooster"
+              document.getElementById("roosterDiv").appendChild(dagRooster)
+
+              loadDayEvents()
+            }
+
+            
+            
+
+
+            //~ Info
+            
+            if (!document.getElementById("currentTime")) {
+              const currentTime = document.createElement("span")
+              currentTime.id = "currentTime"
+              document.getElementById("infoDiv").appendChild(currentTime)
+            }
+            // update time
+            document.getElementById("currentTime").textContent = timeString.replace(/:/g, " : ")
+            
+            //~ Cijfers
+            if (!document.getElementById("cijfersCard")) {
+              const cijfersCard = document.createElement("div")
+              cijfersCard.id = "cijfersCard"
+              cijfersCard.classList.add("infoCard")
+
+              document.getElementById("infoDiv").appendChild(cijfersCard)
+
+              const cijfersLeft = document.createElement("div")
+              cijfersLeft.id = "cijfersLeft"
+              cijfersLeft.innerHTML = `<i class="fa-regular fa-chevron-left"></i>`
+              cijfersLeft.addEventListener("click", () => {
+                if (currentCijferId > 0) currentCijferId -= 1
+              })
+              cijfersCard.appendChild(cijfersLeft)
+
+              const cijfersMid = document.createElement("div")
+              cijfersMid.id = "cijfersMid"
+              cijfersCard.appendChild(cijfersMid)
+
+              const cifjersRight = document.createElement("div")
+              cifjersRight.id = "cijfersRight"
+              cifjersRight.innerHTML = `<i class="fa-regular fa-chevron-right"></i>`
+              cifjersRight.addEventListener("click", () => {
+                if (currentCijferId < items.maxLaatsteCijfers - 1) currentCijferId += 1
+              })
+              cijfersCard.appendChild(cifjersRight)
+
+              const laatsteCijfersText = document.createElement("span")
+              laatsteCijfersText.id = "laatsteCijfersText"
+              laatsteCijfersText.textContent = "Laatste Cijfers"
+              laatsteCijfersText.addEventListener("click", () => { currentCijferId = 0 })
+              cijfersMid.appendChild(laatsteCijfersText)
+
+              const cijferWaarde = document.createElement("span")
+              cijferWaarde.id = "cijferWaarde"
+              cijferWaarde.addEventListener("click", () => {document.getElementById("menu-cijfers").click()})
+              cijfersMid.appendChild(cijferWaarde)
+
+              const cijferOmschrijving = document.createElement("span")
+              cijferOmschrijving.id = "cijferOmschrijving"
+              cijferOmschrijving.addEventListener("click", () => {document.getElementById("menu-cijfers").click()})
+              cijfersMid.appendChild(cijferOmschrijving)
+
+              const cijferVak = document.createElement("span")
+              cijferVak.id = "cijferVak"
+              cijferVak.addEventListener("click", () => {document.getElementById("menu-cijfers").click()})
+              cijfersMid.appendChild(cijferVak)
+
+              const cijferTijd = document.createElement("span")
+              cijferTijd.id = "cijferTijd"
+              cijfersMid.appendChild(cijferTijd)
+
+              
+
+              const cijferIdCurrent = document.createElement("span")
+              cijferIdCurrent.id = "cijferIdCurrent"
+              cijfersCard.appendChild(cijferIdCurrent)
+            }
+            
+            /// Update Cijfers
+            MagisterApi.grades.recent(items.maxLaatsteCijfers).then(result => {
+              // console.log(result)
+              const nth = currentCijferId
+              cijferWaarde.textContent = result[nth].waarde
+              cijferOmschrijving.textContent = `${result[nth].omschrijving} (x${result[nth].weegfactor})`
+              cijferVak.textContent = result[nth].vak.omschrijving
+              cijferTijd.textContent = formatDate(result[nth].ingevoerdOp)
+              cijferIdCurrent.textContent = `${currentCijferId + 1} / ${result.length}`
+              
+              
+              // cijfers color
+              const float = parseFloat(result[nth].waarde.replace(",", "."))
+              let value
+              if (!isNaN(float) && float >= 0 && float <= 10) {
+                value = float
+              }else if (result[nth].waarde.length <= 3) {
+                var tmpValue = 0
+                for (const char of result[nth].waarde) {
+                  if (char.toLowerCase() == "o") tmpValue += 1
+                  else if (char.toLowerCase() == "z") tmpValue += 3
+                  else if (char.toLowerCase() == "v") tmpValue += 5
+                  else if (char.toLowerCase() == "r") tmpValue += 7
+                  else if (char.toLowerCase() == "g") tmpValue += 9
+                }
+                value = tmpValue / result[nth].waarde.length
+                if (tmpValue == 0) value = 6
+              }else {
+                value = 6
+              }
+
+              const t = value / 10;
+
+              const startColor = { r: 206, g: 18, b: 8 }
+              const midColor = { r: 255, g: 147, b: 246 }
+              const endColor = { r: 186, g: 201, b: 239 }
+
+              let r, g, b;
+              if (value <= 7) {
+                const t = value / 7;
+                r = Math.round(startColor.r + (midColor.r - startColor.r) * t);
+                g = Math.round(startColor.g + (midColor.g - startColor.g) * t);
+                b = Math.round(startColor.b + (midColor.b - startColor.b) * t);
+              } else {
+                const t = (value - 7) / 3;
+                r = Math.round(midColor.r + (endColor.r - midColor.r) * t);
+                g = Math.round(midColor.g + (endColor.g - midColor.g) * t);
+                b = Math.round(midColor.b + (endColor.b - midColor.b) * t);
+              }
+
+              cijferWaarde.style.color = `rgb(${r}, ${g}, ${b})`
+            })
+
+            //~ Mededelingen
+            if (!document.getElementById("mededelingenCard")) {
+              const mededelingenCard = document.createElement("div")
+              mededelingenCard.id = "mededelingenCard"
+              mededelingenCard.classList.add("infoCard")
+
+              document.getElementById("infoDiv").appendChild(mededelingenCard)
+
+              createMededelingen(mededelingenCard)
+  
+
+            }
+            
+            
+
+
+          }
+        }
         
 
       }
@@ -1095,6 +1340,187 @@ window.navigation.addEventListener("navigate", (event) => {
   }, 500);
 })
 
+function extractBodyContent(htmlString) {
+  const bodyContentMatch = htmlString.match(/<body[^>]*>([\s\S]*?)<\/body>/i)
+  return bodyContentMatch ? bodyContentMatch[1] : ""
+}
+
+
+function createMededelingen(mededelingenCard) {
+  mededelingenCard.classList.remove("content")
+  mededelingenCard.innerHTML = ""
+  const mededelingenTitle = document.createElement("span")
+  mededelingenTitle.id = "mededelingenTitle"
+  mededelingenTitle.textContent = "Mededelingen"
+  mededelingenCard.appendChild(mededelingenTitle)
+
+
+  MagisterApi.mededelingen().then(mededelingen => {
+    
+    mededelingen.forEach(med => {
+
+      const medCard = document.createElement("div")
+      medCard.classList.add("medCard")
+      if (med.isGelezen) medCard.classList.add("gelezen")
+      mededelingenCard.appendChild(medCard)
+
+      const medSender = document.createElement("span")
+      medSender.classList.add("medSender")
+      medSender.textContent = `${med.eigenaar.voorletters} ${med.eigenaar.achternaam}`
+      medCard.appendChild(medSender)
+
+      const medTitle = document.createElement("span")
+      medTitle.classList.add("medTitle")
+      medTitle.textContent = med.onderwerp
+      medCard.appendChild(medTitle)
+
+      const medDate = document.createElement("span")
+      medDate.classList.add("medDate")
+      medDate.textContent = `${formatYMDtoDmY(med.begin)} - ${formatYMDtoDmY(med.einde)}`
+      medCard.appendChild(medDate)
+
+      medCard.addEventListener("click", () => {
+        MagisterApi.mededeling(med.id).then(content => {
+          mededelingenCard.innerHTML = ""
+          mededelingenCard.classList.add("content")
+
+          const contentTitle = document.createElement("span")
+          contentTitle.id = "contentTitle"
+          contentTitle.textContent = med.onderwerp
+          mededelingenCard.appendChild(contentTitle)
+
+          const contentAfzender = document.createElement("span")
+          contentAfzender.id = "contentAfzender"
+          contentAfzender.textContent = `Afzender: ${content.eigenaar.voorletters} ${content.eigenaar.achternaam}`
+          mededelingenCard.appendChild(contentAfzender)
+
+          let ontvangers = []
+          content.ontvangers.forEach(ontv => ontvangers.push(ontv.omschrijving))
+
+          const contentAan = document.createElement("span")
+          contentAan.id = "contentAan"
+          contentAan.textContent = `Aan: ${ontvangers.join(", ")}`
+          mededelingenCard.appendChild(contentAan)
+
+          const contentDate = document.createElement("span")
+          contentDate.id = "contentDate"
+          contentDate.textContent = `${formatYMDtoDmY(content.begin)} - ${formatYMDtoDmY(content.einde)}`
+          mededelingenCard.appendChild(contentDate)
+
+          const contentInhoud = document.createElement("div")
+          contentInhoud.id = "contentInhoud"
+          contentInhoud.innerHTML = extractBodyContent(content.inhoud)
+          mededelingenCard.appendChild(contentInhoud)
+
+          const contentTerug = document.createElement("div")
+          contentTerug.id = "contentTerug"
+          contentTerug.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`
+          contentTerug.addEventListener("click", () => {
+            createMededelingen(mededelingenCard)
+          })
+          mededelingenCard.appendChild(contentTerug)
+        })
+      })
+
+    })
+
+  })
+}
+
+
+function loadDayEvents() {
+  dagRooster.innerHTML = ""
+
+  const { start , end } = getDayStartAndEndString(getCurrentDateFormatted(currentDag))
+
+  MagisterApi.roosterwijzigingen(start, end).then(roosterResults => {
+    
+    const wijzigingen = roosterResults.filter(event => {
+      const eventStart = new Date(event.Start)
+
+      const [sd, sm, sy] = start.split("-").map(Number)
+      const startAsDate = new Date(sy, sm - 1, sd)
+
+      const [ed, em, ey] = end.split("-").map(Number)
+      const endAsDate = new Date(ey, em - 1, ed)
+
+
+      return eventStart >= startAsDate && eventStart <= endAsDate
+    })
+
+
+    if (wijzigingen.length !== 0) {
+  
+      createEventsDay(wijzigingen)
+
+    }else {
+      MagisterApi.events(start, end, 1).then(result => {
+        const events = result.filter(event => {
+          const eventStart = new Date(event.Start)
+    
+          const [sd, sm, sy] = start.split("-").map(Number)
+          const startAsDate = new Date(sy, sm - 1, sd)
+    
+          const [ed, em, ey] = end.split("-").map(Number)
+          const endAsDate = new Date(ey, em - 1, ed)
+    
+    
+          return eventStart >= startAsDate && eventStart <= endAsDate
+        })
+    
+        createEventsDay(events)
+      })
+    }
+
+    
+
+  })
+
+  const [day, month, year] = getCurrentDateFormatted(currentDag).split("-").map(Number);
+  const modDate = new Date(year, month - 1, day);
+
+  const dateString = modDate.toLocaleDateString("nl-NL", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })
+
+  const capitalDate = dateString.charAt(0).toUpperCase() + dateString.slice(1)
+  const index = capitalDate.indexOf(" ");
+
+  const finalDate = capitalDate.slice(0, index) + "," + capitalDate.slice(index);
+  
+  const pensumSuffix = weekToPensum[getISOWeekNumber(modDate)]
+
+  document.getElementById("dateText").textContent = finalDate
+  document.getElementById("pensumText").textContent = pensumSuffix
+  
+}
+
+function createEventsDay(e) {
+
+  e.forEach(event => {
+    
+    const eventDiv = document.createElement("li")
+    eventDiv.classList.add("roosterEvent")
+    eventDiv.addEventListener("click", () => {
+      const newUrl = "https://" + window.location.href.split(".")[0].split("//")[1] + ".magister.net/magister/#/agenda/huiswerk/" + event.Id
+      // console.log(newUrl)
+      window.location.href = newUrl
+    })
+    dagRooster.appendChild(eventDiv)
+
+    const vakSpan = document.createElement("span")
+    // if (event.Vakken[0]) vakSpan.textContent = event.Vakken[0].Naam
+    // else vakSpan.textContent = event.Omschrijving
+    vakSpan.textContent = event.Omschrijving
+    vakSpan.classList.add("eventVak")
+    eventDiv.appendChild(vakSpan)
+
+  })
+
+}
 
 
 function getDayStartAndEnd(dateString) {
@@ -1104,6 +1530,33 @@ function getDayStartAndEnd(dateString) {
   const end = new Date(year, month - 1, day, 23, 59, 59, 999)
 
   return { start, end }
+}
+
+function getDayStartAndEndString(dateString) {
+  const [day, month, year] = dateString.split("-").map(Number)
+  const date = new Date(year, month - 1, day);
+
+  date.setDate(date.getDate() + 1);
+
+  const nextDay = String(date.getDate()).padStart(2, "0");
+  const nextMonth = String(date.getMonth() + 1).padStart(2, "0");
+  const nextYear = date.getFullYear();
+
+  endString = `${nextDay}-${nextMonth}-${nextYear}`
+
+  return { start: dateString , end: endString }
+}
+
+function getCurrentDateFormatted(skipDays = 0) {
+  const currentDate = new Date()
+  
+  currentDate.setDate(currentDate.getDate() + skipDays)
+
+  const day = String(currentDate.getDate()).padStart(2, '0')
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0')
+  const year = currentDate.getFullYear()
+
+  return `${day}-${month}-${year}`
 }
 
 
@@ -1362,6 +1815,20 @@ async function search() {
   searchResults.querySelector(".searchResult").classList.add("selected")
 }
 
+function formatDate(dateString) {
+  const date = new Date(dateString)
+
+  const day = date.getDate();
+  const monthName = new Intl.DateTimeFormat("nl-NL", { month: "long" }).format(date)
+  const year = date.getFullYear()
+
+  const hours = String(date.getHours()).padStart(2, '0')
+  const minutes = String(date.getMinutes()).padStart(2, '0')
+
+  return `${day} ${monthName} ${year}, ${hours}:${minutes}`
+}
+
+
 function moveSelectedIndexDown() {
   const results = document.querySelectorAll(".searchResult")
 
@@ -1425,6 +1892,19 @@ function keydownFunc(event) {
     }
 
   }
+
+  if (document.getElementById("dagRooster")) {
+    if (keysPressed.has("ArrowRight")) {
+      currentDag++
+      loadDayEvents()
+    }
+  
+    if (keysPressed.has("ArrowLeft")) {
+      currentDag--
+      loadDayEvents()
+    }
+  }
+  
 }
 
 function keyupFunc(event) {

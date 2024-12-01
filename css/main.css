@@ -3359,3 +3359,292 @@ html #searchButtonA > span {
 html #searchButtonA > span::after {
     border-right: 5px solid var(--mooie-bg-color-mid);
 }
+
+
+/*~ Custom vandaag page */
+
+html #vandaag-container #roosterDiv {
+    height: 100vh;
+    background-color: var(--mooie-bg-color);
+    font-family: tahoma, sans-serif !important;
+}
+
+html #vandaag-container #infoDiv {
+    height: 100vh;
+    background-color: var(--mooie-bg-color-mid);
+    font-family: tahoma, sans-serif !important;
+    overflow-y: auto;
+}
+
+html #vandaag-container #roosterDiv #dayText {
+    width: 100%;
+    padding: 32px;
+    color: var(--mooie-text-color);
+    font-family: tahoma, sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    user-select: none;
+}
+
+html #vandaag-container #roosterDiv #dayText #pensumText {
+    color: var(--mid-gray);
+}
+
+
+html #vandaag-container #roosterDiv #dagRooster {
+    width: 100%;
+    padding: 32px;
+}
+
+html #vandaag-container #roosterDiv #dagRooster .roosterEvent {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--mooie-bg-color-mid);
+    border-radius: 16px;
+    margin: 16px 0;
+}
+
+html #vandaag-container #roosterDiv #dagRooster .eventVak {
+    color: var(--mooie-text-color);
+    font-size: 16px;
+}
+
+
+/*~ info */
+html #vandaag-container #infoDiv #currentTime {
+    display: block;
+    width: 100%;
+    padding: 32px;
+    color: var(--mooie-text-color);
+    font-family: tahoma, sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--mooie-text-color);
+    text-align: center;
+    user-select: none;
+}
+
+html #vandaag-container #infoDiv .infoCard {
+    width: calc(100% - 64px);
+    margin: 16px 32px;
+    /* min-height: 200px; */
+    background-color: var(--mooie-bg-color-hover);
+    border-radius: 16px;
+    position: relative;
+}
+
+html #vandaag-container #infoDiv #cijfersCard {
+    min-height: auto;
+    height: auto;
+    display: flex;
+    align-items: stretch;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijfersMid {
+    width: calc(100% - 64px);
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijfersLeft,
+html #vandaag-container #infoDiv #cijfersCard #cijfersRight {
+    width: 32px;
+    display: flex;              
+    align-items: center;        
+    justify-content: center;
+    user-select: none;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijfersLeft i,
+html #vandaag-container #infoDiv #cijfersCard #cijfersRight i {
+    font-size: 28px;
+    color: var(--mid-gray);
+}
+
+html #vandaag-container #infoDiv #cijfersCard #laatsteCijfersText {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    color: var(--mooie-text-color);
+    font-size: 18px;
+    text-align: center;
+    user-select: none;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijferWaarde {
+    display: block;
+    width: 100%;
+    padding: 0px 32px;
+    color: var(--mooie-text-color);
+    font-size: 32px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijferOmschrijving {
+    display: block;
+    width: 100%;
+    padding: 12px 32px 0px 32px;
+    color: var(--mooie-text-color);
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijferVak {
+    display: block;
+    width: 100%;
+    padding: 8px 32px 0px 32px;
+    color: var(--mooie-text-color);
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijferTijd {
+    display: block;
+    width: 100%;
+    padding: 8px 32px 16px 32px;
+    color: var(--mid-gray);
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+}
+
+html #vandaag-container #infoDiv #cijfersCard #cijferIdCurrent {
+    width: auto;
+    top: 8px;
+    right: 8px;
+    color: var(--mid-gray);
+    position: absolute;
+    user-select: none;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard {
+    display: block;
+    padding: 0 16px 16px 16px;
+    max-height: 350px;
+    overflow-y: auto;
+    position: relative;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard #mededelingenTitle {
+    display: block;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding-top: 16px;
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-hover);
+    font-size: 18px;
+    text-align: center;
+    user-select: none;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard .medCard {
+    width: 100%;
+    margin-top: 16px;
+    /* background-color: var(--mooie-bg-color-mid); */
+    border: 1px solid var(--mooie-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 0 5px var(--mid-gray);
+    padding: 8px;
+    opacity: 1;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard .medCard.gelezen {
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard .medCard .medSender {
+    display: block;
+    font-size: 12px;
+    color: var(--mid-gray);
+    margin-bottom: 4px;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard .medCard .medTitle {
+    display: block;
+    font-size: 12px;
+    color: var(--mooie-text-color);
+    margin-bottom: 4px;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard .medCard .medDate {
+    display: block;
+    font-size: 12px;
+    color: var(--mid-gray);
+}
+
+html #vandaag-container #infoDiv #mededelingenCard .medCard .medDate {
+    display: block;
+    font-size: 12px;
+    color: var(--mid-gray);
+}
+
+html #vandaag-container #infoDiv #mededelingenCard.content #contentTitle {
+    display: block;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 16px 16px 0 16px;
+    color: var(--mooie-text-color);
+    background-color: var(--mooie-bg-color-hover);
+    font-size: 16px;
+    text-align: center;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard.content #contentAfzender {
+    display: block;
+    width: 100%;
+    padding-top: 8px;
+    color: var(--mid-gray);
+    font-size: 12px;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard.content #contentAan {
+    display: block;
+    width: 100%;
+    padding-top: 4px;
+    color: var(--mid-gray);
+    font-size: 12px;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard.content #contentDate {
+    display: block;
+    width: 100%;
+    padding: 4px 0;
+    color: var(--mid-gray);
+    font-size: 12px;
+    border-bottom: 1px dashed var(--mid-gray);
+}
+
+html #vandaag-container #infoDiv #mededelingenCard.content #contentInhoud {
+    display: block;
+    width: 100%;
+    padding-top: 4px;
+    color: var(--mooie-text-color);
+}
+
+html #vandaag-container #infoDiv #mededelingenCard.content #contentInhoud p {
+    padding: 4px 0;
+    font-size: 12px;
+}
+
+html #vandaag-container #infoDiv #mededelingenCard.content #contentTerug {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: var(--mid-gray);
+    font-size: 16px;
+    padding: 8px;
+}
+
