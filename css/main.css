@@ -3658,7 +3658,7 @@ html #user-menu > figure > img {
 }
 
 html #user-menu:hover,
-html #user-menu:hover > figure > img:hover {
+html #user-menu:hover > figure > img {
     border-radius: 25%;
     transition: border-radius .25s ease;
 }
