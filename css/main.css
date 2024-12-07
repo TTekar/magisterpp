@@ -3648,3 +3648,48 @@ html #vandaag-container #infoDiv #mededelingenCard.content #contentTerug {
     padding: 8px;
 }
 
+
+/*? some animations */
+
+html #user-menu,
+html #user-menu > figure > img {
+    border-radius: 50%;
+    transition: border-radius .25s ease;
+}
+
+html #user-menu:hover,
+html #user-menu:hover > figure > img:hover {
+    border-radius: 25%;
+    transition: border-radius .25s ease;
+}
+
+html .main-menu>li>a {
+    border-radius: 6px;
+    transition: background-color .25s ease;
+}
+
+html .main-menu>li ul>li>a:hover {
+    border-radius: 6px;
+    background-color: var(--secondary-background);
+    transition: background-color .25s ease;
+}
+
+html .main-menu>li ul {
+    margin-left: 0 !important;
+}
+
+html .main-menu>li ul>li>a {
+    margin-left: 34px;
+    padding-left: 8px;
+}
+
+html .main-menu>li ul>li.active>a {
+    font-weight: normal !important;
+    border-radius: 6px;
+    background-color: var(--secondary-background);
+    transition: background-color .25s ease;
+}
+
+html .main-menu li>a>* {
+    font-weight: normal;
+}
