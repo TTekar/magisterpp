@@ -332,6 +332,17 @@ html #berichten-widget > .block > .content > .msg-detail p {
     color: var(--mooie-text-color);
 }
 
+html #berichten-widget > .block > .content > .msg-detail ul {
+    color: var(--mooie-text-color);
+}
+
+html #berichten-widget > .block > .content > .msg-detail li {
+    color: var(--mooie-text-color);
+    background-color: transparent;
+    border: none;
+    line-height: 1.4em;
+}
+
 /*/ Cijfers */
 
 html #cijfers-leerling > div {
