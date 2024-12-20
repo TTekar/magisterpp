@@ -177,9 +177,9 @@ var update100ms = window.setInterval(function(){
               const iframeKeuze = document.createElement("iframe")
 
               if (items.darkMode) {
-                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magDark&sidebar=1"
+                iframeKeuze.src = "https://jmlu.tekar.dev/keuze?style=magDark&table=1"
               }else {
-                iframeKeuze.src = "https://jordanmlu.netlify.app/keuze?style=magLight&sidebar=1"
+                iframeKeuze.src = "https://jmlu.tekar.dev/keuze?style=magLight&table=1"
               }
 
               iframeKeuze.id = "iframeKeuze"
