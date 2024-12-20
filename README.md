@@ -44,9 +44,10 @@ nee.
 
 ## Keuze Plattegrond
 
-De keuze plattegrond is een nieuwe manier om alle keuzes weer te geven door gebruik te maken van een plattegrond van de school. Deze extensie voegt een kop toe om het makkelijker te maken om de keuzes te zien. Je kan de keuze plattegrond ook zien door naar https://jordanmlu.netlify.app/keuze te gaan.
+De keuze plattegrond is een nieuwe manier om alle keuzes weer te geven door gebruik te maken van een plattegrond van de school. Deze extensie voegt een kop toe om het makkelijker te maken om de keuzes te zien. Je kan de keuze plattegrond ook zien door naar https://jmlu.tekar.dev/keuze te gaan.
 
-![image](https://github.com/user-attachments/assets/a6ed7fda-b687-48f2-bcd7-a6a1c7909dac)
+![image](https://github.com/user-attachments/assets/88b18717-6d10-42f2-b361-b994ed5a11a5)
+
 
 ## Bijdragen
 
