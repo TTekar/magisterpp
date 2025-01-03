@@ -129,12 +129,14 @@ var update100ms = window.setInterval(function(){
 
   const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
 
+  if (window.location.href.includes("?keuzes")) keuzeUI = true
+  else keuzeUI = false
 
   //~ Keuze plattegrond
 
   if (!document.getElementById("coverDivKeuze")) {
     chrome.storage.sync.get(
-      { keuzeBtn: true, darkMode: false },
+      { keuzeBtn: true, darkMode: false , keuzeMode: "table" },
       (items) => {
 
         //~ Keuze Plattegrond 
@@ -176,11 +178,15 @@ var update100ms = window.setInterval(function(){
             if (!document.getElementById("iframeKeuze")) {
               const iframeKeuze = document.createElement("iframe")
 
-              if (items.darkMode) {
-                iframeKeuze.src = "https://jmlu.tekar.dev/keuze?style=magDark&table=1"
-              }else {
-                iframeKeuze.src = "https://jmlu.tekar.dev/keuze?style=magLight&table=1"
-              }
+              let options = []
+
+              if (items.darkMode) options.push("style=magDark")
+              else options.push("style=magLight")
+              
+              if (items.keuzeMode === "options" || items.keuzeMode === "both") options.push("sidebar=1")
+              if (items.keuzeMode === "table" || items.keuzeMode === "both") options.push("table=1")
+
+              iframeKeuze.src = `https://jmlu.tekar.dev/keuze?${options.join("&")}`
 
               iframeKeuze.id = "iframeKeuze"
               iframeKeuze.style.width = "100%"
@@ -191,6 +197,8 @@ var update100ms = window.setInterval(function(){
             /// Show UI
             event.preventDefault();
             keuzeUI = true;
+
+            window.location.href = `${window.location.href.split("?")[0]}?keuzes`
             
 
             document.querySelector("body > div.container").style.paddingRight = "0"
@@ -224,6 +232,7 @@ var update100ms = window.setInterval(function(){
               link.onclick = function(event) {
                 event.preventDefault();
                 keuzeUI = false;
+                window.location.href = `${window.location.href.split("?")[0]}`
                 link.classList.remove("nonCustomButtonNotClicked")
                 document.querySelector("body > div.container").style.paddingRight = "8px"
                 document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
@@ -233,11 +242,14 @@ var update100ms = window.setInterval(function(){
 
           document.getElementById("menu-berichten-new").onclick = function(event) {
             keuzeUI = false;
+            window.location.href = `${window.location.href.split("?")[0]}`
             document.querySelector("body > div.container").style.paddingRight = "8px"
             document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
           }
 
           madeKeuzeIframe = true
+
+          if (keuzeUI) document.getElementById("customButtonKeuze").click()
 
         }
 

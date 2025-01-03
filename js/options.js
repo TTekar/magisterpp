@@ -64,6 +64,11 @@ const saveOptions = () => {
   const darkMode = document.getElementById('dark').checked
 
   const keuzeBtn = document.getElementById('keuzeBtn').checked
+  var keuzeMode
+  if (document.getElementById('k-options').checked) keuzeMode = "options"
+  else if (document.getElementById('k-table').checked) keuzeMode = "table"
+  else if (document.getElementById('k-both').checked) keuzeMode = "both"
+
   const cijfers = document.getElementById('cijfers').checked
   const inlogText = document.getElementById('inlogText').value
   const widgetCustomHigh = document.getElementById('widgetCustomHigh').value
@@ -104,12 +109,13 @@ const saveOptions = () => {
   }
 
   chrome.storage.sync.set(
-    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , hideZoekenBtn: hideZoekenBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp , widgetCustomHigh: widgetCustomHigh , widgetCustomLow: widgetCustomLow , hideBestellenBtn: hideBestellenBtn , autoLogin: autoLogin , username: username , password: password , widgetDrag: widgetDrag, customVandaag: customVandaag , maxLaatsteCijfers: maxLaatsteCijfers },
+    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , hideZoekenBtn: hideZoekenBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp , widgetCustomHigh: widgetCustomHigh , widgetCustomLow: widgetCustomLow , hideBestellenBtn: hideBestellenBtn , autoLogin: autoLogin , username: username , password: password , widgetDrag: widgetDrag, customVandaag: customVandaag , maxLaatsteCijfers: maxLaatsteCijfers , keuzeMode: keuzeMode },
     () => {
       // do after saved
       // console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}\ncustomPfp:${customPfp}\nwidgetCustomHigh:${widgetCustomHigh}\nwidgetCustomLow:${widgetCustomLow}`)
       updateAutoLogin()
       updateFileUpload()
+      updateKeuzeMode()
     }
   )
 };
@@ -117,7 +123,7 @@ const saveOptions = () => {
 
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , hideBestellenBtn: false , autoLogin: false , username: "" , password: "" , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 },
+    { darkMode: false , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , hideBestellenBtn: false , autoLogin: false , username: "" , password: "" , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , keuzeMode: "table" },
     (items) => {
       document.getElementById('dark').checked = items.darkMode;
       document.getElementById('light').checked = !items.darkMode;
@@ -151,6 +157,8 @@ const restoreOptions = () => {
 
       document.getElementById('maxLaatsteCijfers').value = items.maxLaatsteCijfers;
 
+      document.getElementById(`k-${items.keuzeMode}`).checked = true
+
       
 
       if (!items.hidePfp && !items.customPfp) {
@@ -165,6 +173,7 @@ const restoreOptions = () => {
       changeStyleMode()
       updateAutoLogin()
       updateFileUpload()
+      updateKeuzeMode()
     }
   )
 };
@@ -193,6 +202,14 @@ const updateFileUpload = () => {
     document.getElementById("l-imageUpload").style.display = "block"
   }else {
     document.getElementById("l-imageUpload").style.display = "none"
+  }
+}
+
+const updateKeuzeMode = () => {
+  if (document.getElementById("keuzeBtn").checked) {
+    document.getElementById("k-keuzeMode").style.display = "block"
+  }else {
+    document.getElementById("k-keuzeMode").style.display = "none"
   }
 }
 
