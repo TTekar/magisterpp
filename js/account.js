@@ -2,7 +2,7 @@
 var update100msAccount = window.setInterval(function(){
 
     chrome.storage.sync.get(
-        { autoLogin: false , username: "" , password: "" , inlogText: "Bonjour" },
+        { autoLogin: false , username: "" , password: "" , inlogText: "Bonjour" , customHtml: false },
         (items) => {
 
             //~ Custom text
@@ -11,7 +11,8 @@ var update100msAccount = window.setInterval(function(){
                 const h1 = document.createElement("h1")
 
                 h1.id = "customLoginText"
-                h1.innerHTML = items.inlogText
+                if (items.customHtml) h1.innerHTML = items.inlogText
+                else h1.textContent = items.inlogText
 
                 form[0].prepend(h1)
             }
@@ -20,6 +21,10 @@ var update100msAccount = window.setInterval(function(){
             var appContainer = document.querySelector('.app-container')
             var secondDiv = appContainer.children[1]
             if (secondDiv) appContainer.removeChild(secondDiv)
+
+            /// Delete more shit
+
+            if (document.querySelector("body > div.app-container > div > footer")) document.querySelector("body > div.app-container > div > footer").remove()
             
 
 
