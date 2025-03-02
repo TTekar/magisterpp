@@ -1263,6 +1263,47 @@ var update100ms = window.setInterval(function(){
   }
 
 
+  //~ Activiteiten list new
+
+  if (currentLocationSplit === "magister.net/magister/#/elo/activiteiten") {
+    
+    const activiteiten = document.querySelectorAll("#activiteiten-container > section > div > sm-grid > div > div.ngViewport.ng-scope > div > .ngRow")
+
+    activiteiten.forEach((act) => {
+      if (!act.classList.contains("customActiviteitenItem")) {
+        const activ = act.querySelector(`.ng-scope > .col0 > div > .ngCellText > span`).innerHTML
+        const perio = act.querySelector(`.ng-scope > .col1 > div > .ngCellText > span`).innerHTML
+        const insch = act.querySelector(`.ng-scope > .col2 > div > .ngCellText > span`).innerHTML
+
+        act.innerHTML = ""
+
+        const inschSpan = document.createElement("span")
+        inschSpan.classList.add("act-insch")
+        inschSpan.title = "Inschrijvingen (min/max)"
+        inschSpan.innerHTML = insch
+        
+        const activSpan = document.createElement("span")
+        activSpan.classList.add("act-activ")
+        activSpan.innerHTML = activ
+
+        const perioSpan = document.createElement("span")
+        perioSpan.classList.add("act-perio")
+        perioSpan.title = "Inschrijvingsperiode"
+        perioSpan.innerHTML = perio
+
+
+        act.appendChild(inschSpan)
+        act.appendChild(activSpan)
+        act.appendChild(perioSpan)
+
+        act.classList.add("customActiviteitenItem")
+        act.classList.remove("ngRow")
+      }
+    })
+
+  }
+
+
 
   //~ Search box
 
