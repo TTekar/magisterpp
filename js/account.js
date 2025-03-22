@@ -29,7 +29,7 @@ var update100msAccount = window.setInterval(function(){
 
 
             //~ Auto login
-            if (items.autoLogin && items.username !== "" && items.password !== "") {
+            if (items.autoLogin && items.username !== "" && items.password !== "" && ( !document.querySelector(".dna-form-error") || document.querySelector(".dna-form-error").textContent.includes("is niet ingevuld."))) {
 
                 const usernameField = document.getElementById("username")
 
@@ -45,6 +45,7 @@ var update100msAccount = window.setInterval(function(){
                     passwordField.value = items.password
                     passwordField.dispatchEvent(new Event('input', { bubbles: true }))
                     document.getElementById("password_submit").click()
+                    
                 }
 
             }
