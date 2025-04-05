@@ -26,7 +26,7 @@ body {
   justify-content: center;
   background-color: var(--mooie-bg-color-mid);
   width: 600px;
-  height: 350px;
+  height: 255px;
 }
 
 
@@ -80,6 +80,10 @@ body {
 #sidebar .sidebar-button.selected {
   opacity: 1;
   transition: opacity ease .5s, background-color ease .25s;
+}
+
+#sb-experimental {
+  padding-bottom: 20px;
 }
 
 /*/ button icons */
@@ -145,6 +149,10 @@ body {
   color: var(--mooie-text-color);
   font-size: 1rem;
   user-select: none;
+}
+
+#content > div {
+  padding-bottom: 20px;
 }
 
 
@@ -272,6 +280,19 @@ label[for="upload"]::before {
   margin-right: 8px;
 }
 
+label[for="t-true"]::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+label[for="t-false"]::before {
+  content: "\58";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
 
 
 /*~ Toggle Switch */

@@ -3743,3 +3743,21 @@ html .main-menu>li ul>li.active>a {
 html .main-menu li>a>* {
     font-weight: normal;
 }
+
+
+
+/*~ Time Now */
+
+body > div.container > div.menu-host.loading > div.logo:has(#timeNow) {
+    width: calc(100% - 32px);
+    top: 24px;
+    text-align: center;
+}
+
+#timeNow {
+    font-size: 37px;
+    font-weight: 500;
+    color: var(--mooie-text-color);
+    font-family: arboria, sans-serif;
+    user-select: none;
+}

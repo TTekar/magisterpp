@@ -260,7 +260,7 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: false , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , showTime: false },
       (items) => {
 
         zoekenActive = !items.hideZoekenBtn
@@ -644,6 +644,26 @@ var update100ms = window.setInterval(function(){
 
           }
         }
+
+
+        //~ Time
+        if (items.showTime) {
+          let timeNow = new Date().toLocaleTimeString([], { hour12: false }).replace(/:/g, ' : ')
+          
+          if (!document.getElementById("timeNow")) {
+            let span = document.createElement("span")
+            span.id = "timeNow"
+            let outer = document.querySelector("body > div.container > div.menu-host.loading > div.logo")
+            outer.innerHTML = ""
+            outer.appendChild(span)
+          }
+
+          let timeSpan = document.getElementById("timeNow")
+
+          if (timeSpan.textContent !== timeNow) [
+            timeSpan.textContent = timeNow
+          ]
+        } 
         
 
       }
@@ -782,8 +802,6 @@ var update100ms = window.setInterval(function(){
   /// Datum week
 
   if (currentLocationSplit === "magister.net/magister/#/vandaag") {
-    const week = "1.3"
-
     const pageHeader = document.querySelector("#vandaag-container > dna-page-header")
 
     if (pageHeader && pageHeader.shadowRoot) {
