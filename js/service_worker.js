@@ -7,7 +7,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
         if (splitUrl[1] == "magister") {
 
             chrome.storage.sync.get(
-                { darkMode: false , studiewijzersGrid: false },
+                { darkMode: true , studiewijzersGrid: false },
                 async (items) => {
 
                     let cssToInsert = [];

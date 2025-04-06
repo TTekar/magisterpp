@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name" : "Magister++",
     "description": "Magister but just better.",
-    "version": "0.12.16",
+    "version": "0.12.17",
     "options_ui": {
         "page": "html/options.html",
         "open_in_tab": true
