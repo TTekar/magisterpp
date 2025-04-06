@@ -1927,63 +1927,61 @@ function clickSelectedIndex() {
   
 }
 
-function keydownFunc(event) {
-  keysPressed.add(event.code);
-  keysPressed.add(event.key);
+document.addEventListener('keydown', (e) => {
 
-  if (zoekenActive) {
-    if (keysPressed.has("Control") && keysPressed.has("KeyK")) {
-      toggleSearchBox()
-    }
-  }
-  
-  // if (keysPressed.has("Alt") && keysPressed.has("KeyS")) {
-  //   toggleSearchBox()
-  // }
-
-  // console.log(keysPressed)
-  
+  // In textbox
 
   if (document.getElementById("searchBox").style.display === "block") {
 
-    if (keysPressed.has("Escape")) {
+    if (e.key === 'Escape' || (e.ctrlKey && e.key.toLowerCase() === 'k')) {
+      e.preventDefault()
       toggleSearchBox()
     }
 
-    if (keysPressed.has("Enter")) {
+    if (e.key === 'Enter') {
+      e.preventDefault()
       clickSelectedIndex()
     }
     
-    if (keysPressed.has("ArrowDown")) {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
       moveSelectedIndexDown()
     }
 
-    if (keysPressed.has("ArrowUp")) {
+    if (e.key === 'ArrowUp') {
+      e.preventDefault()
       moveSelectedIndexUp()
     }
+  }
 
+  const active = document.activeElement;
+  const isTyping = active && (
+    active.tagName === 'INPUT' ||
+    active.tagName === 'TEXTAREA' ||
+    active.isContentEditable
+  );
+
+  if (isTyping) return;
+
+  // not in textbox
+
+  if (e.ctrlKey && e.key.toLowerCase() === 'k') {
+    e.preventDefault()
+    toggleSearchBox()
   }
 
   if (document.getElementById("dagRooster")) {
-    if (keysPressed.has("ArrowRight")) {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault()
       currentDag++
       loadDayEvents()
     }
   
-    if (keysPressed.has("ArrowLeft")) {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault()
       currentDag--
       loadDayEvents()
     }
   }
-  
-}
 
-function keyupFunc(event) {
-  keysPressed.delete(event.code);
-  keysPressed.delete(event.key);
-}
-
-//~ Hotkeys
-
-document.addEventListener("keydown", (event) => keydownFunc(event))
-document.addEventListener("keyup", (event) => keyupFunc(event))
+});
