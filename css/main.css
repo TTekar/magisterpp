@@ -3757,7 +3757,25 @@ body > div.container > div.menu-host.loading > div.logo:has(#timeNow) {
 #timeNow {
     font-size: 37px;
     font-weight: 500;
-    color: var(--mooie-text-color);
+    color: var(--mooie-text-color-white);
     font-family: arboria, sans-serif;
     user-select: none;
+}
+
+
+
+
+
+/* fixes */
+
+html .no-data a,
+html .no-data em {
+    color: var(--mid-gray) !important;
+}
+
+html nav.menu  ul > li > a,
+html nav.menu > div.menu-footer > a > i.fa-angle-double-left,
+html nav.menu > div.menu-footer > a {
+    color: var(--mooie-text-color-white);
+    fill: var(--mooie-text-color-white);
 }

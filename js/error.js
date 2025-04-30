@@ -7,6 +7,8 @@ const init = function() {
     // const textDiv = podium[0].children[1];
     // textDiv.className = "goaway";
 
+    window.open(window.location.href.substring(0, window.location.href.lastIndexOf("/")), "_self")
+
 }
 
 init();

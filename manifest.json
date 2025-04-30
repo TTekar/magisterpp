@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name" : "Magister++",
     "description": "Magister but just better.",
-    "version": "0.12.17",
+    "version": "0.12.18",
     "options_ui": {
         "page": "html/options.html",
         "open_in_tab": true
@@ -23,21 +23,21 @@
     },
     "content_scripts": [{
         "matches": ["*://*.magister.net/*"],
-        "js": ["js/util.js", "js/api.js", "js/main.js"],
+        "js": ["js/util.js", "js/api.js", "js/main.js", "js/customStyle.js"],
         "css": ["css/main.css"],
         "run_at": "document_start"
     }, {
         "matches": ["*://*.magister.net/error.html?*"],
         "css": ["css/error.css"],
-        "js": ["js/error.js"]
+        "js": ["js/error.js", "js/customStyle.js"]
     }, {
         "matches": ["*://accounts.magister.net/account/login?*"],
         "css": ["css/account.css"],
-        "js": ["js/account.js"]
+        "js": ["js/account.js", "js/customStyle.js"]
     }, {
         "matches": ["*://*.magister.net/magister-berichten/*"],
         "css": ["css/berichten.css"],
-        "js": ["js/berichten.js"],
+        "js": ["js/berichten.js", "js/customStyle.js"],
         "all_frames": true
     }],
     "permissions": [

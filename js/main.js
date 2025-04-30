@@ -1400,6 +1400,24 @@ var update100ms = window.setInterval(function(){
   }
   
 
+  // if (document.querySelectorAll("#customButtonKeuze").length > 1) {
+  //   let btns = document.querySelectorAll("#customButtonKeuze")
+  //   for (let i = 0; i < btns.length - 1; i++) {
+  //     let btn = btns[i]
+  //     btn.parentElement.remove()
+  //     console.log("aaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhh meerdere keuze")
+  //   }
+  // }
+
+  //~ new cijfers icon so its not an image
+  if (document.querySelector("#menu-cijfers > img")) {
+    document.querySelector("#menu-cijfers > img").remove()
+    var i = document.createElement("i")
+    i.classList.add("fa-hundred-points")
+    i.classList.add("far")
+    document.querySelector("#menu-cijfers").insertBefore(i, document.querySelector("#menu-cijfers").firstChild)
+  }
+
 
 
 }, 100);
