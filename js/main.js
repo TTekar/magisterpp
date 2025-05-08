@@ -323,7 +323,7 @@ var update100ms = window.setInterval(function(){
               return
           }
 
-          if (parseFloat(cijfer.innerHTML) < 5.5) {
+          if (parseFloat(cijfer.innerHTML.replace(",", ".")) < 5.5) {
               cijfer.innerHTML = "<5,5"
           }
           if (cijfer.innerHTML.toUpperCase().includes("Z") || cijfer.innerHTML.toUpperCase().includes("O")) {
