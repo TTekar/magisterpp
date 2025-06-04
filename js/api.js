@@ -226,26 +226,26 @@ const MagisterApi = {
             )
         })
     },
-    messages: async (lastN = 20) => {
+    messages: async (lastN = 20, skip = 0) => {
         return new Promise(async (resolve, reject) => {
             // `https://${magisterApiSchoolName}.magister.net/api/berichten/postvakin/berichten?top=20&skip=0&gelezenStatus=ongelezen`, null, 'messages'
-            magisterApiCache.messages ??=
+            magisterApiCache[`messages${lastN}${skip}`] ??=
                 fetchWrapper(
-                    `https://${magisterApiSchoolName}.magister.net/api/berichten/postvakin/berichten?top=${lastN}&skip=0`, null, 'messages'
+                    `https://${magisterApiSchoolName}.magister.net/api/berichten/postvakin/berichten?top=${lastN}&skip=${skip}`, null, 'messages'
                 )
             resolve(
-                (await magisterApiCache.messages)?.items || []
+                (await magisterApiCache[`messages${lastN}${skip}`])?.items || []
             )
         })
     },
     messageContent: async (id) => {
         return new Promise(async (resolve, reject) => {
-            magisterApiCache.message ??=
+            magisterApiCache[`message${id}`] ??=
                 fetchWrapper(
                     `https://${magisterApiSchoolName}.magister.net/api/berichten/berichten/${id}`, null, "message"
                 )
             resolve(
-                (await magisterApiCache.message) || []
+                (await magisterApiCache[`message${id}`]) || []
             )
         })
     },

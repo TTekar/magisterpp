@@ -167,6 +167,21 @@ async function setDefaults() {
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    // tmp download shit
+    if (request.action === "download") {
+        const text = request.text;
+        const filename = request.filename || "data.txt";
+
+        // Convert text to a data URL
+        const dataUrl = "data:text/plain;charset=utf-8," + encodeURIComponent(text);
+
+        chrome.downloads.download({
+          url: dataUrl,
+          filename: filename,
+          saveAs: true
+        });
+    }
+
     switch (request.action) {
         case 'popstateDetected':
             console.info("Popstate detected, service worker revived.")

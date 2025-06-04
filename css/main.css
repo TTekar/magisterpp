@@ -3779,3 +3779,28 @@ html nav.menu > div.menu-footer > a {
     color: var(--mooie-text-color-white);
     fill: var(--mooie-text-color-white);
 }
+
+
+
+/* studiewijzer hide icon before */
+/* html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li > div {
+    position: relative;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li span[class^="icon-"] {
+    display: none;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li span.number {
+    width: 32px;
+    padding: 0;
+    margin: 0;
+    color: var(--mid-gray);
+    float: left;
+    position: absolute;
+    font-size: 12px;
+}
+
+html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li a {
+    padding-left: 20px;
+} */
