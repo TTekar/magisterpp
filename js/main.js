@@ -190,7 +190,8 @@ var update100ms = window.setInterval(function(){
 
   //~ Keuze plattegrond
 
-  if (!document.getElementById("coverDivKeuze")) {
+  // if (!document.getElementById("coverDivKeuze")) {
+  if (!madeKeuzeIframe) {
     chrome.storage.sync.get(
       { keuzeBtn: true, darkMode: false , keuzeMode: "table" },
       (items) => {
