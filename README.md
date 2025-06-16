@@ -7,6 +7,13 @@ Een extensie die verandert hoe Magister eruitziet en nieuwe features toevoegt.
 > [!NOTE]
 > Deze extensie is gemaakt voor leerlingen van het Jordan MLU. Er zitten features in die speciaal voor het Jordan gemaakt zijn, en misschien werken een paar kleine dingen niet als je niet op het Jordan zit.
 
+## Installatie
+
+1. Download als zip (klik op groene knop "Code" -> "Download ZIP")
+2. Sla het bestand op in bijv. Documenten en pak het ZIP bestand uit.
+3. Ga naar de extensie pagina van je browser (bijv. chrome://extensions/, of klik op het extensie icoontje rechts boven -> extensies beheren)
+4. Schakel "Ontwikkelaarsmodus" in
+5. Klik op "Uitgepakt laden" en selecteer de map met de bestanden van deze extensie
 
 ## Features
 
@@ -24,23 +31,6 @@ En nog meer.
 
 De meeste van deze features kan je in de instellingen van de extensie aan en uit zetten. 
 Als je zelf ideeën hebt voor nieuwe features, kan je dat bij _[issues](https://github.com/TTekar/magisterExtension/issues)_ zetten.
-
-## Installatie
-
-### Methode 1
-
-1. Clone of download de repository
-2. Ga naar de extensie pagina van je browser (bijv. chrome://extensions/)
-3. Schakel "Ontwikkelaarsmodus" in
-4. Klik op "Uitgepakt laden" en selecteer de map met de bestanden van deze extensie
-
-### Methode 2 (niet chrome)
-
-~~1. Ga naar de _[releases](https://github.com/TTekar/magisterExtension/releases)_ pagina~~
-~~2. Download het .crx bestand~~
-~~3. Open het bestand met je browser~~
-
-nee.
 
 ## Keuze Plattegrond
 
