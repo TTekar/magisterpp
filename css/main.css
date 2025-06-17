@@ -171,14 +171,26 @@ html #agenda-widget > div > div.content > div > ul > li:last-child {
 }
 
 html #agenda-widget > div > div.content > div > ul > li span.nrblock {
-    background-color: var(--background-1);
+    background-color: var(--primary-background);
+    color: var(--mooie-text-color-white);
 }
 
 html #agenda-widget > div > div.content > div > ul.roosterwijziging {
     opacity: .67;
 }
 
+/* agenda icons colors */
+html #agenda-widget .agenda-list li.alert span.time:before {
+    color: var(--mid-gray);
+}
 
+html #agenda-widget .agenda-list li.alert span.time:after {
+    color: var(--mid-gray) !important;
+}
+
+html #agenda-widget .list li span i {
+    color: var(--mid-gray) !important;
+}
 
 
 html #agenda-widget > div > footer.endlink {
@@ -341,6 +353,10 @@ html #berichten-widget > .block > .content > .msg-detail li {
     background-color: transparent;
     border: none;
     line-height: 1.4em;
+}
+
+html #berichten-widget .msg-list a span.label {
+    color: var(--mid-gray) !important;
 }
 
 /*/ Cijfers */
@@ -510,8 +526,18 @@ html #notificatie-widget .list li {
 
 /*/ Edit toggle button */
 
+html #edit-toggle-btn {
+    color: var(--primary-background);
+    border-color: var(--primary-background);
+    background-color: transparent;
+    transition: .25s;
+}
+
 html #edit-toggle-btn:hover {
-    background-color: var(--mooie-bg-color-hover);
+    color: var(--secondary-background);
+    border-color: var(--secondary-background);
+    background-color: transparent;
+    transition: .25s;
 }
 
 /*/ Edit vandaag */
@@ -2784,6 +2810,14 @@ html #menu-berichten-new > span::after {
     border-right: 5px solid var(--mooie-bg-color-mid);
 }
 
+html #menu-berichten-new {
+    background-color: var(--primary-background);
+}
+
+html #menu-berichten-new > i::before {
+    color: var(--mooie-text-color-white) !important;
+}
+
 
 /*/ Error ? */
 html div.message > p {
@@ -2888,15 +2922,15 @@ html #cijfers-laatst-behaalde-resultaten-container > dna-page-header > dna-butto
 
 html #cijfers-laatst-behaalde-resultaten-container > dna-page-header > dna-button-group > dna-button:nth-child(2) {
     background-color: var(--mooie-bg-color) !important;
-    border: 2px solid var(--background-1) !important;
-    color: var(--background-1) !important;
+    border: 2px solid var(--primary-background) !important;
+    color: var(--primary-background) !important;
     border-radius: 16px !important;
     transition: all ease .25s !important;
 }
 
 html #cijfers-laatst-behaalde-resultaten-container > dna-page-header > dna-button-group > dna-button:nth-child(2):hover {
-    box-shadow: 0 0 4px var(--background-1), inset 0 0 4px var(--background-1) !important;
-    text-shadow: 0 0 8px var(--background-1) !important;
+    box-shadow: 0 0 4px var(--primary-background), inset 0 0 4px var(--primary-background) !important;
+    text-shadow: 0 0 8px var(--primary-background) !important;
     transition: all ease .25s !important;
 }
 
@@ -3273,6 +3307,7 @@ html #searchButtonA {
 }
 
 html #searchButtonA > i {
+    color: var(--mooie-text-color-white);
     opacity: .5;
     transition: opacity ease .25s;
 }
@@ -3704,6 +3739,7 @@ html .customActiviteitenItem .act-perio {
 
 html #user-menu,
 html #user-menu > figure > img {
+    background-color: var(--primary-background);
     border-radius: 50%;
     transition: border-radius .25s ease;
 }
@@ -3805,3 +3841,26 @@ html #studiewijzer-detail-container > section.main > div > ul > li > div.block >
 html #studiewijzer-detail-container > section.main > div > ul > li > div.block > div.content > ul > li a {
     padding-left: 20px;
 } */
+
+/*~ MotD */
+
+html #motdSpan {
+    position: absolute;
+    bottom: -20px;
+    left: 6px;
+    font-size: 14px;
+    color: var(--mid-gray);
+}
+
+/* plan een afspraak in knop */
+#afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(5) {
+    background-color: var(--primary-background);
+    border-color: var(--primary-background);
+    transition: .25s;
+}
+
+#afsprakenlijst-container > dna-page-header > dna-button-bar > dna-button:nth-child(5):hover {
+    background-color: var(--secondary-background);
+    border-color: var(--secondary-background);
+    transition: .25s;
+}

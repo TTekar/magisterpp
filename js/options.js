@@ -1,13 +1,17 @@
 
+var selectedColorName = ""
+
 const cAppearance = document.getElementById("c-appearance")
 const cLayout = document.getElementById("c-layout")
 const cLogin = document.getElementById("c-login")
 const cExperimental = document.getElementById("c-experimental")
+const cUpdate = document.getElementById("c-update")
 
 const sbAppearance = document.getElementById("sb-appearance")
 const sbLayout = document.getElementById("sb-layout")
 const sbLogin = document.getElementById("sb-login")
 const sbExperimental = document.getElementById("sb-experimental")
+const sbUpdate = document.getElementById("sb-update")
 
 
 
@@ -16,11 +20,13 @@ sbAppearance.onclick = () => {
   cLayout.style.display = "none"
   cLogin.style.display = "none"
   cExperimental.style.display = "none"
+  cUpdate.style.display = "none"
   
   sbAppearance.classList.add("selected")
   sbLayout.classList.remove("selected")
   sbLogin.classList.remove("selected")
   sbExperimental.classList.remove("selected")
+  sbUpdate.classList.remove("selected")
 }
 
 sbLayout.onclick = () => {
@@ -28,11 +34,13 @@ sbLayout.onclick = () => {
   cLayout.style.display = "block"
   cLogin.style.display = "none"
   cExperimental.style.display = "none"
+  cUpdate.style.display = "none"
   
   sbAppearance.classList.remove("selected")
   sbLayout.classList.add("selected")
   sbLogin.classList.remove("selected")
   sbExperimental.classList.remove("selected")
+  sbUpdate.classList.remove("selected")
 }
 
 sbLogin.onclick = () => {
@@ -40,11 +48,13 @@ sbLogin.onclick = () => {
   cLayout.style.display = "none"
   cLogin.style.display = "block"
   cExperimental.style.display = "none"
+  cUpdate.style.display = "none"
   
   sbAppearance.classList.remove("selected")
   sbLayout.classList.remove("selected")
   sbLogin.classList.add("selected")
   sbExperimental.classList.remove("selected")
+  sbUpdate.classList.remove("selected")
 }
 
 sbExperimental.onclick = () => {
@@ -52,13 +62,47 @@ sbExperimental.onclick = () => {
   cLayout.style.display = "none"
   cLogin.style.display = "none"
   cExperimental.style.display = "block"
+  cUpdate.style.display = "none"
   
   sbAppearance.classList.remove("selected")
   sbLayout.classList.remove("selected")
   sbLogin.classList.remove("selected")
   sbExperimental.classList.add("selected")
+  sbUpdate.classList.remove("selected")
 }
 
+sbUpdate.onclick = () => {
+  cAppearance.style.display = "none"
+  cLayout.style.display = "none"
+  cLogin.style.display = "none"
+  cExperimental.style.display = "none"
+  cUpdate.style.display = "block"
+  
+  sbAppearance.classList.remove("selected")
+  sbLayout.classList.remove("selected")
+  sbLogin.classList.remove("selected")
+  sbExperimental.classList.remove("selected")
+  sbUpdate.classList.add("selected")
+
+  checkUpdate()
+}
+
+function checkUpdate() {
+  const localVersion = chrome.runtime.getManifest().version;
+
+  fetch('https://raw.githubusercontent.com/TTekar/magisterpp/main/manifest.json')
+    .then(res => res.json())
+    .then(remoteManifest => {
+      const remoteVersion = remoteManifest.version;
+      if (remoteVersion !== localVersion) {
+        document.getElementById("checkUpdate").textContent = `Er is een nieuwe versie beschikbaar! (Installed: ${localVersion}, Latest: ${remoteVersion})`;
+        document.getElementById("updateHelp").style.display = "block";
+      } else {
+        document.getElementById("checkUpdate").textContent = "Magister++ is up to date.";
+        document.getElementById("updateHelp").style.display = "none";
+      }
+  });
+}
 
 const saveOptions = () => {
   const darkMode = document.getElementById('dark').checked
@@ -114,13 +158,14 @@ const saveOptions = () => {
   }
 
   chrome.storage.sync.set(
-    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , hideZoekenBtn: hideZoekenBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp , widgetCustomHigh: widgetCustomHigh , widgetCustomLow: widgetCustomLow , hideBestellenBtn: hideBestellenBtn , autoLogin: autoLogin , username: username , password: password , widgetDrag: widgetDrag, customVandaag: customVandaag , maxLaatsteCijfers: maxLaatsteCijfers , keuzeMode: keuzeMode , customHtml: customHtml , showTime: showTime },
+    { darkMode: darkMode , keuzeBtn: keuzeBtn , cijfers: cijfers , studiewijzersGrid: studiewijzersGrid , hideHelpBtn: hideHelpBtn , hideZoekenBtn: hideZoekenBtn , inlogText: inlogText , hidePfp: hidePfp , customPfp: customPfp , widgetCustomHigh: widgetCustomHigh , widgetCustomLow: widgetCustomLow , hideBestellenBtn: hideBestellenBtn , autoLogin: autoLogin , username: username , password: password , widgetDrag: widgetDrag, customVandaag: customVandaag , maxLaatsteCijfers: maxLaatsteCijfers , keuzeMode: keuzeMode , customHtml: customHtml , showTime: showTime , customColor: selectedColorName},
     () => {
       // do after saved
       // console.log(`darkMode: ${darkMode}\nkeuzeBtn: ${keuzeBtn}\ncijfers: ${cijfers}\nstudiewijzersGrid: ${studiewijzersGrid}\nhideHelpBtn: ${hideHelpBtn}\ninlogText: ${inlogText}\nhidePfp: ${hidePfp}\ncustomPfp:${customPfp}\nwidgetCustomHigh:${widgetCustomHigh}\nwidgetCustomLow:${widgetCustomLow}`)
       updateAutoLogin()
       updateFileUpload()
       updateKeuzeMode()
+      updateCustomSelectedColor()
     }
   )
 };
@@ -128,7 +173,7 @@ const saveOptions = () => {
 
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { darkMode: true , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , hideBestellenBtn: false , autoLogin: false , username: "" , password: "" , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , keuzeMode: "table" , customHtml: false , showTime: false },
+    { darkMode: true , keuzeBtn: true , cijfers: false , studiewijzersGrid: false , hideHelpBtn: true , inlogText: "Bonjour" , hidePfp: false , customPfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , hideBestellenBtn: false , autoLogin: false , username: "" , password: "" , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , keuzeMode: "table" , customHtml: false , showTime: false , customColor: "default" },
     (items) => {
       document.getElementById('dark').checked = items.darkMode;
       document.getElementById('light').checked = !items.darkMode;
@@ -180,6 +225,8 @@ const restoreOptions = () => {
         document.getElementById('pfp-hidden').checked = true
       }
 
+      selectedColorName = items.customColor
+      updateCustomSelectedColor()
 
       changeStyleMode()
       updateAutoLogin()
@@ -297,3 +344,54 @@ document.getElementById("upload").addEventListener("change", async function (eve
   }
 
 });
+
+//~ add color buttons
+
+
+document.querySelector("#colorsContainer > div.item.default").addEventListener("click", () => {
+
+  console.log(`clicked on the default button`)
+  selectedColorName = "default"
+  saveOptions()
+  updateCustomSelectedColor()
+
+})
+
+fetch('https://jmlu.tekar.dev/data/colors.json')
+  .then(res => res.json())
+  .then(colors => {
+    const colorsContainer = document.getElementById("colorsContainer")
+
+    for (const colorName in colors) {
+      const values = colors[colorName];
+
+      const newButton = document.createElement("div")
+      newButton.classList.add("item")
+      newButton.style.backgroundColor = values["primaryBackground"]
+      newButton.setAttribute("data-name", colorName)
+
+      newButton.addEventListener("click", () => {
+        console.log(`clicked on the ${colorName} button`)
+        selectedColorName = colorName
+        saveOptions()
+        updateCustomSelectedColor()
+      })
+
+      colorsContainer.appendChild(newButton)
+
+    } 
+    updateCustomSelectedColor()
+    updateFileUpload()
+});
+
+
+function updateCustomSelectedColor() {
+  console.log(selectedColorName)
+  const selectedDiv = document.querySelector(`[data-name="${selectedColorName}"]`)
+  document.querySelectorAll(`[data-name]`).forEach((div) => {
+    div.style.borderRadius = "6px"
+    div.style.boxShadow = "none"
+  })
+  selectedDiv.style.borderRadius = "10px"
+  selectedDiv.style.boxShadow = "0 0 4px #fff"
+}

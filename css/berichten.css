@@ -394,3 +394,11 @@ html app-root > app-berichten-overzicht > div.container > div.folders-container 
 html app-root > app-berichten-overzicht > div.container > app-bericht-list {
     min-width: 25%;
 }
+
+
+
+/* pagina verlaten bij berichten tekst */
+
+body > dna-overlay-container > dna-overlay > dna-dialog > app-dirty-dialog > * {
+    color: var(--mooie-text-color);
+}

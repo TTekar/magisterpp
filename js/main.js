@@ -4,62 +4,56 @@ var keuzeUI = false;
 var madeKeuzeIframe = false;
 
 
-const weekToPensum = { // schooljaar 2024-2025
-  1: "",
-  2: " - 2.8",
-  3: " - LB-2 / SE-2",
-  4: " - 3.1",
-  5: " - 3.2",
-  6: " - 3.3",
-  7: " - 3.4",
-  8: " - 3.5",
-  9: "",
-  10: " - 3.6",
-  11: " - 3.7 / SE-3A",
-  12: " - Projectweek",
-  13: " - 3.8",
-  14: " - LB-3 / SE-3B",
-  15: " - 4.1",
-  16: " - 4.2",
-  17: "",
-  18: "",
-  19: " - 4.3",
-  20: " - 4.4",
-  21: " - 4.5",
-  22: " - 4.6",
-  23: " - 4.7 / SE-4",
-  24: " - 4.8",
-  25: " - 4.9",
-  26: " - 4.10",
-  27: " - LB-4",
-  28: "",
-  29: "",
-  30: "",
-  31: "",
-  32: "",
-  33: "",
-  34: "",
-  35: " - 1.1",
-  36: " - 1.2",
-  37: " - 1.3",
-  38: " - 1.4",
-  39: " - 1.5",
-  40: " - 1.6",
-  41: " - 1.7",
-  42: " - 1.8",
-  43: " - LB-1 / SE-1",
-  44: "",
-  45: " - 2.1",
-  46: " - 2.2",
-  47: " - 2.3",
-  48: " - 2.4",
-  49: " - 2.5",
-  50: " - 2.6",
-  51: " - 2.7",
-  52: "",
-  53: ""
-}
+var weekToPensum = {};
 
+fetch('https://jmlu.tekar.dev/data/weekToPensum.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    // console.log('Fetched weekToPensum JSON data:', data);
+    weekToPensum = data;
+  })
+  .catch(error => {
+    console.error('There was a problem with the weekToPensum fetch operation:', error);
+  });
+
+
+var motd = "";
+
+fetch('https://jmlu.tekar.dev/data/motd.txt')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.text();
+  })
+  .then(data => {
+    // console.log('Fetched motd:', data);
+    motd = data;
+  })
+  .catch(error => {
+    console.error('There was a problem with the motd fetch operation:', error);
+});
+ 
+// check version
+const localVersion = chrome.runtime.getManifest().version;
+var newestVersion = "";
+
+fetch('https://raw.githubusercontent.com/TTekar/magisterpp/main/manifest.json')
+  .then(res => res.json())
+  .then(remoteManifest => {
+    const remoteVersion = remoteManifest.version;
+    newestVersion = remoteVersion;
+    if (remoteVersion !== localVersion) {
+      console.warn(`Magister++ update available! Installed: ${localVersion}, Latest: ${remoteVersion}`);
+    } else {
+      // console.log('Extension is up to date.');
+    }
+});
 
 const callback = function(mutationsList, observer) {
     for (let mutation of mutationsList) {
@@ -866,9 +860,13 @@ var update100ms = window.setInterval(function(){
       if (!pageHeader.shadowRoot.getElementById("mpp-week-style")) {
         const style = document.createElement('style');
         style.id = "mpp-week-style"
+        c = ""
+        if (weekToPensum[getISOWeekNumber()] != undefined) {
+          c = weekToPensum[getISOWeekNumber()]
+        }
         style.textContent = `
           div.container > div > div.title::after {
-            content: "${weekToPensum[getISOWeekNumber()]}";
+            content: "${c}";
             color: var(--mid-gray);
           }
         `;
@@ -877,9 +875,47 @@ var update100ms = window.setInterval(function(){
 
         pageHeader.shadowRoot.appendChild(style);
       
+      } else {
+        
+        c = ""
+        if (weekToPensum[getISOWeekNumber()] != undefined) {
+          c = weekToPensum[getISOWeekNumber()]
+        }
+
+        if (document.querySelector("#user-menu > figure > img").getAttribute("alt") == "Aidan Schoester") {
+          if (localVersion != newestVersion) {
+            pageHeader.shadowRoot.getElementById("mpp-week-style").textContent = `
+              div.container > div > div.title::after {
+                content: "${c} pull ff slet";
+                color: var(--mid-gray);
+              }
+            `;
+          }
+        } else {
+          pageHeader.shadowRoot.getElementById("mpp-week-style").textContent = `
+            div.container > div > div.title::after {
+              content: "${c}";
+              color: var(--mid-gray);
+            }
+          `;
+        }
+
       }
     }
   }  
+
+  //~ MotD
+
+  if (currentLocationSplit === "magister.net/magister/#/vandaag") {
+    if (!document.getElementById("motdSpan")) {
+      const cont = document.getElementById("vandaag-container");
+      const motdSpan = document.createElement("span")
+      motdSpan.innerHTML = motd
+      motdSpan.id = "motdSpan"
+      cont.appendChild(motdSpan)
+    }
+    
+  }
 
   /// Keuze button small hover text 
 

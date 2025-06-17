@@ -13,6 +13,7 @@
         <a id="sb-layout" class="sidebar-button" title="Layout"></a>
         <a id="sb-login" class="sidebar-button" title="Login"></a>
         <a id="sb-experimental" class="sidebar-button" title="Experimental"></a>
+        <a id="sb-update" class="sidebar-button" title="Update"></a>
       </div>
 
       <div id="content">
@@ -71,6 +72,13 @@
               <span id="resetWidgetCustomLow" class="resetInput">&#8635;</span>
               <input class="numberInput" type="number" min="1" id="widgetCustomLow" value="145" />
               <label for="widgetCustomLow">px</label>
+            </div>
+          </label>
+
+          <label>
+            Custom colors
+            <div id="colorsContainer">
+              <div class="item default" data-name="default" style="background-color: #7f7f7f; opacity: 0.5"></div>
             </div>
           </label>
         </div>
@@ -177,6 +185,7 @@
           <h1>Experimental</h1>
 
           <hr />
+          <span id="exp-warn">Deze instellingen zijn <i>iets minder serieus</i> of nog half werkende features. Kortom, zit er niet aan als je niet zeker weet wat je aan het doen bent.</span>
 
           <label>
             Cijfers &lt;v
@@ -222,6 +231,16 @@
               <input class="numberInput" type="number" min="1" id="maxLaatsteCijfers" value="10" />
             </div>
           </label>
+        </div>
+
+        <div id="c-update" class="c-page" style="display: none">
+          <h1>Update</h1>
+
+          <hr />
+
+          <span id="checkUpdate"></span>
+
+          <span id="updateHelp">Om de nieuwste versie te downloaden, ga naar de <a target="_blank" href="https://github.com/TTekar/magisterpp">GitHub pagina</a> en volg de instructies onder het kopje <i>Installatie</i>.</span>
         </div>
       </div>
     </div>
