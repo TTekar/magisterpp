@@ -1781,14 +1781,21 @@ function toggleSearchBox() {
   const searchBox = document.getElementById("searchBox")
 
   if (searchBox.style.display === "none") {
-    searchBox.style.display = "block"
-    const searchInput = document.getElementById("searchInput")
-    searchInput.focus()
-    searchInput.value = ""
-    document.getElementById("resultsPages").innerHTML = ""
-    document.getElementById("resultsStudiewijzers").innerHTML = ""
-    selectedSearchIndex = 0
-    search()
+    chrome.storage.sync.get(
+      { hideZoekenBtn: true },
+      (items) => {
+        if (!items.hideZoekenBtn) {
+          searchBox.style.display = "block"
+          const searchInput = document.getElementById("searchInput")
+          searchInput.focus()
+          searchInput.value = ""
+          document.getElementById("resultsPages").innerHTML = ""
+          document.getElementById("resultsStudiewijzers").innerHTML = ""
+          selectedSearchIndex = 0
+          search()
+        }
+      }
+    )
   }else {
     searchBox.style.display = "none"
   }

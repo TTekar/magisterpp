@@ -402,3 +402,31 @@ html app-root > app-berichten-overzicht > div.container > app-bericht-list {
 body > dna-overlay-container > dna-overlay > dna-dialog > app-dirty-dialog > * {
     color: var(--mooie-text-color);
 }
+
+/* Bijlage upload preview */
+
+html .dna-form-field-group .dna-upload-previews {
+    background-color: var(--mooie-bg-color);
+    border: 1px dashed var(--mid-gray);
+}
+
+html .dna-form-field-group .dna-upload-file {
+    background-color: var(--mooie-bg-color);
+    border-radius: 4px;
+    border: 1px solid var(--mid-gray);
+    color: var(--mooie-text-color);
+}
+
+html .dna-form-field-group .dna-upload-file .dna-file-preview-description {
+    color: var(--mid-gray);
+}
+
+html .dna-form-field-group .dna-upload-file .dna-btn-icon {
+    color: var(--mid-gray);
+}
+
+html .dna-form-field-group .dna-drop-zone {
+    background-color: var(--mooie-bg-color);
+    border: 1px dashed var(--mid-gray);
+    color: var(--mid-gray);
+}
