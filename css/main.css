@@ -425,6 +425,11 @@ html #cijfers-leerling .list li {
     border-top: none;
 }
 
+
+html #cijfers-leerling .list li:first-child {
+    padding-top: 9px;
+}
+
 html #cijfers-leerling .last-grade {
     color: var(--mooie-text-color);
     background-color: var(--primary-background);
@@ -2873,6 +2878,7 @@ html .collapsed-menu #faux-label {
     background-color: var(--mooie-bg-color-mid);
     border: none;
     box-shadow: none;
+    z-index: 99999;
 }
 
 html div.container > div.menu-host.loading.collapsed-menu > nav > div.menu-container > ul > li > a > span::after {
@@ -2975,15 +2981,15 @@ html #cijfers-container > dna-page-header > dna-button-group > dna-button:nth-ch
 
 html #cijfers-container > dna-page-header > dna-button-group > dna-button:nth-child(1) {
     background-color: var(--mooie-bg-color) !important;
-    border: 2px solid var(--background-1) !important;
-    color: var(--background-1) !important;
+    border: 2px solid var(--primary-background) !important;
+    color: var(--primary-background) !important;
     border-radius: 16px !important;
     transition: all ease .25s !important;
 }
 
 html #cijfers-container > dna-page-header > dna-button-group > dna-button:nth-child(1):hover {
-    box-shadow: 0 0 4px var(--background-1), inset 0 0 4px var(--background-1) !important;
-    text-shadow: 0 0 8px var(--background-1) !important;
+    box-shadow: 0 0 4px var(--primary-background), inset 0 0 4px var(--primary-background) !important;
+    text-shadow: 0 0 8px var(--primary-background) !important;
     transition: all ease .25s !important;
 }
 
@@ -3833,8 +3839,83 @@ body > div.container > div.menu-host.loading > div.logo:has(#timeNow) {
     user-select: none;
 }
 
+body > div.container > div.menu-host.collapsed-menu .logo {
+    display: block;
+}
 
+body > div.container > div.menu-host.collapsed-menu #timeNow {
+    display: none;
+}
 
+/* clock */
+body > div.container > div.menu-host #clock {
+    display: none;
+}
+
+body > div.container > div.menu-host.collapsed-menu #clock {
+    display: block;
+    
+    background: var(--secondary-background);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: -4px;
+    margin-top: 4px;
+
+    font-size: 6cqi;
+    font-weight: 700;
+    list-style-type: none;
+    position: relative;
+}
+
+/* @keyframes turn {
+    to { transform: rotate(1turn); }
+} */
+
+html #clock .hour {
+    display: block;
+    /* animation: turn 43200s linear infinite; */
+    /* animation-delay: var(--_dh, 0ms); */
+    
+    background-color: var(--mooie-text-color);
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    transform-origin: bottom;
+    width: 2px;
+}
+
+html #clock .minute {
+    display: block;
+    /* animation: turn 3600s infinite;
+    animation-delay: var(--_dm, 0ms); */
+    
+    background-color: var(--mooie-text-color);
+    border-radius: 50%;
+    height: 18px;
+    position: absolute;
+    left: 20px;
+    top: 2px;
+    transform-origin: bottom;
+    width: 2px;
+}
+
+html #clock .second {
+    display: block;
+    /* animation: turn 3600s infinite;
+    animation-delay: var(--_dm, 0ms); */
+    
+    background-color: var(--mid-gray);
+    border-radius: 50%;
+    height: 18px;
+    position: absolute;
+    left: 20px;
+    top: 2px;
+    transform-origin: bottom;
+    width: 1px;
+}
 
 
 /* fixes */

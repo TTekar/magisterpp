@@ -214,7 +214,7 @@ var update100ms = window.setInterval(function(){
           
           /// Define button
           const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
-          const newButtonList = document.createElement("li");
+          const newButtonList = document.createElement("li")
           buttonsSideList.appendChild(newButtonList)
 
           const newButton = document.createElement("a")
@@ -252,7 +252,7 @@ var update100ms = window.setInterval(function(){
               const iframeZermelo = document.createElement("iframe")
               const coverDivKeuzeGet = document.getElementById("coverDivKeuze")
 
-              iframeZermelo.src = `https://tekar.dev/`
+              iframeZermelo.src = `https://jordanmlu.zportal.nl`
 
               iframeZermelo.id = "iframeZermelo"
               iframeZermelo.style.width = "100%"
@@ -303,11 +303,12 @@ var update100ms = window.setInterval(function(){
           if (keuzeUI) document.getElementById("customButtonKeuze").click()
         }
 
+        //~ Zermelo
         if (items.zermelo && !madeZermeloIframe) {
 
           /// Define button
           const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
-          const newButtonList = document.createElement("li");
+          const newButtonList = document.createElement("li")
           buttonsSideList.appendChild(newButtonList)
 
           const newButton = document.createElement("a")
@@ -433,7 +434,7 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: true , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , showTime: false , oppBtn: true },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 0 , darkMode: true , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , showTime: false , oppBtn: true , koppelingenBtn: true , clockSecondBtn: true , sidebarSmallBtn: false },
       (items) => {
 
         zoekenActive = !items.hideZoekenBtn
@@ -484,6 +485,8 @@ var update100ms = window.setInterval(function(){
           })
 
         }
+
+        
         
 
 
@@ -535,6 +538,13 @@ var update100ms = window.setInterval(function(){
           document.getElementById("searchButton").style.display = "block"
         }
 
+        //~ Hide externe koppelingen button
+        if (items.koppelingenBtn) {
+          document.querySelector("body > div.container > div.appbar-host > mg-appbar > div.appbar > div.gripper.ng-scope").style.display = "block"
+        }else {
+          document.querySelector("body > div.container > div.appbar-host > mg-appbar > div.appbar > div.gripper.ng-scope").style.display = "none"
+        }
+
 
         
         //~ Hide pfp
@@ -559,6 +569,17 @@ var update100ms = window.setInterval(function(){
           observing = false
         }
 
+
+        //~ Collapse sidebar
+        if (items.sidebarSmallBtn) {
+          let sidebarDiv = document.querySelector("body > div.container > div.menu-host")
+          let toggleSidebarButton = document.querySelector("body > div.container > div.menu-host > nav.menu > div.menu-footer > a")
+          if (!sidebarDiv.classList.contains("started-collapsed") && toggleSidebarButton) {
+            toggleSidebarButton.click()
+            sidebarDiv.classList.add("started-collapsed")
+          }
+        }
+        
 
 
         //~ Aantekeningen text color
@@ -813,13 +834,8 @@ var update100ms = window.setInterval(function(){
               document.getElementById("infoDiv").appendChild(mededelingenCard)
 
               createMededelingen(mededelingenCard)
-  
 
             }
-            
-            
-
-
           }
         }
 
@@ -828,12 +844,34 @@ var update100ms = window.setInterval(function(){
         if (items.showTime) {
           let timeNow = new Date().toLocaleTimeString([], { hour12: false }).replace(/:/g, ' : ')
           
-          if (!document.getElementById("timeNow")) {
+          if (!document.getElementById("timeNow") || !document.getElementById("clock")) {
             let span = document.createElement("span")
             span.id = "timeNow"
             let outer = document.querySelector("body > div.container > div.menu-host.loading > div.logo")
             outer.innerHTML = ""
             outer.appendChild(span)
+
+            let clockDiv = document.createElement("div")
+            clockDiv.id = "clock"
+
+            outer.appendChild(clockDiv)
+
+            if (items.clockSecondBtn) {
+              let secondHand = document.createElement("span")
+              secondHand.classList.add("second")
+
+              clockDiv.appendChild(secondHand)
+            }
+
+            let minuteHand = document.createElement("span")
+            minuteHand.classList.add("minute")
+
+            clockDiv.appendChild(minuteHand)
+
+            let hourHand = document.createElement("span")
+            hourHand.classList.add("hour")
+
+            clockDiv.appendChild(hourHand)
           }
 
           let timeSpan = document.getElementById("timeNow")
@@ -842,6 +880,22 @@ var update100ms = window.setInterval(function(){
             timeSpan.textContent = timeNow
           ]
         } 
+
+        const time = new Date()
+        const hours = time.getHours() % 12
+        const minutes = time.getMinutes()
+        const seconds = time.getSeconds()
+
+        const hourDegrees = (hours * 30) + (minutes * 0.5)
+        const minuteDegrees = (minutes * 6) + (seconds * 0.1)
+        const secondDegrees = seconds * 6
+
+        document.querySelector("#clock > .hour").style.transform = `rotate(${hourDegrees}deg)`;
+        document.querySelector("#clock > .minute").style.transform = `rotate(${minuteDegrees}deg)`;
+        
+        if (items.clockSecondBtn) {
+          document.querySelector("#clock > .second").style.transform = `rotate(${secondDegrees}deg)`;
+        }
         
 
       }
@@ -1034,12 +1088,12 @@ var update100ms = window.setInterval(function(){
     
   }
 
-  /// Keuze button small hover text 
+  ///! Keuze button small hover text 
 
   const span = document.querySelector("#customButtonKeuze > span")
 
   if (span) {
-    if ( window.getComputedStyle(span, '::after').content !== "none" && window.getComputedStyle(span, '::after').content !== "" ) {
+    if (window.getComputedStyle(span, '::after').content !== "none" && window.getComputedStyle(span, '::after').content !== "" ) {
       const fauxLabel = document.getElementById("faux-label")
       fauxLabel.style.display = "block"
       fauxLabel.innerHTML = "Keuzes"
@@ -1052,7 +1106,31 @@ var update100ms = window.setInterval(function(){
       fauxLabel.style.top = `${spanCenterY}px`
     }
   }
+
+  const spanZer = document.querySelector("#customButtonZermelo > span")
+
+  if (spanZer) {
+    if (window.getComputedStyle(spanZer, '::after').content !== "none" && window.getComputedStyle(spanZer, '::after').content !== "" ) {
+      const fauxLabel = document.getElementById("faux-label")
+      fauxLabel.style.display = "block"
+      fauxLabel.innerHTML = "Zermelo"
   
+      const menuContainerTop = document.querySelector("body > div.container > div.menu-host.loading.collapsed-menu > nav > div.menu-container").getBoundingClientRect().top
+  
+      const spanRect = spanZer.getBoundingClientRect()
+      const spanCenterY = spanRect.top + (spanRect.height / 2) - menuContainerTop - 12
+  
+      fauxLabel.style.top = `${spanCenterY}px`
+    }
+  }
+
+  document.getElementById("customButtonKeuze").addEventListener("mouseleave", () => {
+    document.getElementById("faux-label").style.display = "none"
+  })
+
+  document.getElementById("customButtonZermelo").addEventListener("mouseleave", () => {
+    document.getElementById("faux-label").style.display = "none"
+  })
 
 
 

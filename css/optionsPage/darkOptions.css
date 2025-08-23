@@ -190,6 +190,7 @@ html ::-webkit-scrollbar-thumb:hover {
   top: 0;
   background-color: var(--mooie-bg-color-mid);
   z-index: 9999;
+  text-align: center;
 }
 
 #content > .c-page > label {

@@ -76,13 +76,6 @@
               <label for="widgetCustomLow">px</label>
             </div>
           </label>
-
-          <label>
-            Custom colors
-            <div id="colorsContainer">
-              <div class="item default" data-name="default" style="background-color: #7f7f7f; opacity: 0.5"></div>
-            </div>
-          </label>
         </div>
 
         <div id="c-layout" class="c-page" style="display: none">
@@ -110,10 +103,32 @@
             </label>
           </label>
 
+          <br />
+
+          <h2>Sidebar</h2>
+
+          <hr />
+
+          <label>
+            Start collapsed
+            <label class="switch">
+              <input type="checkbox" id="sidebarSmallBtn" />
+              <span class="slider"></span>
+            </label>
+          </label>
+
           <label>
             Show time
             <label class="switch">
               <input type="checkbox" id="timeBtn" />
+              <span class="slider"></span>
+            </label>
+          </label>
+
+          <label id="clockSecondSetting" style="margin-left: 16px">
+            Show second hand
+            <label class="switch">
+              <input type="checkbox" id="clockSecondBtn" />
               <span class="slider"></span>
             </label>
           </label>
@@ -175,6 +190,14 @@
               <span class="slider"></span>
             </label>
           </label>
+
+          <label>
+            Externe Koppelingen
+            <label class="switch">
+              <input type="checkbox" id="koppelingenBtn" />
+              <span class="slider"></span>
+            </label>
+          </label>
         </div>
 
         <div id="c-login" class="c-page" style="display: none">
@@ -222,12 +245,10 @@
 
           <label>
             Zoeken
-            <div class="radioButtons">
-              <input type="radio" name="zoeken" id="z-visible" />
-              <label for="z-visible">Enabled</label>
-              <input type="radio" name="zoeken" id="z-hidden" />
-              <label for="z-hidden">Disabled</label>
-            </div>
+            <label class="switch">
+              <input type="checkbox" id="zoekenBtn" />
+              <span class="slider"></span>
+            </label>
           </label>
 
           <label>
@@ -254,6 +275,13 @@
             Max Laatste Cijfers
             <div class="inputContainer">
               <input class="numberInput" type="number" min="1" id="maxLaatsteCijfers" value="10" />
+            </div>
+          </label>
+
+          <label>
+            Custom colors
+            <div id="colorsContainer">
+              <div class="item default" data-name="default" style="background-color: #7f7f7f; opacity: 0.5"></div>
             </div>
           </label>
         </div>
