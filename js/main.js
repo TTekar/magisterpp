@@ -1,7 +1,9 @@
 
 var keuzeUI = false;
-
 var madeKeuzeIframe = false;
+
+var zermeloUI = false;
+var madeZermeloIframe = false;
 
 
 var weekToPensum = {};
@@ -180,20 +182,18 @@ var update100ms = window.setInterval(function(){
   const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
 
   if (window.location.href.includes("?keuzes")) keuzeUI = true
-  else keuzeUI = false
+  else if (window.location.href.includes("?zermelo")) zermeloUI = true
 
   //~ Keuze plattegrond
 
   // if (!document.getElementById("coverDivKeuze")) {
-  if (!madeKeuzeIframe) {
+  if (true) {  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     chrome.storage.sync.get(
-      { keuzeBtn: true, darkMode: false , keuzeMode: "table" },
+      { keuzeBtn: true, darkMode: false , keuzeMode: "table" , zermelo: false },
       (items) => {
 
-        //~ Keuze Plattegrond 
-        if (items.keuzeBtn) {
-          
-          /// Keuze page
+        /// Keuze page
+        if (!document.getElementById("coverDivKeuze")) {
           const mainView = document.querySelector("div.view.ng-scope")
           const coverDivKeuze = document.createElement("div")
 
@@ -207,9 +207,11 @@ var update100ms = window.setInterval(function(){
 
           if (mainView) mainView.parentElement.appendChild(coverDivKeuze)
           else return
+        }
 
+        //~ Keuze Plattegrond 
+        if (items.keuzeBtn && !madeKeuzeIframe) {
           
-
           /// Define button
           const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
           const newButtonList = document.createElement("li");
@@ -217,7 +219,7 @@ var update100ms = window.setInterval(function(){
 
           const newButton = document.createElement("a")
           newButton.innerHTML = `<i class="far ng-scope fa-regular fa-compass" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Keuzes</span>`
-              
+
           newButton.id = "customButtonKeuze"
           newButton.classList.add("customButton")
           newButton.style.borderRadius = "6px"
@@ -228,6 +230,100 @@ var update100ms = window.setInterval(function(){
             /// Make the iframe if its not there yet
             if (!document.getElementById("iframeKeuze")) {
               const iframeKeuze = document.createElement("iframe")
+              const coverDivKeuzeGet = document.getElementById("coverDivKeuze")
+
+              let options = []
+
+              if (items.darkMode) options.push("style=magDark")
+              else options.push("style=magLight")
+
+              if (items.keuzeMode === "options" || items.keuzeMode === "both") options.push("sidebar=1")
+              if (items.keuzeMode === "table" || items.keuzeMode === "both") options.push("table=1")
+
+              iframeKeuze.src = `https://jmlu.tekar.dev/keuze?${options.join("&")}`
+
+              iframeKeuze.id = "iframeKeuze"
+              iframeKeuze.style.width = "100%"
+              iframeKeuze.style.height = "100%"
+              coverDivKeuzeGet.appendChild(iframeKeuze)
+            }
+
+            if (!document.getElementById("iframeZermelo")) {
+              const iframeZermelo = document.createElement("iframe")
+              const coverDivKeuzeGet = document.getElementById("coverDivKeuze")
+
+              iframeZermelo.src = `https://tekar.dev/`
+
+              iframeZermelo.id = "iframeZermelo"
+              iframeZermelo.style.width = "100%"
+              iframeZermelo.style.height = "100%"
+              coverDivKeuzeGet.appendChild(iframeZermelo)
+            }
+
+            /// Show UI
+            event.preventDefault();
+            keuzeUI = true;
+            document.getElementById("iframeKeuze").style.position = "relative"
+            document.getElementById("iframeKeuze").style.left = "0"
+
+            zermeloUI = false;
+            document.getElementById("iframeZermelo").style.position = "absolute"
+            document.getElementById("iframeZermelo").style.left = "-8000px"
+
+            window.location.href = `${window.location.href.split("?")[0]}?keuzes`
+
+
+            document.querySelector("body > div.container").style.paddingRight = "0"
+
+
+            /// All other buttons lighter
+            const sideButtons = document.querySelectorAll(".main-menu>li>a")
+
+            sideButtons.forEach(button => {
+              if (!button.classList.contains("customButton")) {
+                button.classList.add("nonCustomButtonNotClicked")
+              }else {
+                button.classList.remove("customButtonClicked")
+              }
+            })
+
+            /// Button darker
+            this.classList.add("customButtonClicked")
+
+            setKeuzeIframeDown = true
+            setKeuzeIframeUp = true
+
+          };
+
+          /// Append button
+          newButtonList.appendChild(newButton);
+
+          madeKeuzeIframe = true
+
+          if (keuzeUI) document.getElementById("customButtonKeuze").click()
+        }
+
+        if (items.zermelo && !madeZermeloIframe) {
+
+          /// Define button
+          const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
+          const newButtonList = document.createElement("li");
+          buttonsSideList.appendChild(newButtonList)
+
+          const newButton = document.createElement("a")
+          newButton.innerHTML = `<i class="far ng-scope fa-regular fa-circle-z" ng-if="item.icon" ng-class="item.icon"></i> <span ng-bind="item.title" class="caption ng-binding ng-scope" title="" ng-if="item.title !== 'OPP' &amp;&amp; item.title !== 'ELO'">Zermelo</span>`
+              
+          newButton.id = "customButtonZermelo"
+          newButton.classList.add("customButton")
+          newButton.style.borderRadius = "6px"
+
+          /// Zermelo button onclick
+          newButton.onclick = function(event) {
+
+            /// Make the iframe if its not there yet
+            if (!document.getElementById("iframeKeuze")) {
+              const iframeKeuze = document.createElement("iframe")
+              const coverDivKeuzeGet = document.getElementById("coverDivKeuze")
 
               let options = []
 
@@ -242,20 +338,36 @@ var update100ms = window.setInterval(function(){
               iframeKeuze.id = "iframeKeuze"
               iframeKeuze.style.width = "100%"
               iframeKeuze.style.height = "100%"
-              coverDivKeuze.appendChild(iframeKeuze)
+              coverDivKeuzeGet.appendChild(iframeKeuze)
+            }
+
+            if (!document.getElementById("iframeZermelo")) {
+              const iframeZermelo = document.createElement("iframe")
+              const coverDivKeuzeGet = document.getElementById("coverDivKeuze")
+
+              iframeZermelo.src = `https://jordanmlu.zportal.nl`
+
+              iframeZermelo.id = "iframeZermelo"
+              iframeZermelo.style.width = "100%"
+              iframeZermelo.style.height = "100%"
+              coverDivKeuzeGet.appendChild(iframeZermelo)
             }
 
             /// Show UI
             event.preventDefault();
-            keuzeUI = true;
+            zermeloUI = true;
+            document.getElementById("iframeZermelo").style.position = "relative"
+            document.getElementById("iframeZermelo").style.left = "0"
 
-            window.location.href = `${window.location.href.split("?")[0]}?keuzes`
+            keuzeUI = false;
+            document.getElementById("iframeKeuze").style.position = "absolute"
+            document.getElementById("iframeKeuze").style.left = "-8000px"
+
+            window.location.href = `${window.location.href.split("?")[0]}?zermelo`
             
 
             document.querySelector("body > div.container").style.paddingRight = "0"
             
-            /// Button darker
-            this.classList.add("customButtonClicked")
 
             /// All other buttons lighter
             const sideButtons = document.querySelectorAll(".main-menu>li>a")
@@ -263,9 +375,13 @@ var update100ms = window.setInterval(function(){
             sideButtons.forEach(button => {
               if (!button.classList.contains("customButton")) {
                 button.classList.add("nonCustomButtonNotClicked")
+              }else {
+                button.classList.remove("customButtonClicked")
               }
             })
-
+            
+            /// Button darker
+            this.classList.add("customButtonClicked")
             
             setKeuzeIframeDown = true
             setKeuzeIframeUp = true
@@ -275,33 +391,39 @@ var update100ms = window.setInterval(function(){
           /// Append button
           newButtonList.appendChild(newButton);
 
-          /// Do things when pressing other buttons (ie revert some shit and change dark button)
-          const buttonsInListA = buttonsSideList.querySelectorAll("li a")
+          madeZermeloIframe = true
 
-          for (const link of buttonsInListA) {
-            if (!link.classList.contains("customButton")) {
-              link.onclick = function(event) {
-                event.preventDefault();
-                keuzeUI = false;
-                window.location.href = `${window.location.href.split("?")[0]}`
-                link.classList.remove("nonCustomButtonNotClicked")
-                document.querySelector("body > div.container").style.paddingRight = "8px"
-                document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
-              }
-            } 
-          }
+          if (zermeloUI) document.getElementById("customButtonZermelo").click()
 
-          document.getElementById("menu-berichten-new").onclick = function(event) {
-            keuzeUI = false;
-            window.location.href = `${window.location.href.split("?")[0]}`
-            document.querySelector("body > div.container").style.paddingRight = "8px"
-            document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
-          }
+        }
 
-          madeKeuzeIframe = true
 
-          if (keuzeUI) document.getElementById("customButtonKeuze").click()
+        /// Do things when pressing other buttons (ie revert some shit and change dark button)
+        const buttonsSideList = document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-container > ul.main-menu");
+        const buttonsInListA = buttonsSideList.querySelectorAll("li a")
 
+        for (const link of buttonsInListA) {
+          if (!link.classList.contains("customButton")) {
+            link.onclick = function(event) {
+              event.preventDefault();
+              keuzeUI = false;
+              zermeloUI = false;
+              window.location.href = `${window.location.href.split("?")[0]}`
+              link.classList.remove("nonCustomButtonNotClicked")
+              document.querySelector("body > div.container").style.paddingRight = "8px"
+              document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
+              document.getElementById("customButtonZermelo").classList.remove("customButtonClicked")
+            }
+          } 
+        }
+
+        document.getElementById("menu-berichten-new").onclick = function(event) {
+          keuzeUI = false;
+          zermeloUI = false;
+          window.location.href = `${window.location.href.split("?")[0]}`
+          document.querySelector("body > div.container").style.paddingRight = "8px"
+          document.getElementById("customButtonKeuze").classList.remove("customButtonClicked")
+          document.getElementById("customButtonZermelo").classList.remove("customButtonClicked")
         }
 
       }
@@ -311,7 +433,7 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: true , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , showTime: false },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 145 , darkMode: true , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , showTime: false , oppBtn: true },
       (items) => {
 
         zoekenActive = !items.hideZoekenBtn
@@ -392,13 +514,18 @@ var update100ms = window.setInterval(function(){
           document.getElementById("help-menu").parentElement.style.display = "block"
         }
 
-
-
         //~ Hide bestellen button
         if (items.hideBestellenBtn) {
           document.getElementById("menu-bestellen").parentElement.style.display = "none"
         }else {
           document.getElementById("menu-bestellen").parentElement.style.display = "block"
+        }
+        
+        //~ Hide opp button
+        if (items.oppBtn) {
+          document.getElementById("menu-opp").parentElement.style.display = "block"
+        }else {
+          document.getElementById("menu-opp").parentElement.style.display = "none"
         }
 
         //~ Zoeken btn hidden/shown
@@ -743,7 +870,7 @@ var update100ms = window.setInterval(function(){
   const coverDivKeuze = document.getElementById("coverDivKeuze")
 
   if (divToHide && coverDivKeuze) {
-    if (keuzeUI) {
+    if (keuzeUI || zermeloUI) {
       divToHide.style.display = "none"
       coverDivKeuze.style.display = "flex"
     } else {
@@ -857,49 +984,39 @@ var update100ms = window.setInterval(function(){
 
     if (pageHeader && pageHeader.shadowRoot) {
 
-      if (!pageHeader.shadowRoot.getElementById("mpp-week-style")) {
-        const style = document.createElement('style');
-        style.id = "mpp-week-style"
+      if (!pageHeader.shadowRoot.getElementById("pensumA")) {
+        // const style = document.createElement('style');
+        // style.id = "mpp-week-style"
         c = ""
         if (weekToPensum[getISOWeekNumber()] != undefined) {
           c = weekToPensum[getISOWeekNumber()]
         }
-        style.textContent = `
-          div.container > div > div.title::after {
-            content: "${c}";
-            color: var(--mid-gray);
-          }
-        `;
-
-        pageHeader.shadowRoot.querySelector("div.container > div > div.title").style.userSelect = "none"
-
-        pageHeader.shadowRoot.appendChild(style);
-      
-      } else {
-        
-        c = ""
-        if (weekToPensum[getISOWeekNumber()] != undefined) {
-          c = weekToPensum[getISOWeekNumber()]
-        }
+        // style.textContent = `
+        //   div.container > div > div.title::after {
+        //     content: "${c}";
+        //     color: var(--mid-gray);
+        //   }
+        // `;
+        const pensumA = document.createElement("a")
+        pensumA.id = "pensumA"
+        pensumA.innerHTML = c
 
         if (document.querySelector("#user-menu > figure > img").getAttribute("alt") == "Aidan Schoester") {
           if (localVersion != newestVersion) {
-            pageHeader.shadowRoot.getElementById("mpp-week-style").textContent = `
-              div.container > div > div.title::after {
-                content: "${c} pull ff slet";
-                color: var(--mid-gray);
-              }
-            `;
+            pensumA.innerHTML = `${c} pull ff slet`
           }
-        } else {
-          pageHeader.shadowRoot.getElementById("mpp-week-style").textContent = `
-            div.container > div > div.title::after {
-              content: "${c}";
-              color: var(--mid-gray);
-            }
-          `;
         }
 
+        if (weekToPensum["src"] != undefined) pensumA.href = weekToPensum["src"]
+        pensumA.style.color = "var(--mid-gray)"
+        pensumA.style.textDecoration = "none"
+        pensumA.target = "_blank"
+
+
+        pageHeader.shadowRoot.querySelector("div.container > div > div.title").style.userSelect = "none"
+
+        pageHeader.shadowRoot.querySelector("div.container > div > div.title").appendChild(pensumA);
+      
       }
     }
   }  
@@ -1761,19 +1878,19 @@ function getCurrentDateFormatted(skipDays = 0) {
 }
 
 
-const asyncFunc = async () => {
-  const { start, end } = getDayStartAndEnd("02-10-2024")
+// const asyncFunc = async () => {
+//   const { start, end } = getDayStartAndEnd("02-10-2024")
 
-  const events = await MagisterApi.events(start, end)
+//   const events = await MagisterApi.events(start, end)
 
-  const filteredEvents = events.filter(event => {
-    const eventStart = new Date(event.Start)
+//   const filteredEvents = events.filter(event => {
+//     const eventStart = new Date(event.Start)
 
-    return eventStart >= start && eventStart <= end
-  });
+//     return eventStart >= start && eventStart <= end
+//   });
 
-  console.log(filteredEvents)
-}
+//   console.log(filteredEvents)
+// }
 
 // asyncFunc()
 

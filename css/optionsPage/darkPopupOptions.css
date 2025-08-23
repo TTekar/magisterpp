@@ -26,7 +26,29 @@ body {
   justify-content: center;
   background-color: var(--mooie-bg-color-mid);
   width: 600px;
-  height: 255px;
+  height: 350px;
+}
+
+
+/*? Scroll bar */
+
+html ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+  
+html ::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #0002;
+}
+   
+html ::-webkit-scrollbar-thumb {
+  background: var(--primary-background); 
+  border-radius: 5px;
+}
+  
+html ::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-background); 
 }
 
 
@@ -147,6 +169,24 @@ body {
   width: calc(100% - 96px);
   height: calc(100% - 16px);
   float: right;
+  overflow: hidden;
+}
+
+#content > .c-page {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#content > .c-page > .head {
+  position: sticky;
+  top: 0;
+  background-color: var(--mooie-bg-color-mid);
+  z-index: 9999;
+}
+
+#content > .c-page > h2 {
+  color: var(--mooie-text-color);
+  margin: 8px 16px;
 }
 
 #content > .c-page > label {

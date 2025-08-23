@@ -18,9 +18,11 @@
 
       <div id="content">
         <div id="c-appearance" class="c-page" style="display: block">
-          <h1>Appearance</h1>
+          <div class="head">
+            <h1>Appearance</h1>
 
-          <hr />
+            <hr />
+          </div>
 
           <label>
             Theme
@@ -84,7 +86,41 @@
         </div>
 
         <div id="c-layout" class="c-page" style="display: none">
-          <h1>Layout</h1>
+          <div class="head">
+            <h1>Layout</h1>
+
+            <hr />
+          </div>
+
+          <label>
+            Studiewijzers
+            <div class="radioButtons">
+              <input type="radio" name="studiewijzers" id="sw-list" />
+              <label for="sw-list">List</label>
+              <input type="radio" name="studiewijzers" id="sw-grid" />
+              <label for="sw-grid">Grid</label>
+            </div>
+          </label>
+
+          <label>
+            Widget drag
+            <label class="switch">
+              <input type="checkbox" id="widgetDrag" />
+              <span class="slider"></span>
+            </label>
+          </label>
+
+          <label>
+            Show time
+            <label class="switch">
+              <input type="checkbox" id="timeBtn" />
+              <span class="slider"></span>
+            </label>
+          </label>
+
+          <br />
+
+          <h2>Buttons</h2>
 
           <hr />
 
@@ -109,58 +145,44 @@
           </label>
 
           <label>
-            Studiewijzers
-            <div class="radioButtons">
-              <input type="radio" name="studiewijzers" id="sw-list" />
-              <label for="sw-list">List</label>
-              <input type="radio" name="studiewijzers" id="sw-grid" />
-              <label for="sw-grid">Grid</label>
-            </div>
-          </label>
-
-          <label>
-            Widget drag
+            Zermelo
             <label class="switch">
-              <input type="checkbox" id="widgetDrag" />
+              <input type="checkbox" id="zermeloBtn" />
               <span class="slider"></span>
             </label>
           </label>
 
           <label>
-            Bestellen button
-            <div class="radioButtons">
-              <input type="radio" name="bestellen" id="bs-visible" />
-              <label for="bs-visible">Visible</label>
-              <input type="radio" name="bestellen" id="bs-hidden" />
-              <label for="bs-hidden">Hidden</label>
-            </div>
+            Bestellen
+            <label class="switch">
+              <input type="checkbox" id="bestellenBtn" />
+              <span class="slider"></span>
+            </label>
           </label>
 
           <label>
-            Help button
-            <div class="radioButtons">
-              <input type="radio" name="help" id="h-visible" />
-              <label for="h-visible">Visible</label>
-              <input type="radio" name="help" id="h-hidden" />
-              <label for="h-hidden">Hidden</label>
-            </div>
+            Help
+            <label class="switch">
+              <input type="checkbox" id="helpBtn" />
+              <span class="slider"></span>
+            </label>
           </label>
 
           <label>
-            Show time
-            <div class="radioButtons">
-              <input type="radio" name="time" id="t-true" />
-              <label for="t-true">True</label>
-              <input type="radio" name="time" id="t-false" />
-              <label for="t-false">False</label>
-            </div>
+            OPP
+            <label class="switch">
+              <input type="checkbox" id="oppBtn" />
+              <span class="slider"></span>
+            </label>
           </label>
         </div>
 
         <div id="c-login" class="c-page" style="display: none">
-          <h1>Login</h1>
+          <div class="head">
+            <h1>Login</h1>
 
-          <hr />
+            <hr />
+          </div>
 
           <label>
             Auto Login
@@ -182,11 +204,13 @@
         </div>
 
         <div id="c-experimental" class="c-page" style="display: none">
-          <h1>Experimental</h1>
+          <div class="head">
+            <h1>Experimental</h1>
 
-          <hr />
+            <hr />
+          </div>
+
           <span id="exp-warn">Deze instellingen zijn <i>iets minder serieus</i> of nog half werkende features. Kortom, zit er niet aan als je niet zeker weet wat je aan het doen bent.</span>
-
           <label>
             Cijfers &lt;v
             <label class="switch">
@@ -234,9 +258,11 @@
         </div>
 
         <div id="c-update" class="c-page" style="display: none">
-          <h1>Update</h1>
+          <div class="head">
+            <h1>Update</h1>
 
-          <hr />
+            <hr />
+          </div>
 
           <span id="checkUpdate"></span>
 

@@ -1570,8 +1570,8 @@ html #cijferoverzichtgrid > .k-grid-header table > thead > tr > th > a {
 /*/ Body  */
 
 html #cijferoverzichtgrid > .k-grid-content {
-    border: 1px solid var(--mooie-bg-color-hover);
-    background-color: var(--mooie-bg-color-mid) !important;
+    /* border: 1px solid var(--mooie-bg-color-hover); */
+    background-color: var(--mooie-bg-color) !important;
 }
 
 html #cijferoverzichtgrid > .k-grid-content table > tbody > tr {
@@ -2816,6 +2816,40 @@ html #menu-berichten-new {
 
 html #menu-berichten-new > i::before {
     color: var(--mooie-text-color-white) !important;
+}
+
+/*~ help button  */
+html #help-menu > span {
+    background-color: var(--mooie-bg-color-mid);
+    border: none;
+    box-shadow: none;
+    color: var(--mooie-text-color);
+}
+
+html #help-menu > span::after {
+    border-right: 5px solid var(--mooie-bg-color-mid);
+}
+
+html #help-menu {
+    background-color: var(--primary-background);
+}
+
+html #help-menu > i::before {
+    color: var(--mooie-text-color-white) !important;
+}
+
+html #help-menu ~ .popup-menu {
+    background-color: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
+    border: none;
+}
+
+html #help-menu ~ .popup-menu > h3 {
+    color: var(--mooie-text-color);
+}
+
+html #help-menu ~ .popup-menu > .help-menu > a {
+    color: var(--mooie-text-color);
 }
 
 
