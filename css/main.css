@@ -3878,7 +3878,7 @@ html #clock .hour {
     /* animation-delay: var(--_dh, 0ms); */
     
     background-color: var(--mooie-text-color);
-    border-radius: 50%;
+    border-radius: 1px;
     height: 10px;
     position: absolute;
     left: 20px;
@@ -3893,7 +3893,7 @@ html #clock .minute {
     animation-delay: var(--_dm, 0ms); */
     
     background-color: var(--mooie-text-color);
-    border-radius: 50%;
+    border-radius: 1px;
     height: 18px;
     position: absolute;
     left: 20px;
@@ -3908,7 +3908,7 @@ html #clock .second {
     animation-delay: var(--_dm, 0ms); */
     
     background-color: var(--mid-gray);
-    border-radius: 50%;
+    border-radius: 1px;
     height: 18px;
     position: absolute;
     left: 20px;
