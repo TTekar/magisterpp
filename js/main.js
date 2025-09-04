@@ -880,6 +880,8 @@ var update100ms = window.setInterval(function(){
             timeSpan.textContent = timeNow
           ]
         } 
+        
+        // document.getElementById("clock").title = new Date().toLocaleTimeString([], { hour12: false }).replace(/:/g, ' : ')
 
         const time = new Date()
         const hours = time.getHours() % 12

@@ -93,7 +93,7 @@ html .cdk-drag.ng-star-inserted span.onderwerp {
 }
 
 html .cdk-drag.ng-star-inserted span.datum {
-    color: var(--blue-text-color-light) !important;
+    color: var(--mid-gray) !important;
     font-size: 12px !important;
     font-weight: lighter;
 }
