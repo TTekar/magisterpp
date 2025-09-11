@@ -2002,6 +2002,10 @@ function formatText(str) {
   return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\//g, ' ').replace(/\s/g, '')
 }
 
+function toggleSidebar() {
+  document.querySelector("body > div.container > div.menu-host.loading > nav > div.menu-footer > a").click()
+}
+
 async function search() {
   const searchInput = document.getElementById("searchInput")
   const searchResults = document.getElementById("searchResults")
@@ -2302,6 +2306,11 @@ document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.key.toLowerCase() === 'k') {
     e.preventDefault()
     toggleSearchBox()
+  }
+
+  if (e.key == " ") {
+    console.log("space")
+    toggleSidebar()
   }
 
   if (document.getElementById("dagRooster")) {
