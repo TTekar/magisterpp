@@ -189,7 +189,7 @@ var update100ms = window.setInterval(function(){
   // if (!document.getElementById("coverDivKeuze")) {
   if (true) {  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     chrome.storage.sync.get(
-      { keuzeBtn: true, darkMode: false , keuzeMode: "table" , zermelo: false },
+      { keuzeBtn: true, darkMode: true , keuzeMode: "table" , zermelo: false },
       (items) => {
 
         /// Keuze page
@@ -532,11 +532,14 @@ var update100ms = window.setInterval(function(){
         }
 
         //~ Zoeken btn hidden/shown
-        if (items.hideZoekenBtn) {
-          document.getElementById("searchButton").style.display = "none"
-        }else {
-          document.getElementById("searchButton").style.display = "block"
+        if (document.getElementById("searchButton")) {
+          if (items.hideZoekenBtn) {
+            document.getElementById("searchButton").style.display = "none"
+          }else {
+            document.getElementById("searchButton").style.display = "block"
+          }
         }
+        
 
         //~ Hide externe koppelingen button
         if (items.koppelingenBtn) {
@@ -1125,16 +1128,17 @@ var update100ms = window.setInterval(function(){
       fauxLabel.style.top = `${spanCenterY}px`
     }
   }
+  if (document.getElementById("customButtonKeuze")) {
+    document.getElementById("customButtonKeuze").addEventListener("mouseleave", () => {
+      document.getElementById("faux-label").style.display = "none"
+    })
+  }
 
-  document.getElementById("customButtonKeuze").addEventListener("mouseleave", () => {
-    document.getElementById("faux-label").style.display = "none"
-  })
-
-  document.getElementById("customButtonZermelo").addEventListener("mouseleave", () => {
-    document.getElementById("faux-label").style.display = "none"
-  })
-
-
+  if (document.getElementById("customButtonZermelo")) {
+    document.getElementById("customButtonZermelo").addEventListener("mouseleave", () => {
+      document.getElementById("faux-label").style.display = "none"
+    })
+  }
 
   //~ Absentie
 
@@ -2309,7 +2313,6 @@ document.addEventListener('keydown', (e) => {
   }
 
   if (e.key == " ") {
-    console.log("space")
     toggleSidebar()
   }
 

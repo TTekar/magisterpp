@@ -4,7 +4,7 @@ fetch('https://jmlu.tekar.dev/data/colors.json')
   .then(res => res.json())
   .then(colors => {
     colorsJson = colors
-    console.log(colorsJson)
+    // console.log(colorsJson)
 });
 
 let update200ms = window.setInterval(function(){
