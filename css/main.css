@@ -337,6 +337,7 @@ html #berichten-widget > .block > .content > .msg-detail > .border-bottom {
     border-color: var(--mid-gray);
 }
 
+html #berichten-widget > .block > .content > .msg-detail,
 html #berichten-widget > .block > .content > .msg-detail h5,
 html #berichten-widget > .block > .content > .msg-detail dt,
 html #berichten-widget > .block > .content > .msg-detail dd,
