@@ -179,6 +179,20 @@ function formatYMDtoDmY(dateStr) {
 
 var update100ms = window.setInterval(function(){
 
+  if(document.querySelector("#user-menu > figure > img").getAttribute("alt") == "Aidan Schoester") {
+    let name = `Aldani Julius III Raidie "Adriaan" "Erik" "Michael" Schoester Knoester Oester Assepoester`
+    let popup = document.querySelector("#user-menu ~ .popup-menu > div > div > div.ng-binding")
+    let h3 = document.querySelector("#instellingen-container .card .person-info > div:nth-child(1) > h3")
+    let strong = document.querySelector("#instellingen-container .card .person-info > div:nth-child(1) > strong")
+    
+    if (popup) popup.textContent = name
+    if (h3) {
+      if (h3.textContent != name) h3.textContent = name
+      if (h3.style.overflow != "visible") h3.style.overflow = "visible"
+      if (strong) strong.remove()
+    }
+  }
+
   const currentLocationSplit = (window.location.href.split("?")[0]).substring((window.location.href.split("?")[0]).indexOf(".") + 1) // eg. magister.net/magister/#/vandaag
 
   if (window.location.href.includes("?keuzes")) keuzeUI = true
