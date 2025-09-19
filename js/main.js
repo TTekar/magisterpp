@@ -79,6 +79,8 @@ var setBerichtenIframeDown = true
 
 var zoekenActive = false
 
+var spaceToggleSidebar = false
+
 var currentCijferId = 0
 
 var currentDag = 0
@@ -448,8 +450,10 @@ var update100ms = window.setInterval(function(){
 
   /// Chrome storage
   chrome.storage.sync.get(
-      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 0 , darkMode: true , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , showTime: false , oppBtn: true , koppelingenBtn: true , clockSecondBtn: true , sidebarSmallBtn: false },
+      { cijfers: false , hideHelpBtn: true , hidePfp: false , widgetCustomHigh: 385 , widgetCustomLow: 0 , darkMode: true , hideBestellenBtn: false , customPfp: false , widgetDrag: true , hideZoekenBtn: true , customVandaag: false , maxLaatsteCijfers: 10 , showTime: false , oppBtn: true , koppelingenBtn: true , clockSecondBtn: true , sidebarSmallBtn: false , spaceSidebar: false },
       (items) => {
+
+        spaceToggleSidebar = items.spaceSidebar
 
         zoekenActive = !items.hideZoekenBtn
 
@@ -2326,7 +2330,8 @@ document.addEventListener('keydown', (e) => {
     toggleSearchBox()
   }
 
-  if (e.key == " ") {
+  
+  if (spaceToggleSidebar && e.key == " ") {
     toggleSidebar()
   }
 
