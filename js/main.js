@@ -2113,6 +2113,10 @@ async function search() {
     {
       "title": "Keuzes",
       "btnId": "customButtonKeuze"
+    },
+    {
+      "title": "Zermelo",
+      "btnId": "customButtonZermelo"
     }
   ]
 
