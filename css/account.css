@@ -1,20 +1,16 @@
-html .bottom, html .completed-challenge-icon, html .dna-input-group-prefix {
+html .app-container > header, html .app-container > footer{
     display: none;
 }
 
-html .bg1_webp,html .bg2_webp,html .bg3_webp,html .bg4_webp,html .bg5_webp,html .bg6_webp,html .bg7_webp {
-    background-image: none;
+html .app-container {
+    background: var(--mooie-bg-color) !important;
 }
 
-html .splash_container {
-    text-align: right;
-    float: right;
+html body > .app-container  > .podium_container > main.podium {
+    box-shadow: none;
+    background: var(--mooie-bg-color-mid);
+    color: var(--mooie-text-color);
 }
-
-html .dna-form h1, html .dna-form h2 {
-    display: none;
-}
-
 
 /* V4 */
 html .completed-challenge {
@@ -154,9 +150,15 @@ html .dna-form-label {
 
 /*~ Custom text */
 
+
+html body > .app-container  > .podium_container > main.podium > h1 {
+    display: none;
+}
+
 html #customLoginText {
+    display: block;
     text-align: center;
-    margin-top: 32px;
+    margin-top: 8px;
     color: var(--background-1);
 }
 
@@ -171,4 +173,16 @@ html [id$="_submit"] {
 html [id$="_submit"]:hover {
     background-color: var(--secondary-background);
     border-color: var(--secondary-background);
+}
+
+
+sl-text-field {
+    background: var(--mooie-bg-color) !important;
+    border: 1px solid var(--mid-gray);
+    color: var(--mooie-text-color);
+}
+
+sl-button, .completed-challenge-button-container {
+    background: var(--mooie-bg-color) !important;
+    color: var(--mooie-text-color);
 }

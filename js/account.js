@@ -16,21 +16,11 @@ var update100msAccount = window.setInterval(function(){
 
                 form[0].prepend(h1)
             }
-            
-            /// Delete side panel
-            var appContainer = document.querySelector('.app-container')
-            var secondDiv = appContainer.children[1]
-            if (secondDiv) appContainer.removeChild(secondDiv)
-
-            /// Delete more shit
-
-            if (document.querySelector("body > div.app-container > div > footer")) document.querySelector("body > div.app-container > div > footer").remove()
-            
 
 
             //~ Auto login
-            if (items.autoLogin && items.username !== "" && items.password !== "" && ( !document.querySelector(".dna-form-error") || document.querySelector(".dna-form-error").textContent.includes("is niet ingevuld."))) {
-
+            if (items.autoLogin && items.username !== "" && items.password !== "" && ( !document.querySelector('[id^="sl-form-field-error"]') || document.querySelector('[id^="sl-form-field-error"]').textContent.includes("is niet ingevuld."))) {
+                
                 const usernameField = document.getElementById("username")
 
                 if (usernameField) {
